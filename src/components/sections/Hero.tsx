@@ -32,10 +32,7 @@ const Hero = () => {
               <span className="text-brand font-semibold">Manilla Finance</span>
             </p>
 
-            <Button
-              className=" rounded-full bg-brand hover:bg-brand/90 text-brand-foreground font-semibold px-8 py-3 text-lg group"
-              label={""}
-            >
+            <Button className="rounded-full bg-brand hover:bg-brand/90 text-brand-foreground font-semibold px-8 py-3 text-lg group">
               Get Started Now
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform bg-white" />
             </Button>

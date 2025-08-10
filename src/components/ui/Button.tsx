@@ -2,59 +2,54 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
-interface ButtonProps extends React.PropsWithChildren {
-  label: string;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
-  onClick?: () => void;
   variant?: "primary" | "secondary" | "ghost";
   icon?: React.ReactNode;
   className?: string;
+  children: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  label,
   href,
   onClick,
   variant = "primary",
   icon,
+  className = "",
   children,
-  className: extraClassName, // rename to avoid collision
+  ...props
 }) => {
   const baseStyle =
-    "inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 text-sm";
+    "inline-flex items-center gap-2 px-6 py-3 font-semibold transition-all duration-200 text-sm"; // removed rounded-lg
 
   const variants = {
-    primary: "text-white hover:opacity-90 transform hover:scale-105",
-    secondary:
-      "bg-white text-blue-600 border border-white hover:bg-gray-50 hover:scale-105 transform",
+    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    secondary: "bg-white text-blue-600 border border-blue-600 hover:bg-gray-50",
     ghost:
-      "bg-transparent text-white border border-white hover:bg-white hover:text-blue-600 transform hover:scale-105",
+      "bg-transparent text-white border border-white hover:bg-white hover:text-blue-600",
   };
 
-  const getStyle = () => {
-    if (variant === "primary") {
-      return { background: "#281AC9" };
-    }
-    return {};
-  };
-
-  // merge base styles, variant styles, and any extra classes from props
-  const className = `${baseStyle} ${variants[variant]} ${extraClassName || ""}`;
+  const combinedClasses = `${baseStyle} ${variants[variant]} ${className}`;
 
   const content = (
     <>
       {icon && <span>{icon}</span>}
-      {label || children}
+      {children}
     </>
   );
 
-  return href ? (
-    <a href={href} className={className} style={getStyle()}>
-      {content}
-    </a>
-  ) : (
-    <button onClick={onClick} className={className} style={getStyle()}>
+  if (href) {
+    return (
+      <Link href={href} className={combinedClasses}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button onClick={onClick} className={combinedClasses} {...props}>
       {content}
     </button>
   );
