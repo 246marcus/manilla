@@ -9,6 +9,13 @@ import twitter from "./twitter.png";
 import scanQRcode from "./scanQRcode.png";
 import chevron from "./chevron-up.png";
 import rectangle from "./Rectangle2.png";
+import Group from "./Group.png";
+import Allpayment from "./Allpayment.png";
+import Blockchain from "./Blockchain.png";
+import topPlatforms from "./topPlatforms.png";
+import activeUser from "./ActiveUsers.png";
+import downloadApp from "./downloadManilla.png";
+import ManillaFinance from "./ManillaFinance.png";
 
 export {
   aboutusIcon,
@@ -22,4 +29,11 @@ export {
   scanQRcode,
   chevron,
   rectangle,
+  Group,
+  Allpayment,
+  Blockchain,
+  activeUser,
+  topPlatforms,
+  downloadApp,
+  ManillaFinance,
 };

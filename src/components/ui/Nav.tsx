@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { navlinks } from "../../types";
 import Button from "../ui/Button";
 import ManillaTechologies1 from "../../../public/icons/ManillaTechnologies1.png";
+import { ManillaFinance } from "../../../public/icons";
 
 const Nav: React.FC = () => {
   const [activeLink, setActiveLink] = useState<string | null>("home");
@@ -59,13 +60,13 @@ const Nav: React.FC = () => {
       <nav className="bg-[#000C43]">
         <div className="max-w-7xl mx-auto py-4 flex justify-between items-center">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center pl-6">
             <img
-              src={ManillaTechologies1.src}
+              src={ManillaFinance.src}
               alt="Manilla Finance Logo"
-              width={140}
-              height={40}
-              className="w-[129px] h-[29px] brightness-0 invert"
+              width={160}
+              height={50}
+              className="w-[160px] h-[auto] brightness-0 invert"
             />
           </div>
 
