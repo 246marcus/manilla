@@ -5,23 +5,27 @@ import security from "../../../../public/images/security.png";
 import customer from "../../../../public/images/customer.png";
 import inclusion from "../../../../public/images/inclusion.png";
 import integrity from "../../../../public/images/integrity.png";
+import cardPng from "../../../../public/images/valueiii.png";
+import icon from "../../../../public/icons/dropdownIcon.png";
+
 import ValueCard from "./ValueCard";
 
 const CompanyValue: React.FC = () => {
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-20 border-t-2 border-dashed">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-12 relative sm:py-16 lg:py-20 border-t-2  border-black/20 border-dashed">
+      <div className="absolute bg-cyan-300 p-20 lg:p-30 top-10 md:left-15 left-0.5 blur-[120px]"></div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top controls */}
-        <div className="flex items-center justify-bewteen  mb-6 md:mb-10">
+        <div className="flex items-center justify-bewteen  md:mb-10 -translate-y-15 sm-translate-y-17 lg:-translate-y-20 ">
           <div className="text-right flex-1">
             {/* keep spacing on right for desktop */}
             <div className="hidden sm:block"></div>
           </div>
 
-          <div className="mx-auto flex flex-1 justify-center -translate-y-9">
+          <div className="mx-auto flex flex-1 justify-center  -translate-y-9">
             <div className="inline-flex items-center gap-3 ">
               <h2
-                className=" my-4 py-8 px-20 "
+                className=" my-4 py-8 px-20 flex items-center justify-center scale-75 md:scale-90  "
                 style={{
                   backgroundImage: `url(${vbg.src})`,
                   backgroundPosition: "center",
@@ -32,6 +36,7 @@ const CompanyValue: React.FC = () => {
                 <span className="font-semibold text-nowrap text-sm">
                   Our Values
                 </span>
+                <img src={icon.src} alt="about" className="w-10" />
               </h2>
             </div>
           </div>
@@ -43,7 +48,7 @@ const CompanyValue: React.FC = () => {
         </div>
 
         {/* Subtitle */}
-        <div className="flex justify-center items-center mb-8 -translate-y-9 ">
+        <div className="flex justify-center items-center -translate-y-25 ">
           <div className="text-center max-w-70 md:max-w-xl rounded-lg border border-gray-200 shadow-sm px-6 py-1 md:py-3">
             <div className="inline-flex items-center ">
               <span className="text-xs sm:text-sm font-medium text-gray-700">
@@ -57,7 +62,7 @@ const CompanyValue: React.FC = () => {
         </div>
 
         {/*   top row */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 -translate-y-10">
           <div className="flex flex-col justify-center items-center md:flex-row max-w-4xl gap-4 mx-auto ">
             {/* Card: Innovation */}
             <ValueCard
@@ -68,7 +73,7 @@ const CompanyValue: React.FC = () => {
              financial services."
             />
             {/* Card: Blue highlight (center) */}
-            <div className=" md:flex-7/12 w-full max-w-md md:max-w-4xl bg-blue-700 text-white rounded-2xl p-12 shadow-md flex flex-col text-center items-center justify-center">
+            {/* <div className=" md:flex-7/12 w-full max-w-md md:max-w-4xl bg-blue-700 text-white rounded-2xl p-12 shadow-md flex flex-col text-center items-center justify-center">
               <div className="inline-flex items-center gap-2 bg-black bg-opacity-30 px-3 py-1 rounded-full  mb-4">
                 <span className="text-xs font-medium">Our Values</span>
               </div>
@@ -77,10 +82,15 @@ const CompanyValue: React.FC = () => {
                 At Manilla Finance, our values shape every decision, product,
                 and experience.
               </p>
-            </div>
+            </div> */}
+            <img
+              src={cardPng.src}
+              alt=""
+              className="md:flex-7/12 w-7/7 h-45 sm:h-50 md:max-w-sm lg:max-w-lg lg:h-auto"
+            />
           </div>
 
-          <div className="flex flex-col justify-center px-12 md:px-0 items-center lg:flex-row  max-w-4xl gap-4 mx-auto ">
+          <div className="flex flex-col justify-center px-12 md:px-0 items-center lg:flex-row  max-w-4xl gap-4 mx-auto  mt-10">
             {/* Card: Security */}
 
             <ValueCard

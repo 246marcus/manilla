@@ -2,11 +2,21 @@
 import React from "react";
 import CompanyForm from "./CompanyForm";
 import msbg from "../../../../public/images/msbg.png";
+import gradient from "../../../../public/images/gradientStripe.png";
+import icon from "../../../../public/icons/dropdownIcon.png";
 const ContactPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-50">
       {/* Hero Section */}
-      <section className="w-full py-12 text-center">
+      <section
+        className="w-full py-12 text-center"
+        style={{
+          backgroundImage: `url(${gradient.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover", // optional, makes sure it fills the area
+        }}
+      >
         <div className="flex items-center justify-bewteen  mb-6 md:mb-10">
           <div className="flex-1 ">
             <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border border-gray-200 bg-white hover:shadow-md transition">
@@ -17,7 +27,7 @@ const ContactPage: React.FC = () => {
           <div className="mx-auto flex flex-1 justify-center -translate-y-9">
             <div className="inline-flex items-center gap-3 ">
               <h2
-                className=" scale-90 py-8 px-20 "
+                className=" py-8 px-20 scale-65 gap-2 flex md:scale-80 justify-center items-center "
                 style={{
                   backgroundImage: `url(${msbg.src})`,
                   backgroundPosition: "center",
@@ -28,6 +38,7 @@ const ContactPage: React.FC = () => {
                 <span className="font-semibold text-nowrap text-sm">
                   Contact Us
                 </span>
+                <img src={icon.src} alt="about" className="w-10" />
               </h2>
             </div>
           </div>
@@ -56,7 +67,7 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="w-full  mt-8 px-4">
+      <section className="w-full  -translate-y-30 mt-8 px-4">
         <CompanyForm />
       </section>
     </div>

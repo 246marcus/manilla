@@ -6,13 +6,13 @@ const CompanyForm: React.FC = () => {
   const [joinWaitlist, setJoinWaitlist] = useState(false);
 
   return (
-    <section className=" max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 py-10">
+    <section className=" max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4  py-10">
       {/* Contact Form */}
-      <div className="bg-gradient-to-br from-white to-slate-50 p-6 md:p-10 rounded-3xl shadow-xl">
+      <div className=" bg-white/60 p-6 md:p-10 rounded-3xl shadow-xl">
         <h2 className="text-center text-xl font-semibold text-gray-900 mb-8">
           Contact Form
         </h2>
-        <form className="bg-white rounded-2xl p-6 md:p-8 shadow space-y-4">
+        <form className="bg-white/5 rounded-2xl p-6 md:p-8 shadow space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">

@@ -1,22 +1,23 @@
 import React from "react";
 import msbg from "../../../../public/images/msbg.png";
 import payment from "../../../../public/images/payment.png";
-
+import icon from "../../../../public/icons/dropdownIcon.png";
+import { FaQuoteLeft } from "react-icons/fa6";
 const CompanyMission: React.FC = () => {
   return (
-    <section className="bg-white border-t-2 border-dashed  ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white border-t-2 border-black/20 border-dashed  ">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 lg:px-8">
         <div className="flex items-center justify-bewteen  mb-6 md:mb-10">
           <div className="flex-1 ">
-            <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border border-gray-200 bg-white hover:shadow-md transition">
+            <div className="hidden md:inline-flex items-center gap-2 text-xs px-4 py-1 rounded-full border border-gray-200 bg-white hover:shadow-md transition">
               Learn About Our Products
             </div>
           </div>
 
-          <div className="mx-auto flex flex-1 justify-center -translate-y-9">
+          <div className="mx-auto flex flex-1 justify-center -translate-y-10">
             <div className="inline-flex items-center gap-3 ">
               <h2
-                className=" my-4 py-8 px-20 "
+                className=" my-4 py-8 px-20 flex  items-center justify-center scale-75 md:scale-90 "
                 style={{
                   backgroundImage: `url(${msbg.src})`,
                   backgroundPosition: "center",
@@ -27,6 +28,7 @@ const CompanyMission: React.FC = () => {
                 <span className="font-semibold text-nowrap text-sm">
                   Mission & Visions
                 </span>
+                <img src={icon.src} alt="about" className="w-10" />
               </h2>
             </div>
           </div>
@@ -40,13 +42,13 @@ const CompanyMission: React.FC = () => {
         {/* secondary centered pill under top nav */}
         <div className="flex items-center justify-center gap-3 -translate-y-5 mb-5">
           <div className="text-center  max-w-sm md:max-w-lg">
-            <button className="text-xs -translate-y-5 sm:text-sm px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm">
+            <button className="text-xs -translate-y-5 sm:text-sm px-4 py-1 rounded-full bg-white border border-gray-200 shadow-sm">
               Learn About Our Mission & Vision
             </button>
-            <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-tight">
+            <p className="text-xl md:text-2xl font-semibold  leading-tight">
               Seamless Payments.
             </p>
-            <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-tight">
+            <p className="text-xl md:text-2xl font-semibold leading-tight">
               Real-world Impact.
             </p>
 
@@ -64,7 +66,7 @@ const CompanyMission: React.FC = () => {
             <img
               src={payment.src}
               alt="App mock on phone ms-5 md:ms-0"
-              className=" md:h-4/5 max-h-130 h-100 "
+              className=" md:h-4/5 max-h-130 h-85 "
             />
           </div>
 
@@ -75,28 +77,26 @@ const CompanyMission: React.FC = () => {
               <div className=" flex-1 flex flex-col gap-y-4">
                 {/* Cards */}
                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
-                  <div className="flex items-center justify-center ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                  <div className="flex items-center gap-4 justify-center ">
+                    <FaQuoteLeft  size={30}/>{" "}
+                    <h3 className="text-md w-full font-semibold text-black">
                       Our Mission
                     </h3>
-                    <span className="text-xs text-center text-gray-500">
-                      ""
-                    </span>
                   </div>
                 </div>
 
                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                    <h3 className="text-sm w-full  text-gray-600">
                       Transact. Effortlessly. Anywhere.
                     </h3>
                     <p className="text-xs"></p>
                   </div>
                 </div>
 
-                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
+                <div className="flex  flex-1 items-center justify-center gap-4   bg-gray-50 rounded-xl p-3 shadow-md border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                    <h3 className="text-sm w-full font-semibold text-black">
                       Accessible & Empowering
                     </h3>
                     <p className="text-xs">
@@ -108,42 +108,39 @@ const CompanyMission: React.FC = () => {
 
                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
-                      Accessible & Empowering
-                    </h3>
-                    <p className="text-xs"></p>
-                  </div>
-                </div>
-                
-                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
-                  <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                    <h3 className="text-sm w-full  text-gray-600">
                       Accessible & Empowering
                     </h3>
                     <p className="text-xs"></p>
                   </div>
                 </div>
 
+                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
+                  <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
+                    <h3 className="text-sm w-full  text-gray-600">
+                      Accessible & Empowering
+                    </h3>
+                    <p className="text-xs"></p>
+                  </div>
+                </div>
               </div>
 
               {/* side B */}
 
               <div className=" flex-1 flex flex-col gap-y-4">
                 {/* Cards */}
-                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
-                  <div className="flex items-center justify-center ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-2 py-0 shadow-sm border border-gray-100">
+                  <div className="flex items-center gap-4 justify-center ">
+                    <FaQuoteLeft size={30} />
+                    <h3 className=" w-full text-md font-semibold text-black">
                       Our Vision
                     </h3>
-                    <span className="text-xs text-center text-gray-500">
-                      ""
-                    </span>
                   </div>
                 </div>
 
-                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
+                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-md border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                    <h3 className="text-sm w-full font-semibold text-black">
                       Bills. Travel. Solved.
                     </h3>
                     <p className="text-xs">
@@ -155,7 +152,7 @@ const CompanyMission: React.FC = () => {
 
                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                    <h3 className="text-sm w-full  text-gray-600">
                       Empower. Access. Decentralize.
                     </h3>
                     <p className="text-xs"></p>
@@ -164,7 +161,7 @@ const CompanyMission: React.FC = () => {
 
                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
-                    <h3 className="text-sm w-full font-semibold text-gray-800">
+                    <h3 className="text-sm w-full  text-gray-600">
                       Trusted. Secure. Innovative.
                     </h3>
                     <p className="text-xs"></p>
