@@ -4,6 +4,8 @@ import product from "./product.png";
 import heropicture from "./heropicture.png";
 import aboutus from "./aboutus.png";
 import ManillaTechologies1 from "./ManillaTechnologies1.png";
+import TrustedPlatform from "./TrustedPlatform.png";
+import ManillaText from "./ManillaText.png";
 
 export {
   aboutManillapay1,
@@ -12,4 +14,6 @@ export {
   heropicture,
   aboutus,
   ManillaTechologies1,
+  TrustedPlatform,
+  ManillaText,
 };

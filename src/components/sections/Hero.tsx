@@ -8,7 +8,7 @@ import heropicture from "../../../public/images/heropicture.png";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6">
+    <section className="relative min-h-screen pt-30 hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 border border-white/20 rounded-full"></div>
@@ -30,13 +30,16 @@ const Hero = () => {
         </p>
 
         <div className="relative">
-          <Button className="rounded-full bg-brand hover:bg-brand/90 text-brand-foreground font-semibold px-8 py-3 text-lg group relative">
+          <Button
+            variant="ghost"
+            className="rounded-full px-8 py-3 text-lg group relative"
+          >
             Get Started Now
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
 
           {/* External Group Icon pointing to button */}
-          <div className="absolute  -top-0 right-[190px]">
+          <div className="absolute -top-0 right-[190px] hidden lg:block">
             <img
               src="/icons/Group.png"
               alt="Group icon pointing to button"
@@ -52,14 +55,14 @@ const Hero = () => {
         <img
           src={heropicture.src}
           alt="Professional woman using Manilla Finance app"
-          className="w-100 h-96 object-cover rounded-3xl mx-auto"
+          className="w-90 sm:w-100 md:h-90 object-cover rounded-3xl mx-auto "
         />
 
         {/* Left icon */}
         <img
           src="/icons/Allpayment.png"
           alt="Left decoration"
-          className="absolute right-100 top-1/3 -translate-y-1/2 w-auto h-14"
+          className="absolute right-55 sm:right-60 md:right-100 top-1/4 md:top-1/3 -translate-y-1/2 w-auto h-10 md:h-14"
           style={{ maxWidth: "none" }}
         />
 
@@ -67,7 +70,7 @@ const Hero = () => {
         <img
           src="/icons/Blockchain.png"
           alt="Right decoration"
-          className="absolute left-95 top-[20%] -translate-y-1/2 w-auto h-14"
+          className="absolute left-55 sm:left-54 md:left-95 top-[20%] -translate-y-1/2 w-auto h-10 md:h-14"
           style={{ maxWidth: "none" }}
         />
 
@@ -83,7 +86,7 @@ const Hero = () => {
         <img
           src="/icons/ActiveUsers.png"
           alt="Below decoration"
-          className="absolute bottom-[-70px] left-[-30px] w-auto h-14"
+          className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14 "
           style={{ maxWidth: "none" }}
         />
 
@@ -91,9 +94,32 @@ const Hero = () => {
         <img
           src="/icons/downloadManilla.png"
           alt="Below decoration"
-          className="absolute bottom-[-70px] right-[-30px] w-auto h-14"
+          className="absolute bottom-[-18px] left-100 w-auto h-40"
           style={{ maxWidth: "none" }}
         />
+      </div>
+
+      {/* Trusted Platform Rolling Effect */}
+      <div className="relative z-10 mt-16 w-full bg-[#000C43] overflow-hidden">
+        <div className="flex animate-roll">
+          <img
+            src="/images/TrustedPlatform.png"
+            alt="Trusted by top platforms"
+            className="mx-auto w-auto max-w-none h-auto"
+          />
+          {/* Duplicate the image for seamless looping */}
+          <img
+            src="/images/TrustedPlatform.png"
+            alt="Trusted by top platforms"
+            className="mx-auto w-auto max-w-none h-auto"
+          />
+
+          <img
+            src="/images/Vector1.png"
+            alt="Section separator line"
+            className="absolute bottom-0 left-0 w-full h-2 object-cover"
+          />
+        </div>
       </div>
     </section>
   );

@@ -27,8 +27,7 @@ const Button: React.FC<ButtonProps> = ({
   const variants = {
     primary: "bg-blue-600 text-white hover:bg-blue-700",
     secondary: "bg-white text-blue-600 border border-blue-600 hover:bg-gray-50",
-    ghost:
-      "bg-transparent text-white border border-white hover:bg-white hover:text-blue-600",
+    ghost: "bg-white text-black hover:bg-gray-200",
   };
 
   const combinedClasses = `${baseStyle} ${variants[variant]} ${className}`;

@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@keyframes roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-roll {
+  animation: roll 15s linear infinite;
+}
