@@ -27,9 +27,9 @@ const CompanyPartner: React.FC = () => {
             Partner With Us
           </h2>
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
-            Whether you're a business or individual, Manilla Finance offers a
-            secure and flexible way to manage payments, bills, and travel — all
-            in one trusted platform.
+            Whether you&apos;re a business or individual, Manilla Finance offers
+            a secure and flexible way to manage payments, bills, and travel —
+            all in one trusted platform.
           </p>
 
           {/* Partner options */}
