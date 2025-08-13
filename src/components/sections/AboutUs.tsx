@@ -6,9 +6,11 @@ import CompanyHero from "../ui/company/CompanyHero";
 import Footer from "./Footer";
 import Contact from "../ui/company/Contact";
 import CareerHome from "../ui/company/career/CareerHome";
-import CareerApply from "../ui/company/career/CarrierApply";
 import ManillaToken from "../ui/suit/ManillaToken";
 import ManillaCard from "../ui/suit/card/ManillaCard";
+import LegalAdvisorApply from "../ui/company/career/LegalAdvisorApply";
+import SeniorDevApply from "../ui/company/career/SeniorDevApply";
+import GrowthSpecialistApply from "../ui/company/career/GrowthSpecialistApply";
 
 const AboutUs = () => {
   return (
@@ -22,9 +24,12 @@ const AboutUs = () => {
         <Contact />
       </div>
       <CareerHome />
-      <CareerApply/>
+      <LegalAdvisorApply/>
+      <SeniorDevApply/>
+      <GrowthSpecialistApply/>
       <ManillaToken/>
       <ManillaCard/>
+      
 
     </div>
   );
