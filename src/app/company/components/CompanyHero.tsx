@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import Mfinance from "../../../../public/images/Mfinance.png";
 import abtbg from "../../../../public/images/abtbg.png";

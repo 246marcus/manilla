@@ -4,17 +4,17 @@ import careerbg from "../../../../public/images/careerbg.png";
 import careerimg from "../../../../public/images/careerimg.png";
 import careerWbg from "../../../../public/images/careerWbg.png";
 
-interface Role {
-  title: string;
-  type: string;
-}
+// interface Role {
+//   title: string;
+//   type: string;
+// }
 
 const CareerHome: React.FC = () => {
-  const roles: Role[] = [
-    { title: "Senior Blockchain Developer", type: "Hybrid" },
-    { title: "Growth Hack Specialist", type: "Hybrid" },
-    { title: "Legal Advisor", type: "Hybrid" },
-  ];
+  // const roles: Role[] = [
+  //   { title: "Senior Blockchain Developer", type: "Hybrid" },
+  //   { title: "Growth Hack Specialist", type: "Hybrid" },
+  //   { title: "Legal Advisor", type: "Hybrid" },
+  // ];
 
   return (
     <div

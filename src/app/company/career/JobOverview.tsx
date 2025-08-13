@@ -41,8 +41,8 @@ export default function JobOverview() {
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">
           We are searching for a brilliant and data-driven Senior Growth Hack
-          Specialist to join our team. In this fast-paced role, you'll be a key
-          player in developing and executing innovative growth hacking
+          Specialist to join our team. In this fast-paced role, you&apos;ll be a
+          key player in developing and executing innovative growth hacking
           strategies that propel our company forward.
         </p>
       </div>

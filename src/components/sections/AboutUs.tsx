@@ -34,8 +34,8 @@ const AboutUs = () => {
           <h2 className="text-4xl font-bold mb-4">Pay Everyday Bills.</h2>
           <p className="text-2xl">Crypto Convenience for Nigeria Hustle.</p>
           <p>
-            Life in Nigeria is fast-paced, and your bills shouldn't slow you
-            down.
+            Life in Nigeria is fast-paced, and your bills shouldn&apos;t slow
+            you down.
           </p>
           <p>
             Manilla lets you manage and settle every essential utility in one
