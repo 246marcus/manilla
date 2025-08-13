@@ -16,12 +16,19 @@ export const navlinks: {
     href: "/company",
     label: "Company",
     children: [
-      { href: "/company/about", label: "About Us" },
+      { href: "/company", label: "About Us" },
       { href: "/company/career", label: "Career" },
       { href: "/company/contact", label: "Contact" },
     ],
   },
-  { href: "/manillasuit", label: "Manilla Suite" },
+  {
+    href: "/manillaSuit/card",
+    label: "Manilla Suite",
+    children: [
+      { href: "/manillaSuit/card", label: "Manilla Card" },
+      { href: "/manillaSuit/manillaToken", label: "Manilla Token" },
+    ],
+  },
   { href: "/blog", label: "Blog" },
   { href: "/legal", label: "Legal" },
 ];
