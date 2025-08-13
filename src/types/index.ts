@@ -1,22 +1,10 @@
 import {
-  aboutusIcon,
-  blogicon,
-  dropdownIcon,
   facebook,
   instagram,
   twitter,
-  ManillaTechologies1,
   github,
   scanQRcode,
 } from "../../public/icons";
-
-import {
-  aboutManillapay1,
-  aboutManillapay2,
-  product,
-  heropicture,
-  aboutus,
-} from "../../public/images";
 
 export const navlinks: {
   href: string;
