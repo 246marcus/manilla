@@ -6,6 +6,8 @@ import aboutus from "./aboutus.png";
 import ManillaTechologies1 from "./ManillaTechnologies1.png";
 import TrustedPlatform from "./TrustedPlatform.png";
 import ManillaText from "./ManillaText.png";
+import development1 from "./Development1.png";
+import development2 from "./development2.png";
 
 export {
   aboutManillapay1,
@@ -16,4 +18,6 @@ export {
   ManillaTechologies1,
   TrustedPlatform,
   ManillaText,
+  development1,
+  development2,
 };

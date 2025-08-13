@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const AboutManillaPay = () => {
   return (
@@ -20,7 +19,7 @@ const AboutManillaPay = () => {
           {/* Center Icon */}
           <div className="absolute left-1/2 transform -translate-x-1/2 -mt-8 md:-mt-10 lg:-mt-12">
             <button className="p-4 bg-transparent hover:scale-105 transition-transform">
-              <Image
+              <img
                 src="/icons/aboutusIcon.png"
                 alt="About Us Icon"
                 width={250}
@@ -46,12 +45,11 @@ const AboutManillaPay = () => {
               past.
             </p>
 
-            {/* Text Image */}
-            <Image
+            <img
               src="/images/ManillaText.png"
               alt="Text Image"
               width={500}
-              height={100}
+              height={300}
               className="mb-6 mx-auto lg:mx-0"
             />
 
@@ -68,7 +66,7 @@ const AboutManillaPay = () => {
 
           {/* Right Column - Image */}
           <div className="relative flex justify-center lg:justify-end lg:pr-5">
-            <Image
+            <img
               src="/images/aboutmanillapay1.png"
               alt="Right Side Image"
               width={450}
@@ -80,7 +78,7 @@ const AboutManillaPay = () => {
 
         {/* Bottom Decoration */}
         <div className="relative">
-          <Image
+          <img
             src="/images/aboutmanillapay2.png"
             alt="Bottom Decoration"
             width={1200}

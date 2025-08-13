@@ -7,7 +7,7 @@ const DevelopmentPartners = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
         {/* First image - static text */}
         <div className="w-full">
-          <Image
+          <img
             src="/images/Development1.png"
             alt="Development Partners Text"
             width={1400} // Increased width
@@ -27,7 +27,7 @@ const DevelopmentPartners = () => {
               className="w-auto max-w-none h-auto"
             />
             {/* Duplicate for seamless loop */}
-            <Image
+            <img
               src="/images/Development2.png"
               alt="Development Partners Logos"
               width={1200}

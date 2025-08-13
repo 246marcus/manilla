@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Nav from "../ui/Nav";
 import Button from "../ui/Button";
 import { ArrowRight, Globe, Shield, Smartphone } from "lucide-react";
 import heropicture from "../../../public/images/heropicture.png";

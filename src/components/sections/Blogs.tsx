@@ -60,11 +60,11 @@ const Blogs = () => {
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Top Blog Banner Image */}
-        <Image
+        <img
           src="/icons/blogicon.png"
           alt="Blog Top"
-          width={250}
-          height={250}
+          width={300}
+          height={200}
           className="mx-auto object-contain"
         />
 
@@ -102,7 +102,7 @@ const Blogs = () => {
 
                     {/* Optional Overlay Image */}
                     {blog.overlayImage && (
-                      <Image
+                      <img
                         src={blog.overlayImage}
                         alt="Overlay"
                         width={50}
@@ -144,7 +144,7 @@ const Blogs = () => {
 
               {/* Overlay Image at bottom-left */}
               <Link href="/blog" passHref>
-                <Image
+                <img
                   src="/images/bloglittleimage.png"
                   alt="Overlay Decoration"
                   width={130}
