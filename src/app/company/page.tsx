@@ -6,7 +6,7 @@ import CompanyPartner from "./components/CompanyPartner";
 
 export default function Company() {
   return (
-    <main className="">
+    <main className="-mt-0">
       <section>
         <CompanyHero />
       </section>

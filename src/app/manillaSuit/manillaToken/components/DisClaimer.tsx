@@ -60,9 +60,9 @@ const Disclaimer: React.FC = () => {
           </h3>
           <div className="flex flex-col md:flex-row">
             <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
-              Manilla is launching soon — and you don’t want to miss it. Join
-              our waiting list to get early access, exclusive updates, and a
-              front-row seat to the future of cross-border payments.
+              Manilla is launching soon — and you don&apos;t want to miss it.
+              Join our waiting list to get early access, exclusive updates, and
+              a front-row seat to the future of cross-border payments.
             </p>
             {/* Contact form simulation */}
             <div className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
