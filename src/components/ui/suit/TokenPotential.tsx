@@ -4,6 +4,7 @@ import portbg from "../../../../public/images/tokenpotbg.png";
 import suitA from "../../../../public/images/suit2a.png";
 import suitB from "../../../../public/images/suit2B.png";
 import msbg from "../../../../public/images/msbg.png";
+import icon from "../../../../public/icons/dropdownIcon.png";
 
 const TokenPotential: React.FC = () => {
   const stats = [
@@ -15,20 +16,20 @@ const TokenPotential: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white py-12 px-6 md:px-12">
+    <section className="bg-white px-6 pt-4 md:px-12">
       {/* Top Toggle Buttons */}
       <div
-        className="flex flex-col max-w-5xl  mx-auto justify-center mb-8 p-8 rounded-2xl relative -lg:translate-y-10"
+        className="flex flex-col max-w-5xl  mx-auto justify-center shadow-black/60  shadow-2xl mb-8 p-8 rounded-3xl md:-translate-y-20  bg-repeat-y"
         style={{
           backgroundImage: `url(${portbg.src})`,
           backgroundPosition: "center",
           backgroundSize: "cover", // optional, makes sure it fills the area
         }}
       >
-        <div className="mx-auto flex flex-1 justify-center -translate-y-9">
-          <div className="inline-flex items-center gap-3 ">
+        <div className="mx-auto flex flex-1 justify-center items-center -translate-y-9">
+          <div className="inline-flex  items-center justify-center mx-auto gap-3 ">
             <h2
-              className=" scale-90 py-8 px-20 "
+              className=" py-8 px-20 flex  items-center justify-center scale-65 md:scale-90 "
               style={{
                 backgroundImage: `url(${msbg.src})`,
                 backgroundPosition: "center",
@@ -39,6 +40,7 @@ const TokenPotential: React.FC = () => {
               <span className="font-semibold text-nowrap text-sm">
                 Token Potential
               </span>
+               <img src={icon.src} alt="about" className="w-10" />
             </h2>
           </div>
         </div>
@@ -49,12 +51,12 @@ const TokenPotential: React.FC = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="flex flex-wrap justify-center gap-2  py-30 ">
+        <div className="flex flex-wrap justify-center gap-2  py-12 ">
           {stats.map((item, idx) => (
             <div
               key={idx}
               className={`bg-white border border-gray-200 rounded-2xl p-6 w-80 md:w-40 h-80 md:h-auto justify-center md:justify-start  gap-4 md:gap-2  shadow hover:shadow-lg transition flex flex-col items-center text-center  ${
-                idx % 2 !== 0 ? "lg:translate-y-15" : ""
+                idx % 2 !== 0 ? "lg:translate-y-10" : ""
               }`}
             >
               <div className="w-12 h-12 mb-3">
@@ -72,7 +74,7 @@ const TokenPotential: React.FC = () => {
                   }`}
                 />
               </div>
-              <p className="text-sm text-gray-600">{item.label}</p>
+              <p className="text-sm text-black">{item.label}</p>
               <h3 className="text-lg font-bold mt-1">{item.value}</h3>
               <div className="flex items-center gap-1 mt-1">
                 <span className="text-green-500 text-sm font-semibold">

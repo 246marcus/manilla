@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import bg from "../../../../public/images/faqbg.png";
-//import { FiPlus, FiMinus } from "react-icons/fi";
+import iconA from "../../../../public/icons/partnerA.png";
+import { FiPlus, FiMinus } from "react-icons/fi";
 
 type FAQItem = {
   question: string;
@@ -44,9 +45,9 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <main className=" bg-gray-50 flex items-center justify-center p-6 sm:p-10">
+    <main className=" bg-gray-50 flex items-center justify-center p-4 sm:p-6">
       <div
-        className="max-w-3xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-10 relative overflow-hidden"
+        className="max-w-4xl w-full bg-black/15 rounded-3xl shadow-lg p-6 sm:p-10 relative overflow-hidden"
         style={{
           backgroundImage: `url(${bg.src})`,
           backgroundPosition: "center",
@@ -59,7 +60,7 @@ const FAQ: React.FC = () => {
 
         {/* Header */}
         <div className="relative text-center">
-          <span className="inline-block px-4 py-1 bg-black text-yellow-400 text-sm font-medium rounded-full">
+          <span className="inline-block px-8 py-1 bg-black text-yellow-400 text-sm font-medium rounded-full">
             FAQ
           </span>
           <h2 className="mt-4 text-2xl font-bold text-slate-900">
@@ -86,11 +87,15 @@ const FAQ: React.FC = () => {
                   }`}
                 >
                   {activeIndex === index && (
-                    <span className="w-2 h-2 bg-indigo-600 rounded-full" />
+                    <img src={iconA.src} alt="icon" className="w-7" />
                   )}
                   <span className="font-medium">{item.question}</span>
                 </div>
-                {activeIndex === index ? "+" : "-"}
+                {activeIndex === index ? (
+                  <FiPlus className="shadow" size={20} />
+                ) : (
+                  <FiMinus className="shadow" size={20} />
+                )}
               </button>
               {activeIndex === index && (
                 <div className="p-4 border-t border-slate-100 bg-slate-50 text-sm text-slate-700">

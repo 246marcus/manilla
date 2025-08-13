@@ -6,7 +6,7 @@ import gradient from "../../../../public/images/gradientStripe.png";
 import icon from "../../../../public/icons/dropdownIcon.png";
 const ContactPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-50">
+    <div className=" flex flex-col items-center bg-gray-50">
       {/* Hero Section */}
       <section
         className="w-full py-12 text-center"
@@ -50,8 +50,8 @@ const ContactPage: React.FC = () => {
         </div>
 
         {/* secondary centered pill under top nav */}
-        <div className="flex items-center justify-center gap-3 -translate-y-5 mb-5">
-          <div className="text-center  max-w-sm md:max-w-lg">
+        <div className="flex items-center justify-center gap-3 px-6 -translate-y-5 mb-5">
+          <div className="text-center  max-w-sm md:max-w-lg ">
             <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-tight">
               Be First. Be Ready.
             </p>

@@ -1,11 +1,18 @@
 import React from "react";
-
+import darkbg from "../../../../public/images/darkstylebg.png";
+import gradient from "../../../../public/images/gradientStripe.png";
 const Disclaimer: React.FC = () => {
   return (
     <section className="bg-white max-w-7xl mx-auto px-4">
       {/* Top dark section */}
-      <div className="bg-gray-900 text-white rounded-t-[2rem] px-4  py-12 sm:py-16">
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="bg-gray-900 text-white rounded-t-[2rem] px-4  py-12 sm:py-16" style={{
+          backgroundImage: `url(${darkbg.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover", // optional, makes sure it fills the area
+        }}>
+        <div className="max-w-5xl mx-auto text-center" 
+        >
           {/* Top pill */}
           <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
             Important Info
@@ -38,7 +45,12 @@ const Disclaimer: React.FC = () => {
       </div>
 
       {/* Bottom gradient section */}
-      <div className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div className=" px-4 sm:px-6 lg:px-8 py-10 sm:py-14" style={{
+          backgroundImage: `url(${gradient.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover", // optional, makes sure it fills the area
+        }}>
         <div className="max-w-5xl mx-auto text-center md:text-start">
           <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ready.
@@ -53,7 +65,7 @@ const Disclaimer: React.FC = () => {
               <input
                 type="text"
                 placeholder="Join the waiting list for our App"
-                className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 rounded-full border bg-white mt-1 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition">
                 Get Started

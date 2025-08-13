@@ -2,6 +2,7 @@
 import React from "react";
 import suitsbg from "../../../../public/images/suitbg.png";
 import suit1 from "../../../../public/images/suit1.png";
+import circleArr from "../../../../public/icons/arrowcircle.png";
 
 const SuitsHero: React.FC = () => {
   return (
@@ -41,9 +42,7 @@ const SuitsHero: React.FC = () => {
             </button>
             <button className="bg-transparent text-yellow-400  px-6 py-2 rounded-full text-sm flex items-center gap-2 hover:text-white  transition">
               Buy On Pancakeswap
-              <span className="bg-yellow-400 w-5 h-5 rounded-full flex items-center justify-center text-black text-xs">
-                ?
-              </span>
+              <img src={circleArr.src} alt="icon" className="w-6" />
             </button>
           </div>
 
@@ -66,7 +65,7 @@ const SuitsHero: React.FC = () => {
           <div className="relative w-64 h-64 md:w-90 md:h-90 ">
             <img src={suit1.src} alt="Token Icon" className="object-contain" />
           </div>
-          <button className="bg-transparent shadow hidden lg:block shadow-white/60 px-6 py-1 rounded-full text-xs hover:bg-white hover:text-black transition">
+          <button className="bg-transparent shadow text-yellow-400 -translate-x-25  hidden lg:block shadow-white/60 px-6 py-1 rounded-full text-xs hover:bg-white hover:text-black transition">
             Manilla Token
           </button>
         </div>

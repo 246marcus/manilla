@@ -1,17 +1,28 @@
 import React from "react";
+import darkbg from "../../../../../public/images/darkstylebg.png";
 
 const CardVirtual: React.FC = () => {
   return (
     <section className="bg-white max-w-7xl mx-auto px-4">
       {/* Top dark section */}
-      <div className="bg-gray-900 text-white rounded-t-[2rem] px-4  py-12 sm:py-16">
+      <div
+        className="bg-gray-900 text-white rounded-t-[2rem] px-4  py-12 sm:py-16"
+        style={{
+          backgroundImage: `url(${darkbg.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover", // optional, makes sure it fills the area
+        }}
+      >
         <div className="max-w-5xl mx-auto text-center">
           {/* Top pill */}
           <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
             MANILLA Card
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">MANILLA Card</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+            Get a virtual debit card issued instantly
+          </h2>
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
             Now that you know the amazing features of the Manilla card, You may
             proceed to get one for yourself. The card setup has been simplified.

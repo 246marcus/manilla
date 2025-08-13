@@ -15,19 +15,17 @@ const CardHero: React.FC = () => {
         //backgroundSize: "contain", // optional, makes sure it fills the area
       }}
     >
-      <div className="max-w-4xl mx-auto flex flex-col lg:flex-row items-center  justify-between my-10 gap-6 md:my-12 py-8 md:gap-12">
+      <div className="flex items-center justify-center mt-10">
+        <h1 className="text-2xl md:text-5xl font-bold md:translate-y-10">The Manilla Card</h1>
+      </div>
+
+      <div className="max-w-4xl mx-auto flex flex-col-reverse lg:flex-row items-center  justify-between mb-10 gap-2 md:my-12 py-8 md:gap-12">
         {/* Left Content */}
         <div className="flex flex-5/12 flex-col items-center lg:items-start md:gap-3 gap-3 max-w-lg text-center lg:text-start ">
           {/* Title */}
-          {/* <h1 className="text-2xl md:text-4xl font-bold leading-10">
-            The Manilla Token{" "}
-            <span className="text-yellow-400 px-3 py-1 rounded-full bg-white/20 text-nowrap">
-              -MNLA
-            </span>
-          </h1> */}
 
           {/* Subtitle */}
-          <p className="text-yellow-300 bg-black  text-xs md:text-sm py-1 px-3 rounded-full">
+          <p className="text-yellow-300 hidden lg:inline-block bg-black  text-xs md:text-sm py-1 px-3 rounded-full">
             The Manilla Card
           </p>
 
@@ -60,11 +58,11 @@ const CardHero: React.FC = () => {
         </div>
 
         {/* Right Content (Image) */}
-        <div className=" flex-1 justify-center flex flex-col items-center gap-4 ">
-          <img
+        <div className=" lg:flex-7/12 h-50 md:h-70 lg:h-auto justify-center flex flex-col items-center gap-4 ">
+            <img
             src={card1.src}
             alt="Token Icon"
-            className="md:flex-1 w-60 max-w-md md:max-w-lg scale-100 sm:scale-150 md:scale-200  -translate-x-10  h-auto "
+            className="scale-110 sm:scale-90 md:scale-90 lg:scale-x-120 lg:scale-y-150 lg:-translate-x-20  lg:h-auto sm:translate-y-12  "
           />
         </div>
       </div>

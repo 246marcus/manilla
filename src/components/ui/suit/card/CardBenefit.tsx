@@ -2,6 +2,7 @@
 import React from "react";
 import vbg from "../../../../../public/images/vbg.png";
 import card from "../../../../../public/images/card2.png";
+import iconA from "../../../../../public/icons/partnerB.png";
 
 const CardBenefit: React.FC = () => {
   /* const rewards = [
@@ -15,8 +16,8 @@ const CardBenefit: React.FC = () => {
     <main className="bg-gray-50  p-6 sm:p-12 border-t-2 border-black/20 border-dashed">
       <div className="flex items-center justify-bewteen  mb-6 md:mb-10">
         <div className="flex-1 ">
-          <div className="hidden md:inline-flex items-center bg-gray-100/70  gap-2 text-sm font-medium px-6 py-2 rounded-full border border-gray-200 hover:shadow-md transition">
-            crypto earn
+          <div className="hidden md:inline-flex items-center bg-gray-100/70  gap-2 text-xs font-medium px-6 py-2 rounded-full border border-gray-200 hover:shadow-md transition">
+            Loyalty Reward
           </div>
         </div>
         <div className="mx-auto flex flex-1 justify-center -translate-y-9">
@@ -68,30 +69,47 @@ const CardBenefit: React.FC = () => {
         {/* Left side - Rewards list */}
         <div className="flex-1 flex flex-col gap-2 bg-white w-full">
           <div className="bg-gray-200/70 rounded p-2 text-center  ">
-            <h3 className="font-semibold">Benefits of Manilla Card</h3>
+            <h3 className="font-semibold flex items-center gap-2">
+              <img src={iconA.src} alt="icon" className="w-7" />
+              Benefits of Manilla Card
+            </h3>
             <p className="text-slate-700 font-medium   text-xs mt-2">
               Play it smart, diversify your portfolio from cashback.
             </p>
           </div>
-          <div className="bg-gray-200/70 rounded p-1  text-center md:text-start ">
-            <h3 className="font-semibold text-xs">Variety of Choices Available</h3>
+          <div className="bg-gray-200/70 rounded p-2  text-center md:text-start ">
+            <h3 className="font-semibold text-xs flex items-center gap-1">
+              <img src={iconA.src} alt="icon" className="w-7" />
+              Variety of Choices Available
+            </h3>
             <p className=" text-xs  leading-4 mt-1">
-              Unlike traditional debit cards, you won’t find hidden charges, annual fees, or maintenance costs. Just enjoy seamless access to everything Manilla offers you today.
+              Unlike traditional debit cards, you won’t find hidden charges,
+              annual fees, or maintenance costs. Just enjoy seamless access to
+              everything Manilla offers you today.
             </p>
           </div>
-          <div className="bg-gray-200/70 rounded p-1  text-center md:text-start ">
-            <h3 className="font-semibold text-xs">Instant Access to Crypto Rewards</h3>
+          <div className="bg-gray-200/70 rounded p-2  text-center md:text-start ">
+            <h3 className="font-semibold text-xs flex items-center gap-1">
+              <img src={iconA.src} alt="icon" className="w-7" />
+              Instant Access to Crypto Rewards
+            </h3>
             <p className=" text-xs leading-4mt-1 ">
-              Accumulate your crypto rewards over time and access them instantly whenever needed. No delays, no restrictions—your assets are always ready whenever you want them.
+              Accumulate your crypto rewards over time and access them instantly
+              whenever needed. No delays, no restrictions—your assets are always
+              ready whenever you want them.
             </p>
           </div>
-          <div className="bg-gray-200/70 rounded p-1   text-center md:text-start ">
-            <h3 className="font-semibold text-xs">Boost Your MNLA Cashback</h3>
+          <div className="bg-gray-200/70 rounded p-2   text-center md:text-start ">
+            <h3 className="font-semibold text-xs flex items-center gap-1">
+              <img src={iconA.src} alt="icon" className="w-7" />
+              Boost Your MNLA Cashback
+            </h3>
             <p className=" text-xs leading-4 mt-1 ">
-              Stake your MNLA rewards using the Manilla Vault and watch them grow. This is your path to increasing returns and unlocking exponential cashback benefits long-term.
+              Stake your MNLA rewards using the Manilla Vault and watch them
+              grow. This is your path to increasing returns and unlocking
+              exponential cashback benefits long-term.
             </p>
           </div>
-        
         </div>
       </div>
     </main>
