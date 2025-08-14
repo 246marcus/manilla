@@ -4,7 +4,7 @@ import TokenPotential from "./components/TokenPotential";
 import CryptoEarn from "./components/CryptoEarn";
 import Rewards from "./components/Reward";
 import FAQ from "./components/FAQ";
-import Disclaimer from "./components/Disclaimer";
+
 export default function ManillaSuit() {
   return (
     <main className="">
@@ -22,9 +22,6 @@ export default function ManillaSuit() {
       </section>
       <section>
         <FAQ />
-      </section>
-      <section>
-        <Disclaimer />
       </section>
     </main>
   );
