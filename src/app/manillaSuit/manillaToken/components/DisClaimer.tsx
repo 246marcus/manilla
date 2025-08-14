@@ -1,6 +1,7 @@
 import React from "react";
 import darkbg from "../../../../../public/images/darkstylebg.png";
 import gradient from "../../../../../public/images/gradientStripe.png";
+
 const Disclaimer: React.FC = () => {
   return (
     <section className="bg-white max-w-7xl mx-auto px-4">
@@ -11,7 +12,7 @@ const Disclaimer: React.FC = () => {
           backgroundImage: `url(${darkbg.src})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover", // optional, makes sure it fills the area
+          backgroundSize: "cover",
         }}
       >
         <div className="max-w-5xl mx-auto text-center">
@@ -32,26 +33,27 @@ const Disclaimer: React.FC = () => {
             Do your own due diligence. By purchasing the MNLA token, you agree
             that you are not purchasing a security or investment and you agree
             to hold the team harmless and not liable for any losses or taxes you
-            may incur. You also agree that the team is presenting the token `"as
-            is`" and is not legally required to provide any support or services.
-            You should have no expectation of any form from the MNLA token and
-            its development team. Always make sure that you are in compliance
-            with your local laws and regulations before you make any purchase.
+            may incur. You also agree that the team is presenting the token
+            &quot;as is&quot; and is not legally required to provide any support
+            or services. You should have no expectation of any form from the
+            MNLA token and its development team. Always make sure that you are
+            in compliance with your local laws and regulations before you make
+            any purchase.
           </p>
 
           {/* Partner options */}
-          <div className="mt-10 flex  flex-col md:flex-row gap-1 overflow-clip"></div>
+          <div className="mt-10 flex flex-col md:flex-row gap-1 overflow-clip"></div>
         </div>
       </div>
 
       {/* Bottom gradient section */}
       <div
-        className=" px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
+        className="px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover", // optional, makes sure it fills the area
+          backgroundSize: "cover",
         }}
       >
         <div className="max-w-5xl mx-auto text-center md:text-start">
@@ -59,13 +61,13 @@ const Disclaimer: React.FC = () => {
             Be First. Be Ready.
           </h3>
           <div className="flex flex-col md:flex-row">
-            <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
+            <p className="md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto">
               Manilla is launching soon — and you don&apos;t want to miss it.
               Join our waiting list to get early access, exclusive updates, and
               a front-row seat to the future of cross-border payments.
             </p>
             {/* Contact form simulation */}
-            <div className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+            <div className="md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
               <input
                 type="text"
                 placeholder="Join the waiting list for our App"
