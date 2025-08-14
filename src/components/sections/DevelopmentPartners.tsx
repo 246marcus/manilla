@@ -1,38 +1,66 @@
 import React from "react";
-import Image from "next/image";
+import Rectangle from "../../../public/images/Rectangle1.png";
+import gradient from "../../../public/images/gradientStripe.png";
 
-const DevelopmentPartners = () => {
+const DevelopmentPartners: React.FC = () => {
   return (
-    <section className="bg-white text-gray-900 py-8 md:py-12 -mt-8">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
-        {/* First image - static text */}
-        <div className="w-full">
-          <img
-            src="/images/Development1.png"
-            alt="Development Partners Text"
-            width={1400} // Increased width
-            height={500}
-            className="object-contain w-full h-auto"
-          />
-        </div>
+    <section className="bg-white max-w-7xl mx-auto px-4 mt-6 mb-5">
+      {/* Top dark section */}
+      {/* Top dark section */}
+      <div
+        className="bg-gray-900 text-white rounded-t-[2rem] px-4 py-12 sm:py-16"
+        style={{
+          backgroundImage: `url(${gradient.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Top pill */}
+          <div className="inline-flex items-center gap-2 bg-black text-white px-5 py-4 rounded-full text-xs font-medium mb-6 ">
+            <span style={{ color: "var(--Secondary, #FACA31)" }}>
+              Why Choose
+            </span>
+            Manilla App
+          </div>
 
-        {/* Rolling effect image inside black background */}
-        <div className="relative z-10 mt-0 w-full bg-black overflow-hidden">
-          <div className="flex animate-roll">
-            <Image
-              src="/images/Development2.png"
-              alt="Development Partners Logos"
-              width={1000}
-              height={200}
-              className="w-auto max-w-none h-auto"
-            />
-            {/* Duplicate for seamless loop */}
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-black">
+            Development Partners
+          </h2>
+          <p className="text-sm sm:text-base text-black max-w-2xl mx-auto">
+            Trusted by hundreds of digital businesses across emerging markets
+            for Identity Verification, Fraud Detection/Prevention & Background
+            Checks; to safely acquire, onboard customers and perform seamless
+            transactions across borders with trust & without restrictions, while
+            maintaining required regulatory compliance checks.
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom gradient section */}
+      <div
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden rounded-b-[50px]" // curved edges only at bottom
+        style={{
+          backgroundImage: `url(${Rectangle.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="relative z-10 mt-0 w-full overflow-hidden">
+          <div className="flex flex-nowrap animate-marquee will-change-transform">
             <img
-              src="/images/Development2.png"
-              alt="Development Partners Logos"
-              width={1200}
-              height={200}
-              className="w-auto max-w-none h-auto"
+              src="/images/development2.png"
+              alt="Trusted by top platforms"
+              className="block h-15 sm:h-28 md:h-32 lg:h-36 xl:h-40 flex-none"
+            />
+            <img
+              src="/images/development2.png"
+              alt=""
+              aria-hidden="true"
+              className="block h-15 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-auto flex-none"
             />
           </div>
         </div>

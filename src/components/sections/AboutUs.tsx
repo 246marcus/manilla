@@ -23,7 +23,7 @@ const AboutUs = () => {
         </div>
 
         {/* Button under the title */}
-        <Link href="/about">
+        <Link href="/company">
           <button className="mb-6 px-6 py-3 bg-[#001EA9] text-white rounded-full hover:bg-[#002FCC] transition">
             Learn More About Us
           </button>

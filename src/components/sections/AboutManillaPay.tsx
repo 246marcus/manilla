@@ -56,7 +56,7 @@ const AboutManillaPay = () => {
             {/* Buttons */}
             <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
               <button className="px-6 py-3 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition">
-                Click to learn more about usd
+                Click to learn more about us
               </button>
               <button className="px-6 py-3 bg-[#001EA9] text-white rounded-full hover:bg-[#002FCC] transition">
                 Get Started

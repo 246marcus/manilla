@@ -150,7 +150,7 @@ const Products = () => {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div
+          {/* <div
             className="m-8 p-16 bg-no-repeat bg-cover bg-center rounded-2xl shadow-lg"
             style={{ backgroundImage: `url(${currentSlide.rightBg})` }}
           >
@@ -190,7 +190,7 @@ const Products = () => {
             />
 
             <p className="text-gray-600">{currentSlide.rightParagraph}</p>
-          </div>
+          </div> */}
         </div>
 
         {/* GRAPHIC IMAGE */}
