@@ -5,6 +5,8 @@ import React from "react";
 import { blogs } from "@/types";
 import Image from "next/image";
 import BlogCard from "@/app/blog/components/BlogCard";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function BlogDetailPage() {
   const params = useParams();
@@ -20,13 +22,34 @@ export default function BlogDetailPage() {
 
   return (
     <main>
-      <section></section>
-      <section className="max-w-7xl mx-auto px-6 py-16 mt-9 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section
+        className="bg-[#1ABFC8] py-16"
+        style={{
+          backgroundImage: "url('/images/blogbackground.png')", // replace with your overlay
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {" "}
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          {/* Top Blog Banner Image */}
+          <Image
+            src="/icons/blogicon.png"
+            alt="Blog Top"
+            width={180}
+            height={200}
+            className="mx-auto object-contain"
+          />
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 py-16 mt-9 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left: Main Blog Content */}
-        <div className="lg:col-span-2 flex flex-col gap-8 mx-auto">
+        <div className="lg:col-span-2 flex flex-col gap- mx-auto">
           {/* First Grid: Title + Author */}
           <div className="bg-gray-100 p-8 rounded-lg lg:text-left">
-            <h1 className="text-5xl font-bold mb-6">{blog.title}</h1>
+            <h1 className="text-3xl font-bold mb-6">{blog.title}</h1>
             <div className="flex lg:justify-start gap-2 mt-4">
               <Image
                 src={blog.authorImage}

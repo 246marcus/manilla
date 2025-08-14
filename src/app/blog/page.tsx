@@ -26,8 +26,8 @@ export default function BlogPage() {
           <Image
             src="/icons/blogicon.png"
             alt="Blog Top"
-            width={250}
-            height={250}
+            width={180}
+            height={200}
             className="mx-auto object-contain"
           />
 
@@ -63,9 +63,9 @@ export default function BlogPage() {
                 <Image
                   src="/images/bloglittleimage.png"
                   alt="Overlay Decoration"
-                  width={160} // scaled overlay proportionally
-                  height={120} // scaled overlay proportionally
-                  className="absolute top-[63%] left-0 rounded-lg cursor-pointer"
+                  width={140} // base size for small screens
+                  height={120}
+                  className="absolute top-[63%] left-0 rounded-lg cursor-pointer w-[140px] h-[60px] md:w-[170px] md:h-[70px] lg:w-[170px] lg:h[100px]"
                 />
               </Link>
             </div>
