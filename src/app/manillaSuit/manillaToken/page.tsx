@@ -4,8 +4,7 @@ import TokenPotential from "./components/TokenPotential";
 import CryptoEarn from "./components/CryptoEarn";
 import Rewards from "./components/Reward";
 import FAQ from "./components/FAQ";
-import Disclaimer from "../../../app/manillaSuit/manillaToken/components/Disclaimer";
-
+import Disclaimer from "./components/Disclaimer";
 export default function ManillaSuit() {
   return (
     <main className="">
