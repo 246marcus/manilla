@@ -29,7 +29,7 @@ const Products = () => {
       ],
       vectorLine: "/icons/Vector4.png",
       rightParagraph:
-        "Designed for Nigerian realities, Manilla Pay eliminates queues, delays, and app-switching fatigue. It’s secure, scalable, and built for daily life.",
+        "Designed for Nigerian realities, Manilla Pay eliminates queues, delays, and app-switching fatigue. Its secure, scalable, and built for daily life.",
     },
     {
       topIcon: "/images/product.png",
@@ -38,7 +38,7 @@ const Products = () => {
       // LEFT SIDE TEXT
       leftTitle: "Manilla Crypto Debit Card",
       leftParagraph1:
-        "You shouldn’t have to jump through hoops to use your crypto in the real world. Our upcoming Manilla Crypto Debit Card makes that dream a reality.",
+        "You shouldn&apos;t have to jump through hoops to use your crypto in the real world. Our upcoming Manilla Crypto Debit Card makes that dream a reality.",
       leftParagraph2:
         "Shop, pay bills, ride, or dine anywhere Mastercard is accepted - without manually converting your crypto.",
 
@@ -139,7 +139,7 @@ const Products = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start p-4">
             {/* LEFT COLUMN */}
             <div>
-              <h2 className="text-4xl font-bold mb-4">
+              <h2 className="text-3xl font-bold mb-4">
                 {currentSlide.leftTitle}
               </h2>
               <p className="mb-4 text-lg">{currentSlide.leftParagraph1}</p>
@@ -147,49 +147,49 @@ const Products = () => {
                 {currentSlide.leftParagraph2}
               </p>
             </div>
+          </div>
 
-            {/* RIGHT COLUMN */}
-            <div
-              className="p-16 bg-no-repeat bg-contain bg-center"
-              style={{ backgroundImage: `url(${currentSlide.rightBg})` }}
-            >
-              <h3 className="font-bold text-xl mb-4">
-                {currentSlide.rightHeading}
-              </h3>
+          {/* RIGHT COLUMN */}
+          <div
+            className="m-8 p-16 bg-no-repeat bg-cover bg-center rounded-2xl shadow-lg"
+            style={{ backgroundImage: `url(${currentSlide.rightBg})` }}
+          >
+            <h3 className="font-bold text-xl mb-4">
+              {currentSlide.rightHeading}
+            </h3>
 
-              <div className="flex flex-nowrap items-center gap-6 mb-4 whitespace-nowrap">
-                {currentSlide.rightItems.map((item, idx) => {
-                  const isArrow = item.icon.includes("iconproductarrow");
-                  return (
-                    <div key={idx} className="flex items-center gap-2">
-                      <Image
-                        src={item.icon}
-                        alt={item.text}
-                        width={isArrow ? 50 : 24}
-                        height={isArrow ? 36 : 24}
-                      />
-                      <span
-                        className={
-                          isArrow ? "font-bold text-lg" : "font-bold text-base"
-                        }
-                      >
-                        {item.text}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <Image
-                src={currentSlide.vectorLine}
-                alt="Separator Line"
-                width={600}
-                height={100}
-                className="mb-4"
-              />
-
-              <p className="text-gray-600">{currentSlide.rightParagraph}</p>
+            <div className="flex flex-nowrap items-center gap-6 mb-4 whitespace-nowrap">
+              {currentSlide.rightItems.map((item, idx) => {
+                const isArrow = item.icon.includes("iconproductarrow");
+                return (
+                  <div key={idx} className="flex items-center gap-2">
+                    <Image
+                      src={item.icon}
+                      alt={item.text}
+                      width={isArrow ? 50 : 24}
+                      height={isArrow ? 36 : 24}
+                    />
+                    <span
+                      className={
+                        isArrow ? "font-bold text-lg" : "font-bold text-base"
+                      }
+                    >
+                      {item.text}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
+
+            <Image
+              src={currentSlide.vectorLine}
+              alt="Separator Line"
+              width={600}
+              height={100}
+              className="mb-4"
+            />
+
+            <p className="text-gray-600">{currentSlide.rightParagraph}</p>
           </div>
         </div>
 
