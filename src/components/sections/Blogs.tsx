@@ -58,12 +58,12 @@ const Blogs = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-6xl mx-auto px-6 text-center mt-0">
         {/* Top Blog Banner Image */}
         <img
           src="/icons/blogicon.png"
           alt="Blog Top"
-          width={300}
+          width={200}
           height={200}
           className="mx-auto object-contain"
         />

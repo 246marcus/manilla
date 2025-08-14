@@ -48,7 +48,7 @@ const AboutUs = () => {
           {/* Left Static Image */}
           <div className="flex-shrink-0 w-full md:w-1/2">
             <Image
-              src="/images/aboutUs.png"
+              src="/images/aboutus.png"
               alt="About Image 1"
               width={400}
               height={500}
@@ -83,13 +83,6 @@ const AboutUs = () => {
               <Image
                 src="/images/productCard3.png"
                 alt="Product 3"
-                width={400}
-                height={250}
-                className="rounded-lg object-cover w-full"
-              />
-              <Image
-                src="/images/productCard3.png"
-                alt="Product 4"
                 width={400}
                 height={250}
                 className="rounded-lg object-cover w-full"
