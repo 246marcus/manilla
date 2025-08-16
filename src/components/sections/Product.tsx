@@ -211,7 +211,7 @@ const Products = () => {
                         {currentSlide.blackCard.features.map((f, i) => (
                           <div key={i} className="flex items-center gap-2">
                             <Image
-                              src={f.icon || "/fallback-icon.png"}
+                              src={f.icon || "/fallback.png"}
                               alt={f.text}
                               width={24}
                               height={24}
