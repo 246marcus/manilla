@@ -538,7 +538,7 @@ const Products = () => {
                   {currentSlide.blueCard.features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2 mb-2">
                       <Image
-                        src={f.icon || "/iconproduct.png"}
+                        src={f.icon || "/iconblack.png"}
                         alt={f.text}
                         width={24}
                         height={24}
@@ -552,7 +552,7 @@ const Products = () => {
                 <p>{currentSlide.outsideText}</p>
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Image
-                    src={currentSlide.clickToJoin.icon}
+                    src={currentSlide.clickToJoin.icon || "/iconblack.png"}
                     alt=""
                     width={28}
                     height={24}
