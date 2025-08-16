@@ -641,7 +641,7 @@ const Products = () => {
                       }`}
                     >
                       <Image
-                        src={feature.icon}
+                        src={feature.icon || "/iconblack.png"}
                         alt={feature.text}
                         width={20}
                         height={20}
@@ -679,16 +679,28 @@ const Products = () => {
 
         {/* INDICATOR */}
         <div className="flex justify-center gap-2 mt-6">
-          {slides.map((_, index) => (
-            <span
-              key={index}
-              className={`transition-all duration-300 ${
-                index === currentIndex
-                  ? "w-8 h-3 rounded-md bg-blue-500"
-                  : "w-3 h-3 rounded-full bg-gray-300"
-              }`}
-            ></span>
-          ))}
+          {slides.map((_, index) => {
+            // decide the active color
+            const activeColor =
+              index === 0
+                ? "bg-blue-500"
+                : index === 1
+                ? "bg-yellow-400"
+                : index === 2
+                ? "bg-black"
+                : "bg-gray-300"; // fallback if more slides
+
+            return (
+              <span
+                key={index}
+                className={`transition-all duration-300 ${
+                  index === currentIndex
+                    ? `w-8 h-3 rounded-md ${activeColor}`
+                    : "w-3 h-3 rounded-full bg-gray-300"
+                }`}
+              ></span>
+            );
+          })}
         </div>
 
         {/* NAV ARROWS */}
