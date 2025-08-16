@@ -73,9 +73,9 @@ const Products = () => {
         paragraph2:
           "With our smart, intuitive app, you can pay for electricity, water, internet, airtime, cable subscriptions, and more - all using your crypto wallet or debit card.",
         features: [
-          { icon: "/icons/iconpoint.png", text: "Manilla Pay" },
-          { icon: "/icons/iconpoint.png", text: "Manilla Crypto Debit Card" },
-          { icon: "/icons/iconpoint.png", text: "Manilla Token (MNLA)" },
+          { icon: "/icons/iconproduct.png", text: "Manilla Pay" },
+          { icon: "/icons/iconproduct.png", text: "Manilla Crypto Debit Card" },
+          { icon: "/icons/iconproduct.png", text: "Manilla Token (MNLA)" },
         ],
         extraParagraph:
           "Designed for Nigerian realities, Manilla Pay eliminates queues, delays, and app-switching fatigue. Its secure, scalable, and built for daily life.",
@@ -110,15 +110,15 @@ const Products = () => {
             "Spend Crypto Like Naira – Anywhere — no manual conversion.",
           features: [
             {
-              icon: "/icons/iconpoint.png",
+              icon: "/icons/iconproduct.png",
               text: "Accepted across POS terminals, e-commerce platforms, and ATMs, enabling both local and international transactions.",
             },
             {
-              icon: "/icons/iconpoint.png",
+              icon: "/icons/iconproduct.png",
               text: "Features real-time conversion of USDT or ETH to Naira, ensuring seamless spending in local currency.",
             },
             {
-              icon: "/icons/iconpoint.png",
+              icon: "/icons/iconproduct.png",
               text: "Users can transact globally or domestically with ease, and withdraw cash from any compatible ATM worldwide.",
             },
           ],
@@ -144,13 +144,13 @@ const Products = () => {
         paragraph:
           "As you use Manilla Pay, you earn MNLA tokens. Stake them, save them, or spend them across our ecosystem.",
         features: [
-          { icon: "/icons/iconpoint.png", text: "Manilla Pay" },
-          { icon: "/icons/iconpoint.png", text: "Manilla Crypto Debit Card" },
+          { icon: "/icons/iconproduct.png", text: "Manilla Pay" },
+          { icon: "/icons/iconproduct.png", text: "Manilla Crypto Debit Card" },
           {
-            icon: "/icons/iconpoint.png",
+            icon: "/icons/iconproduct.png",
             text: "Manilla Token (MNLA)",
           },
-          { icon: "/icons/iconpoint.png", text: "Another Feature" },
+          { icon: "/icons/iconproduct.png", text: "Another Feature" },
         ],
       },
       outsideParagraph: "",
@@ -207,11 +207,11 @@ const Products = () => {
                         {currentSlide.blackCard.paragraph2}
                       </p>
 
-                      <div className="flex items-center gap-4 mb-4 flex-wrap">
+                      <div className="flex items-center gap-4 mb-4 flex-wrap lg:flex-nowrap">
                         {currentSlide.blackCard.features.map((f, i) => (
                           <div key={i} className="flex items-center gap-2">
                             <Image
-                              src={f.icon || "/fallback.png"}
+                              src={f.icon || "/iconproduct.png"}
                               alt={f.text}
                               width={24}
                               height={24}
@@ -283,7 +283,12 @@ const Products = () => {
                   </p>
                   {currentSlide.leftTag.transparentCard.features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2 mb-2">
-                      <Image src={f.icon} alt={f.text} width={30} height={24} />
+                      <Image
+                        src={f.icon || "/iconproduct.png"}
+                        alt={f.text}
+                        width={30}
+                        height={24}
+                      />
                       <span>{f.text}</span>
                     </div>
                   ))}
@@ -293,7 +298,9 @@ const Products = () => {
 
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Image
-                    src={currentSlide.leftTag.clickToJoin.icon}
+                    src={
+                      currentSlide.leftTag.clickToJoin.icon || "/iconblack.png"
+                    }
                     alt=""
                     width={28}
                     height={24}
@@ -350,7 +357,12 @@ const Products = () => {
                   <p className="mb-4">{currentSlide.blueCard.paragraph}</p>
                   {currentSlide.blueCard.features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2 mb-2">
-                      <Image src={f.icon} alt={f.text} width={24} height={24} />
+                      <Image
+                        src={f.icon || "/iconproduct.png"}
+                        alt={f.text}
+                        width={24}
+                        height={24}
+                      />
                       <span>{f.text}</span>
                     </div>
                   ))}
