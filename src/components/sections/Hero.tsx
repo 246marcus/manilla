@@ -100,17 +100,28 @@ const Hero = () => {
 
       {/* Trusted Platform Rolling Effect */}
       <div className="relative z-10 mt-16 w-screen overflow-hidden">
-        <div className="flex animate-roll min-w-full">
+        <div className="flex animate-roll shrink-0">
+          {/* First set */}
           <img
             src="/images/TrustedPlatform.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none h-40 sm:h-30 md:h-35"
+            className="w-auto max-w-none h-40 sm:h-30 md:h-35 shrink-0"
           />
-          {/* Duplicate for seamless looping */}
           <img
             src="/images/TrustedPlatform.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none h-40 sm:h-30 md:h-35"
+            className="w-auto max-w-none h-40 sm:h-30 md:h-35 shrink-0"
+          />
+          {/* Second set (duplicate) */}
+          <img
+            src="/images/TrustedPlatform.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none h-40 sm:h-30 md:h-35 shrink-0"
+          />
+          <img
+            src="/images/TrustedPlatform.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none h-40 sm:h-30 md:h-35 shrink-0"
           />
         </div>
       </div>
