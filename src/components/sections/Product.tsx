@@ -634,14 +634,14 @@ const Products = () => {
                   (feature, index) => (
                     <div
                       key={index}
-                      className={`flex flex-row items-center gap-2 px-4 py-2 rounded-full ${
+                      className={`flex flex-row items-center gap-1 px-4 py-2 rounded-full ${
                         feature.isSpecial
                           ? "text-black scale-140 font-semibold"
                           : "text-gray-700"
                       }`}
                     >
                       <Image
-                        src={feature.icon || "/iconblack.png"}
+                        src={feature.icon}
                         alt={feature.text}
                         width={20}
                         height={20}
