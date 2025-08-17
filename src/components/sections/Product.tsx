@@ -253,7 +253,7 @@ const Products = () => {
         },
         outsideText: "Join the Waitlist – Be first to swipe in crypto.",
         clickToJoin: {
-          icon: "/icons/iconblack.png",
+          icon: "/icons/iconablack.png",
           text: "Click Here to Join",
         },
         button: {
@@ -282,7 +282,8 @@ const Products = () => {
       outsideParagraph: "",
       outsideText: " Stake / Learn more About MNLA ",
       clickToJoin: {
-        icon: "/icons/iconblack.png",
+        icon: "/icons/iconablack",
+
         text: "Click Here to Learn",
       },
       button: {
