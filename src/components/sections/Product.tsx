@@ -169,7 +169,7 @@ const slideTopContent = [
           isSpecial: false,
         },
         {
-          icon: "/icons/iconablackproduct.png",
+          icon: "/icons/iconlast.png",
           text: "Manilla Token (MNLA)",
           isSpecial: true,
         },
@@ -538,12 +538,7 @@ const Products = () => {
                   <p className="mb-4">{currentSlide.blueCard.paragraph}</p>
                   {currentSlide.blueCard.features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2 mb-2">
-                      <Image
-                        src={f.icon || "/iconblack.png"}
-                        alt={f.text}
-                        width={24}
-                        height={24}
-                      />
+                      <Image src={f.icon} alt={f.text} width={24} height={24} />
                       <span>{f.text}</span>
                     </div>
                   ))}
@@ -630,25 +625,25 @@ const Products = () => {
               </h2>
 
               {/* Horizontal Feature List */}
-              <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
+              <div className="flex items-center justify-center gap-4 mb-6 flex-wrap lg:flex-nowrap">
                 {currentTopContent.rightSection.features.map(
                   (feature, index) => (
                     <div
                       key={index}
-                      className={`flex flex-row items-center gap-2 px-4 py-2 rounded-full ${
+                      className={`flex flex-row items-center gap-2 px-3 py-1 rounded-full whitespace-nowrap ${
                         feature.isSpecial
-                          ? "text-black scale-140 font-semibold"
-                          : "text-gray-700"
+                          ? "text-black scale-125 font-semibold"
+                          : "text-gray-700 text-sm"
                       }`}
                     >
                       <Image
                         src={feature.icon}
                         alt={feature.text}
-                        width={20}
-                        height={20}
+                        width={16} // reduced size
+                        height={16}
                         className="object-contain"
                       />
-                      <span className="text-sm font-medium">
+                      <span className="text-xs font-medium">
                         {feature.text}
                       </span>
                     </div>
