@@ -101,7 +101,7 @@ const AboutManillaPay = () => {
                 <img
                   src="/images/img3.png"
                   alt="Foreground Right"
-                  className="w-[400px] rounded-lg relative z-10 shrink-0 
+                  className="w-[200px] rounded-lg relative z-10 shrink-0 
                md:-ml-8 lg:-ml-12 lg:-mt-17 -mt-7" // pulls it closer on larger screens
                 />
               </div>
