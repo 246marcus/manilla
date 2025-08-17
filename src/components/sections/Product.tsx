@@ -282,7 +282,7 @@ const Products = () => {
       outsideParagraph: "",
       outsideText: " Stake / Learn more About MNLA ",
       clickToJoin: {
-        icon: "/icons/iconablack",
+        icon: "/icons/iconablack.png", // wooooooooooooooooooooooooooooooooooooo
 
         text: "Click Here to Learn",
       },
@@ -480,10 +480,10 @@ const Products = () => {
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Image
                     src={
-                      currentSlide.leftTag.clickToJoin.icon || "/iconblack.png"
+                      currentSlide.leftTag.clickToJoin.icon || "/iconblack.pn"
                     }
                     alt=""
-                    width={28}
+                    width={30}
                     height={24}
                   />
                   <span>{currentSlide.leftTag.clickToJoin.text}</span>
@@ -548,7 +548,7 @@ const Products = () => {
                 <p>{currentSlide.outsideText}</p>
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Image
-                    src={currentSlide.clickToJoin.icon || "/iconblack.png"}
+                    src={currentSlide.clickToJoin.icon || "/iconablack.png"}
                     alt=""
                     width={28}
                     height={24}
