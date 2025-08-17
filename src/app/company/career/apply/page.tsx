@@ -5,7 +5,7 @@ export default function CareersApply() {
   return (
     <main className="">
       <section>
-        <JobOverview />
+        <JobOverview title={""} apply={""} discription={""} highlights={[]} />
       </section>
     </main>
   );

@@ -1,6 +1,9 @@
 import React from "react";
 
-const CareerForm: React.FC = () => {
+type CareerFormProps = {
+  title: string;
+};
+const CareerForm: React.FC<CareerFormProps> = ({}) => {
   return (
     <section className="max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 py-10">
       <div className="bg-gradient-to-br from-[#001F3F] to-[#0A2A4F] p-6 md:p-10 rounded-3xl shadow-xl">

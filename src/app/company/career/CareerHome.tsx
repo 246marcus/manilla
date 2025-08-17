@@ -2,19 +2,20 @@ import React from "react";
 import Button from "@/components/ui/Button";
 import careerbg from "../../../../public/images/careerbg.png";
 import careerimg from "../../../../public/images/careerimg.png";
-import careerWbg from "../../../../public/images/careerWbg.png";
+import careerW from "../../../../public/images/careerWbg.png";
+import Link from "next/link";
 
-// interface Role {
-//   title: string;
-//   type: string;
-// }
+interface Role {
+  title: string;
+  type: string;
+}
 
 const CareerHome: React.FC = () => {
-  // const roles: Role[] = [
-  //   { title: "Senior Blockchain Developer", type: "Hybrid" },
-  //   { title: "Growth Hack Specialist", type: "Hybrid" },
-  //   { title: "Legal Advisor", type: "Hybrid" },
-  // ];
+  const roles: Role[] = [
+    { title: "Senior Blockchain Developer", type: "Hybrid" },
+    { title: "Growth Hack Specialist", type: "Hybrid" },
+    { title: "Legal Advisor", type: "Hybrid" },
+  ];
 
   return (
     <div
@@ -23,33 +24,32 @@ const CareerHome: React.FC = () => {
         backgroundImage: `url(${careerbg.src})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover", // optional, makes sure it fills the area
+        backgroundSize: "cover",
       }}
     >
       <div className="text-sm w-40 hidden md:inline-block left-10 absolute text-center rounded-full text-white px-4 py-2 mt-10 bg-black/30">
-        Home &gt; <span className="">Career</span>
+        <Link href="/">
+          <span className="hover:underline cursor-pointer">Home</span>
+        </Link>{" "}
+        &gt; <span className="">Career</span>
       </div>
 
       <div className="max-w-6xl mx-auto px-2 md:px-12 flex flex-col lg:flex-row items-center lg:gap-6 ">
         <div
-          className="hidden lg:inline-flex min-h-170 md:flex-4/12 bg-cover bg-center 0 h-full "
+          className="hidden lg:inline-flex min-h-170 md:flex-4/12 bg-cover bg-center h-full"
           style={{
-            backgroundImage: `url(${careerWbg.src})`,
-            /* backgroundPosition: "center", */
-            /* backgroundRepeat: "no-repeat", */
-            /* backgroundSize: "cover", */ // optional, makes sure it fills the area
+            backgroundImage: `url(${careerW.src})`,
           }}
         >
           <img
             src={careerimg.src}
             alt="Career Person"
-            className="w-60 flex-1 lg:scale-125 md:w-120  object-contain"
+            className="w-60 flex-1 lg:scale-125 md:w-120 object-contain"
           />
         </div>
 
         <div className=" text-white rounded-2xl p-8 md:flex-8/12 ">
           <div className="flex flex-col items-center justify-center text-center">
-            {" "}
             <h1 className="text-xl lg:text-4xl font-bold mb-2">Careers</h1>
             <p className="md:text-lg text-sm font-semibold mb-4 shadow shadow-white py-2 px-4 rounded-full bg-black/30">
               Join Our Mission. Shape the future of digital finance
@@ -69,35 +69,46 @@ const CareerHome: React.FC = () => {
             <h2 className="text-xl font-semibold mb-4 flex justify-between items-center bg-white/8 rounded-tr-full border-l-3 border-l-gray-400 rounded-br-full px-4 py-3">
               Open Roles
             </h2>
-            <div className="flex flex-col text-center text-sm md:text-base  md:text-start md:flex-row justify-between items-center bg-black/30 rounded-tr-full border-l-3 border-l-yellow-400 rounded-br-full px-4 py-3 gap-2">
+
+            {/* Role 1 */}
+            <div className="flex flex-col text-center text-sm md:text-base md:text-start md:flex-row justify-between items-center bg-black/30 rounded-tr-full border-l-3 border-l-yellow-400 rounded-br-full px-4 py-3 gap-2">
               <div>
                 <h3 className="font-medium">Senior Blockchain Developer</h3>
                 <p className="text-xs text-gray-300">Hybrid</p>
               </div>
-              <Button className="bg-transparent border rounded-full  text-black hover:border-yellow-300">
-                Apply <span className="text-yellow-300">→</span>
-              </Button>
+              <Link href="/company/career/apply/SeniorDevApply">
+                <Button className="bg-transparent border rounded-full text-black hover:border-yellow-300">
+                  Apply <span className="text-yellow-300">→</span>
+                </Button>
+              </Link>
             </div>
 
-            <div className="flex flex-col text-center text-sm md:text-base  md:text-start md:flex-row justify-between items-center bg-black/30 rounded-tr-full border-l-3 border-l-blue-700 rounded-br-full px-4 py-3 gap-2">
+            {/* Role 2 */}
+            <div className="flex flex-col text-center text-sm md:text-base md:text-start md:flex-row justify-between items-center bg-black/30 rounded-tr-full border-l-3 border-l-blue-700 rounded-br-full px-4 py-3 gap-2">
               <div>
                 <h3 className="font-medium">Growth Hack Specialist</h3>
                 <p className="text-xs text-gray-300">Hybrid</p>
               </div>
-              <Button className="bg-transparent border rounded-full  text-black hover:border-yellow-300">
-                Apply <span className="text-yellow-300">→</span>
-              </Button>
+              <Link href="/company/career/apply/GrowthSpecialistApply">
+                <Button className="bg-transparent border rounded-full text-black hover:border-yellow-300">
+                  Apply <span className="text-yellow-300">→</span>
+                </Button>
+              </Link>
             </div>
 
-            <div className="flex flex-col text-center text-sm md:text-base  md:text-start md:flex-row justify-between items-center bg-black/30 rounded-tr-full border-l-3 border-l-green-300 rounded-br-full px-4 py-3 gap-2">
+            {/* Role 3 */}
+            <div className="flex flex-col text-center text-sm md:text-base md:text-start md:flex-row justify-between items-center bg-black/30 rounded-tr-full border-l-3 border-l-green-300 rounded-br-full px-4 py-3 gap-2">
               <div>
                 <h3 className="font-medium">Legal Advisor</h3>
                 <p className="text-xs text-gray-300">Hybrid</p>
               </div>
-              <Button className="bg-transparent border rounded-full  text-black hover:border-yellow-300">
-                Apply <span className="text-yellow-300">→</span>
-              </Button>
+              <Link href="/company/career/apply/LegalAdvisorApply">
+                <Button className="bg-transparent border rounded-full text-black hover:border-yellow-300">
+                  Apply <span className="text-yellow-300">→</span>
+                </Button>
+              </Link>
             </div>
+
             <p className="text-[10px] bg-black/60 text-yellow-400 mt-6">
               * NOTE – Please DO NOT send any mail to Manilla Finance’s mail
               addresses. Use the online form only.
