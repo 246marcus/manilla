@@ -5,8 +5,6 @@ import React from "react";
 import { blogs } from "@/types";
 import Image from "next/image";
 import BlogCard from "@/app/blog/components/BlogCard";
-import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function BlogDetailPage() {
   const params = useParams();

@@ -1,7 +1,6 @@
 // pages/more-rewards.tsx
 import React from "react";
 import vbg from "../../../../../public/images/vbg.png";
-import card from "../../../../../public/images/card2.png";
 import iconA from "../../../../../public/icons/partnerB.png";
 
 const CardBenefit: React.FC = () => {
@@ -68,8 +67,8 @@ const CardBenefit: React.FC = () => {
 
             {/* Subtitle */}
             <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-gray-100">
-              Get cashback every time you pay using our debit card — it can't
-              get better than that.
+              Get cashback every time you pay using our debit card — it
+              can&apos;t get better than that.
             </p>
 
             {/* Card Section */}
