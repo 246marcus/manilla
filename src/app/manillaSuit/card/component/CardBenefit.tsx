@@ -56,32 +56,32 @@ const CardBenefit: React.FC = () => {
       <div className="md:max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-10 px-4">
         {/* Right side - Illustration */}
         <section
-          className="flex-1 relative bg-cover bg-center text-white py-16 rounded-4xl overflow-hidden"
+          className="flex-1 relative bg-cover bg-center text-white py-8 px-10 rounded-4xl overflow-hidden mt-[-15]"
           style={{ backgroundImage: "url('/images/Rectangle4.png')" }}
         >
           <div className="max-w-6xl mx-auto px-6 text-center">
             {/* Button */}
-            <button className="bg-black text-white px-6 py-3 rounded-full font-semibold text-lg shadow-lg">
+            <button className="bg-black text-white px-6 py-3 rounded-full font-semibold text-lg shadow-lg mt-[-]">
               Manilla Card Benefits
             </button>
 
             {/* Subtitle */}
-            <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-gray-100">
+            <p className="mt-4 mx-auto text-base md:text-5px text-gray-100">
               Get cashback every time you pay using our debit card — it
               can&apos;t get better than that.
             </p>
 
             {/* Card Section */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-2 ">
+            <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-2  ">
               {/* Card 1 */}
-              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-6 flex flex-col items-center">
+              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg  p-2 flex flex-col items-center">
                 <img
                   src="/icons/iconyellow.png"
                   alt="Zero Fast"
-                  className="w-8 h-8 mb-4"
+                  className="w-7 h-7"
                 />
-                <h2 className=" md:text-base font-semibold mb-2">Zero Fast</h2>
-                <p className="text-sm md:text-xs text-white text-center">
+                <h2 className=" md:text-base font-semibold mb-3">Zero Fast</h2>
+                <p className="text-sm md:text-xs  text-white text-center">
                   Unlike traditional debit cards, there are no hidden fees,
                   annual, or card maintenance. Just go ahead and enjoy every bit
                   of the goodness we offer.
@@ -89,13 +89,13 @@ const CardBenefit: React.FC = () => {
               </div>
 
               {/* Card 2 */}
-              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-6 flex flex-col items-center">
+              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-2 flex flex-col items-center">
                 <img
                   src="/icons/iconyellow.png"
                   alt="Benefit 2"
-                  className="w-8 h-8 mb-4"
+                  className="w-7 h-7"
                 />
-                <h2 className="text-lg md:text-base font-semibold mb-2">
+                <h2 className="text-lg md:text-base font-semibold mb-3">
                   Crypto Rewards
                 </h2>
                 <p className="text-sm md:text-xs text-white text-center">
@@ -105,13 +105,13 @@ const CardBenefit: React.FC = () => {
               </div>
 
               {/* Card 3 */}
-              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-6 flex flex-col items-center">
+              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-2 flex flex-col items-center">
                 <img
                   src="/icons/iconyellow.png"
                   alt="Benefit 3"
-                  className="w-8 h-8 mb-4"
+                  className="w-7 h-7"
                 />
-                <h2 className="text-lg md:text-base font-semibold mb-2">
+                <h2 className="text-lg md:text-base font-semibold mb-3">
                   Bank-Grade Security
                 </h2>
                 <p className="text-sm md:text-xs text-white text-center">
@@ -124,18 +124,17 @@ const CardBenefit: React.FC = () => {
         </section>
 
         {/* Left side - Rewards list */}
-        <div className="flex-1 flex flex-col gap-4 bg-white w-full">
+        <div className="flex-1 flex flex-col gap-5 bg-white w-full">
           <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
-            <h3 className="font-semibold flex items-center gap-2">
-              <img src={iconA.src} alt="icon" className="w-7" />
+            <h3 className="font-semibold flex items-center gap-2 justify-center">
               Benefits of Manilla Card
             </h3>
-            <p className="text-slate-700 font-medium text-xs mt-2">
+            <p className="text-slate-700 font-medium text-xs mt-2 flex justify-center">
               Play it smart, diversify your portfolio from cashback.
             </p>
           </div>
 
-          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
+          <div className="bg-gray-200/70 rounded-2xl p-3 text-center md:text-start">
             <h3 className="font-semibold text-xs flex items-center gap-1">
               <img src={iconA.src} alt="icon" className="w-7" />
               Variety of Choices Available
@@ -146,7 +145,7 @@ const CardBenefit: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
+          <div className="bg-gray-200/70 rounded-2xl p-3 text-center md:text-start">
             <h3 className="font-semibold text-xs flex items-center gap-1">
               <img src={iconA.src} alt="icon" className="w-7" />
               Instant Access to Crypto Rewards
@@ -157,7 +156,7 @@ const CardBenefit: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
+          <div className="bg-gray-200/70 rounded-2xl p-3 text-center md:text-start">
             <h3 className="font-semibold text-xs flex items-center gap-1">
               <img src={iconA.src} alt="icon" className="w-7" />
               Boost Your MNLA Cashback
