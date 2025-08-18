@@ -33,7 +33,6 @@ export default function JobDetails({ jobArray }: JobDetailsProps) {
       ))}
 
       <div className="flex flex-col sm:flex-row gap-4 mt-6">
-        import Link from "next/link";
         <div className="flex gap-4">
           <Link href="/company/contact">
             <button className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-blue-900 transition">
