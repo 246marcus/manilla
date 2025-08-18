@@ -144,23 +144,15 @@ const AboutManillaPay = () => {
                       alt="Feature"
                       className="w-10 h-10"
                     />
-                    <span className="text-black">Top Up Airtime & Data</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <img
-                      src="/icons/Iconaboutus.png"
-                      alt="Feature"
-                      className="w-10 h-10"
-                    />
-                    <span className="text-black">Pay Using Crypto</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <img
-                      src="/icons/Iconaboutus.png"
-                      alt="Feature"
-                      className="w-10 h-10"
-                    />
                     <span className="text-black">Track Transactions</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <img
+                      src="/icons/Iconaboutus.png"
+                      alt="Feature"
+                      className="w-10 h-10"
+                    />
+                    <span className="text-black">Top Up Airtime & Data</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <img
@@ -171,6 +163,14 @@ const AboutManillaPay = () => {
                     <span className="text-black">
                       Book Flights & Pay for Travel
                     </span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <img
+                      src="/icons/Iconaboutus.png"
+                      alt="Feature"
+                      className="w-10 h-10"
+                    />
+                    <span className="text-black">Pay Using Crypto</span>
                   </li>
                 </ul>
               </div>
