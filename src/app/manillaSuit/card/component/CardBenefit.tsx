@@ -54,60 +54,118 @@ const CardBenefit: React.FC = () => {
           Here are the benefits you can get just for owing a Manilla card
         </p>
       </div>
-      {/* Top */}
-      <div className="md:max-w-5xl mx-auto flex flex-col md:flex-row items-center max-w-sm gap-10">
+      <div className="md:max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-10 px-4">
         {/* Right side - Illustration */}
-        <div className="flex-1 flex justify-center relative">
-          {/* Cloud + Logo */}{" "}
-          <img
-            src={card.src}
-            alt="M logo"
-            className=" md:flex-1   w-80 md:w-auto h-auto"
-          />
-        </div>
+        <section
+          className="flex-1 relative bg-cover bg-center text-white py-16 rounded-4xl overflow-hidden"
+          style={{ backgroundImage: "url('/images/Rectangle4.png')" }}
+        >
+          <div className="max-w-6xl mx-auto px-6 text-center">
+            {/* Button */}
+            <button className="bg-black text-white px-6 py-3 rounded-full font-semibold text-lg shadow-lg">
+              Manilla Card Benefits
+            </button>
+
+            {/* Subtitle */}
+            <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-gray-100">
+              Get cashback every time you pay using our debit card — it can't
+              get better than that.
+            </p>
+
+            {/* Card Section */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-2 ">
+              {/* Card 1 */}
+              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-6 flex flex-col items-center">
+                <img
+                  src="/icons/iconyellow.png"
+                  alt="Zero Fast"
+                  className="w-8 h-8 mb-4"
+                />
+                <h2 className=" md:text-base font-semibold mb-2">Zero Fast</h2>
+                <p className="text-sm md:text-xs text-white text-center">
+                  Unlike traditional debit cards, there are no hidden fees,
+                  annual, or card maintenance. Just go ahead and enjoy every bit
+                  of the goodness we offer.
+                </p>
+              </div>
+
+              {/* Card 2 */}
+              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-6 flex flex-col items-center">
+                <img
+                  src="/icons/iconyellow.png"
+                  alt="Benefit 2"
+                  className="w-8 h-8 mb-4"
+                />
+                <h2 className="text-lg md:text-base font-semibold mb-2">
+                  Crypto Rewards
+                </h2>
+                <p className="text-sm md:text-xs text-white text-center">
+                  Earn rewards in crypto every time you make payments using the
+                  card. Rewards are received in MNLA.
+                </p>
+              </div>
+
+              {/* Card 3 */}
+              <div className="text-white bg-[#3437CC] rounded-2xl shadow-lg p-6 flex flex-col items-center">
+                <img
+                  src="/icons/iconyellow.png"
+                  alt="Benefit 3"
+                  className="w-8 h-8 mb-4"
+                />
+                <h2 className="text-lg md:text-base font-semibold mb-2">
+                  Bank-Grade Security
+                </h2>
+                <p className="text-sm md:text-xs text-white text-center">
+                  Earn rewards in crypto every time you make payments using the
+                  card. Rewards are received in MNLA.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Left side - Rewards list */}
-        <div className="flex-1 flex flex-col gap-2 bg-white w-full">
-          <div className="bg-gray-200/70 rounded p-2 text-center  ">
+        <div className="flex-1 flex flex-col gap-4 bg-white w-full">
+          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
             <h3 className="font-semibold flex items-center gap-2">
               <img src={iconA.src} alt="icon" className="w-7" />
               Benefits of Manilla Card
             </h3>
-            <p className="text-slate-700 font-medium   text-xs mt-2">
+            <p className="text-slate-700 font-medium text-xs mt-2">
               Play it smart, diversify your portfolio from cashback.
             </p>
           </div>
-          <div className="bg-gray-200/70 rounded p-2  text-center md:text-start ">
+
+          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
             <h3 className="font-semibold text-xs flex items-center gap-1">
               <img src={iconA.src} alt="icon" className="w-7" />
               Variety of Choices Available
             </h3>
-            <p className=" text-xs  leading-4 mt-1">
+            <p className="text-xs leading-4 mt-1">
               Unlike traditional debit cards, you won’t find hidden charges,
-              annual fees, or maintenance costs. Just enjoy seamless access to
-              everything Manilla offers you today.
+              annual fees, or maintenance costs.
             </p>
           </div>
-          <div className="bg-gray-200/70 rounded p-2  text-center md:text-start ">
+
+          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
             <h3 className="font-semibold text-xs flex items-center gap-1">
               <img src={iconA.src} alt="icon" className="w-7" />
               Instant Access to Crypto Rewards
             </h3>
-            <p className=" text-xs leading-4mt-1 ">
+            <p className="text-xs leading-4 mt-1">
               Accumulate your crypto rewards over time and access them instantly
-              whenever needed. No delays, no restrictions—your assets are always
-              ready whenever you want them.
+              whenever needed.
             </p>
           </div>
-          <div className="bg-gray-200/70 rounded p-2   text-center md:text-start ">
+
+          <div className="bg-gray-200/70 rounded p-3 text-center md:text-start">
             <h3 className="font-semibold text-xs flex items-center gap-1">
               <img src={iconA.src} alt="icon" className="w-7" />
               Boost Your MNLA Cashback
             </h3>
-            <p className=" text-xs leading-4 mt-1 ">
+            <p className="text-xs leading-4 mt-1">
               Stake your MNLA rewards using the Manilla Vault and watch them
-              grow. This is your path to increasing returns and unlocking
-              exponential cashback benefits long-term.
+              grow.
             </p>
           </div>
         </div>

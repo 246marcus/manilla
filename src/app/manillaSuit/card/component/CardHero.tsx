@@ -64,7 +64,7 @@ const CardHero: React.FC = () => {
           <img
             src={card1.src}
             alt="Token Icon"
-            className="scale-110 sm:scale-90 md:scale-90 lg:scale-x-120 lg:scale-y-150 lg:-translate-x-20  lg:h-auto sm:translate-y-12  "
+            className="scale-110 sm:scale-90 md:scale-90 lg:scale-x-120 lg:scale-y-150 lg:-translate-x-30  lg:h-auto sm:translate-y-12  "
           />
         </div>
       </div>

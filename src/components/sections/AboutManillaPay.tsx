@@ -81,36 +81,32 @@ const AboutManillaPay = () => {
           className="relative bg-cover bg-center py-8"
           style={{ backgroundImage: "url('/images/aboutmanillapay2.png')" }}
         >
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch t">
+          <div
+            className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-1 items-stretch bg-no-repeat"
+            style={{ backgroundImage: "url('/images/cryptowallet.png')" }}
+          >
             {/* LEFT COLUMN */}
-            <div className="flex flex-col gap-4 h-full top-4">
+            <div className="flex flex-col gap-0  top-1">
               {/* Top Image */}
-              <img src="/images/img1.png" alt="Top" className="rounded-lg" />
+              <img
+                src="/images/img1.png"
+                alt="Top"
+                className=" h-30 w-70 lg:ml-20 "
+              />
 
               {/* Middle Section */}
-              <div className="relative flex items-center justify-center">
-                {/* Background image (img2) */}
-                <img
-                  src="/images/img2.png"
-                  alt="Background Left"
-                  className="w-1/2 rounded-lg object-cover 
-               md:-mr-8 lg:-mr-12 lg:-mt-17 -mt-15" // pulls it closer on larger screens
-                />
 
-                {/* Foreground image (img3) */}
-                <img
-                  src="/images/img3.png"
-                  alt="Foreground Right"
-                  className="w-[200px] rounded-lg relative z-10 shrink-0 
-               md:-ml-8 lg:-ml-12 lg:-mt-17 -mt-7" // pulls it closer on larger screens
-                />
-              </div>
+              <img
+                src="/images/img3.png"
+                alt="Foreground Right"
+                className=" h-30 w-70 lg:ml-40 md:ml"
+              />
 
               {/* Bottom Image */}
               <img
                 src="/images/img4.png"
                 alt="Bottom"
-                className="rounded-lg md:-mt-6 lg:-mt-17 -mt-6" // overlap more on large screens
+                className="h-30 w-70 lg:ml-20 " // overlap more on large screens
               />
             </div>
 
@@ -124,7 +120,7 @@ const AboutManillaPay = () => {
 
               {/* Card with bg-image */}
               <div
-                className="p-8 rounded-2xl bg-gray-200/100 text-white bg-cover bg-center mt-8 h-full"
+                className="p-8 rounded-2xl bg-gray-200/100 text-white bg-cover bg-center mt-8"
                 style={{ backgroundImage: "url('/images/card-bg.png')" }}
               >
                 <h1 className="text-2xl md:text-3xl font-bold mb-6 text-black">
@@ -133,7 +129,7 @@ const AboutManillaPay = () => {
                 </h1>
 
                 {/* Features List */}
-                <ul className="grid gap-4 lg:grid-cols-2">
+                <ul className="grid gap-1 lg:grid-cols-2">
                   <li className="flex items-center gap-3">
                     <img
                       src="/icons/Iconaboutus.png"
