@@ -282,8 +282,7 @@ const Products = () => {
       outsideParagraph: "",
       outsideText: " Stake / Learn more About MNLA ",
       clickToJoin: {
-        icon: "/icons/iconablack.png", // wooooooooooooooooooooooooooooooooooooo
-
+        icon: "/icons/iconablack.png",
         text: "Click Here to Learn",
       },
       button: {
@@ -316,20 +315,20 @@ const Products = () => {
               className="relative bg-cover bg-center rounded-xl overflow-hidden"
               style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
             >
-              <div className="flex flex-col md:flex-row gap-8 p-6 md:p-12">
+              <div className="flex flex-col md:flex-row lg:gap-30 p-6 md:p-12">
                 {/* Left Image */}
                 <Image
                   src={currentSlide.leftImage || "/fallback-image.png"}
                   alt="Left Graphic"
-                  width={400}
+                  width={800}
                   height={400}
-                  className="object-contain"
+                  className="object-contain w-full -ml-6 -mr-6 lg:-ml-12"
                 />
 
                 {/* Right Side: Black Card + Download */}
                 <div className="flex flex-col flex-1 gap-6">
                   {/* Black Card */}
-                  <div className="bg-black bg-opacity-80 text-white p-6 rounded-2xl flex-1 flex flex-col justify-between">
+                  <div className="bg-black bg-cover bg-opacity-80 text-white p-6 rounded-2xl flex-1 flex flex-col justify-between">
                     {currentSlide.blackCard && (
                       <h1 className="text-3xl font-bold mb-4">
                         {currentSlide.blackCard.title}
@@ -338,19 +337,20 @@ const Products = () => {
 
                     {currentSlide.blackCard && (
                       <>
-                        <p className="mb-4 text-gray-400">
+                        <p className="mb-4 text-gray-400 break-words">
                           {currentSlide.blackCard.paragraph2}
                         </p>
+
                         <div className="flex flex-row flex-wrap gap-4 mb-4 lg:flex-col lg:flex-nowrap">
                           {currentSlide.blackCard.features.map((f, i) => (
-                            <div key={i} className="flex items-center gap-2">
+                            <div key={i} className="flex items-center gap-1">
                               <Image
                                 src={f.icon || "/iconproduct.png"}
                                 alt={f.text}
                                 width={24}
                                 height={24}
                               />
-                              <span className="te">{f.text}</span>
+                              <span className="">{f.text}</span>
                             </div>
                           ))}
                         </div>
@@ -367,24 +367,26 @@ const Products = () => {
                     </p>
 
                     {/* Hardcoded Bottom Section */}
-                    <div className="mt-6 bg-black/20 border border-black/20 p-3 rounded-full grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6">
-                      <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-full">
+                    <div className="mt-6 bg-black/20 border border-black/20 p-3 rounded-full grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6 ">
+                      <div className="flex items-center gap-2 bg-gray-800  px-3 py-2 rounded-full">
                         <Image
                           src="/icons/usdc.png"
                           alt="Feature 1"
                           width={30}
-                          height={20}
+                          height={30}
+                          className=" lg:w-7 lg:h-7 w-8 h-8 "
                         />
-                        <span>USDC</span>
+                        <span className="text-sm lg:text-xs ">USDC</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-gray-800  px-3 py-2 rounded-full">
+                      <div className="flex items-center gap-2 bg-gray-800 bg px-3 py-2 rounded-full">
                         <Image
                           src="/icons/usdt.png"
                           alt="Feature 2"
                           width={30}
                           height={20}
+                          className="lg:w-7 lg:h-7 w-10 h-10"
                         />
-                        <span>USDT</span>
+                        <span className="text-sm lg:text-xs">USDT</span>
                       </div>
                       <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-full">
                         <Image
@@ -392,8 +394,9 @@ const Products = () => {
                           alt="Feature 3"
                           width={30}
                           height={20}
+                          className=" lg:w-7 lg:h-7 w-10 h-10"
                         />
-                        <span>BTC</span>
+                        <span className="text-sm lg:text-xs">BTC</span>
                       </div>
                       <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-full">
                         <Image
@@ -401,18 +404,19 @@ const Products = () => {
                           alt="Feature 4"
                           width={30}
                           height={20}
+                          className="lg:w-7 lg:h-7 w-10 h-10" // 80px x 80px
                         />
-                        <span>ETH</span>
+                        <span className="text-sm lg:text-xs">ETH</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Download Buttons (now tied to the card column) */}
                   <div className="p-6">
-                    <h3 className="text-gray-200 mb-0">
+                    <h3 className="text-gray-200 mb-0 flex justify-center font-bold">
                       {currentSlide.downloadSection.title}
                     </h3>
-                    <div className="flex gap-4">
+                    <div className="flex gap-[2]">
                       {currentSlide.downloadSection.buttons.map((btn, i) => (
                         <a
                           key={i}
