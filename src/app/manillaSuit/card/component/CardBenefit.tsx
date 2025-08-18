@@ -142,8 +142,8 @@ const CardBenefit: React.FC = () => {
               Variety of Choices Available
             </h3>
             <p className="text-xs leading-4 mt-1">
-              Unlike traditional debit cards, you won’t find hidden charges,
-              annual fees, or maintenance costs.
+              Unlike traditional debit cards, you won&apos;t find hidden
+              charges, annual fees, or maintenance costs.
             </p>
           </div>
 
