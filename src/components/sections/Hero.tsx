@@ -7,7 +7,7 @@ import heropicture from "../../../public/images/heropicture.png";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-30 hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6">
+    <section className="relative lg:min-h-screen lg:pt-30 md:pt-30 pt-25 hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 border border-white/20 rounded-full"></div>
