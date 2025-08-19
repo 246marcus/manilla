@@ -320,10 +320,10 @@ const Products = () => {
           <div className="relative">
             {/* Background */}
             <div
-              className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
+              className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto "
               style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
             >
-              <div className="flex flex-col md:flex-row lg:gap-50 p-6 md:p-12">
+              <div className="flex flex-col md:flex-row lg:gap-50 p-6 md:p-12 lg:mt-9">
                 {/* Left Image */}
                 <Image
                   src={currentSlide.leftImage || "/fallback-image.png"}
@@ -336,7 +336,7 @@ const Products = () => {
                 {/* Right Side: Black Card + Download */}
                 <div className="flex flex-col flex-1 gap-6">
                   {/* Black Card */}
-                  <div className="bg-black bg-cover bg-opacity-80 text-white p-10 rounded-2xl flex-1 flex flex-col justify-between">
+                  <div className="bg-black bg-cover bg-opacity-80 text-white p-4 rounded-2xl flex-1 flex flex-col justify-between">
                     {currentSlide.blackCard && (
                       <h1 className="text-3xl font-bold mb-4">
                         {currentSlide.blackCard.title}
@@ -376,17 +376,17 @@ const Products = () => {
 
                     {/* Hardcoded Bottom Section */}
                     <div className="mt-6 bg-black/20 border border-black/20 p-3 rounded-full grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6 ">
-                      <div className="flex items-center gap-2 bg-gray-800  px-6 py-3 rounded-full">
+                      <div className="flex items-center gap-2  px-1 py-3 rounded-full">
                         <Image
                           src="/icons/usdc.png"
                           alt="Feature 1"
-                          width={30}
-                          height={30}
-                          className=" lg:w-7 lg:h-7 w-8 h-8 "
+                          width={40}
+                          height={20}
+                          className=" lg:w-7 lg:h-7 w-10 h-10 "
                         />
                         <span className="text-sm lg:text-xs ">USDC</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-gray-800 bg px-3 py-2 rounded-full">
+                      <div className="flex items-center gap-2  bg px-3 py-2 rounded-full">
                         <Image
                           src="/icons/usdt.png"
                           alt="Feature 2"
@@ -396,7 +396,7 @@ const Products = () => {
                         />
                         <span className="text-sm lg:text-xs">USDT</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-full">
+                      <div className="flex items-center gap-2  px-1 py-2 rounded-full">
                         <Image
                           src="/icons/btc.png"
                           alt="Feature 3"
@@ -406,7 +406,7 @@ const Products = () => {
                         />
                         <span className="text-sm lg:text-xs">BTC</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-full">
+                      <div className="flex items-center gap-2 px-3 py-2 rounded-full">
                         <Image
                           src="/icons/Ethereum.png"
                           alt="Feature 4"
@@ -733,13 +733,13 @@ const Products = () => {
         <div className="flex justify-center gap-4 mt-4">
           <button
             onClick={prevSlide}
-            className="bg-white/80 p-2 rounded-full hover:bg-white shadow-md"
+            className="bg-black/80 p-2 rounded-full  shadow-md text-white"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="bg-white/80 p-2 rounded-full hover:bg-white shadow-md"
+            className="bg-black/80 p-2 rounded-full  shadow-md text-white"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
