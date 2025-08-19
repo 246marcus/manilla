@@ -376,13 +376,13 @@ const Products = () => {
 
                     {/* Hardcoded Bottom Section */}
                     <div className="mt-6 bg-black/20 border border-black/20 p-3 rounded-full grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6 ">
-                      <div className="flex items-center gap-2  px-1 py-3 rounded-full">
+                      <div className="flex items-center gap-4  px-1 py-3 rounded-full">
                         <Image
                           src="/icons/usdc.png"
                           alt="Feature 1"
                           width={40}
                           height={20}
-                          className=" lg:w-7 lg:h-7 w-10 h-10 "
+                          className="w-7 h-7 "
                         />
                         <span className="text-sm lg:text-xs ">USDC</span>
                       </div>
@@ -392,7 +392,7 @@ const Products = () => {
                           alt="Feature 2"
                           width={30}
                           height={20}
-                          className="lg:w-7 lg:h-7 w-10 h-10"
+                          className="w-7 h-7"
                         />
                         <span className="text-sm lg:text-xs">USDT</span>
                       </div>
@@ -402,7 +402,7 @@ const Products = () => {
                           alt="Feature 3"
                           width={30}
                           height={20}
-                          className=" lg:w-7 lg:h-7 w-10 h-10"
+                          className=" w-7 h-7"
                         />
                         <span className="text-sm lg:text-xs">BTC</span>
                       </div>
@@ -412,7 +412,7 @@ const Products = () => {
                           alt="Feature 4"
                           width={30}
                           height={20}
-                          className="lg:w-7 lg:h-7 w-10 h-10" // 80px x 80px
+                          className="lg:w-7 lg:h-7 w-7 h-7" // 80px x 80px
                         />
                         <span className="text-sm lg:text-xs">ETH</span>
                       </div>
@@ -466,11 +466,11 @@ const Products = () => {
               {/* Left Content - Takes up equal space on large screens */}
               <div className="flex-1 space-y-3 lg:pr-2 text-sm lg:mt-5">
                 {/* Tag */}
-                <span className="lg:px-43 w-full text-center bg-black/60 text-white px-2  py-2 rounded-full text-xs lg:text-sm lg:ml-15 lg:py-3  font-bold">
+                <span className="lg:px-42 w-full text-center bg-black/60 text-white px-22  py-2 mt-5 rounded-full text-xs lg:text-sm ml-3 lg:ml-15 lg:py-3  font-bold">
                   {currentSlide.leftTag.text}
                 </span>
 
-                <div className="bg-black/20 bg-opacity-80 text-white p-5  rounded-lg lg:m-15 lg:mt-6">
+                <div className="bg-black/10 bg-opacity-80 text-white p-5  rounded-lg lg:m-15 lg:mt-6 mt-4">
                   <h1 className="text-2xl font-bold mb-4 ml-3 text-black lg:text-lg lg:leading-snug">
                     {currentSlide.leftTag.transparentCard.title}
                   </h1>
