@@ -270,13 +270,21 @@ const Products = () => {
       leftImage: "/images/leftimg3.png",
       blueCard: {
         title: "Manilla Token (MNLA)",
-        paragraph:
-          "As you use Manilla Pay, you earn MNLA tokens. Stake them, save them, or spend them across our ecosystem.",
+        paragraph: "The Token That Pays You Back.",
         features: [
-          { icon: "/icons/iconproduct.png", text: "Manilla Pay" },
-          { icon: "/icons/iconproduct.png", text: "Manilla Crypto Debit Card" },
-          { icon: "/icons/iconproduct.png", text: "Manilla Token (MNLA)" },
-          { icon: "/icons/iconproduct.png", text: "Another Feature" },
+          {
+            icon: "/icons/iconproduct.png",
+            text: "Discounts on bill payments",
+          },
+          {
+            icon: "/icons/iconproduct.png",
+            text: "Earn MNLA with every transaction",
+          },
+          { icon: "/icons/iconproduct.png", text: "Stake for rewards" },
+          {
+            icon: "/icons/iconproduct.png",
+            text: "Use for global remittances",
+          },
         ],
       },
       outsideParagraph: "",
@@ -312,10 +320,10 @@ const Products = () => {
           <div className="relative">
             {/* Background */}
             <div
-              className="relative bg-cover bg-center rounded-xl overflow-hidden"
+              className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
               style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
             >
-              <div className="flex flex-col md:flex-row lg:gap-30 p-6 md:p-12">
+              <div className="flex flex-col md:flex-row lg:gap-50 p-6 md:p-12">
                 {/* Left Image */}
                 <Image
                   src={currentSlide.leftImage || "/fallback-image.png"}
@@ -328,7 +336,7 @@ const Products = () => {
                 {/* Right Side: Black Card + Download */}
                 <div className="flex flex-col flex-1 gap-6">
                   {/* Black Card */}
-                  <div className="bg-black bg-cover bg-opacity-80 text-white p-6 rounded-2xl flex-1 flex flex-col justify-between">
+                  <div className="bg-black bg-cover bg-opacity-80 text-white p-10 rounded-2xl flex-1 flex flex-col justify-between">
                     {currentSlide.blackCard && (
                       <h1 className="text-3xl font-bold mb-4">
                         {currentSlide.blackCard.title}
@@ -368,7 +376,7 @@ const Products = () => {
 
                     {/* Hardcoded Bottom Section */}
                     <div className="mt-6 bg-black/20 border border-black/20 p-3 rounded-full grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6 ">
-                      <div className="flex items-center gap-2 bg-gray-800  px-3 py-2 rounded-full">
+                      <div className="flex items-center gap-2 bg-gray-800  px-6 py-3 rounded-full">
                         <Image
                           src="/icons/usdc.png"
                           alt="Feature 1"
@@ -436,38 +444,40 @@ const Products = () => {
                   </div>
                 </div>
               </div>
+              {/* Bottom Image */}
+              <Image
+                src={currentSlide.bottomImage}
+                alt="Bottom Graphic"
+                width={1200}
+                height={200}
+                className="mt-[-30px] mx-auto relative z-10 lg:w-full"
+              />
             </div>
-
-            {/* Bottom Image */}
-            <Image
-              src={currentSlide.bottomImage}
-              alt="Bottom Graphic"
-              width={1200}
-              height={200}
-              className="mt-[-11px] sm:w-full mx-auto relative z-10 lg:w-full lg:-translate-y-8"
-            />
           </div>
         );
 
       case 2:
         return (
           <div
-            className="relative bg-cover bg-amber-400 bg-center rounded-xl overflow-hidden"
+            className="relative bg-cover bg-amber-300 bg-center rounded-xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
             style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
           >
-            <div className="flex flex-col md:flex-row p-6 gap-6">
-              {/* Left */}
-              <div className="flex-1 space-y-4">
-                <span className="block w-full text-center bg-black/60 text-white px-3 py-3 rounded-l-full rounded-r-full">
+            <div className="flex flex-col lg:flex-row p-6 gap-6 lg:gap-[1]">
+              {/* Left Content - Takes up equal space on large screens */}
+              <div className="flex-1 space-y-3 lg:pr-2 text-sm lg:mt-5">
+                {/* Tag */}
+                <span className="lg:px-43 w-full text-center bg-black/60 text-white px-2  py-2 rounded-full text-xs lg:text-sm lg:ml-15 lg:py-3  font-bold">
                   {currentSlide.leftTag.text}
                 </span>
-                <div className="bg-black/40 bg-opacity-80 text-white p-6 rounded-lg">
-                  <h1 className="text-2xl font-bold mb-4">
+
+                <div className="bg-black/20 bg-opacity-80 text-white p-5  rounded-lg lg:m-15 lg:mt-6">
+                  <h1 className="text-2xl font-bold mb-4 ml-3 text-black lg:text-lg lg:leading-snug">
                     {currentSlide.leftTag.transparentCard.title}
                   </h1>
-                  <p className="mb-4">
+                  <p className="mb-4 text-black font-bold lg:text-sm lg:leading-snug break-words">
                     {currentSlide.leftTag.transparentCard.paragraph}
                   </p>
+
                   {currentSlide.leftTag.transparentCard.features.map((f, i) => (
                     <div key={i} className="flex items-center gap-2 mb-2">
                       <Image
@@ -475,45 +485,57 @@ const Products = () => {
                         alt={f.text}
                         width={30}
                         height={24}
+                        className="lg:w-5 lg:h-5"
                       />
-                      <span>{f.text}</span>
+                      <span className="text-black lg:text-sm lg:leading-snug break-words">
+                        {f.text}
+                      </span>
                     </div>
                   ))}
                 </div>
-                <p>{currentSlide.leftTag.outsideText}</p>
-                <div className="flex items-center gap-2 cursor-pointer">
+
+                {/* Outside Text */}
+                <p className="text-xs lg:text-sm lg:ml-15 lg:mt-2 ">
+                  {currentSlide.leftTag.outsideText}
+                </p>
+
+                {/* Click to Join */}
+                <div className="flex items-center gap-2 lg:ml-13 cursor-pointer ">
                   <Image
                     src={
-                      currentSlide.leftTag.clickToJoin.icon || "/iconblack.pn"
+                      currentSlide.leftTag.clickToJoin.icon || "/iconblack.png"
                     }
                     alt=""
-                    width={30}
-                    height={24}
+                    width={28}
+                    height={18}
                   />
-                  <span>{currentSlide.leftTag.clickToJoin.text}</span>
-                  <button className="bg-black text-white px-4 py-2 rounded-full">
+                  <span className="text-xs lg:text-sm">
+                    {currentSlide.leftTag.clickToJoin.text}
+                  </span>
+                  <button className="bg-black text-white px-3 py-2 rounded-full text-xs lg:text-sm">
                     {currentSlide.leftTag.button.text}
                   </button>
                 </div>
               </div>
 
-              {/* Right Image */}
-              <div className="flex-1 flex justify-center items-center mt-2">
+              {/* Right Image - Overlapping */}
+              <div className="flex-1 flex justify-center items-center lg:mt-10 relative z-10">
                 <Image
                   src={currentSlide.rightImage || "/falling-image.png"}
                   alt="Right Graphic"
-                  width={600}
-                  height={400}
-                  className="w-[700px] sm:w-[700px] translate-x-[-40px] sm:translate-x-0 translate-y-6"
+                  width={650}
+                  height={450}
+                  className="w-full max-w-[480px] lg:max-w-4xl lg:w-[115%] lg:h-auto object-contain -translate-x-8 sm:translate-x-0 lg:-translate-x-12 translate-y-8 lg:translate-y-0"
                 />
               </div>
             </div>
+
             <Image
               src={currentSlide.bottomImage}
               alt="Bottom Graphic"
               width={1200}
               height={200}
-              className="mt-[-10px] mx-auto relative z-10 lg:w-full"
+              className="mt-[-11px] mx-auto relative z-10 lg:w-full"
             />
           </div>
         );
@@ -521,21 +543,22 @@ const Products = () => {
       case 3:
         return (
           <div
-            className="relative bg-cover bg-center rounded-xl overflow-hidden"
+            className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
             style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
           >
-            <div className="flex flex-col md:flex-row p-6 gap-6">
+            <div className="flex flex-col md:flex-row p-10 lg:p-20 gap-6">
               {/* Left Image */}
               <Image
                 src={currentSlide.leftImage || "/fallback-image.png"}
                 alt="Left Graphic"
                 width={400}
                 height={400}
+                className="lg:w-120"
               />
 
               {/* Blue Card */}
               <div className="flex-1 space-y-4">
-                <div className="bg-[#281AC8] text-white p-6 rounded-lg">
+                <div className="bg-[#281AC8] text-white p-6 rounded-lg w-fit">
                   <h1 className="text-2xl font-bold mb-4">
                     {currentSlide.blueCard.title}
                   </h1>
@@ -549,7 +572,7 @@ const Products = () => {
                 </div>
 
                 {/* Join Section */}
-                <p>{currentSlide.outsideText}</p>
+                <p className="font-bold">{currentSlide.outsideText}</p>
                 <div className="flex items-center gap-2 cursor-pointer">
                   <Image
                     src={currentSlide.clickToJoin.icon || "/iconablack.png"}
@@ -557,13 +580,16 @@ const Products = () => {
                     width={28}
                     height={24}
                   />
-                  <span>{currentSlide.clickToJoin.text}</span>
+                  <span className="font-bold">
+                    {currentSlide.clickToJoin.text}
+                  </span>
                   <button className="bg-black text-white px-4 py-2 rounded-full">
                     {currentSlide.button.text}
                   </button>
                 </div>
               </div>
             </div>
+
             <p className="p-6">{currentSlide.outsideParagraph}</p>
             <Image
               src={currentSlide.bottomImage}
@@ -584,7 +610,7 @@ const Products = () => {
     <section className="relative bg-white text-gray-900 pt-8 pb-16">
       <div className="max-w-[95%] lg:max-w-[1400px] mx-auto px-6">
         {/* TOP SECTION */}
-        <div className="mb-8">
+        <div className="mb-8 max-w-full lg:max-w-6xl mx-auto">
           {/* Header with Learn Button and Dropdown Icon */}
           <div className="relative mb-8 flex items-start justify-between">
             {/* Left button */}
@@ -610,7 +636,7 @@ const Products = () => {
           {/* Two Text Sections */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Left Section */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               <h1 className="text-3xl font-bold text-gray-900">
                 {currentTopContent.leftSection.title}
               </h1>
@@ -623,7 +649,7 @@ const Products = () => {
             </div>
 
             {/* Right Section with Background */}
-            <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 bg-[url('/images/Rectangle2.png')] bg-cover bg-center bg-no-repeat p-6 rounded-xl">
+            <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 bg-[url('/images/Rectangle2.png')] bg-cover bg-center bg-no-repeat p-5 rounded-xl">
               <h2 className="text-xl font-bold text-gray-900 mb-6">
                 {currentTopContent.rightSection.title}
               </h2>
@@ -643,7 +669,7 @@ const Products = () => {
                       <Image
                         src={feature.icon}
                         alt={feature.text}
-                        width={16} // reduced size
+                        width={16}
                         height={16}
                         className="object-contain"
                       />
@@ -660,7 +686,7 @@ const Products = () => {
                 <Image
                   src="/icons/sectiondivider.png"
                   alt="Section Divider"
-                  width={1200} // adjust or remove if you prefer responsive
+                  width={1200}
                   height={50}
                   className="w-full h-auto"
                 />

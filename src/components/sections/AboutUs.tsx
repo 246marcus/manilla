@@ -100,15 +100,15 @@ const AboutUs = () => {
         </div>
 
         {/* Two sections */}
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-6">
+        <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-4 lg:gap-0 lg:px-40">
           {/* Left Image */}
           <div className="flex-shrink-0 w-full md:w-1/2">
             <Image
               src="/images/aboutus.png"
               alt="About Image 1"
-              width={400}
+              width={500}
               height={500}
-              className="object-contain w-full h-[350px] sm:h-[400px] md:h-[500px]"
+              className="object-contain w-full h-[350px] sm:h-[400px] md:h-[500px] lg:w-200"
             />
           </div>
 
