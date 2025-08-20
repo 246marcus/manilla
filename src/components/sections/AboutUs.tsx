@@ -63,33 +63,33 @@ const services = [
 
 const AboutUs = () => {
   return (
-    <section className="bg-white text-gray-900 py-16">
-      <div className="max-w-[95%] lg:max-w-[1400px] mx-auto px-6 border-l border-r border-gray-200 text-center">
+    <section className="bg-white text-gray-900 md:py-16">
+      <div className="max-w-7xl mx-auto px-6 border-l border-r border-gray-200 text-center">
         {/* About Title */}
         <div className="relative -mt-8 md:-mt-10 lg:-mt-12">
-          <button className="p-4 bg-transparent hover:scale-105 transition-transform">
+          <button className="p-4 bg-transparent scale-90 transition-transform">
             <Image
               src="/icons/aboutusIcon.png"
               alt="About Us Icon"
               width={250}
               height={150}
-              className="object-contain w-40 sm:w-48 md:w-60 lg:w-[250px] h-auto"
+              className="object-contain w-40 sm:w-48 md:w-60 lg:w-[250px] h-auto scale-75 md:scale-90 "
             />
           </button>
         </div>
 
         {/* Button */}
         <Link href="/company">
-          <button className="mb-6 px-6 py-3 bg-[#001EA9] text-white rounded-full hover:bg-[#002FCC] transition">
+          <button className="mb-6 px-6 py-2 text-sm bg-[#001EA9] text-white rounded-full hover:bg-[#002FCC] transition">
             Learn More About Us
           </button>
         </Link>
 
         {/* Four lines of text */}
         <div className="space-y-2 mb-12 max-w-3xl mx-auto text-sm text-gray-600">
-          <h2 className="text-4xl font-bold mb-4">Pay Everyday Bills.</h2>
-          <p className="text-2xl">Crypto Convenience for Nigeria Hustle.</p>
-          <p>
+          <h2 className="text-xl md:text-2xl font-bold mb-4">Pay Everyday Bills.</h2>
+          <p className="text-base md:text-lg font-semibold">Crypto Convenience for Nigeria Hustle.</p>
+          <p className="text-sm">
             Life in Nigeria is fast-paced, and your bills shouldn&apos;t slow
             you down.
           </p>
@@ -100,7 +100,7 @@ const AboutUs = () => {
         </div>
 
         {/* Two sections */}
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-4 lg:gap-0 lg:px-40">
+        <div className="flex flex-col md:flex-row  md:items-center max-w-5xl mx-auto justify-center lg:justify-between items-stretch gap-4 md:gap-6 lg:gap-8  py-4">
           {/* Left Image */}
           <div className="flex-shrink-0 w-full md:w-1/2">
             <Image
@@ -108,13 +108,13 @@ const AboutUs = () => {
               alt="About Image 1"
               width={500}
               height={500}
-              className="object-contain w-full h-[350px] sm:h-[400px] md:h-[500px] lg:w-200"
+              className="object-contain w-full h-[350px] sm:h-[400px] max-w-150 "
             />
           </div>
 
           {/* Right Scroll */}
-          <div className="w-full md:w-1/2 relative flex flex-col h-[350px] sm:h-[400px] md:h-[500px]">
-            <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="w-full md:w-1/2 relative flex flex-col h-[350px] sm:h-[400px] md:h-[500px] my-6">
+            <div className="flex items-center justify-center lg:justify-start  gap-2 mb-4">
               <h2 className="text-lg font-semibold">Our Services</h2>
               <ChevronDownIcon className="w-5 h-5 text-gray-600" />
             </div>
@@ -124,13 +124,13 @@ const AboutUs = () => {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-200 text-left"
+                  className="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-200 text-center md:text-left "
                 >
-                  <h1 className="text-xl font-bold mb-2">{service.title}</h1>
+                  <h1 className="text-xl font-bold text-center md:text-start mb-2">{service.title}</h1>
                   <p className="text-sm text-gray-600 mb-4">
                     {service.description}
                   </p>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid md:grid-cols-2 gap-2">
                     {service.features.map((feature, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <Image

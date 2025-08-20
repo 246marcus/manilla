@@ -34,19 +34,210 @@ const MediaPartners: React.FC = () => {
 
         {/* Trusted Platform Rolling Effect */}
         <div className="relative z-10 mt-16 w-full overflow-hidden">
-          <div className="flex flex-nowrap animate-marquee will-change-transform">
-            <img
-              src="/images/mediapartner.png"
-              alt="Trusted by top platforms"
-              className="block h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-auto flex-none"
-            />
-            <img
-              src="/images/mediapartner.png"
-              alt=""
-              aria-hidden="true"
-              className="block h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-auto flex-none"
-            />
-          </div>
+          {/* <div className="flex flex-nowrap animate-marquee will-change-transform">
+            
+          <img
+            src="/images/ddd1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100   "
+          />
+          <img
+            src="/images/ddd2.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd3.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd4.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd5.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd6.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd2.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd3.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd4.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd5.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd6.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          </div> */}
+
+           {/* top */}
+        <div className="flex animate-roll md:gap-x-4  scale-80 ">
+          
+          <img
+            src="/images/kkk1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk2.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/kkk3.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk4.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/kkk5.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk6.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk2.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/kkk3.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk4.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/kkk5.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/kkk6.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+        </div>
+      {/* bottom */}
+        <div className="flex animate-roll md:gap-x-4  scale-80 ">
+          
+          <img
+            src="/images/ddd1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100   "
+          />
+          <img
+            src="/images/ddd2.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd3.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd4.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd5.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd6.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd2.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd3.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd4.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+         
+          <img
+            src="/images/ddd5.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+          <img
+            src="/images/ddd6.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none scale-90 md:scale-100  "
+          />
+        </div>
         </div>
       </div>
 
@@ -75,7 +266,7 @@ const MediaPartners: React.FC = () => {
               <input
                 type="text"
                 placeholder="Type Email here"
-                className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
               />
               <button className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition">
                 Get Started

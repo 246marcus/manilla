@@ -7,7 +7,7 @@ import FAQ from "./components/FAQ";
 
 export default function ManillaSuit() {
   return (
-    <main className="">
+    <main className="pt-12">
       <section>
         <SuitsHero />
       </section>

@@ -67,8 +67,7 @@ const CardBenefit: React.FC = () => {
 
             {/* Subtitle */}
             <p className="mt-4 mx-auto text-base md:text-5px text-gray-100">
-              Get cashback every time you pay using our debit card — it
-              can&apos;t get better than that.
+             Manilla Crypto Card unlocks borderless spending power, turning your digital assets into everyday payments worldwide
             </p>
 
             {/* Card Section */}
@@ -80,11 +79,9 @@ const CardBenefit: React.FC = () => {
                   alt="Zero Fast"
                   className="w-7 h-7"
                 />
-                <h2 className=" md:text-base font-semibold mb-3">Zero Fast</h2>
+                <h2 className=" md:text-base font-semibold mb-3">Easy Spend</h2>
                 <p className="text-sm md:text-xs  text-white text-center">
-                  Unlike traditional debit cards, there are no hidden fees,
-                  annual, or card maintenance. Just go ahead and enjoy every bit
-                  of the goodness we offer.
+                  With Manilla Card, spend your crypto like cash—converted instantly to fiat at checkout, online or in-store.
                 </p>
               </div>
 
@@ -96,11 +93,10 @@ const CardBenefit: React.FC = () => {
                   className="w-7 h-7"
                 />
                 <h2 className="text-lg md:text-base font-semibold mb-3">
-                  Crypto Rewards
+                  Accepted Globally
                 </h2>
                 <p className="text-sm md:text-xs text-white text-center">
-                  Earn rewards in crypto every time you make payments using the
-                  card. Rewards are received in MNLA.
+                  Manilla Card is powered by Mastercard, giving you global access anywhere traditional cards are accepted—without limits or borders.
                 </p>
               </div>
 
@@ -112,11 +108,10 @@ const CardBenefit: React.FC = () => {
                   className="w-7 h-7"
                 />
                 <h2 className="text-lg md:text-base font-semibold mb-3">
-                  Bank-Grade Security
+                  Crypto Rewards
                 </h2>
                 <p className="text-sm md:text-xs text-white text-center">
-                  Earn rewards in crypto every time you make payments using the
-                  card. Rewards are received in MNLA.
+                 Earn high crypto cashback with Manilla Card, plus exclusive perks like discounts, travel, and lifestyle benefits.
                 </p>
               </div>
             </div>

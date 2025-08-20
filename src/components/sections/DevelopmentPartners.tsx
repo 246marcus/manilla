@@ -40,7 +40,7 @@ const DevelopmentPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden rounded-b-[50px]" // curved edges only at bottom
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden " // curved edges only at bottom
         style={{
           backgroundImage: `url(${Rectangle.src})`,
           backgroundPosition: "center",
@@ -52,15 +52,42 @@ const DevelopmentPartners: React.FC = () => {
         <div className="relative z-10 mt-0 w-full overflow-hidden">
           <div className="flex flex-nowrap animate-marquee will-change-transform">
             <img
-              src="/images/development2.png"
+              src="/images/aaa1.png"
               alt="Trusted by top platforms"
-              className="block h-15 sm:h-28 md:h-32 lg:h-36 xl:h-40 flex-none"
+              className="w-auto max-w-none scale-60 md:scale-80  "
             />
             <img
-              src="/images/development2.png"
+              src="/images/aaa2.png"
               alt=""
               aria-hidden="true"
-              className="block h-15 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-auto flex-none"
+              className="w-auto max-w-none scale-60 md:scale-70 lg:scale-90"
+            />
+            <img
+              src="/images/aaa3.png"
+              alt="Trusted by top platforms"
+              className="w-auto max-w-none scale-60 md:scale-70  "
+            />
+            <img
+              src="/images/aaa4.png"
+              alt=""
+              aria-hidden="true"
+              className="w-auto max-w-none scale-60 md:scale-70 "
+            />
+            <img
+              src="/images/aaa5.png"
+              alt="Trusted by top platforms"
+              className="w-auto max-w-none scale-60 md:scale-70  "
+            />
+            <img
+              src="/images/aaa6.png"
+              alt=""
+              aria-hidden="true"
+              className="w-auto max-w-none scale-60 md:scale-70 "
+            />
+            <img
+              src="/images/aaa7.png"
+              alt="Trusted by top platforms"
+              className="w-auto max-w-none scale-60 md:scale-70  "
             />
           </div>
         </div>
