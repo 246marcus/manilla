@@ -27,7 +27,7 @@ const CareerHome: React.FC = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="text-sm w-40 hidden md:inline-block left-10 absolute text-center rounded-full text-white px-4 py-2 mt-10 bg-black/30">
+      <div className="text-sm w-40 hidden md:inline-block left-10 top-18 absolute text-center rounded-full text-white px-4 py-2 mt-10 bg-black/30">
         <Link href="/">
           <span className="hover:underline cursor-pointer">Home</span>
         </Link>{" "}
@@ -49,8 +49,8 @@ const CareerHome: React.FC = () => {
         </div>
 
         <div className=" text-white rounded-2xl p-8 md:flex-8/12 ">
-          <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-xl lg:text-4xl font-bold mb-2">Careers</h1>
+          <div className="flex flex-col mt-3 items-center justify-center text-center">
+            <h1 className="text-3xl  lg:text-4xl font-bold mb-6">Careers</h1>
             <p className="md:text-lg text-sm font-semibold mb-4 shadow shadow-white py-2 px-4 rounded-full bg-black/30">
               Join Our Mission. Shape the future of digital finance
             </p>

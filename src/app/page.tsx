@@ -11,8 +11,8 @@ import Nav from "@/components/ui/Nav";
 
 export default function Home() {
   return (
-    <main className="">
-      <section>
+    <main className=" ">
+      <section className="bg-amber-300">
         <Nav />
         <Hero />
       </section>
@@ -20,7 +20,6 @@ export default function Home() {
       <section>
         <AboutManillaPay />
       </section>
-
       <section>
         <Product />
       </section>
@@ -36,10 +35,10 @@ export default function Home() {
       <section>
         <Blogs />
       </section>
-
+      
       <section>
         <MediaPartner />
-      </section>
+      </section> 
     </main>
   );
 }

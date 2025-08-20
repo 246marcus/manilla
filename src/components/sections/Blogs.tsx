@@ -49,23 +49,23 @@ const Blogs = () => {
   };
 
   return (
-    <section
-      className="bg-[#1ABFC8] py-16"
-      style={{
-        backgroundImage: "url('/images/blogbackground.png')", // replace with your overlay
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-6 text-center mt-0">
+    <section className=" p-6 lg:px-0">
+      <div
+        className="max-w-7xl bg-cyan-400/90 mx-auto p-6 text-center py-10 rounded-2xl  mt-0"
+        style={{
+          backgroundImage: "url('/images/blogbackground.png')", // replace with your overlay
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         {/* Top Blog Banner Image */}
         <img
           src="/icons/blogicon.png"
           alt="Blog Top"
           width={200}
           height={200}
-          className="mx-auto object-contain"
+          className="mx-auto object-contain scale-90 "
         />
 
         {/* Learn More Button */}
@@ -78,7 +78,7 @@ const Blogs = () => {
           {/* Make vertical on small screens, horizontal centered on larger */}
           <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-center gap-6">
             {/* Carousel (2 visible cards) */}
-            <div className="overflow-hidden w-full lg:w-[640px] mx-auto">
+            <div className="overflow-hidden w-full lg:w-[700px] mx-auto">
               {/* 2 * 320px width */}
               <div
                 className="flex transition-transform duration-500 ease-in-out"
@@ -89,7 +89,7 @@ const Blogs = () => {
                 {blogs.map((blog) => (
                   <div
                     key={blog.id}
-                    className="relative rounded-xl shadow-lg min-w-[300px] max-w-[300px] p-0 mr-5"
+                    className="relative rounded-xl shadow-lg min-w-[300px] max-w-sm mx-auto p-0 mr-5"
                   >
                     {/* Main Image */}
                     <Image
@@ -97,11 +97,11 @@ const Blogs = () => {
                       alt={blog.title}
                       width={300}
                       height={200}
-                      className="rounded-lg"
+                      className="rounded-lg "
                     />
 
                     {/* Optional Overlay Image */}
-                    {blog.overlayImage && (
+                    {/*    {blog.overlayImage && (
                       <img
                         src={blog.overlayImage}
                         alt="Overlay"
@@ -109,13 +109,13 @@ const Blogs = () => {
                         height={50}
                         className="absolute top-2 left-2 rounded-full"
                       />
-                    )}
+                    )} */}
                   </div>
                 ))}
               </div>
 
               {/* Arrows under carousel — horizontal on desktop, vertical on mobile */}
-              <div className="flex flex-col sm:flex-row sm:justify-center items-center mt-6 sm:space-x-4 sm:space-y-0 space-y-4">
+              <div className="flex justify-center items-center mt-6 gap-4">
                 <button
                   onClick={handlePrev}
                   className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
@@ -132,14 +132,14 @@ const Blogs = () => {
             </div>
 
             {/* Static Image on the right with overlay */}
-            <div className="flex-shrink-0 relative">
+            <div className="flex-shrink-0 relative max-w-sm mx-auto">
               {/* Main Image */}
               <Image
                 src="/images/manillablog.png"
                 alt="Blog Side Image"
                 width={300}
                 height={400}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover mx-auto"
               />
 
               {/* Overlay Image at bottom-left */}

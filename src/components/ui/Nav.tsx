@@ -5,6 +5,7 @@ import Link from "next/link";
 import { navlinks } from "../../types";
 import Button from "../ui/Button";
 import { ManillaFinance } from "../../../public/icons";
+import { motion, AnimatePresence } from "framer-motion"; // ✅ Added
 
 const Nav: React.FC = () => {
   const [activeLink, setActiveLink] = useState<string | null>("/");
@@ -41,7 +42,7 @@ const Nav: React.FC = () => {
               alt="Manilla Finance Logo"
               width={160}
               height={50}
-              className="w-[160px] h-auto"
+              className="w-30 md:w-35   h-auto"
             />
           </div>
 
@@ -69,7 +70,7 @@ const Nav: React.FC = () => {
                     <div className="flex items-center">
                       <Link
                         href={link.href}
-                        className={`font-medium text-lg text-white hover:text-gray-200 flex items-center gap-2 px-3 py-2 ${
+                        className={`font-medium text-sm text-white hover:text-gray-200 flex items-center gap-1 xl:gap-2 px-3  ${
                           activeLink === link.href ? "text-white" : ""
                         }`}
                         onClick={() => {
@@ -125,17 +126,17 @@ const Nav: React.FC = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-6">
-            <div className="text-white hover:text-brand hover:bg-white/10 cursor-pointer">
+           <div className="hidden md:flex items-center gap-4 text-sm text-nowrap">
+            <div className="text-white  rounded-full border-white/50 border py-2 px-5 hover:text-brand hover:bg-white/10 cursor-pointer">
               <a href="#">Get Started</a>
             </div>
             <Button
-              className="rounded-full bg-blue-600 text-white hover:bg-blue-700"
+              className="rounded-full  bg-blue-600 text-white hover:bg-blue-700"
               href="#"
             >
               Download App
             </Button>
-          </div>
+          </div> 
 
           {/* Mobile hamburger */}
           <div className="lg:hidden">
@@ -170,81 +171,98 @@ const Nav: React.FC = () => {
         </div>
 
         {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#001EA9] px-6 pb-6">
-            <ul className="flex flex-col gap-4">
-              {navlinks.map((link) => (
-                <li key={link.href}>
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={link.href}
-                      className={`block text-white text-lg font-medium py-2 rounded hover:bg-blue-700 ${
-                        activeLink === link.href ? "bg-blue-800" : ""
-                      }`}
-                      onClick={() => {
-                        setActiveLink(link.href);
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-
-                    {link.children && (
-                      <button
-                        type="button"
-                        className="text-white focus:outline-none"
-                        onClick={() =>
-                          setOpenDropdown(
-                            openDropdown === link.href ? null : link.href
-                          )
-                        }
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden bg-[#001EA9] px-6 pb-6"
+            >
+              <ul className="flex flex-col gap-1 py-3">
+                {navlinks.map((link) => (
+                  <li key={link.href}>
+                    <div className="flex items-center justify-between">
+                      <Link
+                        href={link.href}
+                        className={`block text-white text-lg font-medium py-2 rounded hover:text-sky-500 ${
+                          activeLink === link.href ? "text-blue-500" : ""
+                        }`}
+                        onClick={() => {
+                          setActiveLink(link.href);
+                          setMobileMenuOpen(false);
+                        }}
                       >
-                        <img
-                          src="/icons/chevron-up.png"
-                          alt=""
-                          className={`w-4 h-4 transition-transform duration-300 ${
-                            openDropdown === link.href ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                    )}
-                  </div>
+                        {link.label}
+                      </Link>
 
-                  {/* Mobile sub-links */}
-                  {link.children && openDropdown === link.href && (
-                    <ul className="pl-4 mt-1 space-y-1">
-                      {link.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            className="block text-gray-200 py-1 hover:text-white"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                      {link.children && (
+                        <button
+                          type="button"
+                          className="text-white focus:outline-none"
+                          onClick={() =>
+                            setOpenDropdown(
+                              openDropdown === link.href ? null : link.href
+                            )
+                          }
+                        >
+                          <img
+                            src="/icons/chevron-up.png"
+                            alt=""
+                            className={`w-4 h-4 transition-transform duration-300 ${
+                              openDropdown === link.href ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Mobile sub-links */}
+                    <AnimatePresence>
+                      {link.children && openDropdown === link.href && (
+                        <motion.ul
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="pl-4 mt-1 space-y-1 overflow-hidden"
+                        >
+                          {link.children.map((child) => (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className="block text-gray-200 py-1 hover:text-sky-500"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                ))}
+                <li className="pt-4 flex flex-col gap-3">
+                  <a
+                    href="#"
+                    className="bg-blue-600 rounded-full text-white text-center py-2 hover:bg-blue-700"
+                  >
+                    Get Started
+                  </a>
+                  <a
+                    href="#"
+                    className="bg-white text-blue-600 rounded-full text-center py-2 hover:bg-gray-200"
+                  >
+                    Download App
+                  </a>
                 </li>
-              ))}
-              <li className="pt-4 flex flex-col gap-3">
-                <a
-                  href="#"
-                  className="bg-blue-600 rounded-full text-white text-center py-2 hover:bg-blue-700"
-                >
-                  Get Started
-                </a>
-                <a
-                  href="#"
-                  className="bg-white text-blue-600 rounded-full text-center py-2 hover:bg-gray-200"
-                >
-                  Download App
-                </a>
-              </li>
-            </ul>
-          </div>
-        )}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

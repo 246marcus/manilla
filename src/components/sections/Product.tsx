@@ -92,7 +92,7 @@ const slideTopContent = [
       paragraph1:
         "Imagine settling all your household bills in one place, in seconds, without worrying about failed bank transfers or app downtimes.",
       paragraph2:
-        "With our smart, intuitive app, you can pay for electricity, water, internet, airtime, cable subscriptions, and more - all using your crypto wallet or debit card.",
+        "With our smart, intuitive app, you can pay for flights, stays, rides, electricity, internet, airtime, cable subscriptions, and more - all using your digital assets.",
     },
     rightSection: {
       title: "A powerful suite of tools built to simplify your financial life",
@@ -320,8 +320,8 @@ const Products = () => {
     switch (currentSlide.layoutType) {
       case 1:
         return (
-          <div onDoubleClick={() => {}} className="cursor-pointer">
-            <img src={product1.src} alt="product image" />
+          <div  onDoubleClick={() => {}} className="cursor-pointer  mx-auto ">
+            <img src={product1.src} alt="product image"  className="max-h-90 w-full max-w-2xl mx-auto"/>
           </div>
 
           // <div className="relative">
@@ -465,8 +465,8 @@ const Products = () => {
 
       case 2:
         return (
-          <div onDoubleClick={() => {}} className="cursor-pointer">
-            <img src={product2.src} alt="product image" />
+         <div  onDoubleClick={() => {}} className="cursor-pointer  mx-auto ">
+            <img src={product2.src} alt="product image"  className="max-h-90 w-full max-w-2xl mx-auto"/>
           </div>
 
           //     <div
@@ -553,8 +553,8 @@ const Products = () => {
 
       case 3:
         return (
-          <div onDoubleClick={() => {}} className="cursor-pointer">
-            <img src={product3.src} alt="product image" />
+          <div  onDoubleClick={() => {}} className="cursor-pointer  mx-auto ">
+            <img src={product3.src} alt="product image"  className="max-h-90 w-full max-w-2xl mx-auto "/>
           </div>
           //     <div
           //       className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
@@ -624,22 +624,22 @@ const Products = () => {
     <section className="relative bg-white text-gray-900 pt-8 pb-16">
       <div className="max-w-[95%] lg:max-w-[1400px] mx-auto px-6">
         {/* TOP SECTION */}
-        <div className="mb-8 max-w-full lg:max-w-6xl mx-auto">
+        <div className="mb-8  lg:mb-14 max-w-full lg:max-w-6xl mx-auto">
           {/* Header with Learn Button and Dropdown Icon */}
           <div className="relative mb-8 flex items-start justify-between">
             {/* Left button */}
-            <button className="bg-gray-100 text-black px-6 py-2 rounded-full transition-colors border border-black/20 mb-5 block mx-auto lg:mx-0 mt-9">
+            <button className="bg-gray-100 text-black px-6 py-2 rounded-full transition-colors border border-black/20 mb-1 md:translate-y-4 block mx-auto md:mt-10 lg:mx-0 mt-2 text-sm">
               Learn About Our Products
             </button>
 
             {/* Centered image */}
-            <div className="absolute left-1/2 -translate-x-1/2 -top-23">
+            <div className="absolute left-1/2 -translate-x-1/2 scale-80 -top-23 sm:-top-30 lg:-5 md:-top-20">
               <Image
                 src="/images/product.png"
                 alt="Product"
                 width={250}
                 height={100}
-                className="text-gray-600"
+                className="text-gray-600  "
               />
             </div>
 
@@ -650,31 +650,31 @@ const Products = () => {
           {/* Two Text Sections */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Left Section */}
-            <div className="space-y-3">
-              <h1 className="text-3xl font-bold text-gray-900">
+            <div className="space-y-3 md:mt-7">
+              <h1 className="text-xl md:2xl text-center lg:text-start font-semibold text-black/80">
                 {currentTopContent.leftSection.title}
               </h1>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-700 text-sm text-balance text-center lg:text-start">
                 {currentTopContent.leftSection.paragraph1}
               </p>
-              <p className="text-gray-900 font-semibold text-lg">
+              <p className="text-black/80 font-semibold  text-center md:text-start">
                 {currentTopContent.leftSection.paragraph2}
               </p>
             </div>
 
             {/* Right Section with Background */}
             <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 bg-[url('/images/Rectangle2.png')] bg-cover bg-center bg-no-repeat p-5 rounded-xl">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">
+              <h2 className="text-center lg:text-start font-bold text-gray-900 mb-6">
                 {currentTopContent.rightSection.title}
               </h2>
 
               {/* Horizontal Feature List */}
-              <div className="flex items-center justify-center gap-4 mb-6 flex-wrap lg:flex-nowrap">
+              <div className="flex items-center justify-center gap-4 mb-6 flex-wrap lg:flex-nowrap max">
                 {currentTopContent.rightSection.features.map(
                   (feature, index) => (
                     <div
                       key={index}
-                      className={`flex flex-row items-center gap-2 px-3 py-1 rounded-full whitespace-nowrap ${
+                      className={`flex flex-row items-center gap-2 px-3 py-1 rounded-full whitespace-nowrap max-w-md mx-auto ${
                         feature.isSpecial
                           ? "text-black scale-125 font-semibold"
                           : "text-gray-700 text-sm"
@@ -685,7 +685,7 @@ const Products = () => {
                         alt={feature.text}
                         width={16}
                         height={16}
-                        className="object-contain"
+                        className="object-contain "
                       />
                       <span className="text-xs font-medium">
                         {feature.text}

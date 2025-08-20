@@ -16,7 +16,7 @@ const SuitsHero: React.FC = () => {
         backgroundSize: "cover", // optional, makes sure it fills the area
       }}
     >
-      <div className="max-w-4xl mx-auto text-white flex flex-col-reverse lg:flex-row items-center  justify-between my-10 gap-6 md:gap-12">
+      <div className="max-w-4xl mx-auto text-white flex flex-col-reverse lg:flex-row items-center  justify-between my-10 mt-14 md:mt-20 gap-6 md:gap-12">
         {/* Left Content */}
         <div className="flex flex-col items-center lg:items-start md:gap-6 gap-3 max-w-lg text-center lg:text-start">
           {/* Title */}
