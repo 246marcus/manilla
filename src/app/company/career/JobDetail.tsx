@@ -40,7 +40,7 @@ export default function JobDetails({ jobArray }: JobDetailsProps) {
             </button>
           </Link>
 
-          <Link href="">
+          <Link href="/company/career/apply">
             <button className="px-6 py-3 bg-white text-blue-950 rounded-full hover:bg-blue-950 hover:text-white transition">
               Apply Now
             </button>

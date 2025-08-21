@@ -7,13 +7,12 @@ import {
 } from "../../public/icons";
 
 export const navlinks: {
-  href: string;
+  href?: string;
   label: string;
   children?: { href: string; label: string }[];
 }[] = [
   { href: "/", label: "Home" },
   {
-    href: "/company",
     label: "Company",
     children: [
       { href: "/company", label: "About Us" },
@@ -22,7 +21,6 @@ export const navlinks: {
     ],
   },
   {
-    href: "/manillaSuit/card",
     label: "Manilla Suite",
     children: [
       { href: "/manillaSuit/card", label: "Manilla Card" },
@@ -40,7 +38,7 @@ export const FooterLinks = [
       { name: "Home", link: "/" },
 
       { name: "Company", link: "/company" },
-      { name: "Manilla Suit", link: "/manillasuit" },
+      { name: "Manilla Suite", link: "/manillaSuit/card" },
       { name: "Legal", link: "/legal" },
     ],
   },
@@ -50,6 +48,7 @@ export const FooterLinks = [
     links: [
       { name: "Terms & Policy", link: "/" },
       { name: "Blog", link: "/blog" },
+      { name: "Stake MNLA", link: "https://vault.manilla.finance" },
     ],
   },
 ];
