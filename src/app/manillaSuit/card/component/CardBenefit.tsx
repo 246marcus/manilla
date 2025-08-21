@@ -59,7 +59,7 @@ const CardBenefit: React.FC = () => {
           className="flex-1 relative bg-cover bg-center text-white py-8 px-10 rounded-4xl overflow-hidden mt-[-15]"
           style={{ backgroundImage: "url('/images/Rectangle4.png')" }}
         >
-          <div className="max-w-6xl mx-auto px-6 text-center">
+          <div className="max-w-6xl mx-auto  lg:px-6 text-center">
             {/* Button */}
             <button className="bg-black text-white px-6 py-3 rounded-full font-semibold text-lg shadow-lg mt-[-]">
               Manilla Card Benefits

@@ -12,7 +12,7 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+    <div className="bg-white rounded-lg shadow-md hover:scale-95 transition-transform shadow-black/40 overflow-hidden max-w-md mx-auto min-h-48 flex flex-col">
       {/* Blog Image */}
       <div>
         <Image
@@ -25,17 +25,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       </div>
 
       {/* Blog Content */}
-      <div className="p-4 flex flex-col flex-1">
+      <div className="p-4 flex flex-col flex-1 text-center md:text-start">
         {/* Category aligned with content */}
         <p className="text-gray-700 text-sm font-medium mb-2">
           {blog.category}
         </p>
 
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+        <h2 className="  md:text-xl font-semibold text-gray-900 mb-2">
           {blog.title}
         </h2>
 
-        <p className="text-gray-600 flex-1 mb-4">
+        <p className="text-gray-600 text-sm flex-1 mb-4">
           {blog.excerpt}{" "}
           <Link
             href={`/blog/${blog.slug}`}
@@ -46,7 +46,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         </p>
 
         {/* Author info */}
-        <div className="flex items-center mt-auto">
+        <div className="flex items-center justify-center md:justify-start mt-auto">
           <Image
             src={blog.authorImage}
             alt={blog.authorName}

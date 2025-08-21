@@ -13,22 +13,22 @@ export default function BlogPage() {
     <main>
       {/* Top Banner Section */}
       <section
-        className="bg-[#1ABFC8] py-16"
+        className="bg-[#099ca4] py-16"
         style={{
           backgroundImage: "url('/images/blogbackground.png')", // replace with your overlay
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundRepeat: "repeat",
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 text-center">
+        <div className="max-w-6xl mx-auto mt-8 px-6 text-center">
           {/* Top Blog Banner Image */}
           <Image
             src="/icons/blogicon.png"
             alt="Blog Top"
             width={180}
             height={200}
-            className="mx-auto object-contain"
+            className="mx-auto object-contain scale-75 md:scale-90"
           />
 
           {/* Learn More Button */}
@@ -37,37 +37,54 @@ export default function BlogPage() {
           </button>
 
           {/* Left and Right Images */}
-          <div className="flex flex-col lg:flex-row items-center justify-center mt-5 gap-y-6 lg:gap-y-0 lg:gap-x-10">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center mt-5 lg:mt-12 gap-y-6 lg:gap-y-0 lg:gap-x-10">
             {/* Left image */}
-            <div className="flex-shrink-0">
-              <Image
+            <div className=" flex flex-col justify-center lg:items-start items-center  lg:text-start max-w-md gap-3 lg:pt-8 ">
+              <p className=" flex gap-1 md:gap-2 items-center border-b font-semibold text-sm ">
+                From Insight to Impact
+              </p>
+              <h2 className="font-bold text-2xl md:text-4xl">
+                Insights and trends for smarter finance.
+              </h2>
+              <p className=" text-sm p-2 bg-black/40 rounded-2xl text-white transition-transform  hover:scale-95">
+                Explore expert advice, product updates, and real-world guides to
+                help you navigate payments, crypto, and smarter money
+                management.
+              </p>
+
+              {/*  <Image
                 src="/images/blogText1.png"
                 alt="Left Side Image"
                 width={600} // increased width
                 height={700} // increased height
                 className="rounded-lg object-cover"
-              />
+              /> */}
             </div>
 
             {/* Right images container */}
             <div className="flex-shrink-0 relative">
-              <Image
-                src="/images/manillablog1.png"
-                alt="Blog Side Image"
-                width={400} // increased width
-                height={650} // increased height
-                className="rounded-lg object-cover"
-              />
-
-              <Link href="/blog" passHref>
+              {/* Static Image on the right with overlay */}
+              <div className="flex-shrink-0 relative max-w-sm mx-auto">
+                {/* Main Image */}
                 <Image
-                  src="/images/bloglittleimage.png"
-                  alt="Overlay Decoration"
-                  width={140} // base size for small screens
-                  height={120}
-                  className="absolute top-[63%] left-0 rounded-lg cursor-pointer w-[140px] h-[60px] md:w-[170px] md:h-[70px] lg:w-[170px] lg:h[100px]"
+                  src="/images/manillablog.png"
+                  alt="Blog Side Image"
+                  width={300}
+                  height={400}
+                  className="rounded-lg object-cover mx-auto"
                 />
-              </Link>
+
+                {/* Overlay Image at bottom-left */}
+                <Link href="/blog" passHref>
+                  <img
+                    src="/images/bloglittleimage.png"
+                    alt="Overlay Decoration"
+                    width={130}
+                    height={100}
+                    className="absolute bottom-0 left-0 rounded-lg cursor-pointer transition-transform  hover:scale-95"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
