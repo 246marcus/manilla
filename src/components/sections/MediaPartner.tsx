@@ -8,7 +8,7 @@ const MediaPartners: React.FC = () => {
       {/* Top dark section */}
       {/* Top dark section */}
       <div
-        className="bg-gray-900 text-white rounded-t-[2rem] px-4 py-12 sm:py-16"
+        className="bg-gray-900 text-white rounded-t-[2rem] px-4 pt-12 pb-4 sm:pt-16"
         style={{
           backgroundImage: `url(${darkbg.src})`,
           backgroundPosition: "center",
@@ -33,7 +33,7 @@ const MediaPartners: React.FC = () => {
         </div>
 
         {/* Trusted Platform Rolling Effect */}
-        <div className="relative z-10 mt-16 w-full overflow-hidden">
+        <div className="relative z-10 mt-20 w-full overflow-hidden">
           {/* <div className="flex flex-nowrap animate-marquee will-change-transform">
             
           <img
@@ -103,140 +103,27 @@ const MediaPartners: React.FC = () => {
           </div> */}
 
            {/* top */}
-        <div className="flex animate-roll md:gap-x-4  scale-80 ">
-          
-          <img
-            src="/images/kkk1.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk2.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk1.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk2.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-        </div>
-      {/* bottom */}
-        <div className="flex animate-roll md:gap-x-4  scale-80 ">
+        <div className="flex animate-roll md:gap-x-4  h-28 md:h-34 ">
           
           <img
             src="/images/ddd1.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100   "
-          />
-          <img
-            src="/images/ddd2.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/ddd3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/ddd5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
+            className="w-auto max-w-none   "
           />
           <img
             src="/images/ddd1.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
+            className="w-auto max-w-none -translate-x-18  "
           />
           <img
-            src="/images/ddd2.png"
+            src="/images/ddd1.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
+            className="w-auto max-w-none   "
           />
+        
          
-          <img
-            src="/images/ddd3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
+        
          
-          <img
-            src="/images/ddd5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
         </div>
         </div>
       </div>

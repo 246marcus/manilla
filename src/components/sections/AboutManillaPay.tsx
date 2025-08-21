@@ -5,8 +5,9 @@ const AboutManillaPay = () => {
   return (
     <section className="relative bg-white text-gray-900 pt-8 pb-16 ">
       <div className="max-w-7xl mx-auto px-6 ">
-        {/* Top Row */}
-        <div className=" max-w-6xl mx-auto ">
+        <div className="">
+          {/* Top Row */}
+
           <div className="relative flex items-center mb-8 w-full">
             {/* Left Button */}
             <div className="hidden md:block lg:mt-10 lg:translate-y-8">
@@ -18,14 +19,14 @@ const AboutManillaPay = () => {
             </div>
 
             {/* Center Icon */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 -mt-8 md:-mt-10 lg:-mt-12">
+            <div className="absolute left-1/2 transform -translate-x-1/2 -mt-2 md:-mt-5 lg:-mt-12">
               <button className="p-4 bg-transparent lg:scale-90 transition-transform">
                 <img
                   src="/icons/aboutusIcon.png"
                   alt="About Us Icon"
                   width={250}
                   height={150}
-                  className="object-contain w-36 sm:w-44 md:w-56 lg:w-64"
+                  className="object-contain w-40 sm:w-44 md:w-56 lg:w-64"
                 />
               </button>
             </div>
@@ -35,9 +36,9 @@ const AboutManillaPay = () => {
           </div>
 
           {/* Main Content */}
-          <div className="my-12 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
+          <div className="mt-12 lg:my-0 flex flex-col lg:flex-row items-center lg:justify-between  gap-12">
             {/* Left Column - Text */}
-            <div className="max-w-lg text-center lg:text-left px-3 text-black/80 ">
+            <div className="max-w-lg text-center lg:text-left px-3 lg:px-0 text-black/80 lg:flex-1 ">
               <h2 className=" text-2xl md:text-4xl font-bold mb-4">
                 Redefining How Nigeria Pay
               </h2>
@@ -56,28 +57,28 @@ const AboutManillaPay = () => {
 
               {/* Buttons */}
               <div className="flex gap-4 flex-wrap justify-center lg:justify-start items-center">
-                <button className="px-6 py-3 mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition">
+                <button className="px-6 py-3 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition">
                   Click to learn more about us
                 </button>
-                <button className="px-6 py-2 md:mt-2 bg-black/90 text-white rounded-full transition">
+                <button className="px-6 py-2 md:mt-2 bg-black/90 hover:bg-black/80 text-white rounded-full cursor-pointer transition">
                   About Us
                 </button>
               </div>
             </div>
 
             {/* Right Column - Image */}
-            <div className="relative flex justify-center lg:justify-end lg:pr-5">
+            <div className="lg:flex lg:flex-1 justify-center lg:justify-end ">
               <img
                 src="/images/aboutmanillapay1.png"
                 alt="Right Side Image"
-                className="relative z-10 h-60 md:h-80 md:w-100 lg:w-120 object-contain"
+                className="relative z-10 h-70 sm:h-90 lg:h-auto lg:max-h-140 md:w-120 lg:w-auto object-contain"
               />
             </div>
           </div>
         </div>
         {/* Bottom Section */}
         <section
-          className="relative bg-black/10 bg-cover  rounded-2xl bg-center py-8 lg:py-14 mb-12"
+          className="relative bg-black/10 bg-cover  rounded-2xl bg-center py-8  mb-12"
           style={{ backgroundImage: "url('/images/aboutmanillapay2.png')" }}
         >
           <div

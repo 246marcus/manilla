@@ -49,46 +49,35 @@ const DevelopmentPartners: React.FC = () => {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="relative z-10 mt-0 w-full overflow-hidden">
-          <div className="flex flex-nowrap animate-marquee will-change-transform">
+        <div className="hidden md:block relative z-10 mt-0 w-full overflow-hidden">
+          <div className="flex flex-nowrap animate-roll  ">
             <img
               src="/images/aaa1.png"
-              alt="Trusted by top platforms"
-              className="w-auto max-w-none scale-60 md:scale-80  "
+              className=" w-auto  max-w-none scale-60 md:scale-80"
             />
             <img
-              src="/images/aaa2.png"
-              alt=""
-              aria-hidden="true"
-              className="w-auto max-w-none scale-60 md:scale-70 lg:scale-90"
+              src="/images/aaa1.png"
+              className=" w-auto  max-w-none scale-60 md:scale-80"
             />
             <img
-              src="/images/aaa3.png"
-              alt="Trusted by top platforms"
-              className="w-auto max-w-none scale-60 md:scale-70  "
+              src="/images/aaa1.png"
+              className="w-auto max-w-none scale-60 md:scale-80"
             />
             <img
-              src="/images/aaa4.png"
-              alt=""
-              aria-hidden="true"
-              className="w-auto max-w-none scale-60 md:scale-70 "
+              src="/images/aaa1.png"
+              className="w-auto max-w-none scale-60 md:scale-80"
             />
+
+          </div>
+        </div>
+        {/* optional mobile */}
+        <div className="relative z-10 mt-0 w-full overflow-hidden md:hidden">
+          <div className="flex flex-nowrap animate-roll  ">
             <img
-              src="/images/aaa5.png"
-              alt="Trusted by top platforms"
-              className="w-auto max-w-none scale-60 md:scale-70  "
+              src="/images/aaa1.png"
+              className=" w-auto max-w-none scale-60 md:scale-80 -translate-x-5/12  "
             />
-            <img
-              src="/images/aaa6.png"
-              alt=""
-              aria-hidden="true"
-              className="w-auto max-w-none scale-60 md:scale-70 "
-            />
-            <img
-              src="/images/aaa7.png"
-              alt="Trusted by top platforms"
-              className="w-auto max-w-none scale-60 md:scale-70  "
-            />
+
           </div>
         </div>
       </div>

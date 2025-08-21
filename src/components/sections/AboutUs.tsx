@@ -100,21 +100,19 @@ const AboutUs = () => {
         </div>
 
         {/* Two sections */}
-        <div className="flex flex-col md:flex-row  md:items-center max-w-5xl mx-auto justify-center lg:justify-between items-stretch gap-4 md:gap-6 lg:gap-8  py-4">
+        <div className="flex flex-col md:flex-row md:items-center max-w-7xl mx-auto  gap-4 md:gap-6 lg:gap-8  py-4">
           {/* Left Image */}
-          <div className="flex-shrink-0 w-full md:w-1/2">
-            <Image
+          <div className=" w-full md:flex-1 ">
+            <img
               src="/images/aboutus.png"
               alt="About Image 1"
-              width={500}
-              height={500}
-              className="object-contain w-full h-[350px] sm:h-[400px] max-w-150 "
+              className="object-contain w-full h-90 lg:max-h-150 sm:h-110 md:h-auto  "
             />
           </div>
 
           {/* Right Scroll */}
-          <div className="w-full md:w-1/2 relative flex flex-col h-[350px] sm:h-[400px] md:h-[500px] my-6">
-            <div className="flex items-center justify-center lg:justify-start  gap-2 mb-4">
+          <div className="w-full md:flex-1 relative flex flex-col h-[350px] sm:h-[400px] md:h-[500px] my-6">
+            <div className="flex items-center justify-center lg:justify-start lg:items-end  gap-2 mb-4">
               <h2 className="text-lg font-semibold">Our Services</h2>
               <ChevronDownIcon className="w-5 h-5 text-gray-600" />
             </div>

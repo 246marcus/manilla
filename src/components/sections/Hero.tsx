@@ -7,7 +7,7 @@ import heropicture from "../../../public/images/heropicture.png";
 
 const Hero = () => {
   return (
-    <section className="relative  lg:pt-30 md:pt-30 pt-25 lg:pb-10 hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6 ">
+    <section className="relative lg:pt-30 md:pt-30 pt-25  hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6 ">
       
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -103,78 +103,49 @@ const Hero = () => {
       </div>
 
       {/* Trusted Platform Rolling Effect */}
-      <div className="relative z-10 my-4 py-2 md:mt-16 w-screen overflow-hidden bg-black/50 scale-y-80">
+      <div className="relative z-10 mt-4  md:mt-16 w-screen overflow-hidden ">
 
       {/* top */}
-        <div className="flex animate-roll md:gap-x-4  scale-80 ">
+        <div className="flex animate-roll h-28 md:h-40 mt-4 ">
           
           <img
             src="/images/kkk1.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk2.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
+            className="w-auto max-w-none  md:scale-100  "
           />
           <img
             src="/images/kkk1.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
+            className="w-auto max-w-none  md:scale-100  "
           />
           <img
-            src="/images/kkk2.png"
+            src="/images/kkk1.png"
             alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
+            className="w-auto max-w-none  md:scale-100  "
           />
+
+          
+          <img
+            src="/images/kkk1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none  md:scale-100  "
+          />
+          <img
+            src="/images/kkk1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none  md:scale-100  "
+          />
+          <img
+            src="/images/kkk1.png"
+            alt="Trusted by top platforms"
+            className="w-auto max-w-none  md:scale-100  "
+          />
+
+
          
-          <img
-            src="/images/kkk3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/kkk5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/kkk6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
         </div>
       {/* bottom */}
-        <div className="flex animate-roll md:gap-x-4  scale-80 ">
+        {/* <div className="flex animate-roll md:gap-x-4  scale-80 ">
           
           <img
             src="/images/ddd1.png"
@@ -240,7 +211,7 @@ const Hero = () => {
             alt="Trusted by top platforms"
             className="w-auto max-w-none scale-90 md:scale-100  "
           />
-        </div>
+        </div> */}
 
 
         
