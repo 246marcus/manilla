@@ -7,13 +7,12 @@ import {
 } from "../../public/icons";
 
 export const navlinks: {
-  href: string;
+  href?: string;
   label: string;
   children?: { href: string; label: string }[];
 }[] = [
   { href: "/", label: "Home" },
   {
-    href: "/company",
     label: "Company",
     children: [
       { href: "/company", label: "About Us" },
@@ -22,7 +21,6 @@ export const navlinks: {
     ],
   },
   {
-    href: "/manillaSuit/card",
     label: "Manilla Suite",
     children: [
       { href: "/manillaSuit/card", label: "Manilla Card" },

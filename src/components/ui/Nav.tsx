@@ -82,21 +82,38 @@ const Nav: React.FC = () => {
 
               <ul className="flex justify-center items-center gap-8 relative whitespace-nowrap">
                 {navlinks.map((link) => (
-                  <li key={link.href} className="relative">
+                  <li key={link.label} className="relative">
                     <div className="flex items-center">
-                      <Link
-                        href={link.href}
-                        className={`font-medium text-sm text-white hover:text-gray-200 flex items-center gap-1 xl:gap-2 px-3 ${
-                          activeLink === link.href ? "text-white" : ""
-                        }`}
-                        onClick={() => {
-                          setActiveLink(link.href);
-                          setMobileMenuOpen(false);
-                          setOpenDropdown(null);
-                        }}
-                      >
-                        {link.label}
-                      </Link>
+                      {link.href && !link.children ? (
+                        // Normal clickable link
+                        <Link
+                          href={link.href}
+                          className={`font-medium text-sm text-white hover:text-gray-200 px-3 ${
+                            activeLink === link.href ? "text-white" : ""
+                          }`}
+                          onClick={() => {
+                            setActiveLink(link.href!);
+                            setMobileMenuOpen(false);
+                            setOpenDropdown(null);
+                          }}
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        // Parent with children (button only)
+                        <button
+                          type="button"
+                          className="font-medium text-sm text-white px-3 hover:text-gray-200"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenDropdown(
+                              openDropdown === link.label ? null : link.label
+                            );
+                          }}
+                        >
+                          {link.label}
+                        </button>
+                      )}
 
                       {link.children && (
                         <button
@@ -105,7 +122,7 @@ const Nav: React.FC = () => {
                           onClick={(e) => {
                             e.stopPropagation();
                             setOpenDropdown(
-                              openDropdown === link.href ? null : link.href
+                              openDropdown === link.label ? null : link.label
                             );
                           }}
                         >
@@ -113,7 +130,7 @@ const Nav: React.FC = () => {
                             src="/icons/chevron-up.png"
                             alt=""
                             className={`w-4 h-4 transition-transform duration-300 ${
-                              openDropdown === link.href ? "rotate-180" : ""
+                              openDropdown === link.label ? "rotate-180" : ""
                             }`}
                           />
                         </button>
@@ -121,14 +138,14 @@ const Nav: React.FC = () => {
                     </div>
 
                     {/* Dropdown */}
-                    {link.children && openDropdown === link.href && (
+                    {link.children && openDropdown === link.label && (
                       <ul className="absolute left-0 mt-2 bg-white text-gray-800 rounded-md shadow-lg min-w-[180px] py-2 z-50">
                         {link.children.map((child) => (
                           <li key={child.href}>
                             <Link
                               href={child.href}
                               className="block px-4 py-2 hover:bg-gray-100"
-                              onClick={() => setOpenDropdown(null)} // ✅ close after click
+                              onClick={() => setOpenDropdown(null)}
                             >
                               {child.label}
                             </Link>
@@ -200,21 +217,37 @@ const Nav: React.FC = () => {
             >
               <ul className="flex flex-col gap-1 py-3">
                 {navlinks.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.label}>
                     <div className="flex items-center justify-between">
-                      <Link
-                        href={link.href}
-                        className={`block text-white text-lg font-medium py-2 rounded hover:text-sky-500 ${
-                          activeLink === link.href ? "text-blue-500" : ""
-                        }`}
-                        onClick={() => {
-                          setActiveLink(link.href);
-                          setMobileMenuOpen(false);
-                          setOpenDropdown(null); // ✅ close on mobile link click
-                        }}
-                      >
-                        {link.label}
-                      </Link>
+                      {link.href && !link.children ? (
+                        // Normal link
+                        <Link
+                          href={link.href}
+                          className={`block text-white text-lg font-medium py-2 rounded hover:text-sky-500 ${
+                            activeLink === link.href ? "text-blue-500" : ""
+                          }`}
+                          onClick={() => {
+                            setActiveLink(link.href!);
+                            setMobileMenuOpen(false);
+                            setOpenDropdown(null);
+                          }}
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        // Parent with children (button only)
+                        <button
+                          type="button"
+                          className="block text-white text-lg font-medium py-2 rounded hover:text-sky-500"
+                          onClick={() =>
+                            setOpenDropdown(
+                              openDropdown === link.label ? null : link.label
+                            )
+                          }
+                        >
+                          {link.label}
+                        </button>
+                      )}
 
                       {link.children && (
                         <button
@@ -222,7 +255,7 @@ const Nav: React.FC = () => {
                           className="text-white focus:outline-none"
                           onClick={() =>
                             setOpenDropdown(
-                              openDropdown === link.href ? null : link.href
+                              openDropdown === link.label ? null : link.label
                             )
                           }
                         >
@@ -230,7 +263,7 @@ const Nav: React.FC = () => {
                             src="/icons/chevron-up.png"
                             alt=""
                             className={`w-4 h-4 transition-transform duration-300 ${
-                              openDropdown === link.href ? "rotate-180" : ""
+                              openDropdown === link.label ? "rotate-180" : ""
                             }`}
                           />
                         </button>
@@ -239,7 +272,7 @@ const Nav: React.FC = () => {
 
                     {/* Mobile sub-links */}
                     <AnimatePresence>
-                      {link.children && openDropdown === link.href && (
+                      {link.children && openDropdown === link.label && (
                         <motion.ul
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
@@ -254,7 +287,7 @@ const Nav: React.FC = () => {
                                 className="block text-gray-200 py-1 hover:text-sky-500"
                                 onClick={() => {
                                   setMobileMenuOpen(false);
-                                  setOpenDropdown(null); // ✅ close dropdown after child click
+                                  setOpenDropdown(null);
                                 }}
                               >
                                 {child.label}
