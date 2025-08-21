@@ -59,12 +59,12 @@ const CardHero: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Content (Image) */}
-        <div className=" lg:flex-7/12 h-50 md:h-70 lg:h-auto justify-center flex flex-col items-center gap-4 ">
+        {/* Right Content (Image) */}   {/* scale-110 sm:scale-90 md:scale-90 lg:scale-x-120 lg:scale-y-150 lg:-translate-x-30  lg:h-auto sm:translate-y-12 */}
+        <div className=" lg:flex-7/12 mt-6 lg:mt-0 justify-center flex flex-col items-center gap-4 ">
           <img
             src={card1.src}
             alt="Token Icon"
-            className="scale-110 sm:scale-90 md:scale-90 lg:scale-x-120 lg:scale-y-150 lg:-translate-x-30  lg:h-auto sm:translate-y-12  "
+            className="  "
           />
         </div>
       </div>

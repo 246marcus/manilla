@@ -49,7 +49,7 @@ const Blogs = () => {
   };
 
   return (
-    <section className=" p-6 lg:px-0">
+    <section className=" p-6 ">
       <div
         className="max-w-7xl bg-cyan-400/90 mx-auto p-6 text-center py-10 rounded-2xl  mt-0"
         style={{

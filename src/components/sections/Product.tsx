@@ -1,10 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import product1 from "../../../public/images/product1.png";
 import product2 from "../../../public/images/product2.png";
 import product3 from "../../../public/images/product3.png";
+import productA from "../../../public/images/ccc1.png";
+import productB from "../../../public/images/ccc2.png";
+import productC from "../../../public/images/ccc3.png";
 
 type BlackCardSlide = {
   layoutType: 1;
@@ -303,6 +306,7 @@ const Products = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -312,6 +316,17 @@ const Products = () => {
     setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
+  // autoplay every 5s unless paused
+  useEffect(() => {
+    if (paused) return;
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, paused]);
+
   const currentSlide = slides[currentIndex];
   const currentTopContent = slideTopContent[currentIndex];
 
@@ -320,8 +335,22 @@ const Products = () => {
     switch (currentSlide.layoutType) {
       case 1:
         return (
-          <div  onDoubleClick={() => {}} className="cursor-pointer  mx-auto ">
-            <img src={product1.src} alt="product image"  className="max-h-90 w-full max-w-2xl mx-auto"/>
+          <div  onDoubleClick={() => {}}
+            className="relative cursor-pointer mx-auto"
+            onMouseEnter={() => setPaused(true)} // stop on hover
+            onMouseLeave={() => setPaused(false)} // resume when mouse leaves
+            onTouchStart={() => setPaused(true)} // stop on mobile touch
+            onTouchEnd={() => setPaused(false)}>
+            <img
+              src={product1.src}
+              alt="product image"
+              className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
+            />
+            <img
+              src={productA.src}
+              alt="product image"
+              className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
+            />
           </div>
 
           // <div className="relative">
@@ -465,10 +494,23 @@ const Products = () => {
 
       case 2:
         return (
-         <div  onDoubleClick={() => {}} className="cursor-pointer  mx-auto ">
-            <img src={product2.src} alt="product image"  className="max-h-90 w-full max-w-2xl mx-auto"/>
+          <div  onDoubleClick={() => {}}
+            className="relative cursor-pointer mx-auto"
+            onMouseEnter={() => setPaused(true)} // stop on hover
+            onMouseLeave={() => setPaused(false)} // resume when mouse leaves
+            onTouchStart={() => setPaused(true)} // stop on mobile touch
+            onTouchEnd={() => setPaused(false)} >
+            <img
+              src={product2.src}
+              alt="product image"
+              className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
+            />
+            <img
+              src={productB.src}
+              alt="product image"
+              className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
+            />
           </div>
-
           //     <div
           //       className="relative bg-cover bg-amber-300 bg-center rounded-xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
           //       style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
@@ -553,8 +595,24 @@ const Products = () => {
 
       case 3:
         return (
-          <div  onDoubleClick={() => {}} className="cursor-pointer  mx-auto ">
-            <img src={product3.src} alt="product image"  className="max-h-90 w-full max-w-2xl mx-auto "/>
+          <div
+            onDoubleClick={() => {}}
+            className="relative cursor-pointer mx-auto"
+            onMouseEnter={() => setPaused(true)} // stop on hover
+            onMouseLeave={() => setPaused(false)} // resume when mouse leaves
+            onTouchStart={() => setPaused(true)} // stop on mobile touch
+            onTouchEnd={() => setPaused(false)} // resume when touch ends
+          >
+            <img
+              src={product3.src}
+              alt="product image"
+              className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
+            />
+            <img
+              src={productC.src}
+              alt="product image"
+              className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
+            />
           </div>
           //     <div
           //       className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
@@ -621,7 +679,7 @@ const Products = () => {
   };
 
   return (
-    <section className="relative bg-white text-gray-900 pt-8 pb-16">
+    <section className="relative bg-white text-gray-900 pt-8 pb-20 md:pb-8">
       <div className="max-w-[95%] lg:max-w-[1400px] mx-auto px-6">
         {/* TOP SECTION */}
         <div className="mb-8  lg:mb-14 max-w-full lg:max-w-6xl mx-auto">
@@ -718,7 +776,7 @@ const Products = () => {
         {renderSlideContent()}
 
         {/* INDICATOR */}
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="md:flex justify-center hidden  gap-2 mt-6">
           {slides.map((_, index) => {
             // decide the active color
             const activeColor =
@@ -744,7 +802,7 @@ const Products = () => {
         </div>
 
         {/* NAV ARROWS */}
-        <div className="flex justify-center gap-4 mt-4">
+        <div className="flex items-center justify-center   mt-4  absolute bottom-6 md:bottom-35 left-1/2 -translate-x-1/2    gap-4">
           <button
             onClick={prevSlide}
             className="bg-black/80 p-2 rounded-full  shadow-md text-white"

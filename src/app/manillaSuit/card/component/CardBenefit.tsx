@@ -53,15 +53,15 @@ const CardBenefit: React.FC = () => {
           Here are the benefits you can get just for owing a Manilla card
         </p>
       </div>
-      <div className="md:max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-10 px-4">
+      <div className="md:max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-10 ">
         {/* Right side - Illustration */}
         <section
-          className="flex-1 relative bg-cover bg-center text-white py-8 px-10 rounded-4xl overflow-hidden mt-[-15]"
-          style={{ backgroundImage: "url('/images/Rectangle4.png')" }}
+          className="flex-1 bg-blue-800 relative bg-cover bg-center text-white py-8  px-6  md:px-8 rounded-4xl overflow-hidden mt-[-15]"
+          style={{ backgroundImage: "url('/images/benefitcardPartern.png')" }}
         >
           <div className="max-w-6xl mx-auto  lg:px-6 text-center">
             {/* Button */}
-            <button className="bg-black text-white px-6 py-3 rounded-full font-semibold text-lg shadow-lg mt-[-]">
+            <button className="bg-black text-white px-6 py-1  md:py-3 rounded-full font-semibold text-lg shadow-lg mt-[-]">
               Manilla Card Benefits
             </button>
 
