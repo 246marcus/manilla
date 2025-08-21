@@ -43,7 +43,7 @@ const JobOverview: React.FC<JobOverviewProps> = ({
       </div>
 
       {/* Title */}
-      <h1 className="text-3xl px-10 md:text-4xl font-semibold text-white my-8 mt-20">
+      <h1 className="text-3xl px-10 md:text-4xl font-bold text-center md:text-start md:font-semibold text-white my-8 mt-20">
         - {title}
       </h1>
 
@@ -85,7 +85,7 @@ const JobOverview: React.FC<JobOverviewProps> = ({
       </div>
 
       {/* Intro */}
-      <div className="px-10 rounded-b-[70px] pt-6 pb-20  shadow-[#445189] bg-[#242f60] ">
+      <div className="px-10 lg:rounded-b-[70px] pt-6 pb-20  shadow-[#445189] bg-[#242f60] ">
         <div className="mb-6">
           <h2 className="italic text-white text-lg mb-3">{" ~  " + apply}</h2>
           <p className="text-gray-300 text-sm leading-relaxed">{discription}</p>

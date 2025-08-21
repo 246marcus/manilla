@@ -54,9 +54,9 @@ const Blogs = () => {
         className="max-w-7xl bg-cyan-400/90 mx-auto p-6 text-center py-10 rounded-2xl  mt-0"
         style={{
           backgroundImage: "url('/images/blogbackground.png')", // replace with your overlay
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundRepeat: "repeat",
         }}
       >
         {/* Top Blog Banner Image */}

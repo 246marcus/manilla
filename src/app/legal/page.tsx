@@ -346,12 +346,13 @@ function LegalAccordion() {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 600,
-              fontSize: "24px",
+              /* fontSize: "24px", */
               lineHeight: "25px",
               color: "#344054",
               marginBottom: "1rem",
               verticalAlign: "text-top",
             }}
+            className="md:text-3xl"
           >
             {activeItem.title}
           </h2>
@@ -376,7 +377,7 @@ function LegalAccordion() {
                     >
                       {number}.
                     </span>{" "}
-                    <span>{text}</span>
+                    <span className="text-sm text-center md:text-start">{text}</span>
                   </p>
                 );
               } else {
@@ -415,38 +416,42 @@ function LegalAccordion() {
 export default function LegalPage() {
   return (
     <main>
-      <section className="mt-12 py-16 max-w-6xl mx-auto px-6 relative">
-        <div className="flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:space-x-20">
+      <section className="mt-12 py-10 max-w-6xl mx-auto px-6 relative">
+        <div className="absolute bg-green-400/70 p-25 top-10 md:left-3 left-0.5 blur-[100px]"></div>
+        <div className="absolute hidden lg:block bg-cyan-300 p-20 lg:p-24 bottom-20 lg:-bottom-15 right-0.5 md:right-6 blur-[100px]"></div>
+
+        <div className="flex flex-col items-center lg:flex-row lg:items-start lg:justify-between lg:space-x-20">
           {/* Button */}
-          <button className="px-6 py-3 bg-white text-black rounded-full border border-gray-300 transition mb-6 lg:mb-0 hidden lg:block">
+          <button className=" py-2 bg-white text-black rounded-full border border-gray-300 transition mb-6 lg:mb-0 hidden lg:block lg:flex-1 text-xs lg:translate-y-8">
             Learn About Our Products
           </button>
 
           {/* Image + content */}
-          <div className="max-w-lg text-center">
+          <div className="max-w-lg text-center lg:flex-1">
             <img
               src="/icons/bloglegal.png"
               alt="Blog Top"
               width={250}
               height={250}
-              className="object-contain mx-auto"
+              className="object-contain mx-auto scale-63 md:scale-80"
             />
 
-            <div className="mt-8">
-              <button className="mb-4 px-6 py-3 bg-white text-black rounded-full border border-gray-300">
+            <div className=" md:mt-6">
+              <button className="mb-4 px-6 py-1 md:py-2  bg-white text-black rounded-full border border-gray-300">
                 Learn about our service
               </button>
 
-              <h1 className="text-3xl font-semibold mb-2">
+              <h1 className=" text-xl md:text-4xl lg:text-nowrap font-semibold mb-2">
                 Your trust is our priority
               </h1>
 
-              <p className="text-gray-600">
+              <p className="text-black/70  text-sm">
                 Reviewing our terms, policies, and standards to understand how
                 to protect your rights, data, and transactions.
               </p>
             </div>
           </div>
+          <div className="lg:flex-1"></div>
         </div>
       </section>
 
