@@ -48,6 +48,7 @@ export const FooterLinks = [
     links: [
       { name: "Terms & Policy", link: "/" },
       { name: "Blog", link: "/blog" },
+      { name: "Stake MNLA", link: "https://vault.manilla.finance" },
     ],
   },
 ];
