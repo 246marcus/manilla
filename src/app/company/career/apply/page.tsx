@@ -1,11 +1,11 @@
 import React from "react";
-import JobOverview from "../JobOverview";
+import CarrierApply from "../CarrierApply";
 
 export default function CareersApply() {
   return (
     <main className="">
       <section>
-        <JobOverview title={""} apply={""} discription={""} highlights={[]} />
+        <CarrierApply />
       </section>
     </main>
   );

@@ -40,7 +40,7 @@ export const FooterLinks = [
       { name: "Home", link: "/" },
 
       { name: "Company", link: "/company" },
-      { name: "Manilla Suit", link: "/manillasuit" },
+      { name: "Manilla Suit", link: "/manillaSuit/card" },
       { name: "Legal", link: "/legal" },
     ],
   },
