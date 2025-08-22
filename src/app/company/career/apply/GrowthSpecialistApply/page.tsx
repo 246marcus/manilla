@@ -3,6 +3,7 @@ import JobDetails from "../../JobDetail";
 import JobOverview from "../../JobOverview";
 
 const GrowthSpecialistApply: React.FC = () => {
+  const displayTitle="Growth Hack Specialist"
   const jobArray = [
     {
       title: "Job Description",
@@ -53,7 +54,7 @@ const GrowthSpecialistApply: React.FC = () => {
           "Excellent understanding of marketing funnels, user acquisition strategies, and conversion optimization techniques.",
         ]}
       />
-      <JobDetails jobArray={jobArray} />
+      <JobDetails jobArray={jobArray} displayTitle={displayTitle}/>
     </section>
   );
 };

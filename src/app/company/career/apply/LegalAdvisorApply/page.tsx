@@ -3,6 +3,7 @@ import JobDetails from "../../JobDetail";
 import JobOverview from "../../JobOverview";
 
 const LegalAdvisorApply: React.FC = () => {
+  const displayTitle = "Legal Advisor"
   const jobArray = [
     {
       title: "Job Description",
@@ -55,7 +56,7 @@ const LegalAdvisorApply: React.FC = () => {
           "Strong understanding of Nigerian corporate law, contracts law, intellectual property law, and data privacy regulations.",
         ]}
       />
-      <JobDetails jobArray={jobArray} />
+      <JobDetails jobArray={jobArray} displayTitle={displayTitle} />
     </section>
   );
 };
