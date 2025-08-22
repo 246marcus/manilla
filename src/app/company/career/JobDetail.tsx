@@ -45,11 +45,7 @@ export default function JobDetails({
           </Link>
 
           <Link
-            href={{
-              pathname: "/company/career/apply",
-              query: { title: displayTitle },
-            }}
-          >
+          href={`/company/career/apply/${encodeURIComponent(displayTitle)}`}>
             <button className="px-6 py-3 bg-white text-blue-950 rounded-full hover:bg-blue-950 hover:text-white transition">
               Apply Now
             </button>

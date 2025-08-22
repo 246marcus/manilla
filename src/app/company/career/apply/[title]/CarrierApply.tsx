@@ -1,17 +1,17 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams } from "next/navigation";
 import Link from "next/link";
-import CareerForm from "./CareerForm";
-import careerbg from "../../../../public/images/careerbg.png";
+import CareerForm from "../../CareerForm";
+import careerbg from "../../../../../../public/images/careerbg.png";
+import { useEffect, useState } from "react";
 
 
 
 
 
-export default function HomePage() {
+export default function CarrierApply({ title }: { title: string }) {
 
-  const searchParams = useSearchParams();
-  const title = searchParams.get("title") ;
+ 
   console.log(title);
   
   return (
