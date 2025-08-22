@@ -5,24 +5,20 @@ import CareerForm from "../../CareerForm";
 import careerbg from "../../../../../../public/images/careerbg.png";
 import { useEffect, useState } from "react";
 
-
-
-
-
 export default function CarrierApply({ title }: { title: string }) {
-
- 
   console.log(title);
-  
+
   return (
-    <section className="bg-gradient-to-b bg-white rounded-t-3xl rounded-b-3xl shadow-lg  overflow-hidden"  >
-      <div className=" pt-10 md:pt-12 pb-14 lg:pb-20 xl:pb-22 rounded-b-2xl xl:rounded-b-4xl "
-      style={{
-        backgroundImage: `url(${careerbg.src})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}>
+    <section className="bg-gradient-to-b bg-white rounded-t-3xl rounded-b-3xl shadow-lg  overflow-hidden">
+      <div
+        className=" pt-10 md:pt-12 pb-14 lg:pb-20 xl:pb-22 rounded-b-2xl xl:rounded-b-4xl "
+        style={{
+          backgroundImage: `url(${careerbg.src})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         {" "}
         {/* Breadcrumb */}
         <div className=" absolute  hidden md:flex left-8 top-8">
