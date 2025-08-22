@@ -1,7 +1,9 @@
-import CarrierApply from "./CarrierApply"; // one level up
+import CarrierApply from "./CarrierApply";
 
-export default async function Page({ params }: { params: { title: string } }) {
-  const { title } = await params; // ✅ await before using
+export default async function Page(props: {
+  params: Promise<{ title: string }>;
+}) {
+  const { title } = await props.params; // ✅ Await the params
   const decodedTitle = decodeURIComponent(title);
 
   return (
