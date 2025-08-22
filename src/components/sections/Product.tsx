@@ -276,7 +276,8 @@ const Products = () => {
       leftImage: "/images/leftimg3.png",
       blueCard: {
         title: "Manilla Token (MNLA)",
-        paragraph: "The Token That Pays You Back.",
+        paragraph:
+          "Get automated discounts instantly when executing utility and service payments.",
         features: [
           {
             icon: "/icons/iconproduct.png",
@@ -284,12 +285,15 @@ const Products = () => {
           },
           {
             icon: "/icons/iconproduct.png",
-            text: "Earn MNLA with every transaction",
+            text: " Accumulate earnings consistently from each completed transaction activity.",
           },
-          { icon: "/icons/iconproduct.png", text: "Stake for rewards" },
           {
             icon: "/icons/iconproduct.png",
-            text: "Use for global remittances",
+            text: " Stake digital assets securely in Manilla Vault to get periodic rewards.",
+          },
+          {
+            icon: "/icons/iconproduct.png",
+            text: " Maintain token holdings continuously to unlock exclusive discounted deals.",
           },
         ],
       },
@@ -316,16 +320,23 @@ const Products = () => {
     setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
-  // autoplay every 5s unless paused
+  // autoplay every 5s/ 10s unless paused
   useEffect(() => {
     if (paused) return;
 
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
+    // detect if mobile (adjust breakpoint to your design, e.g. < 768px)
+    const isMobile = window.innerWidth < 768;
+
+    const interval = setInterval(
+      () => {
+        nextSlide();
+      },
+      isMobile ? 10000 : 5000
+    ); 
 
     return () => clearInterval(interval);
   }, [currentIndex, paused]);
+
 
   const currentSlide = slides[currentIndex];
   const currentTopContent = slideTopContent[currentIndex];
@@ -335,262 +346,187 @@ const Products = () => {
     switch (currentSlide.layoutType) {
       case 1:
         return (
-          <div  onDoubleClick={() => {}}
+          <div
+            onDoubleClick={() => {}}
             className="relative cursor-pointer mx-auto"
             onMouseEnter={() => setPaused(true)} // stop on hover
             onMouseLeave={() => setPaused(false)} // resume when mouse leaves
             onTouchStart={() => setPaused(true)} // stop on mobile touch
-            onTouchEnd={() => setPaused(false)}>
+            onTouchEnd={() => setPaused(false)}
+          >
             <img
               src={product1.src}
               alt="product image"
               className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
             />
-            <img
+            {/*  <img
               src={productA.src}
               alt="product image"
               className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
-            />
+            /> */}
+
+            {/* Black Card*/}
+            <div className="sm:hidden min-h-52 bg-black bg-cover bg-opacity-80 text-white p-4 pt-8 rounded-2xl flex-1 flex flex-col justify-between">
+              {currentSlide.blackCard && (
+                <h1 className="text-3xl text-center font-semibold mb-4">
+                  {currentSlide.blackCard.title}
+                </h1>
+              )}
+
+              {currentSlide.blackCard && (
+                <>
+                  <p className="mb-4 text-center  text-gray-400 font-semibold break-words">
+                    {currentSlide.blackCard.paragraph2}
+                  </p>
+
+                  <div className="flex flex-row flex-wrap gap-4 mb-4 lg:flex-col lg:flex-nowrap">
+                    {currentSlide.blackCard.features.map((f, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <Image
+                          src={f.icon || "/iconproduct.png"}
+                          alt={f.text}
+                          width={24}
+                          height={24}
+                        />
+                        <span className="text-xs font-semibold tracking-wider leading-5">
+                          {f.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              <p
+                className="text-sm text-center font-medium"
+                style={{
+                  color: "var(--Secondary, rgba(250, 202, 49, 1))",
+                }}
+              >
+                {currentSlide.blackCard.extraParagraph}
+              </p>
+
+              {/* Hardcoded Bottom Section */}
+              <div className="mt-2 bg-black/20 border border-black/20 p-1 rounded-full  gap-1 flex items-center justify-center sm:gap-6 ">
+                <div className="flex items-center gap-1  px-1 py-3 rounded-full">
+                  <Image
+                    src="/icons/usdc.png"
+                    alt="Feature 1"
+                    width={40}
+                    height={20}
+                    className="w-7 h-7 "
+                  />
+                  <span className="text-sm lg:text-xs ">USDC</span>
+                </div>
+                <div className="flex items-center gap-1  bg px-3 py-2 rounded-full">
+                  <Image
+                    src="/icons/usdt.png"
+                    alt="Feature 2"
+                    width={30}
+                    height={20}
+                    className="w-7 h-7"
+                  />
+                  <span className="text-sm lg:text-xs">USDT</span>
+                </div>
+                <div className="flex items-center gap-1  px-1 py-2 rounded-full">
+                  <Image
+                    src="/icons/btc.png"
+                    alt="Feature 3"
+                    width={30}
+                    height={20}
+                    className=" w-7 h-7"
+                  />
+                  <span className="text-sm lg:text-xs">BTC</span>
+                </div>
+                <div className="flex items-center gap-1 px-3 py-2 rounded-full">
+                  <Image
+                    src="/icons/Ethereum.png"
+                    alt="Feature 4"
+                    width={30}
+                    height={20}
+                    className="lg:w-7 lg:h-7 w-7 h-7" // 80px x 80px
+                  />
+                  <span className="text-sm lg:text-xs">ETH</span>
+                </div>
+              </div>
+            </div>
           </div>
-
-          // <div className="relative">
-          //   Background
-          //   <div
-          //     className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto "
-          //     style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
-          //   >
-          //     <div className="flex flex-col md:flex-row lg:gap-50 p-6 md:p-12 lg:mt-9">
-          //       {/* Left Image */}
-          //       <Image
-          //         src={currentSlide.leftImage || "/fallback-image.png"}
-          //         alt="Left Graphic"
-          //         width={800}
-          //         height={400}
-          //         className="object-contain w-full -ml-6 -mr-6 lg:-ml-12"
-          //       />
-
-          //       {/* Right Side: Black Card + Download */}
-          //       <div className="flex flex-col flex-1 gap-6">
-          //         {/* Black Card */}
-          //         <div className="bg-black bg-cover bg-opacity-80 text-white p-4 rounded-2xl flex-1 flex flex-col justify-between">
-          //           {currentSlide.blackCard && (
-          //             <h1 className="text-3xl font-bold mb-4">
-          //               {currentSlide.blackCard.title}
-          //             </h1>
-          //           )}
-
-          //           {currentSlide.blackCard && (
-          //             <>
-          //               <p className="mb-4 text-gray-400 break-words">
-          //                 {currentSlide.blackCard.paragraph2}
-          //               </p>
-
-          //               <div className="flex flex-row flex-wrap gap-4 mb-4 lg:flex-col lg:flex-nowrap">
-          //                 {currentSlide.blackCard.features.map((f, i) => (
-          //                   <div key={i} className="flex items-center gap-1">
-          //                     <Image
-          //                       src={f.icon || "/iconproduct.png"}
-          //                       alt={f.text}
-          //                       width={24}
-          //                       height={24}
-          //                     />
-          //                     <span className="">{f.text}</span>
-          //                   </div>
-          //                 ))}
-          //               </div>
-          //             </>
-          //           )}
-
-          //           <p
-          //             className="text-lg font-medium"
-          //             style={{
-          //               color: "var(--Secondary, rgba(250, 202, 49, 1))",
-          //             }}
-          //           >
-          //             {currentSlide.blackCard.extraParagraph}
-          //           </p>
-
-          //           {/* Hardcoded Bottom Section */}
-          //           <div className="mt-6 bg-black/20 border border-black/20 p-3 rounded-full grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6 ">
-          //             <div className="flex items-center gap-2  px-1 py-3 rounded-full">
-          //               <Image
-          //                 src="/icons/usdc.png"
-          //                 alt="Feature 1"
-          //                 width={40}
-          //                 height={20}
-          //                 className="w-7 h-7 "
-          //               />
-          //               <span className="text-sm lg:text-xs ">USDC</span>
-          //             </div>
-          //             <div className="flex items-center gap-2  bg px-3 py-2 rounded-full">
-          //               <Image
-          //                 src="/icons/usdt.png"
-          //                 alt="Feature 2"
-          //                 width={30}
-          //                 height={20}
-          //                 className="w-7 h-7"
-          //               />
-          //               <span className="text-sm lg:text-xs">USDT</span>
-          //             </div>
-          //             <div className="flex items-center gap-2  px-1 py-2 rounded-full">
-          //               <Image
-          //                 src="/icons/btc.png"
-          //                 alt="Feature 3"
-          //                 width={30}
-          //                 height={20}
-          //                 className=" w-7 h-7"
-          //               />
-          //               <span className="text-sm lg:text-xs">BTC</span>
-          //             </div>
-          //             <div className="flex items-center gap-2 px-3 py-2 rounded-full">
-          //               <Image
-          //                 src="/icons/Ethereum.png"
-          //                 alt="Feature 4"
-          //                 width={30}
-          //                 height={20}
-          //                 className="lg:w-7 lg:h-7 w-7 h-7" // 80px x 80px
-          //               />
-          //               <span className="text-sm lg:text-xs">ETH</span>
-          //             </div>
-          //           </div>
-          //         </div>
-
-          //         {/* Download Buttons (now tied to the card column) */}
-          //         <div className="p-6">
-          //           <h3 className="text-gray-200 mb-0 flex justify-center font-bold">
-          //             {currentSlide.downloadSection.title}
-          //           </h3>
-          //           <div className="flex gap-[2]">
-          //             {currentSlide.downloadSection.buttons.map((btn, i) => (
-          //               <a
-          //                 key={i}
-          //                 href={btn.link}
-          //                 target="_blank"
-          //                 rel="noopener noreferrer"
-          //               >
-          //                 <Image
-          //                   src={btn.img}
-          //                   alt={btn.alt}
-          //                   width={180}
-          //                   height={50}
-          //                 />
-          //               </a>
-          //             ))}
-          //           </div>
-          //         </div>
-          //       </div>
-          //     </div>
-          //     {/* Bottom Image */}
-          //     <Image
-          //       src={currentSlide.bottomImage}
-          //       alt="Bottom Graphic"
-          //       width={1200}
-          //       height={200}
-          //       className="mt-[-30px] mx-auto relative z-10 lg:w-full"
-          //     />
-          //   </div>
-          // </div>
         );
 
       case 2:
         return (
-          <div  onDoubleClick={() => {}}
+          <div
+            onDoubleClick={() => {}}
             className="relative cursor-pointer mx-auto"
             onMouseEnter={() => setPaused(true)} // stop on hover
             onMouseLeave={() => setPaused(false)} // resume when mouse leaves
             onTouchStart={() => setPaused(true)} // stop on mobile touch
-            onTouchEnd={() => setPaused(false)} >
+            onTouchEnd={() => setPaused(false)}
+          >
             <img
               src={product2.src}
               alt="product image"
               className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
             />
-            <img
+            {/*   <img
               src={productB.src}
               alt="product image"
               className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
-            />
+            /> */}
+
+            {/* Yellow Card*/}
+            <div className="sm:hidden min-h-52 bg-yellow-500 bg-cover bg-opacity-80 py-8 p-4 rounded-2xl px-5 flex-1 flex flex-col justify-between">
+              {currentSlide.leftTag && (
+                <h1 className="text-3xl font-semibold text-center mb-4">
+                  {currentSlide.leftTag.transparentCard.title}
+                </h1>
+              )}
+
+              {currentSlide.leftTag.transparentCard && (
+                <>
+                  <p className="mb-4 text-center  text-black/80 font-semibold text-sm break-words">
+                    {currentSlide.leftTag.transparentCard.paragraph}
+                  </p>
+
+                  <div className="flex flex-row flex-wrap gap-8 mb-4 lg:flex-col lg:flex-nowrap">
+                    {currentSlide.leftTag.transparentCard.features.map(
+                      (f, i) => (
+                        <div key={i} className="flex items-center gap-1">
+                          <Image
+                            src={f.icon || "/iconproduct.png"}
+                            alt={f.text}
+                            width={36}
+                            height={30}
+                          />
+                          <span className="-mt-2 text-xs font-semibold">
+                            {f.text}
+                          </span>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </>
+              )}
+
+              {/* Click to Join */}
+              <div className="flex items-center justify-center gap-2 lg:ml-13 cursor-pointer ">
+                <Image
+                  src={
+                    currentSlide.leftTag.clickToJoin.icon || "/iconblack.png"
+                  }
+                  alt=""
+                  width={28}
+                  height={18}
+                />
+                <span className="text-xs lg:text-sm">
+                  {currentSlide.leftTag.clickToJoin.text}
+                </span>
+                <button className="bg-black text-white px-3 py-2 rounded-full text-xs lg:text-sm">
+                  {currentSlide.leftTag.button.text}
+                </button>
+              </div>
+            </div>
           </div>
-          //     <div
-          //       className="relative bg-cover bg-amber-300 bg-center rounded-xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
-          //       style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
-          //     >
-          //       <div className="flex flex-col lg:flex-row p-6 gap-6 lg:gap-[1]">
-          //         {/* Left Content - Takes up equal space on large screens */}
-          //         <div className="flex-1 space-y-3 lg:pr-2 text-sm lg:mt-5">
-          //           {/* Tag */}
-          //           <span className="lg:px-42 w-full text-center bg-black/60 text-white px-22  py-2 mt-5 rounded-full text-xs lg:text-sm lg:ml-15 lg:py-3  font-bold">
-          //             {currentSlide.leftTag.text}
-          //           </span>
-
-          //           <div className="bg-black/10 bg-opacity-80 text-white p-5  rounded-lg lg:m-15 lg:mt-6 mt-4">
-          //             <h1 className="text-2xl font-bold mb-4 ml-3 text-black lg:text-lg lg:leading-snug">
-          //               {currentSlide.leftTag.transparentCard.title}
-          //             </h1>
-          //             <p className="mb-4 text-black font-bold lg:text-sm lg:leading-snug break-words">
-          //               {currentSlide.leftTag.transparentCard.paragraph}
-          //             </p>
-
-          //             {currentSlide.leftTag.transparentCard.features.map((f, i) => (
-          //               <div key={i} className="flex items-center gap-2 mb-2">
-          //                 <Image
-          //                   src={f.icon || "/iconproduct.png"}
-          //                   alt={f.text}
-          //                   width={30}
-          //                   height={24}
-          //                   className="lg:w-5 lg:h-5"
-          //                 />
-          //                 <span className="text-black lg:text-sm lg:leading-snug break-words">
-          //                   {f.text}
-          //                 </span>
-          //               </div>
-          //             ))}
-          //           </div>
-
-          //           {/* Outside Text */}
-          //           <p className="text-xs lg:text-sm lg:ml-15 lg:mt-2 ">
-          //             {currentSlide.leftTag.outsideText}
-          //           </p>
-
-          //           {/* Click to Join */}
-          //           <div className="flex items-center gap-2 lg:ml-13 cursor-pointer ">
-          //             <Image
-          //               src={
-          //                 currentSlide.leftTag.clickToJoin.icon || "/iconblack.png"
-          //               }
-          //               alt=""
-          //               width={28}
-          //               height={18}
-          //             />
-          //             <span className="text-xs lg:text-sm">
-          //               {currentSlide.leftTag.clickToJoin.text}
-          //             </span>
-          //             <button className="bg-black text-white px-3 py-2 rounded-full text-xs lg:text-sm">
-          //               {currentSlide.leftTag.button.text}
-          //             </button>
-          //           </div>
-          //         </div>
-
-          //         {/* Right Image - Overlapping */}
-          //         <div className="flex-1 flex justify-center items-center lg:mt-10 relative z-10">
-          //           <Image
-          //             src={currentSlide.rightImage || "/falling-image.png"}
-          //             alt="Right Graphic"
-          //             width={650}
-          //             height={450}
-          //             className="w-full max-w-[480px] lg:max-w-4xl lg:w-[115%] lg:h-auto object-contain -translate-x-8 sm:translate-x-0 lg:-translate-x-12 translate-y-8 lg:translate-y-0"
-          //           />
-          //         </div>
-          //       </div>
-
-          //       <Image
-          //         src={currentSlide.bottomImage}
-          //         alt="Bottom Graphic"
-          //         width={1200}
-          //         height={200}
-          //         className="mt-[-11px] mx-auto relative z-10 lg:w-full"
-          //       />
-          //     </div>
         );
 
       case 3:
@@ -608,69 +544,64 @@ const Products = () => {
               alt="product image"
               className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
             />
-            <img
+            {/*  <img
               src={productC.src}
               alt="product image"
               className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
-            />
+            />  */}
+
+            {/* blue Card*/}
+            <div className=" sm:hidden  min-h-52 bg-blue-800 bg-cover bg-opacity-80 text-whitepy-8 p-4 rounded-2xl flex-1 flex flex-col justify-between ">
+              {currentSlide.blueCard && (
+                <h1 className="text-3xl  text-center font-semibold mb-4">
+                  {currentSlide.blueCard.title}
+                </h1>
+              )}
+
+              {currentSlide.blueCard && (
+                <>
+                  <p className="mb-4 text-sm font-semibold text-center text-white break-words">
+                    {currentSlide.blueCard.paragraph}
+                  </p>
+
+                  <div className="flex flex-row flex-wrap gap-6 items-center mb-4 lg:flex-col lg:flex-nowrap">
+                    {currentSlide.blueCard.features.map((f, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <Image
+                          src={f.icon || "/iconproduct.png"}
+                          alt={f.text}
+                          width={24}
+                          height={24}
+                          className=""
+                        />
+                        <span className="text-xs font-semibold">{f.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* Join Section */}
+              <p className="font-bold text-sm text-center">
+                {currentSlide.outsideText}
+              </p>
+              <div className="flex items-center justify-center mt-2 gap-2 cursor-pointer">
+                <Image
+                  src={currentSlide.clickToJoin.icon || "/iconablack.png"}
+                  alt=""
+                  width={28}
+                  height={24}
+                  className="mt-2"
+                />
+                <span className="font-bold text-xs">
+                  {currentSlide.clickToJoin.text}
+                </span>
+                <button className="bg-black text-xs text-white px-3 py-1 rounded-full">
+                  {currentSlide.button.text}
+                </button>
+              </div>
+            </div>
           </div>
-          //     <div
-          //       className="relative bg-cover bg-center rounded-2xl overflow-hidden max-w-full lg:max-w-6xl mx-auto"
-          //       style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
-          //     >
-          //       <div className="flex flex-col md:flex-row p-10 lg:p-20 gap-6">
-          //         {/* Left Image */}
-          //         <Image
-          //           src={currentSlide.leftImage || "/fallback-image.png"}
-          //           alt="Left Graphic"
-          //           width={400}
-          //           height={400}
-          //           className="lg:w-120"
-          //         />
-
-          //         {/* Blue Card */}
-          //         <div className="flex-1 space-y-4">
-          //           <div className="bg-[#281AC8] text-white p-6 rounded-lg w-fit">
-          //             <h1 className="text-2xl font-bold mb-4">
-          //               {currentSlide.blueCard.title}
-          //             </h1>
-          //             <p className="mb-4">{currentSlide.blueCard.paragraph}</p>
-          //             {currentSlide.blueCard.features.map((f, i) => (
-          //               <div key={i} className="flex items-center gap-2 mb-2">
-          //                 <Image src={f.icon} alt={f.text} width={24} height={24} />
-          //                 <span>{f.text}</span>
-          //               </div>
-          //             ))}
-          //           </div>
-
-          //           {/* Join Section */}
-          //           <p className="font-bold">{currentSlide.outsideText}</p>
-          //           <div className="flex items-center gap-2 cursor-pointer">
-          //             <Image
-          //               src={currentSlide.clickToJoin.icon || "/iconablack.png"}
-          //               alt=""
-          //               width={28}
-          //               height={24}
-          //             />
-          //             <span className="font-bold">
-          //               {currentSlide.clickToJoin.text}
-          //             </span>
-          //             <button className="bg-black text-white px-4 py-2 rounded-full">
-          //               {currentSlide.button.text}
-          //             </button>
-          //           </div>
-          //         </div>
-          //       </div>
-
-          //       <p className="p-6">{currentSlide.outsideParagraph}</p>
-          //       <Image
-          //         src={currentSlide.bottomImage}
-          //         alt="Bottom Graphic"
-          //         width={1200}
-          //         height={200}
-          //         className="mt-[-50px] mx-auto relative z-10 lg:w-full"
-          //       />
-          //     </div>
         );
 
       default:
@@ -708,7 +639,7 @@ const Products = () => {
           {/* Two Text Sections */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Left Section */}
-            <div className="space-y-3 md:mt-7">
+            <div className="space-y-3 md:mt-7 ">
               <h1 className="text-xl md:2xl text-center lg:text-start font-semibold text-black/80">
                 {currentTopContent.leftSection.title}
               </h1>
@@ -721,7 +652,7 @@ const Products = () => {
             </div>
 
             {/* Right Section with Background */}
-            <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 bg-[url('/images/Rectangle2.png')] bg-cover bg-center bg-no-repeat p-5 rounded-xl">
+            <div className=" hidden sm:block relative bg-gradient-to-br from-blue-50 to-purple-50 bg-[url('/images/Rectangle2.png')] bg-cover bg-center bg-no-repeat p-5 rounded-xl">
               <h2 className="text-center lg:text-start font-bold text-gray-900 mb-6">
                 {currentTopContent.rightSection.title}
               </h2>
