@@ -1,7 +1,8 @@
 import CarrierApply from "./CarrierApply"; // one level up
 
-export default function Page({ params }: { params: { title: string } }) {
-  const decodedTitle = decodeURIComponent(params.title);
+export default async function Page({ params }: { params: { title: string } }) {
+  const { title } = await params; // ✅ await before using
+  const decodedTitle = decodeURIComponent(title);
 
   return (
     <main>
