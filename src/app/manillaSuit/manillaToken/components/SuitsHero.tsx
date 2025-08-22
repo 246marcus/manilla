@@ -53,10 +53,7 @@ const SuitsHero: React.FC = () => {
 
           {/* Description */}
           <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-md rounded-xl p-4 bg-white/8 mt-1">
-            MNLA is the core token of the Manilla Finance ecosystem. App tokens
-            currently play a key role, which will naturally move into price
-            discovery and full valuation as the platform grows – ultimately
-            becoming the primary token for bill payments and fee deductions.
+           MNLA is the core token of the Manilla Finance ecosystem. As other tokens currently play a key role, MNLA will naturally move into price discovery and full valuation as the platform grows - ultimately becoming the primary token for bill payments and fee deductions.
           </p>
         </div>
 
