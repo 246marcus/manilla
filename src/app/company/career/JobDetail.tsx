@@ -9,11 +9,15 @@ type JobSection = {
 
 type JobDetailsProps = {
   jobArray: JobSection[];
+  displayTitle: string;
 };
 
-export default function JobDetails({ jobArray }: JobDetailsProps) {
+export default function JobDetails({
+  jobArray,
+  displayTitle,
+}: JobDetailsProps) {
   return (
-    <div className="px-4 md:px-8 lg:px-16 py-10 border-t border-gray-500 border-dotted bg-[#010d44] mt-[-40] ">
+    <div className="px-4 md:px-8 lg:px-16 py-10 border-t border-gray-500 border-dotted bg-[#010d44] mt-[-40] max-w-7xl mx-auto xl:-translate-y-6  shadow-black shadow backdrop-blur-2xl xl:rounded-2xl">
       {jobArray.map((section, idx) => (
         <div key={idx} className="mb-8">
           <h3 className="text-white font-semibold text-lg mb-4 ">
@@ -40,7 +44,12 @@ export default function JobDetails({ jobArray }: JobDetailsProps) {
             </button>
           </Link>
 
-          <Link href="/company/career/apply">
+          <Link
+            href={{
+              pathname: "/company/career/apply",
+              query: { title: displayTitle },
+            }}
+          >
             <button className="px-6 py-3 bg-white text-blue-950 rounded-full hover:bg-blue-950 hover:text-white transition">
               Apply Now
             </button>

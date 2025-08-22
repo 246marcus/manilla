@@ -3,6 +3,7 @@ import JobDetails from "../../JobDetail";
 import JobOverview from "../../JobOverview";
 
 const SeniorDevApply: React.FC = () => {
+  const displayTitle="Senior Blockchain Developer"
   const jobArray = [
     {
       title: "Job Description",
@@ -53,7 +54,7 @@ const SeniorDevApply: React.FC = () => {
           "Knowledge of DeFi (Decentralized Finance) protocols and applications.",
         ]}
       />
-      <JobDetails jobArray={jobArray} />
+      <JobDetails jobArray={jobArray} displayTitle={displayTitle} />
     </section>
   );
 };

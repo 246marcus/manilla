@@ -18,7 +18,7 @@ const JobOverview: React.FC<JobOverviewProps> = ({
 }) => {
   return (
     <div
-      className="relative  py-10 "
+      className="relative  py-10 lg:pb-0 lg:rounded-b-4xl "
       style={{
         backgroundImage: `url(${careerbg.src})`,
         backgroundPosition: "center",
@@ -85,7 +85,7 @@ const JobOverview: React.FC<JobOverviewProps> = ({
       </div>
 
       {/* Intro */}
-      <div className="px-10 lg:rounded-b-[70px] pt-6 pb-20  shadow-[#445189] bg-[#242f60] ">
+      <div className="px-10 lg:rounded-b-4xl pt-6 pb-20  shadow-[#445189] bg-[#242f60] ">
         <div className="mb-6">
           <h2 className="italic text-white text-lg mb-3">{" ~  " + apply}</h2>
           <p className="text-gray-300 text-sm leading-relaxed">{discription}</p>
@@ -98,7 +98,7 @@ const JobOverview: React.FC<JobOverviewProps> = ({
             Job requirements
           </p>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 lg:pb-4">
           {highlights.map((req, idx) => (
             <div key={idx} className="flex items-start gap-2">
               <span className="text-white text-3xl ">•</span>
