@@ -13,10 +13,10 @@ const services = [
   {
     title: "Everyday Bills",
     description:
-      "Whether it&apos;s NEPA light, topping up Glo data, or paying for your DSTV subscription—we make it happen in a few taps, 24/7.",
+      "Whether it's PHCN power, topping up Glo data, or paying for your DSTV subscription—we make it happen in a few taps, 24/7.",
     features: [
       { icon: ManillaFinance, label: "Airtime & Data" },
-      { icon: ManillaFinance, label: "Cabel" },
+      { icon: ManillaFinance, label: "Cable" },
       { icon: PaymentIcon, label: "Electricity" },
       { icon: PaymentIcon, label: "Water" },
     ],
@@ -24,12 +24,12 @@ const services = [
   {
     title: "Travel & Mobility",
     description:
-      "From flights and hotel reservations to airport drop-offs, your entire travel experience can now be powered by stablecoins and Manilla&apos;s smart wallet.",
+      "From flights and hotel reservations to airport drop-offs, your entire travel experience can now be powered by stablecoins and Manilla's smart wallet.",
     features: [
       { icon: ManillaFinance, label: "Domestic and international" },
       {
         icon: ManillaFinance,
-        label: "Airport drop-off and pickup with crypto",
+        label: "Airport drop-off and pickup",
       },
       {
         icon: ManillaFinance,
@@ -40,7 +40,7 @@ const services = [
   {
     title: "For Businesses & Freelancers",
     description:
-      "With Manilla&apos;s business tools, you can invoice international clients and get paid in crypto—without conversion headaches, delays, or high banking fees. Get Paid in Crypto. Anywhere. Instantly. for goods and services with your wallet balance.",
+      "With Manilla's business tools, you can invoice international clients and get paid in crypto—without conversion headaches, delays, or high banking fees. Get Paid in Crypto. Anywhere. Instantly. for goods and services with your wallet balance.",
     features: [
       { icon: ShoppingIcon, label: "Invoice Settlement" },
       { icon: ShoppingIcon, label: "Crypto Payment API" },
@@ -49,11 +49,11 @@ const services = [
   {
     title: "Convert Crypto to Naira Without Stress",
     description:
-      "Naira Bridge offers you a reliable, transparent way to convert major cryptocurrencies into naira—and vice versa. Built for traders, freelancers, and everyday users alike, it&apos;s designed to be fast, fair, and frictionless.",
+      "Naira Bridge offers you a reliable, transparent way to convert major cryptocurrencies into naira—and vice versa. Built for traders, freelancers, and everyday users alike, it's designed to be fast, fair, and frictionless.",
     features: [
       {
         icon: ShoppingIcon,
-        label: "Swap Naira to USDT, BTC, ETH, etc. instantly",
+        label: "Swap Naira to USDT, BTC, ETH, etc.",
       },
       { icon: ShoppingIcon, label: "24/7 access, anytime, anywhere" },
       { icon: ShoppingIcon, label: "Get transparent, competitive rates" },
@@ -102,11 +102,11 @@ const AboutUs = () => {
         {/* Two sections */}
         <div className="flex flex-col md:flex-row md:items-center max-w-7xl mx-auto  gap-4 md:gap-6 lg:gap-8  py-4">
           {/* Left Image */}
-          <div className=" w-full md:flex-1 ">
+          <div className=" w-full flex md:flex-1 ">
             <img
               src="/images/aboutus.png"
               alt="About Image 1"
-              className="object-contain w-full h-90 lg:max-h-150 sm:h-110 md:h-auto  "
+              className=" flex-1  w-auto max-h-120 lg:max-h-150 sm:h-110 md:h-auto  "
             />
           </div>
 

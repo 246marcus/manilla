@@ -277,7 +277,7 @@ const Products = () => {
       blueCard: {
         title: "Manilla Token (MNLA)",
         paragraph:
-          "Get automated discounts instantly when executing utility and service payments.",
+          "The Token That Pays You Back",
         features: [
           {
             icon: "/icons/iconproduct.png",
@@ -366,16 +366,16 @@ const Products = () => {
             /> */}
 
             {/* Black Card*/}
-            <div className="sm:hidden min-h-52 bg-black bg-cover bg-opacity-80 text-white p-4 pt-8 rounded-2xl flex-1 flex flex-col justify-between">
+            <div className="sm:hidden min-h-52 bg-black bg-cover bg-opacity-80 text-white px-3 pt-8 rounded-2xl flex-1 flex flex-col justify-between">
               {currentSlide.blackCard && (
-                <h1 className="text-3xl text-center font-semibold mb-4">
+                <h1 className="text-3xl text-center  font-semibold mb-4">
                   {currentSlide.blackCard.title}
                 </h1>
               )}
 
               {currentSlide.blackCard && (
                 <>
-                  <p className="mb-4 text-center  text-gray-400 font-semibold break-words">
+                  <p className="mb-4 text-center text-sm text-gray-400 font-semibold break-words">
                     {currentSlide.blackCard.paragraph2}
                   </p>
 
@@ -412,17 +412,17 @@ const Products = () => {
                   <Image
                     src="/icons/usdc.png"
                     alt="Feature 1"
-                    width={40}
+                    width={30}
                     height={20}
                     className="w-7 h-7 "
                   />
-                  <span className="text-sm lg:text-xs ">USDC</span>
+                  <span className="text-xs ">USDC</span>
                 </div>
                 <div className="flex items-center gap-1  bg px-3 py-2 rounded-full">
                   <Image
                     src="/icons/usdt.png"
                     alt="Feature 2"
-                    width={30}
+                    width={20}
                     height={20}
                     className="w-7 h-7"
                   />
@@ -432,21 +432,21 @@ const Products = () => {
                   <Image
                     src="/icons/btc.png"
                     alt="Feature 3"
-                    width={30}
+                    width={20}
                     height={20}
                     className=" w-7 h-7"
                   />
-                  <span className="text-sm lg:text-xs">BTC</span>
+                  <span className="text-xs">BTC</span>
                 </div>
                 <div className="flex items-center gap-1 px-3 py-2 rounded-full">
                   <Image
                     src="/icons/Ethereum.png"
                     alt="Feature 4"
-                    width={30}
+                    width={20}
                     height={20}
                     className="lg:w-7 lg:h-7 w-7 h-7" // 80px x 80px
                   />
-                  <span className="text-sm lg:text-xs">ETH</span>
+                  <span className="text-xs">ETH</span>
                 </div>
               </div>
             </div>

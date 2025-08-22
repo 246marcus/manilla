@@ -18,7 +18,12 @@ const MediaPartners: React.FC = () => {
       >
         <div className="max-w-5xl mx-auto text-center">
           {/* Top pill */}
-          <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
+
+          <div className="md:hidden  inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
+            Manilla in the News
+          </div>
+         {/*  desktop */}
+          <div className="hidden md:inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
             Why Choose Manilla App
           </div>
 
@@ -26,7 +31,7 @@ const MediaPartners: React.FC = () => {
             Media Partners
           </h2>
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
-            Whether you&apos;re a business or individual, Manilla Finance offers
+            Whether you're a business or individual, Manilla Finance offers
             a secure and flexible way to manage payments, bills, and travel —
             all in one trusted platform.
           </p>
@@ -139,11 +144,19 @@ const MediaPartners: React.FC = () => {
         }}
       >
         <div className="max-w-5xl mx-auto text-center md:text-start">
-          <h3 className="text-starttext-xl sm:text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="md:hidden text-center text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+            Be First. Be Ahead.
+          </h3>
+          {/* desktop */}
+          <h3 className="hidden md:block text-start text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ready.
           </h3>
           <div className="flex flex-col md:flex-row">
-            <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
+            <p className="md:hidden md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
+              Subscribe to our newsletter for exclusive updates, insider perks, and a front-row seat to the future of local & cross-border payments.
+            </p>
+            {/* desktop */}
+            <p className="hidden md:block md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
               Manilla is launching soon — Join our Newsletter. Join our
               newsletter to get early access, exclusive updates and a front-row
               seat to the future of cross-border payments

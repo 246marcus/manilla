@@ -13,12 +13,21 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between">
             {/* 1. Logo + Text */}
             <div className="flex flex-1 flex-col md:pt-4 items-center sm:items-start">
+              <div className="bg-blue-900 mb-4">
+                <Image
+                  src="/icons/ManillaFinance.png"
+                  alt="Manilla Logo"
+                  width={140}
+                  height={50}
+                  className="md:hidden object-contain"
+                />
+              </div>
               <Image
                 src="/icons/ManillaTechnologies1.png"
                 alt="Manilla Logo"
                 width={140}
                 height={50}
-                className="mb-4 object-contain"
+                className="mb-4 hidden md:block object-contain"
               />
               <p className="text-gray-700 text-center sm:text-start max-w-sm">
                 Manilla Pay is redefining payments for Nigeria. Seamless, fast,
