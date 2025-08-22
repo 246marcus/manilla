@@ -281,7 +281,7 @@ const Products = () => {
         features: [
           {
             icon: "/icons/iconproduct.png",
-            text: "Discounts on bill payments",
+            text: "Get automated discounts instantly when executing utility and service payments.",
           },
           {
             icon: "/icons/iconproduct.png",
@@ -551,7 +551,7 @@ const Products = () => {
             />  */}
 
             {/* blue Card*/}
-            <div className=" sm:hidden  min-h-52 bg-blue-800 bg-cover bg-opacity-80 text-whitepy-8 p-4 rounded-2xl flex-1 flex flex-col justify-between ">
+            <div className=" sm:hidden  min-h-52 bg-blue-800 bg-cover bg-opacity-80 text-white py-8 p-4 rounded-2xl flex-1 flex flex-col justify-between ">
               {currentSlide.blueCard && (
                 <h1 className="text-3xl  text-center font-semibold mb-4">
                   {currentSlide.blueCard.title}
