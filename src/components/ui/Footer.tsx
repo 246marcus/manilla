@@ -13,13 +13,13 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between">
             {/* 1. Logo + Text */}
             <div className="flex flex-1 flex-col md:pt-4 items-center sm:items-start">
-              <div className="bg-blue-900 mb-4">
+              <div className="">
                 <Image
-                  src="/icons/ManillaFinance.png"
+                  src="/images/ManillaFinanceB.png"
                   alt="Manilla Logo"
                   width={140}
-                  height={50}
-                  className="md:hidden object-contain"
+                  height={30}
+                  className="md:hidden "
                 />
               </div>
               <Image
