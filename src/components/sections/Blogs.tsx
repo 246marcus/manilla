@@ -1,43 +1,14 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import BlogCard from "../../app/blog/components/BlogCard"; // ✅ adjust path
+import { blogs } from "../../../src/types"; // ✅ import your real blogs
+import { Blog } from "@/types";
 
 const Blogs = () => {
-  const blogs = [
-    {
-      id: 1,
-      mainImage: "/images/blogCard1.png",
-      overlayImage: "/images/overlay1.png",
-      title: "NFT Art Trends 2025",
-    },
-    {
-      id: 2,
-      mainImage: "/images/blogCard2.png",
-      overlayImage: "/images/overlay2.png",
-      title: "How to Create Your First NFT",
-    },
-    {
-      id: 3,
-      mainImage: "/images/blogCard2.png",
-      overlayImage: "/images/overlay3.png",
-      title: "Metaverse Opportunities",
-    },
-    {
-      id: 4,
-      mainImage: "/images/blogCard2.png",
-      overlayImage: "/images/overlay3.png",
-      title: "Metaverse Opportunities",
-    },
-    {
-      id: 5,
-      mainImage: "/images/blogCard2.png",
-      overlayImage: "/images/overlay3.png",
-      title: "Metaverse Opportunities",
-    },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -49,11 +20,11 @@ const Blogs = () => {
   };
 
   return (
-    <section className=" p-6 ">
+    <section className="p-6">
       <div
-        className="max-w-7xl bg-cyan-400/90 mx-auto p-6 text-center py-10 rounded-2xl  mt-0"
+        className="max-w-7xl bg-cyan-400/90 mx-auto p-6 text-center py-10 rounded-2xl mt-0"
         style={{
-          backgroundImage: "url('/images/blogbackground.png')", // replace with your overlay
+          backgroundImage: "url('/images/blogbackground.png')",
           backgroundSize: "contain",
           backgroundPosition: "center",
           backgroundRepeat: "repeat",
@@ -65,7 +36,7 @@ const Blogs = () => {
           alt="Blog Top"
           width={200}
           height={200}
-          className="mx-auto object-contain scale-90 "
+          className="mx-auto object-contain scale-90"
         />
 
         {/* Learn More Button */}
@@ -75,46 +46,28 @@ const Blogs = () => {
 
         {/* Blog Carousel */}
         <div className="mt-12">
-          {/* Make vertical on small screens, horizontal centered on larger */}
           <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-center gap-6">
-            {/* Carousel (2 visible cards) */}
+            {/* Carousel */}
             <div className="overflow-hidden w-full lg:w-[700px] mx-auto">
-              {/* 2 * 320px width */}
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(-${currentIndex * 320}px)`,
+                  transform: `translateX(-${currentIndex * 100}%)`,
                 }}
               >
-                {blogs.map((blog) => (
+                {blogs.map((blog: Blog) => (
                   <div
                     key={blog.id}
-                    className="relative rounded-xl shadow-lg min-w-[300px] max-w-sm mx-auto p-0 mr-5"
+                    className="w-full sm:w-[300px] flex-shrink-0 mx-auto sm:mr-5"
                   >
-                    {/* Main Image */}
-                    <Image
-                      src={blog.mainImage}
-                      alt={blog.title}
-                      width={300}
-                      height={200}
-                      className="rounded-lg "
-                    />
-
-                    {/* Optional Overlay Image */}
-                    {/*    {blog.overlayImage && (
-                      <img
-                        src={blog.overlayImage}
-                        alt="Overlay"
-                        width={50}
-                        height={50}
-                        className="absolute top-2 left-2 rounded-full"
-                      />
-                    )} */}
+                    <Link href={`/blog/${blog.slug}`} className="block h-full">
+                      <BlogCard blog={blog} />
+                    </Link>
                   </div>
                 ))}
               </div>
 
-              {/* Arrows under carousel — horizontal on desktop, vertical on mobile */}
+              {/* Arrows */}
               <div className="flex justify-center items-center mt-6 gap-4">
                 <button
                   onClick={handlePrev}
@@ -131,9 +84,8 @@ const Blogs = () => {
               </div>
             </div>
 
-            {/* Static Image on the right with overlay */}
+            {/* Static Side Image */}
             <div className="flex-shrink-0 relative max-w-sm mx-auto">
-              {/* Main Image */}
               <Image
                 src="/images/manillablog.png"
                 alt="Blog Side Image"
@@ -141,8 +93,6 @@ const Blogs = () => {
                 height={400}
                 className="rounded-lg object-cover mx-auto"
               />
-
-              {/* Overlay Image at bottom-left */}
               <Link href="/blog" passHref>
                 <img
                   src="/images/bloglittleimage.png"
