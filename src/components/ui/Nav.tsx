@@ -162,7 +162,7 @@ const Nav: React.FC = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4 text-sm text-nowrap">
             <div className="text-white rounded-full border-white/50 border py-2 px-5 hover:text-brand hover:bg-white/10 cursor-pointer">
-              <a href="#">Get Started</a>
+              <a href="/admin/login">Get Started</a>
             </div>
             <Button
               className="rounded-full bg-blue-600 text-white hover:bg-blue-700"
