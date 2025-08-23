@@ -13,7 +13,7 @@ const services = [
   {
     title: "Everyday Bills",
     description:
-      "Whether it's PHCN power, topping up Glo data, or paying for your DSTV subscription—we make it happen in a few taps, 24/7.",
+      `Whether it's PHCN power, topping up Glo data, or paying for your DSTV subscription—we make it happen in a few taps, 24/7.`,
     features: [
       { icon: ManillaFinance, label: "Airtime & Data" },
       { icon: ManillaFinance, label: "Cable" },
@@ -24,7 +24,7 @@ const services = [
   {
     title: "Travel & Mobility",
     description:
-      "From flights and hotel reservations to airport drop-offs, your entire travel experience can now be powered by stablecoins and Manilla's smart wallet.",
+      `From flights and hotel reservations to airport drop-offs, your entire travel experience can now be powered by stablecoins and Manilla's smart wallet.`,
     features: [
       { icon: ManillaFinance, label: "Domestic and international" },
       {
@@ -40,7 +40,7 @@ const services = [
   {
     title: "For Businesses & Freelancers",
     description:
-      "With Manilla's business tools, you can invoice international clients and get paid in crypto—without conversion headaches, delays, or high banking fees. Get Paid in Crypto. Anywhere. Instantly. for goods and services with your wallet balance.",
+     ` With Manilla's business tools, you can invoice international clients and get paid in crypto—without conversion headaches, delays, or high banking fees. Get Paid in Crypto. Anywhere. Instantly. for goods and services with your wallet balance.`,
     features: [
       { icon: ShoppingIcon, label: "Invoice Settlement" },
       { icon: ShoppingIcon, label: "Crypto Payment API" },
@@ -49,7 +49,7 @@ const services = [
   {
     title: "Convert Crypto to Naira Without Stress",
     description:
-      "Naira Bridge offers you a reliable, transparent way to convert major cryptocurrencies into naira—and vice versa. Built for traders, freelancers, and everyday users alike, it's designed to be fast, fair, and frictionless.",
+     ` Naira Bridge offers you a reliable, transparent way to convert major cryptocurrencies into naira—and vice versa. Built for traders, freelancers, and everyday users alike, it's designed to be fast, fair, and frictionless.`,
     features: [
       {
         icon: ShoppingIcon,
