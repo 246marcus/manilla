@@ -113,18 +113,13 @@ const AboutManillaPay = () => {
                   className="h-30 w-70 lg:ml-40 md:ml scale-110 md:scale-105 cursor-pointer"
                 />
               </a>
-
-              <a
-                href="https://vault.manilla.finance"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="/manillaSuit/card">
                 <img
                   src="/images/img4.png"
                   alt="Bottom"
                   className="h-30 w-70 lg:ml-20 scale-110 md:scale-105 cursor-pointer"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* RIGHT COLUMN */}
