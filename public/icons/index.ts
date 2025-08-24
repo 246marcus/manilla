@@ -17,6 +17,7 @@ import activeUser from "./ActiveUsers.png";
 import downloadApp from "./downloadManilla.png";
 import ManillaFinance from "./ManillaFinance.png";
 import ManillaButton from "./ManillaButton.png";
+import tiktok from "./tiktok.png";
 
 export {
   aboutusIcon,
@@ -25,6 +26,7 @@ export {
   facebook,
   instagram,
   twitter,
+  tiktok,
   ManillaTechologies1,
   github,
   scanQRcode,
