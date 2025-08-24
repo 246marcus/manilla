@@ -8,6 +8,7 @@ import product3 from "../../../public/images/product3.png";
 import productA from "../../../public/images/ccc1.png";
 import productB from "../../../public/images/ccc2.png";
 import productC from "../../../public/images/ccc3.png";
+import Link from "next/link";
 
 type BlackCardSlide = {
   layoutType: 1;
@@ -276,8 +277,7 @@ const Products = () => {
       leftImage: "/images/leftimg3.png",
       blueCard: {
         title: "Manilla Token (MNLA)",
-        paragraph:
-          "The Token That Pays You Back",
+        paragraph: "The Token That Pays You Back",
         features: [
           {
             icon: "/icons/iconproduct.png",
@@ -332,11 +332,10 @@ const Products = () => {
         nextSlide();
       },
       isMobile ? 10000 : 5000
-    ); 
+    );
 
     return () => clearInterval(interval);
   }, [currentIndex, paused]);
-
 
   const currentSlide = slides[currentIndex];
   const currentTopContent = slideTopContent[currentIndex];
@@ -539,16 +538,13 @@ const Products = () => {
             onTouchStart={() => setPaused(true)} // stop on mobile touch
             onTouchEnd={() => setPaused(false)} // resume when touch ends
           >
-            <img
-              src={product3.src}
-              alt="product image"
-              className=" w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block"
-            />
-            {/*  <img
-              src={productC.src}
-              alt="product image"
-              className=" w-full scale-y-110 max-w-6xl max-h-[300px] mx-auto sm:hidden"
-            />  */}
+            <Link href="/manillaSuit/manillaToken">
+              <img
+                src={product3.src}
+                alt="product image"
+                className="w-full max-w-6xl max-h-[700px] mx-auto hidden sm:block cursor-pointer"
+              />
+            </Link>
 
             {/* blue Card*/}
             <div className=" sm:hidden  min-h-52 bg-blue-800 bg-cover bg-opacity-80 text-white py-8 p-4 rounded-2xl flex-1 flex flex-col justify-between ">
@@ -596,9 +592,13 @@ const Products = () => {
                 <span className="font-bold text-xs">
                   {currentSlide.clickToJoin.text}
                 </span>
-                <button className="bg-black text-xs text-white px-3 py-1 rounded-full">
+
+                <Link
+                  href="/manillaSuit/manillaToken"
+                  className="bg-black text-xs text-white px-3 py-1 rounded-full hover:bg-black/80 transition"
+                >
                   {currentSlide.button.text}
-                </button>
+                </Link>
               </div>
             </div>
           </div>
