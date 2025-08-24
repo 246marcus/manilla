@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -10,13 +10,36 @@ import { Blog } from "@/types";
 
 const Blogs = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // ✅ Figure out how many cards fit in the container
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const cardWidth = 300; // matches sm:w-[300px]
+        const visibleCards = Math.max(
+          1,
+          Math.floor(containerWidth / cardWidth)
+        );
+        setCardsPerView(visibleCards);
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  const maxIndex = blogs.length - cardsPerView;
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : blogs.length - 1));
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev < blogs.length - 1 ? prev + 1 : 0));
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
   return (
@@ -48,11 +71,16 @@ const Blogs = () => {
         <div className="mt-12">
           <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-center gap-6">
             {/* Carousel */}
-            <div className="overflow-hidden w-full lg:w-[700px] mx-auto">
+            <div
+              ref={containerRef}
+              className="overflow-hidden w-full lg:w-[700px] mx-auto"
+            >
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(-${currentIndex * 100}%)`,
+                  transform: `translateX(-${
+                    currentIndex * (100 / cardsPerView)
+                  }%)`,
                 }}
               >
                 {blogs.map((blog: Blog) => (
@@ -61,7 +89,9 @@ const Blogs = () => {
                     className="w-full sm:w-[300px] flex-shrink-0 mx-auto sm:mr-5"
                   >
                     <Link href={`/blog/${blog.slug}`} className="block h-full">
-                      <BlogCard blog={blog} />
+                      <div className="h-full min-h-[400px] flex">
+                        <BlogCard blog={blog} className="flex-1" />
+                      </div>
                     </Link>
                   </div>
                 ))}
@@ -72,12 +102,14 @@ const Blogs = () => {
                 <button
                   onClick={handlePrev}
                   className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
+                  disabled={currentIndex === 0}
                 >
                   <ChevronLeft size={20} />
                 </button>
                 <button
                   onClick={handleNext}
                   className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
+                  disabled={currentIndex >= maxIndex}
                 >
                   <ChevronRight size={20} />
                 </button>
