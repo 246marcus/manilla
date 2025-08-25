@@ -19,12 +19,9 @@ const MediaPartners: React.FC = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* Top pill */}
 
-          <div className="md:hidden  inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
-            Manilla in the News
-          </div>
           {/*  desktop */}
-          <div className="hidden md:inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
-            Why Choose Manilla App
+          <div className=" inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
+            Manilla in the News
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
@@ -139,25 +136,25 @@ const MediaPartners: React.FC = () => {
         }}
       >
         <div className="max-w-5xl mx-auto text-center md:text-start">
-          <h3 className="md:hidden text-center text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+          <h3 className=" text-center text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ahead.
           </h3>
           {/* desktop */}
-          <h3 className="hidden md:block text-start text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+          {/*  <h3 className="hidden md:block text-start text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ready.
-          </h3>
+          </h3> */}
           <div className="flex flex-col md:flex-row">
-            <p className="md:hidden md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
+            <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
               Subscribe to our newsletter for exclusive updates, insider perks,
               and a front-row seat to the future of local & cross-border
               payments.
             </p>
             {/* desktop */}
-            <p className="hidden md:block md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
+            {/*  <p className="hidden  md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
               Manilla is launching soon — Join our Newsletter. Join our
               newsletter to get early access, exclusive updates and a front-row
               seat to the future of cross-border payments
-            </p>
+            </p> */}
             {/* Contact form simulation */}
             <div className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
               <input
@@ -166,7 +163,7 @@ const MediaPartners: React.FC = () => {
                 className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
               />
               <button className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition">
-                Get Started
+                 Subscribe
               </button>
             </div>
           </div>
