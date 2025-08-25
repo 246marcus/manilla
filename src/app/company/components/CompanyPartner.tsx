@@ -33,7 +33,7 @@ const CompanyPartner: React.FC = () => {
           </p>
 
           {/* Partner options */}
-          <div className="mt-10 flex  flex-col md:flex-row gap-1 overflow-clip">
+          <div className="mt-10 flex  flex-col md:flex-row gap-3 overflow-clip">
             {/* For Businesses */}
             <div className="bg-white/10 md:flex-1 rounded-tr-2xl rounded-br-2xl -translate-x-8   p-6 flex items-start gap-3 z-10">
               <div>
@@ -41,7 +41,7 @@ const CompanyPartner: React.FC = () => {
                   <img src={iconA.src} alt="icon" className="w-12" />
                   For Businesses:
                 </h3>
-                <p className="text-sm text-white/90">
+                <p className="text-sm text-white/90 ps-4 text-start">
                   Integrate our APIs to offer your customers seamless crypto and
                   fast payment options.
                 </p>
@@ -55,8 +55,8 @@ const CompanyPartner: React.FC = () => {
                   <img src={iconB.src} alt="icon" className="w-12" />
                   For Individuals:
                 </h3>
-                <p className="text-sm text-white/90">
-                  Download our user-friendly app to access a world
+                <p className="text-sm text-white/90 pe-4 text-end">
+                 Download our user-friendly app to access a world of payment options at your fingertips. 
                 </p>
               </div>
             </div>
@@ -76,7 +76,7 @@ const CompanyPartner: React.FC = () => {
       >
         <div className="max-w-5xl mx-auto text-center md:text-start">
           <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
-            Get Started Today
+             Get Started Today
           </h3>
           <div className="flex flex-col md:flex-row">
             <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
@@ -92,7 +92,7 @@ const CompanyPartner: React.FC = () => {
                 className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
               />
               <button className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition">
-                Get Started
+              Subscribe
               </button>
             </div>
           </div>
