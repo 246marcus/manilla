@@ -43,9 +43,9 @@ const Blogs = () => {
   };
 
   return (
-    <section className="p-6">
+    <section className="p-4  max-w-7xl mx-auto">
       <div
-        className="max-w-7xl bg-cyan-400/90 mx-auto p-6 text-center py-10 rounded-2xl mt-0"
+        className=" bg-cyan-400/90  px-4 text-center py-10 rounded-2xl mt-0"
         style={{
           backgroundImage: "url('/images/blogbackground.png')",
           backgroundSize: "contain",

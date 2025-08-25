@@ -5,9 +5,7 @@ import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import product1 from "../../../public/images/product1.png";
 import product2 from "../../../public/images/product2.png";
 import product3 from "../../../public/images/product3.png";
-import productA from "../../../public/images/ccc1.png";
-import productB from "../../../public/images/ccc2.png";
-import productC from "../../../public/images/ccc3.png";
+
 import Link from "next/link";
 
 type BlackCardSlide = {
@@ -610,8 +608,8 @@ const Products = () => {
   };
 
   return (
-    <section className="relative bg-white text-gray-900 pt-8 pb-20 md:pb-8">
-      <div className="max-w-[95%] lg:max-w-[1400px] mx-auto px-6">
+    <section className="relative bg-white/80 text-gray-900 pt-8 pb-20 md:pb-8">
+      <div className=" lg:max-w-7xl mx-auto px-6">
         {/* TOP SECTION */}
         <div className="mb-8  lg:mb-14 max-w-full lg:max-w-6xl mx-auto">
           {/* Header with Learn Button and Dropdown Icon */}

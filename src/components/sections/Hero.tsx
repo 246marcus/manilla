@@ -8,7 +8,6 @@ import heropicture from "../../../public/images/heropicture.png";
 const Hero = () => {
   return (
     <section className="relative lg:pt-30 md:pt-30 pt-25  hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6 ">
-      
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 border border-white/20 rounded-full"></div>
@@ -24,8 +23,8 @@ const Hero = () => {
         </h1>
 
         <p className="text-sm tracking-wider text-white/80 mb-3 md:mb-8 max-w-md mx-auto">
-          Simplifying bills and travel payments across Africa and North
-          America — fast, secure, and affordable with{" "}
+          Simplifying bills and travel payments across Africa and North America
+          — fast, secure, and affordable with{" "}
           <span className="text-brand font-semibold">Manilla Finance</span>
         </p>
 
@@ -49,8 +48,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="relative">
-      </div>
+      <div className="relative"></div>
 
       {/* Image under text */}
       <div className="relative z-10 mt-2 md:mt-12">
@@ -100,14 +98,42 @@ const Hero = () => {
           className="hidden md:block absolute bottom-[-18px] md:left-85  lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
           style={{ maxWidth: "none" }}
         />
+
+        <div className="absolute bottom-0 -right-10 md:hidden ">
+          {/* Google Play */}
+          <a
+            href="https://play.google.com/store/apps/details?id=com.manillapay"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=""
+          >
+            <img
+              src="/images/googlestore.png"
+              alt="Get it on Google Play"
+              className="object-contain scale-70 translate-y-6"
+            />
+          </a>
+
+          {/* App Store */}
+          <a
+            href="https://apps.apple.com/app/manillapay"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=""
+          >
+            <img
+              src="/images/appstore.png"
+              alt="Download on the App Store"
+              className="object-contain scale-70 "
+            />
+          </a>
+        </div>
       </div>
 
       {/* Trusted Platform Rolling Effect */}
       <div className="relative z-10 mt-4  md:mt-16 w-screen overflow-hidden ">
-
-      {/* top */}
+        {/* top */}
         <div className="flex animate-roll h-28 md:h-40 mt-4 ">
-          
           <img
             src="/images/kkk1.png"
             alt="Trusted by top platforms"
@@ -124,7 +150,6 @@ const Hero = () => {
             className="w-auto max-w-none  md:scale-100  "
           />
 
-          
           <img
             src="/images/kkk1.png"
             alt="Trusted by top platforms"
@@ -140,11 +165,8 @@ const Hero = () => {
             alt="Trusted by top platforms"
             className="w-auto max-w-none  md:scale-100  "
           />
-
-
-         
         </div>
-      {/* bottom */}
+        {/* bottom */}
         {/* <div className="flex animate-roll md:gap-x-4  scale-80 ">
           
           <img
@@ -212,9 +234,6 @@ const Hero = () => {
             className="w-auto max-w-none scale-90 md:scale-100  "
           />
         </div> */}
-
-
-        
       </div>
     </section>
   );

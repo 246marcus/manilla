@@ -5,7 +5,7 @@ const CareerForm: React.FC = ({}) => {
     <section className="max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto px-4 py-10 -translate-y-30 xl:-translate-y-36">
       <div className="bg-gradient-to-br from-[#000c43] to-[#0A2A4F] p-6 md:p-10 rounded-3xl xl:rounded-4xl shadow-black shadow-xl">
         <h2 className="text-center text-xl font-semibold text-white mb-8">
-          Contact Form
+          Application Form
         </h2>
 
         <form className="space-y-4">
@@ -34,22 +34,18 @@ const CareerForm: React.FC = ({}) => {
           {/* Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm mb-1 text-white">
-                Business Email
-              </label>
+              <label className="block text-sm mb-1 text-white">Email</label>
               <input
                 type="email"
-                placeholder="Enter your business email"
+                placeholder="Enter your email"
                 className="border border-white rounded-lg px-4 py-2 md:py-3 xl:py-4 w-full text-white placeholder-white bg-transparent"
               />
             </div>
             <div>
-              <label className="block text-sm mb-1 text-white">
-                Business Telephone
-              </label>
+              <label className="block text-sm mb-1 text-white">Phone</label>
               <input
                 type="tel"
-                placeholder="Enter your business telephone"
+                placeholder="Enter your telephone number"
                 className="border border-white rounded-lg px-4 py-2 md:py-3 xl:py-4 w-full text-white placeholder-white bg-transparent"
               />
             </div>
@@ -99,7 +95,9 @@ const CareerForm: React.FC = ({}) => {
 
           {/* Copy Letter */}
           <div>
-            <label className="block text-sm mb-1 text-white">Copy Letter</label>
+            <label className="block text-sm mb-1 text-white">
+              Application Letter
+            </label>
             <textarea
               placeholder="Type or paste your cover letter here"
               rows={4}
