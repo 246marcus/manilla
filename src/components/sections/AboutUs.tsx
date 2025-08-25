@@ -100,13 +100,13 @@ const AboutUs = () => {
         </div>
 
         {/* Two sections */}
-        <div className="flex flex-col md:flex-row md:items-center max-w-7xl mx-auto  gap-4 md:gap-6 lg:gap-8  py-4">
+        <div className="flex flex-col md:flex-row md:items-center max-w-6xl mx-auto  gap-4 md:gap-6 lg:gap-8  py-4">
           {/* Left Image */}
           <div className=" w-full flex md:flex-1 ">
             <img
               src="/images/aboutus.png"
               alt="About Image 1"
-              className=" flex-1  w-auto max-h-120 lg:max-h-150 sm:h-110 md:h-auto  "
+              className=" flex-1 sm:flex-none w-auto sm:max-100 sm:mx-auto  md:mx-0 md:w-auto max-h-120 lg:max-h-150 md:flex-1  md:h-auto  "
             />
           </div>
 
