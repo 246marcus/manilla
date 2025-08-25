@@ -2,8 +2,8 @@ import {
   facebook,
   instagram,
   twitter,
-  github,
   scanQRcode,
+  tiktok,
 } from "../../public/icons";
 
 export const navlinks: {
@@ -49,15 +49,32 @@ export const FooterLinks = [
       { name: "Terms & Policy", link: "/" },
       { name: "Blog", link: "/blog" },
       { name: "Stake MNLA", link: "https://vault.manilla.finance" },
+      { name: "Contact Us", link: "/company/contact" },
     ],
   },
 ];
 
 export const socialMedia = [
-  { src: facebook, alt: "facebook logo", href: "/" },
-  { src: twitter, alt: "twitter logo", href: "/" },
-  { src: instagram, alt: "instagram logo", href: "/" },
-  { src: github, alt: "github logo", href: "/" },
+  {
+    src: facebook,
+    alt: "facebook logo",
+    href: "https://www.facebook.com/manillafinance",
+  },
+  {
+    src: twitter,
+    alt: "twitter logo",
+    href: "https://x.com/manilla_finance",
+  },
+  {
+    src: instagram,
+    alt: "instagram logo",
+    href: "https://instagram.com/manilla_finance",
+  },
+  {
+    src: tiktok,
+    alt: "tiktok logo",
+    href: "https://tiktok.com/@manilla_finance",
+  },
 ];
 
 export const QRcode = [{ src: scanQRcode, alt: "download manilla app" }];

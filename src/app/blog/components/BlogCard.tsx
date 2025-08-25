@@ -8,6 +8,7 @@ import { Blog } from "@/types"; // Make sure you have a Blog type in types/index
 
 interface BlogCardProps {
   blog: Blog;
+  className?: string;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {

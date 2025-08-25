@@ -66,11 +66,13 @@ const Footer = () => {
             <div className="flex flex-col items-center sm:items-start flex-1">
               <h3 className="mb-3 md:mb-4 font-semibold text-lg">Follow Us</h3>
               <div className="flex items-center justify-center space-x-4 mb-4">
-                {socialMedia.map(({ src, alt }, idx) => (
+                {socialMedia.map(({ src, alt, href }, idx) => (
                   <a
                     key={idx}
-                    href="#"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full hover:scale-95 "
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full hover:scale-95"
                   >
                     <Image
                       src={src}

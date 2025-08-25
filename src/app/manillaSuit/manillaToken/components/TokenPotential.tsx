@@ -38,17 +38,17 @@ const TokenPotential: React.FC = () => {
               }}
             >
               <span className="font-semibold text-nowrap text-sm">
-                Token Potential
+                Token Information
               </span>
               <img src={icon.src} alt="about" className="w-10" />
             </h2>
           </div>
         </div>
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <p className="px-6 py-2 bg-gray-200 rounded-full text-gray-700 font-medium">
             Crypto Assets
           </p>
-        </div>
+        </div> */}
 
         {/* Stats Cards */}
         <div className="flex flex-wrap justify-center gap-2  py-12 ">

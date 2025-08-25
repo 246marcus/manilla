@@ -11,7 +11,7 @@ const AboutManillaPay = () => {
           <div className="relative flex items-center mb-8 w-full">
             {/* Left Button */}
             <div className="hidden md:block lg:mt-10 lg:translate-y-8">
-              <Link href="/about">
+              <Link href="/company">
                 <button className="px-6 py-3 bg-white text-black text-base font-semibold rounded-full border border-gray-300 hover:bg-gray-100 transition">
                   About Manilla Pay
                 </button>
@@ -57,12 +57,18 @@ const AboutManillaPay = () => {
 
               {/* Buttons */}
               <div className="flex gap-4 flex-wrap justify-center lg:justify-start items-center">
-                <button className="px-6 py-3 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition">
+                <Link
+                  href="/company"
+                  className="px-6 py-3 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition"
+                >
                   Click to learn more about us
-                </button>
-                <button className="px-6 py-2 md:mt-2 bg-black/90 hover:bg-black/80 text-white rounded-full cursor-pointer transition">
-                  About Us
-                </button>
+                </Link>
+
+                <Link href="/company">
+                  <button className="px-6 py-2 md:mt-2 bg-black/90 hover:bg-black/80 text-white rounded-full cursor-pointer transition">
+                    About Us
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -96,18 +102,24 @@ const AboutManillaPay = () => {
 
               {/* Middle Section */}
 
-              <img
-                src="/images/img3.png"
-                alt="Foreground Right"
-                className=" h-30 w-70 lg:ml-40 md:ml scale-110 md:scale-105"
-              />
-
-              {/* Bottom Image */}
-              <img
-                src="/images/img4.png"
-                alt="Bottom"
-                className="h-30 w-70 lg:ml-20 scale-110 md:scale-105" // overlap more on large screens
-              />
+              <a
+                href="https://vault.manilla.finance"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/img3.png"
+                  alt="Foreground Right"
+                  className="h-30 w-70 lg:ml-40 md:ml scale-110 md:scale-105 cursor-pointer"
+                />
+              </a>
+              <Link href="/manillaSuit/card">
+                <img
+                  src="/images/img4.png"
+                  alt="Bottom"
+                  className="h-30 w-70 lg:ml-20 scale-110 md:scale-105 cursor-pointer"
+                />
+              </Link>
             </div>
 
             {/* RIGHT COLUMN */}
@@ -144,7 +156,7 @@ const AboutManillaPay = () => {
                       alt="Feature"
                       className="w-10 h-10"
                     />
-                    <span className="text-black">Track Transactions</span>
+                    <span className="text-black">Merchant Payment</span>
                   </li>
                   <li className="flex items-center gap-1 text-sm">
                     <img
@@ -152,7 +164,7 @@ const AboutManillaPay = () => {
                       alt="Feature"
                       className="w-10 h-10"
                     />
-                    <span className="text-black">Top Up Airtime & Data</span>
+                    <span className="text-black">Digital Assets Swap</span>
                   </li>
                   <li className="flex items-center gap-1 text-sm">
                     <img
@@ -170,7 +182,7 @@ const AboutManillaPay = () => {
                       alt="Feature"
                       className="w-10 h-10"
                     />
-                    <span className="text-black">Pay Using Crypto</span>
+                    <span className="text-black">Airport Transfers</span>
                   </li>
                 </ul>
               </div>
