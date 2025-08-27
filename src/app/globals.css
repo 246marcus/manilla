@@ -46,3 +46,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #021f3e; /* thumb hover color (blue-600) */
 }
+
+.ps-sidebar-container {
+  background: none !important; /* remove white overlay */
+}
+
+.ps-sidebar-container::before {
+  background: rgba(0, 0, 0, 0.845) !important;
+}
+
