@@ -48,7 +48,7 @@ const Nav: React.FC = () => {
   }, [activeLink, mobileMenuOpen]);
 
   return (
-    <header className="hidden fixed top-0 left-0 w-full z-50">
+    <header className=" fixed top-0 left-0 w-full z-50">
       <nav className="bg-[#000C43]" ref={navRef}>
         <div className="max-w-7xl mx-auto py-4 flex justify-between items-center px-6">
           {/* Logo */}
@@ -163,8 +163,8 @@ const Nav: React.FC = () => {
           <div className="hidden md:flex items-center gap-4 text-sm text-nowrap">
             <div className="text-white rounded-full border-white/50 border py-2 px-5 hover:text-brand hover:bg-white/10 cursor-pointer">
               <Link
-                href="/admin/login
-                
+                href="/admin
+
               "
                 passHref
               >
@@ -308,7 +308,8 @@ const Nav: React.FC = () => {
                 ))}
                 <li className="pt-4 flex flex-col gap-3">
                   <a
-                    href="#"
+                    href="/admin/login
+                    "
                     className="bg-blue-600 rounded-full text-white text-center py-2 hover:bg-blue-700"
                   >
                     Get Started
