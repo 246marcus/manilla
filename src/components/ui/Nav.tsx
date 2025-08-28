@@ -48,7 +48,7 @@ const Nav: React.FC = () => {
   }, [activeLink, mobileMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+    <header className="hidden fixed top-0 left-0 w-full z-50">
       <nav className="bg-[#000C43]" ref={navRef}>
         <div className="max-w-7xl mx-auto py-4 flex justify-between items-center px-6">
           {/* Logo */}

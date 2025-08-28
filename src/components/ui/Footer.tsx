@@ -6,8 +6,8 @@ import Image from "next/image";
 import { FooterLinks, socialMedia, QRcode } from "../../types/index";
 
 const Footer = () => {
-  return (
-    <footer className="bg-white  text-black py-12">
+  return ( 
+    <footer className="hidden bg-white  text-black py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className=" flex flex-col lg:flex-row lg:justify-between  gap-4 ">
           <div className="flex flex-col sm:flex-row justify-between">
