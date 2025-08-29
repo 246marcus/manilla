@@ -1,12 +1,14 @@
 import React from "react";
-import OverviewCards from "./OverviewCards";
-import Topbar from "./Topbar";
-import WaitlistTable from "./WaitlistTable";
-import LatestBlogs from "./LatestBlogs";
+import OverviewCards from "../components/OverviewCards";
+import Topbar from "../components/Topbar";
+import WaitlistTable from "../components/WaitlistTable";
+import LatestBlogs from "../components/LatestBlogs";
+import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   return (
     <>
+      <Sidebar />
       <Topbar
         title={"Dashboard"}
         subtitle={"Total Overview"}
