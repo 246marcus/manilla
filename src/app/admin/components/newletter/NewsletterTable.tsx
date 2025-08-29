@@ -89,7 +89,7 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto h-full min-h-[350px]">
+      <div className="overflow-auto  min-h-[320px] h-[350px]">
         <table className="w-full text-sm border-collapse">
           <thead className="bg-gray-100 text-gray-700">
             <tr className="text-left">

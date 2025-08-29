@@ -39,6 +39,38 @@ const WaitlistPage = () => {
       useCase: "Bill Payments",
       platform: "Mobile",
     },
+    {
+      id: 4,
+      email: "mary@example.com",
+      location: "🇳🇬 Nigeria",
+      userType: "Individual",
+      useCase: "Bill Payments",
+      platform: "Mobile",
+    },
+    {
+      id: 5,
+      email: "mary@example.com",
+      location: "🇳🇬 Nigeria",
+      userType: "Individual",
+      useCase: "Bill Payments",
+      platform: "Mobile",
+    },
+    {
+      id: 6,
+      email: "mary@example.com",
+      location: "🇳🇬 Nigeria",
+      userType: "Individual",
+      useCase: "Bill Payments",
+      platform: "Mobile",
+    },
+    {
+      id: 7,
+      email: "mary@example.com",
+      location: "🇳🇬 Nigeria",
+      userType: "Individual",
+      useCase: "Bill Payments",
+      platform: "Mobile",
+    },
   ]);
 
   const handleDelete = (id: number) => {
@@ -58,7 +90,7 @@ const WaitlistPage = () => {
   };
 
   return (
-    <div className="pe-4 flex flex-col gap-3 bg-white/40 min-h-screen">
+    <div className="pe-4 flex-1 flex flex-col  bg-white/40 h-screen overflow-y-auto">
       <Topbar
         title="Waitlist"
         subtitle="Waitlist"

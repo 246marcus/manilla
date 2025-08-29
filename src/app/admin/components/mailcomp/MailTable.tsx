@@ -42,7 +42,7 @@ const MailTable: React.FC<MailTableProps> = ({
     <div className="bg-black/5">
       {/* === Header === */}{" "}
       <div className="flex justify-between items-center mb-3 bg-white/50 pb-2 px-4">
-        <div>
+        <div className="pt-3 pb-1">
           <h1 className=" font-semibold text-black/80">
             Simply create a new mails or manage existing mails
           </h1>
@@ -104,7 +104,7 @@ const MailTable: React.FC<MailTableProps> = ({
       </div>
 
       {/* === Table === */}
-      <div className="  shadow  overflow-x-auto min-h-[320px]">
+      <div className="  shadow  overflow-auto min-h-[320px] h-[350px]">
         <table className="w-full border-collapse text-sm py-2 px-3 rounded-xl ">
           <thead className="text-black/80">
             <tr className="text-left bg-black/10 text-nowrap">

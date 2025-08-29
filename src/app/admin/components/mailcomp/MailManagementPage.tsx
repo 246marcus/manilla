@@ -108,7 +108,7 @@ const MailManagementPage = () => {
   };
 
   return (
-    <div className="pe-4 flex flex-col gap-3 bg-white/40">
+    <div className="pe-4 flex-1 flex flex-col  bg-white/40 h-screen  overflow-y-auto">
       {/* Page Title */}
       
       {/* Header */}
