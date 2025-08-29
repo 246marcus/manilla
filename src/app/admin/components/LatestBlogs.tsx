@@ -47,12 +47,12 @@ export default function LatestBlogs() {
                 className="rounded-md flex-1  h-auto"
               />
             </div>
-            <div className="text-black/60 space-y-2 flex-7/12">
+            <div className="text-black/60 space-y-1 flex-7/12">
               <p className="text-xs ">{blog.category}</p>
-              <p className="text-xs text-black/80 font-semibold">
+              <p className="text-xs leading-4 text-black/80 font-semibold">
                 {blog.title}
               </p>
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
                 <Image
                   src="/icons/dashblog.png"
                   alt="Blog"
