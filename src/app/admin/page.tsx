@@ -1,6 +1,10 @@
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import BlogManagement from "./components/blogcomp/BlogManagement";
+import MailManagementPage from "./components/mailcomp/MailManagementPage";
+import LoginPage from "./components/login/LoginPage";
+import WaitlistPage from "./components/waitlist/WaitlistPage";
+import NewsletterPage from "./components/newletter/NewsletterPage";
 
 export default function Home() {
   return (
@@ -13,7 +17,11 @@ export default function Home() {
       {/* Main Content */}
       <div className="flex-1 h-screen overflow-y-auto">
        {/*  <Dashboard /> */}
-         <BlogManagement/> 
+       {/*   <BlogManagement/>  */}
+         <MailManagementPage/>
+        {/*  <LoginPage/> */}
+        {/*  <WaitlistPage/> */}
+         {/* <NewsletterPage/> */}
       </div>
     </div>
   );
