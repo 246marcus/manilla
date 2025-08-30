@@ -2,7 +2,7 @@ import React from "react";
 import CompanyHero from "./components/CompanyHero";
 import CompanyMission from "./components/CompanyMission";
 import CompanyValue from "./components/CompanyValue";
-import CompanyPartner from "./components/CompanyPartner";
+// import CompanyPartner from "./components/CompanyPartner";
 import MediaPartner from "@/components/sections/MediaPartner";
 
 export default function Company() {
