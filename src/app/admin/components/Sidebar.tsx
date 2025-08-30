@@ -23,7 +23,7 @@ export default function AppSidebar() {
       const res = await fetch("/api/auth/logout", {
         method: "POST",
       });
-      
+
       if (res.ok) {
         router.push("/admin/login");
       }
@@ -48,7 +48,7 @@ export default function AppSidebar() {
           <MenuItem
             icon={<FaThLarge />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            onClick={() => router.push('/admin/dashboard')}
+            onClick={() => router.push("/admin/Dashboard")}
           >
             Dashboard
           </MenuItem>
@@ -56,7 +56,7 @@ export default function AppSidebar() {
           <MenuItem
             icon={<FaBlog />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            onClick={() => router.push('/admin/blogManagement')}
+            onClick={() => router.push("/admin/blogManagement")}
           >
             Blog Management
           </MenuItem>
@@ -64,7 +64,7 @@ export default function AppSidebar() {
           <MenuItem
             icon={<FaEnvelope />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            onClick={() => router.push('/admin/mailManagement')}
+            onClick={() => router.push("/admin/mailManagement")}
           >
             Mail Management
           </MenuItem>
@@ -72,7 +72,7 @@ export default function AppSidebar() {
           <MenuItem
             icon={<FaList />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            onClick={() => router.push('/admin/waitlist')}
+            onClick={() => router.push("/admin/waitlist")}
           >
             Waitlist
           </MenuItem>
@@ -80,7 +80,7 @@ export default function AppSidebar() {
           <MenuItem
             icon={<FaNewspaper />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            onClick={() => router.push('/admin/newsletters')}
+            onClick={() => router.push("/admin/newsletters")}
           >
             Newsletters
           </MenuItem>
@@ -88,7 +88,7 @@ export default function AppSidebar() {
           <MenuItem
             icon={<FaAddressBook />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            onClick={() => router.push('/admin/contact')}
+            onClick={() => router.push("/admin/contact")}
           >
             Contact
           </MenuItem>
@@ -96,7 +96,7 @@ export default function AppSidebar() {
 
         {/* Logout button pinned bottom */}
         <div className="absolute bottom-8 w-full text-center px-4">
-          <button 
+          <button
             onClick={handleLogout}
             className="flex items-center w-full justify-start gap-2 text-white bg-black/60 px-4 py-2 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 "
           >
