@@ -59,7 +59,7 @@ const Topbar: React.FC<TopbarProps> = ({ title, subtitle, description }) => {
       <div className="flex justify-between items-center p-4  bg-black/2">
         <h1 className="text-xl font-semibold">{title}</h1>
         <div className="flex items-center space-x-3">
-          <div className="w-[50px] h-[50px] bg-blue-600 rounded-full flex items-center justify-center">
+          <div className="w-[50px] h-[50px] bg-gray-700 rounded-full flex items-center justify-center">
             <FaUser className="text-white text-xl" />
           </div>
           <div className="text-start">
