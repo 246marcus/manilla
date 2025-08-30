@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import {
   FaFileAlt,
   FaEnvelopeOpenText,
@@ -5,14 +8,63 @@ import {
   FaRegNewspaper,
 } from "react-icons/fa";
 
-const stats = [
-  { title: "Blogs Created", value: 18, icon: <FaFileAlt size={20} className="text-purple-600" /> },
-  { title: "Mail Dispatched", value: 200, icon: <FaEnvelopeOpenText size={20} className="text-green-400"  /> },
-  { title: "Waitlist", value: 1528, icon: <FaUsers size={20} className="text-blue-500"  /> },
-  { title: "Newsletter", value: 763, icon: <FaRegNewspaper size={20} className="text-orange-400"  /> },
-];
-
 export default function OverviewCards() {
+  const [newsletterCount, setNewsletterCount] = useState(0);
+  const [waitlistCount, setWaitlistCount] = useState(0);
+  const [contactCount, setContactCount] = useState(0);
+  const [blogCount, setBlogCount] = useState(0);
+
+  useEffect(() => {
+    fetchNewsletterCount();
+    fetchContactCounts();
+    fetchBlogCount();
+  }, []);
+
+  const fetchNewsletterCount = async () => {
+    try {
+      const res = await fetch("/api/newsletter/subscribe");
+      const data = await res.json();
+      if (res.ok) {
+        setNewsletterCount(data.subscribers.length);
+      }
+    } catch (error) {
+      console.error("Failed to fetch newsletter count:", error);
+    }
+  };
+
+  const fetchContactCounts = async () => {
+    try {
+      const res = await fetch("/api/contact");
+      const data = await res.json();
+      if (res.ok) {
+        const waitlistUsers = data.contacts.filter((contact: { requestType: string }) => contact.requestType === "waitlist");
+        const contactUsers = data.contacts.filter((contact: { requestType: string }) => contact.requestType === "contact");
+        setWaitlistCount(waitlistUsers.length);
+        setContactCount(contactUsers.length);
+      }
+    } catch (error) {
+      console.error("Failed to fetch contact counts:", error);
+    }
+  };
+
+  const fetchBlogCount = async () => {
+    try {
+      const res = await fetch("/api/blogs");
+      const data = await res.json();
+      if (res.ok) {
+        setBlogCount(data.blogs.length);
+      }
+    } catch (error) {
+      console.error("Failed to fetch blog count:", error);
+    }
+  };
+
+  const stats = [
+    { title: "Blogs Created", value: blogCount, icon: <FaFileAlt size={20} className="text-purple-600" /> },
+    { title: "Contact Requests", value: contactCount, icon: <FaEnvelopeOpenText size={20} className="text-green-400"  /> },
+    { title: "Waitlist", value: waitlistCount, icon: <FaUsers size={20} className="text-blue-500"  /> },
+    { title: "Newsletter", value: newsletterCount, icon: <FaRegNewspaper size={20} className="text-orange-400"  /> },
+  ];
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-3 mb-5">
       {stats.map((stat, idx) => (

@@ -6,6 +6,8 @@ import LatestBlogs from "../components/LatestBlogs";
 import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
+  console.log("Dashboard component loading...");
+  
   return (
     <div className="flex h-screen">
       <Sidebar />

@@ -1,14 +1,49 @@
 // app/blog/page.tsx
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MediaPartner from "@/components/sections/MediaPartner";
 import BlogCard from "@/app/blog/components/BlogCard";
-import { blogs } from "@/types"; // import your array of blogs
+
+interface Blog {
+  _id: string;
+  title: string;
+  slug: string;
+  category: string;
+  image: string;
+  content: string;
+  excerpt: string;
+  authorName: string;
+  authorImage: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 export default function BlogPage() {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      const res = await fetch("/api/blogs?status=published");
+      const data = await res.json();
+
+      if (res.ok) {
+        setBlogs(data.blogs);
+      }
+    } catch (error) {
+      console.error("Failed to fetch blogs:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <main>
       {/* Top Banner Section */}
@@ -91,10 +126,23 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Cards Section */}
-      <section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogs.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} />
-        ))}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        {isLoading ? (
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+            <p className="mt-2 text-gray-600">Loading blogs...</p>
+          </div>
+        ) : blogs.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-600">No published blogs found.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Media Partners */}

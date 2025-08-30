@@ -9,7 +9,7 @@ export const getAuthUser = async (request: NextRequest) => {
     return null;
   }
 
-  const decoded = verifyToken(token) as any;
+  const decoded = verifyToken(token) as { id: string; email: string } | null;
   return decoded ? decoded : null;
 };
 
@@ -33,7 +33,7 @@ export const paginate = (page: number = 1, limit: number = 10) => {
   return { skip, limit };
 };
 
-export const formatResponse = (data: any, message?: string) => {
+export const formatResponse = (data: unknown, message?: string) => {
   return {
     success: true,
     message: message || "Operation successful",

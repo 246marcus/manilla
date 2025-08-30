@@ -5,8 +5,8 @@ declare global {
   // You can refine if you prefer stricter types
   var mongooseCache:
     | {
-        conn: any | null;
-        promise: Promise<any> | null;
+        conn: unknown | null;
+        promise: Promise<unknown> | null;
       }
     | undefined;
 }

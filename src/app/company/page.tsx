@@ -3,6 +3,7 @@ import CompanyHero from "./components/CompanyHero";
 import CompanyMission from "./components/CompanyMission";
 import CompanyValue from "./components/CompanyValue";
 import CompanyPartner from "./components/CompanyPartner";
+import MediaPartner from "@/components/sections/MediaPartner";
 
 export default function Company() {
   return (
@@ -17,7 +18,8 @@ export default function Company() {
         <CompanyValue />
       </section>
       <section>
-        <CompanyPartner />
+        {/* <CompanyPartner /> */}
+        <MediaPartner />
       </section>
     </main>
   );

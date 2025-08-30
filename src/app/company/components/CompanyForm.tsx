@@ -4,6 +4,65 @@ import React, { useState } from "react";
 
 const CompanyForm: React.FC = () => {
   const [joinWaitlist, setJoinWaitlist] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error">("success");
+  
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    telephone: "",
+    companyName: "",
+    companyAddress: "",
+    requestContent: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage("");
+
+    try {
+      const requestType = joinWaitlist ? "waitlist" : "contact";
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          requestType,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage(data.message);
+        setMessageType("success");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          telephone: "",
+          companyName: "",
+          companyAddress: "",
+          requestContent: "",
+        });
+        setJoinWaitlist(false);
+      } else {
+        setMessage(data.message || "Something went wrong");
+        setMessageType("error");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setMessage("Something went wrong. Please try again.");
+      setMessageType("error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section className=" max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4  py-10">
@@ -12,7 +71,7 @@ const CompanyForm: React.FC = () => {
         <h2 className="text-center text-xl font-semibold text-gray-900 mb-8">
           Contact Form
         </h2>
-        <form className="bg-white/5 rounded-2xl p-6 md:p-8 shadow space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white/5 rounded-2xl p-6 md:p-8 shadow space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">
@@ -20,8 +79,11 @@ const CompanyForm: React.FC = () => {
               </label>
               <input
                 type="text"
+                value={formData.firstName}
+                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 placeholder="Enter your first name"
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
+                required
               />
             </div>
             <div>
@@ -30,8 +92,11 @@ const CompanyForm: React.FC = () => {
               </label>
               <input
                 type="text"
+                value={formData.lastName}
+                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 placeholder="Enter your last name"
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
+                required
               />
             </div>
           </div>
@@ -43,8 +108,11 @@ const CompanyForm: React.FC = () => {
               </label>
               <input
                 type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="Enter your business email"
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
+                required
               />
             </div>
             <div>
@@ -53,6 +121,8 @@ const CompanyForm: React.FC = () => {
               </label>
               <input
                 type="tel"
+                value={formData.telephone}
+                onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
                 placeholder="Enter your business telephone"
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
               />
@@ -65,6 +135,8 @@ const CompanyForm: React.FC = () => {
             </label>
             <input
               type="text"
+              value={formData.companyName}
+              onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
               placeholder="Enter your company name"
               className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
             />
@@ -76,6 +148,8 @@ const CompanyForm: React.FC = () => {
             </label>
             <input
               type="text"
+              value={formData.companyAddress}
+              onChange={(e) => setFormData({ ...formData, companyAddress: e.target.value })}
               placeholder="Enter your company address"
               className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
             />
@@ -86,9 +160,12 @@ const CompanyForm: React.FC = () => {
               Request Content
             </label>
             <textarea
+              value={formData.requestContent}
+              onChange={(e) => setFormData({ ...formData, requestContent: e.target.value })}
               placeholder="How we can help you"
               rows={4}
               className="border border-gray-300 rounded-lg px-4 py-2 w-full placeholder:text-xs"
+              required
             />
           </div>
 
@@ -111,6 +188,16 @@ const CompanyForm: React.FC = () => {
             </label>
           </div>
 
+          {message && (
+            <div className={`p-3 rounded-lg text-sm ${
+              messageType === "success" 
+                ? "bg-green-100 text-green-800 border border-green-200" 
+                : "bg-red-100 text-red-800 border border-red-200"
+            }`}>
+              {message}
+            </div>
+          )}
+
           <p className="text-xs text-gray-500">
             By submitting your email address, you agree to receive occasional
             marketing messages from Manilla, from which you can unsubscribe at
@@ -119,9 +206,10 @@ const CompanyForm: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:opacity-90 transition"
+            disabled={isLoading}
+            className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Done
+            {isLoading ? "Submitting..." : joinWaitlist ? "Join Waitlist" : "Submit Contact"}
           </button>
         </form>
       </div>

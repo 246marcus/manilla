@@ -1,8 +1,47 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import darkbg from "../../../public/images/darkstylebg.png";
 import gradient from "../../../public/images/gradientStripe.png";
 
 const MediaPartners: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error">("success");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage(data.message);
+        setMessageType("success");
+        setEmail("");
+      } else {
+        setMessage(data.message);
+        setMessageType("error");
+      }
+    } catch (error) {
+      setMessage("Something went wrong. Please try again.");
+      setMessageType("error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section className="bg-white max-w-7xl mx-auto px-4 mt-6">
       {/* Top dark section */}
@@ -153,19 +192,35 @@ const MediaPartners: React.FC = () => {
             {/*  <p className="hidden  md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
               Manilla is launching soon — Join our Newsletter. Join our
               newsletter to get early access, exclusive updates and a front-row
-              seat to the future of cross-border payments
+              seat to the future of cross-border payments
             </p> */}
             {/* Contact form simulation */}
-            <div className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubscribe} className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
               <input
-                type="text"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Type Email here"
                 className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                required
               />
-              <button className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition">
-                 Subscribe
+              <button 
+                type="submit"
+                disabled={isLoading}
+                className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition disabled:opacity-50"
+              >
+                {isLoading ? "Subscribing..." : "Subscribe"}
               </button>
-            </div>
+            </form>
+            
+            {/* Message display */}
+            {message && (
+              <div className={`mt-4 text-center text-sm ${
+                messageType === "success" ? "text-green-600" : "text-red-600"
+              }`}>
+                {message}
+              </div>
+            )}
           </div>
         </div>
       </div>

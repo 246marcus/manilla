@@ -6,7 +6,7 @@ if (!MONGODB_URI) throw new Error("MONGODB_URI is not set");
 
 declare global {
   var mongooseCache:
-    | { conn: any | null; promise: Promise<any> | null }
+    | { conn: unknown | null; promise: Promise<unknown> | null }
     | undefined;
 }
 
