@@ -4,9 +4,27 @@ import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 
 interface EditBlogModalProps {
-  blog: any;
+  blog: {
+    _id: string;
+    title: string;
+    category: string;
+    content: string;
+    excerpt: string;
+    authorName: string;
+    authorImage: string;
+    status: string;
+  };
   onClose: () => void;
-  onSubmit: (updatedBlog: any) => void;
+  onSubmit: (updatedBlog: {
+    _id: string;
+    title: string;
+    category: string;
+    content: string;
+    excerpt: string;
+    authorName: string;
+    authorImage: string;
+    status: string;
+  }) => void;
 }
 
 const EditBlogModal: React.FC<EditBlogModalProps> = ({

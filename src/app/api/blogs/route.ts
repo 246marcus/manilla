@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     const status = searchParams.get("status");
     const category = searchParams.get("category");
 
-    let query: any = {};
+    let query: Record<string, unknown> = {};
     
     if (status) {
       query.status = status;
@@ -26,7 +26,7 @@ export async function GET(req: Request) {
       .select("-__v");
 
     return NextResponse.json({ blogs });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get blogs error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -131,7 +131,7 @@ export async function POST(req: Request) {
       { message: "Blog created successfully", blog },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Create blog error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

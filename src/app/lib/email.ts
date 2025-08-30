@@ -155,9 +155,10 @@ export const sendEmail = async (
 
     const result = await transporter.sendMail(mailOptions);
     return { success: true, messageId: result.messageId };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Email sending error:', error);
-    return { success: false, error: error.message };
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return { success: false, error: errorMessage };
   }
 };
 

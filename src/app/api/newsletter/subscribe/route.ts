@@ -54,7 +54,7 @@ export async function POST(req: Request) {
       { message: "Successfully subscribed to our newsletter!" },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Newsletter subscription error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -71,7 +71,7 @@ export async function GET() {
       .select('email subscribedAt');
 
     return NextResponse.json({ subscribers });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get subscribers error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

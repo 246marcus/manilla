@@ -34,7 +34,7 @@ const WaitlistPage = () => {
 
       if (res.ok) {
         // Filter only waitlist submissions
-        const waitlistUsers = data.contacts.filter((contact: any) => contact.requestType === "waitlist");
+        const waitlistUsers = data.contacts.filter((contact: { requestType: string }) => contact.requestType === "waitlist");
         setUsers(waitlistUsers);
       }
     } catch (error) {

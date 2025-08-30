@@ -52,10 +52,11 @@ export async function POST(req: Request) {
 
     console.log("Login API: Cookie set successfully");
     return response;
-  } catch (error: any) {
-    return NextResponse.json(
-      { message: "Server error", error: error.message },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      return NextResponse.json(
+        { message: "Server error", error: errorMessage },
+        { status: 500 }
+      );
   }
 }

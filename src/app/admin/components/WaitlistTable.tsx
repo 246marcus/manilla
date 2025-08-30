@@ -32,7 +32,7 @@ export default function WaitlistTable() {
       if (res.ok) {
         // Filter only waitlist submissions and take latest 7
         const waitlistUsers = data.contacts
-          .filter((contact: any) => contact.requestType === "waitlist")
+          .filter((contact: { requestType: string }) => contact.requestType === "waitlist")
           .slice(0, 7);
         setWaitlistData(waitlistUsers);
       }

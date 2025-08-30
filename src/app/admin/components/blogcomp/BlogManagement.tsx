@@ -56,7 +56,18 @@ const BlogManagement = () => {
 
       if (res.ok) {
         // Transform API data to match component interface
-        const transformedBlogs = data.blogs.map((blog: any, index: number) => ({
+        const transformedBlogs = data.blogs.map((blog: {
+          _id: string;
+          title: string;
+          category: string;
+          content: string;
+          excerpt: string;
+          authorName: string;
+          authorImage: string;
+          image: string;
+          status: string;
+          createdAt: string;
+        }, index: number) => ({
           ...blog,
           id: index + 1,
           code: `Blog #${String(index + 1).padStart(3, '0')}`,

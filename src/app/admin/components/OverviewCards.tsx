@@ -37,8 +37,8 @@ export default function OverviewCards() {
       const res = await fetch("/api/contact");
       const data = await res.json();
       if (res.ok) {
-        const waitlistUsers = data.contacts.filter((contact: any) => contact.requestType === "waitlist");
-        const contactUsers = data.contacts.filter((contact: any) => contact.requestType === "contact");
+        const waitlistUsers = data.contacts.filter((contact: { requestType: string }) => contact.requestType === "waitlist");
+        const contactUsers = data.contacts.filter((contact: { requestType: string }) => contact.requestType === "contact");
         setWaitlistCount(waitlistUsers.length);
         setContactCount(contactUsers.length);
       }

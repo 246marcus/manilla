@@ -6,7 +6,17 @@ import Authorimg from "../../../../../public/images/blogauthor.png";
 
 interface CreateBlogModalProps {
   onClose: () => void;
-  onSubmit: (blog: any) => void;
+  onSubmit: (blog: {
+    _id: string;
+    title: string;
+    category: string;
+    content: string;
+    excerpt: string;
+    authorName: string;
+    authorImage: string;
+    image: string;
+    status: string;
+  }) => void;
 }
 
 const CreateBlogModal: React.FC<CreateBlogModalProps> = ({

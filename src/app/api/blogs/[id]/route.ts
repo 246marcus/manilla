@@ -20,7 +20,7 @@ export async function GET(
     }
 
     return NextResponse.json({ blog });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get blog error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -49,7 +49,7 @@ export async function PUT(
       status,
     } = body;
 
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
     
     if (title) updateData.title = title;
     if (category) updateData.category = category;
@@ -80,7 +80,7 @@ export async function PUT(
       { message: "Blog updated successfully", blog },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Update blog error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -121,7 +121,7 @@ export async function DELETE(
       { message: "Blog deleted successfully" },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Delete blog error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
