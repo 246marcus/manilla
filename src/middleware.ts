@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
 export async function middleware(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  const token = req.cookies.get("admin-token")?.value;
   const { pathname } = req.nextUrl;
 
   console.log(`Middleware: ${pathname}, Token: ${token ? 'exists' : 'missing'}`);
