@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import product1 from "../../../public/images/product1.png";
 import product2 from "../../../public/images/product2.png";
 import product3 from "../../../public/images/product3.png";
