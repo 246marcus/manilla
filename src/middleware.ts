@@ -23,7 +23,7 @@ export async function middleware(req: NextRequest) {
     try {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
       const { payload } = await jwtVerify(token, secret);
-      console.log("Middleware: Token verified successfully", { pathname, payload });
+      console.log("Middleware:  Token verified successfully", { pathname, payload });
     } catch (error) {
       console.log("Middleware: Token verification failed", error);
       return NextResponse.redirect(new URL("/admin/login", req.url));
