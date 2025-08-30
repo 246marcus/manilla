@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FaEllipsisV, FaEdit, FaTrashAlt, FaUpload } from "react-icons/fa";
 import { useState } from "react";
+import { Blog } from "./BlogManagement";
 
 interface BlogCardProps {
   id: number;
@@ -15,7 +16,8 @@ interface BlogCardProps {
   BlogImage: any;
   category: string;
   description: string;
-  onDelete: () => void;
+  onDelete: (id: number) => void;
+  setSelected: React.Dispatch<React.SetStateAction<Blog | null>>;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
@@ -30,6 +32,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   category,
   description,
   onDelete,
+  setSelected,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -84,11 +87,27 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 <FaUpload /> Post Now
               </button>
             )}
-            <button className="flex items-center gap-2 px-4 py-2 hover:bg-black/50 w-full text-left">
+            <button
+              onClick={() => {
+                setSelected({
+                  id,
+                  code,
+                  title,
+                  status,
+                  authorName,
+                  authorImage,
+                  date,
+                  BlogImage,
+                  category,
+                  description,
+                });
+              }}
+              className="flex items-center gap-2 px-4 py-2 hover:bg-black/50 w-full text-left"
+            >
               <FaEdit /> Edit
             </button>
             <button
-              onClick={onDelete}
+              onClick={() => onDelete?.(id)}
               className="flex items-center gap-2 px-4 py-2 hover:bg-black/50 w-full text-left text-red-600"
             >
               <FaTrashAlt /> Delete

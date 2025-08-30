@@ -29,50 +29,45 @@ export default function AppSidebar() {
         <img alt="logo" src={logo.src} className="mx-auto my-6 w-auto" />
 
         <Menu className="px-4 ">
-          <Link href="/admin/Dashboard">
-            <MenuItem
-              icon={<FaThLarge />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Dashboard
-            </MenuItem>
-          </Link>
+          <MenuItem
+            component={<Link href="/admin/Dashboard" />}
+            icon={<FaThLarge />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+          >
+            Dashboard
+          </MenuItem>
 
-          <Link href="/admin/blogManagement">
-            <MenuItem
-              icon={<FaBlog />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Blog Management
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaBlog />}
+            component={<Link href="/admin/blogManagement" />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+          >
+            Blog Management
+          </MenuItem>
 
-          <Link href="/admin/mailManagement">
-            <MenuItem
-              icon={<FaEnvelope />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Mail Management
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaEnvelope />}
+            component={<Link href="/admin/mailManagement" />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+          >
+            Mail Management
+          </MenuItem>
 
-          <Link href="/admin/waitlist">
-            <MenuItem
-              icon={<FaList />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Waitlist
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaList />}
+            component={<Link href="/admin/waitlist" />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+          >
+            Waitlist
+          </MenuItem>
 
-          <Link href="/admin/newsletters">
-            <MenuItem
-              icon={<FaNewspaper />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Newsletters
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaNewspaper />}
+            component={<Link href="/admin/newsletters" />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+          >
+            Newsletters
+          </MenuItem>
         </Menu>
 
         {/* Logout button pinned bottom */}

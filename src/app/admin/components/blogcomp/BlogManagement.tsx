@@ -10,6 +10,25 @@ import { FaDeleteLeft } from "react-icons/fa6";
 import { MdAddBox, MdDeleteOutline } from "react-icons/md";
 import blogimg from "../../../../../public/images/blogimage1.png";
 import Authorimg from "../../../../../public/images/blogauthor.png";
+import EditBlogModal from "./EditBlogModal";
+
+
+
+export interface Blog {
+  id: number;
+  code: string;
+  title: string;
+  status: "Posted" | "Draft";
+  authorName: string;
+  authorImage: any; // or: string | StaticImageData if you want stronger typing
+  date: string;
+  BlogImage: any;
+  category: string;
+  description: string;
+}
+
+
+
 
 const blogPosts = [
   {
@@ -159,6 +178,7 @@ const blogPosts = [
 ];
 
 const BlogManagement = () => {
+  const [blogs, setBlogs] = useState<Blog[]>(blogPosts);
   const [activeTab, setActiveTab] = useState<"Posted" | "Draft">("Posted");
   const [sort, setSort] = useState("Date");
 
@@ -166,20 +186,50 @@ const BlogManagement = () => {
   const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [showCreateSuccess, setShowCreateSuccess] = useState(false);
+ const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);  //editcreatblog
+
+  
+ // Handle save (PUT request to backend here)
+  const handleUpdate = async (updatedBlog: Blog) => {
+    // Example local update (replace with API call)
+    setBlogs((prev) =>
+      prev.map((b) => (b.id === updatedBlog.id ? updatedBlog : b))
+    );
+
+    // Close modal
+    setSelectedBlog(null);
+  };
 
   const handleDeleteAll = () => setShowDeleteModal(true);
+
+  const handleDeleteBlog = (id: number) => {
+    setBlogs((prev) => prev.filter((blog) => blog.id !== id));
+  };
+
   const confirmDelete = () => {
+    setBlogs((prev) => prev.filter((blog) => blog.status !== activeTab));
     setShowDeleteModal(false);
     setShowDeleteSuccess(true);
   };
-
   const handleCreateSubmit = () => {
     setShowCreateForm(false);
     setShowCreateSuccess(true);
   };
 
+  // Filter + Sort blogs before passing to BlogGrid
+  const filteredBlogs = blogs.filter((blog) => blog.status === activeTab);
+
+  const sortedBlogs = [...filteredBlogs].sort((a, b) => {
+    if (sort === "Newest") {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    } else if (sort === "Oldest") {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    }
+    return 0; // default "By Date" (no sorting applied)
+  });
+
   return (
-    <div className="h-screen overflow-y-scroll">
+    <div className="h-screen flex-1 overflow-y-scroll">
       {/* Header */}
       <Topbar
         title={"Blog Management"}
@@ -249,9 +299,10 @@ const BlogManagement = () => {
 
         {/* Blog Grid */}
         <BlogGrid
-          blogs={blogPosts}
+          blogs={sortedBlogs}
           activeTab={activeTab}
-          onDelete={handleDeleteAll}
+          onDelete={handleDeleteBlog}
+         setSelected={setSelectedBlog}
         />
 
         {/* Modals */}
@@ -302,6 +353,16 @@ const BlogManagement = () => {
             ]}
           />
         )}
+
+        {/* Edit Modal */}
+        {selectedBlog !== null && (
+          <EditBlogModal
+            blog={selectedBlog}
+            onClose={() => setSelectedBlog(null)}
+            onSubmit={handleUpdate}
+          />
+        )}
+
       </div>
     </div>
   );
