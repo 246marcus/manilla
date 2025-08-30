@@ -67,7 +67,7 @@ export async function POST(req: Request) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Send reply error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

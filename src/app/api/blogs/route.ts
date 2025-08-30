@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     const status = searchParams.get("status");
     const category = searchParams.get("category");
 
-    let query: Record<string, unknown> = {};
+    const query: Record<string, unknown> = {};
     
     if (status) {
       query.status = status;
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
         const buffer = Buffer.from(bytes);
         const base64String = `data:${imageFile.type};base64,${buffer.toString('base64')}`;
         
-        const cloudinary = require('cloudinary').v2;
+        const cloudinary = (await import('cloudinary')).v2;
         cloudinary.config({
           cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
           api_key: process.env.CLOUDINARY_API_KEY,

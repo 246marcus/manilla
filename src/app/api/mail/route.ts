@@ -53,7 +53,7 @@ export async function POST(req: Request) {
       { message: "Email sent successfully", messageId: emailResult.messageId },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Send email error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -71,7 +71,7 @@ export async function GET(req: Request) {
       .select("-__v");
 
     return NextResponse.json({ mails });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get mails error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

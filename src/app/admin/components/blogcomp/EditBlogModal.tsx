@@ -197,7 +197,7 @@ const EditBlogModal: React.FC<EditBlogModalProps> = ({
                       setFormData({ ...formData, authorName: e.target.value })
                     }
                     className="w-full border rounded-md p-2"
-                    placeholder="Enter author's name"
+                    placeholder="Enter author&apos;s name"
                     required
                   />
                 </div>

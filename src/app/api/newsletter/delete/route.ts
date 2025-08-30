@@ -28,7 +28,7 @@ export async function DELETE(req: Request) {
       { message: `Successfully deleted ${result.deletedCount} subscriber(s)` },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Delete subscribers error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

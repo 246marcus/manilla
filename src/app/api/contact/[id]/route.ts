@@ -19,7 +19,7 @@ export async function GET(
     }
 
     return NextResponse.json({ contact });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get contact error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -62,7 +62,7 @@ export async function PUT(
       { message: "Contact status updated successfully", contact },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Update contact error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -95,7 +95,7 @@ export async function DELETE(
       { message: "Contact deleted successfully" },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Delete contact error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

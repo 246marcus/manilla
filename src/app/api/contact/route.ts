@@ -56,7 +56,7 @@ export async function POST(req: Request) {
       { message: successMessage },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Contact submission error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
@@ -74,7 +74,7 @@ export async function GET(req: Request) {
       .select("-__v");
 
     return NextResponse.json({ contacts });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Get contacts error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

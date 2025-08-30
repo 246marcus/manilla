@@ -256,7 +256,7 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                 ) : (
                   <>
                     <p className="text-gray-500 mb-3">
-                      Drag & drop or click to upload
+                      Drag &amp; drop or click to upload
                     </p>
                     <input
                       type="file"

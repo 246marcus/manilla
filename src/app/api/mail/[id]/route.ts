@@ -23,7 +23,7 @@ export async function DELETE(
       { message: "Mail deleted successfully" },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Delete mail error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },

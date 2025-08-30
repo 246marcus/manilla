@@ -63,7 +63,7 @@ export async function POST(req: Request) {
           success: emailResult.success,
           error: emailResult.error
         });
-      } catch (error: any) {
+      } catch (error: unknown) {
         failureCount++;
         results.push({
           email: subscriber.email,
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Send newsletter error:", error);
     return NextResponse.json(
       { message: "Server error. Please try again." },
