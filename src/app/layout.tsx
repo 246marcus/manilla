@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/ui/Nav";
-import Footer from "@/components/ui/Footer";
+import AdminWrapper from "@/components/AdminWrapper";
 
 export const metadata: Metadata = {
   title: "Manilla",
@@ -17,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Nav />
-        {children}
-        <Footer />
+        <AdminWrapper>
+          {children}
+        </AdminWrapper>
       </body>
     </html>
   );

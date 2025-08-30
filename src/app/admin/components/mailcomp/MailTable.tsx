@@ -8,19 +8,22 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 interface Mail {
-  id: number;
-  date: string;
-  receiver: string;
+  _id: string;
+  from: string;
+  to: string;
   subject: string;
-  category: string;
-  status: "Sent" | "Draft";
+  content: string;
+  type: string;
+  status: string;
+  sentAt: string;
+  createdAt: string;
 }
 
 interface MailTableProps {
   mails: Mail[];
-  onDelete: (id: number) => void;
-  onEdit: (id: number) => void;
-  onSend: (id: number) => void;
+  onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
+  onSend: (id: string) => void;
   onCreate: () => void;
   onDeleteAll: () => void;
 }
@@ -33,10 +36,10 @@ const MailTable: React.FC<MailTableProps> = ({
   onCreate,
   onDeleteAll,
 }) => {
-  const [activeTab, setActiveTab] = useState<"Sent" | "Draft">("Sent");
+  const [activeTab, setActiveTab] = useState<"sent" | "draft">("sent");
   const [sort, setSort] = useState("Date");
   const filteredMails = mails.filter((m) => m.status === activeTab);
-  const [openMenu, setOpenMenu] = useState<number | null>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   return (
     <div className="bg-black/5">
@@ -56,21 +59,21 @@ const MailTable: React.FC<MailTableProps> = ({
         <div className="flex gap-6 text-sm px-3 border-b border-black/10 mb-4">
           <button
             className={`pb-1 px-1 ${
-              activeTab === "Sent"
+              activeTab === "sent"
                 ? "border-b-2 border-blue-600 font-semibold"
                 : "text-black/50"
             }`}
-            onClick={() => setActiveTab("Sent")}
+            onClick={() => setActiveTab("sent")}
           >
             Sent Mails
           </button>
           <button
             className={`pb-1 px-1 ${
-              activeTab === "Draft"
+              activeTab === "draft"
                 ? "border-b-2 border-blue-600 font-semibold"
                 : "text-black/50"
             }`}
-            onClick={() => setActiveTab("Draft")}
+            onClick={() => setActiveTab("draft")}
           >
             Draft
           </button>
@@ -117,16 +120,16 @@ const MailTable: React.FC<MailTableProps> = ({
             </tr>
           </thead>
           <tbody>
-            {filteredMails.map((mail) => (
+            {filteredMails.map((mail, index) => (
               <tr
-                key={mail.id}
+                key={mail._id}
                 className="border-b border-black/8 hover:bg-gray-50 text-nowrap"
               >
-                <td className="p-2 py-3">{mail.id}</td>
-                <td className="px-3 py-3">{mail.date}</td>
-                <td className="px-3 py-3">{mail.receiver}</td>
-                <td className="px-3 py-3">{mail.category}</td>{" "}
-                <td className="px-3 py-3">{mail.subject}</td>
+                <td className="p-2 py-3">{index + 1}</td>
+                <td className="px-3 py-3">{new Date(mail.createdAt).toLocaleDateString()}</td>
+                <td className="px-3 py-3">{mail.to}</td>
+                <td className="px-3 py-3">{mail.type}</td>
+                <td className="px-3 py-3 max-w-xs truncate" title={mail.content}>{mail.subject}</td>
                 {/* <td className="px-3 py-3 flex gap-2">
                   <button
                     className="text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -154,19 +157,19 @@ const MailTable: React.FC<MailTableProps> = ({
                   <button
                     className="p-2 hover:bg-gray-100 rounded-full"
                     onClick={() =>
-                      setOpenMenu(openMenu === mail.id ? null : mail.id)
+                      setOpenMenu(openMenu === mail._id ? null : mail._id)
                     }
                   >
                     <BsThreeDotsVertical className="text-lg" />
                   </button>
 
                   {/* Dropdown menu */}
-                  {openMenu === mail.id && (
+                  {openMenu === mail._id && (
                     <div className="absolute right-6 mt-2 w-36 bg-white border rounded-lg shadow-lg z-10">
-                      {mail.status === "Draft" && (
+                      {mail.status === "draft" && (
                         <button
                           onClick={() => {
-                            onSend(mail.id);
+                            onSend(mail._id);
                             setOpenMenu(null);
                           }}
                           className="flex items-center gap-2 px-4 py-2 w-full text-left hover:bg-gray-100"
@@ -176,7 +179,7 @@ const MailTable: React.FC<MailTableProps> = ({
                       )}
                       <button
                         onClick={() => {
-                          onEdit(mail.id);
+                          onEdit(mail._id);
                           setOpenMenu(null);
                         }}
                         className="flex items-center gap-2 px-4 py-2 w-full text-left hover:bg-gray-100"
@@ -185,7 +188,7 @@ const MailTable: React.FC<MailTableProps> = ({
                       </button>
                       <button
                         onClick={() => {
-                          onDelete(mail.id);
+                          onDelete(mail._id);
                           setOpenMenu(null);
                         }}
                         className="flex items-center gap-2 px-4 py-2 w-full text-left text-red-600 hover:bg-gray-100"

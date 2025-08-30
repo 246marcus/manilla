@@ -11,10 +11,26 @@ import {
   FaList,
   FaNewspaper,
   FaSignOutAlt,
+  FaAddressBook,
 } from "react-icons/fa";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function AppSidebar() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/auth/logout", {
+        method: "POST",
+      });
+      
+      if (res.ok) {
+        router.push("/admin/login");
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
   return (
     <div className="h-screen relative ">
       <Sidebar
@@ -29,55 +45,61 @@ export default function AppSidebar() {
         <img alt="logo" src={logo.src} className="mx-auto my-6 w-auto" />
 
         <Menu className="px-4 ">
-          <Link href="/admin/Dashboard">
-            <MenuItem
-              icon={<FaThLarge />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Dashboard
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaThLarge />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+            onClick={() => router.push('/admin/dashboard')}
+          >
+            Dashboard
+          </MenuItem>
 
-          <Link href="/admin/blogManagement">
-            <MenuItem
-              icon={<FaBlog />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Blog Management
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaBlog />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+            onClick={() => router.push('/admin/blogManagement')}
+          >
+            Blog Management
+          </MenuItem>
 
-          <Link href="/admin/mailManagement">
-            <MenuItem
-              icon={<FaEnvelope />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Mail Management
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaEnvelope />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+            onClick={() => router.push('/admin/mailManagement')}
+          >
+            Mail Management
+          </MenuItem>
 
-          <Link href="/admin/waitlist">
-            <MenuItem
-              icon={<FaList />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Waitlist
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaList />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+            onClick={() => router.push('/admin/waitlist')}
+          >
+            Waitlist
+          </MenuItem>
 
-          <Link href="/admin/newsletters">
-            <MenuItem
-              icon={<FaNewspaper />}
-              className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
-            >
-              Newsletters
-            </MenuItem>
-          </Link>
+          <MenuItem
+            icon={<FaNewspaper />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+            onClick={() => router.push('/admin/newsletters')}
+          >
+            Newsletters
+          </MenuItem>
+
+          <MenuItem
+            icon={<FaAddressBook />}
+            className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
+            onClick={() => router.push('/admin/contact')}
+          >
+            Contact
+          </MenuItem>
         </Menu>
 
         {/* Logout button pinned bottom */}
         <div className="absolute bottom-8 w-full text-center px-4">
-          <button className="flex items-center w-full justify-start gap-2 text-white bg-black/60 px-4 py-2 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 ">
+          <button 
+            onClick={handleLogout}
+            className="flex items-center w-full justify-start gap-2 text-white bg-black/60 px-4 py-2 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 "
+          >
             <FaSignOutAlt /> Log Out
           </button>
         </div>

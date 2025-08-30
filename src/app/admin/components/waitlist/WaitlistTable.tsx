@@ -6,20 +6,25 @@ import { FiMail, FiTrash2, FiEye } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 
 interface WaitlistUser {
-  id: number;
+  _id: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  location: string;
-  userType: string;
-  useCase: string;
-  platform: string;
+  telephone?: string;
+  companyName?: string;
+  companyAddress?: string;
+  requestContent: string;
+  status: "unread" | "read" | "replied";
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface WaitlistTableProps {
   users: WaitlistUser[];
-  onDelete: (id: number) => void;
-  onDeleteSelected: (ids: number[]) => void;
-  onSend: (id: number) => void;
-  onView: (id: number) => void;
+  onDelete: (id: string) => void;
+  onDeleteSelected: (ids: string[]) => void;
+  onSend: (id: string) => void;
+  onView: (id: string) => void;
 }
 
 const WaitlistTable: React.FC<WaitlistTableProps> = ({
@@ -29,11 +34,11 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
   onSend,
   onView,
 }) => {
-  const [openMenu, setOpenMenu] = useState<number | null>(null);
-  const [selected, setSelected] = useState<number[]>([]);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string[]>([]);
   const [sort, setSort] = useState("Newest");
 
-  const toggleSelect = (id: number) => {
+  const toggleSelect = (id: string) => {
     setSelected((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
     );
@@ -43,7 +48,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
     if (selected.length === users.length) {
       setSelected([]);
     } else {
-      setSelected(users.map((u) => u.id));
+      setSelected(users.map((u) => u._id));
     }
   };
 
@@ -96,87 +101,107 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
               <th className="p-3">
                 <input
                   type="checkbox"
-                  checked={selected.length === users.length}
+                  checked={selected.length === users.length && users.length > 0}
                   onChange={toggleAll}
                 />
               </th>
               <th className="p-3">#</th>
+              <th className="p-3">Date</th>
               <th className="p-3">Email</th>
-              <th className="p-3">Location</th>
-              <th className="p-3">User Type</th>
-              <th className="p-3">Use Case</th>
-              <th className="p-3">Preferred Platform</th>
+              <th className="p-3">First Name</th>
+              <th className="p-3">Last Name</th>
+              <th className="p-3">Request Content</th>
+              <th className="p-3">Status</th>
               <th className="p-3">Action</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((u, index) => (
-              <tr
-                key={u.id}
-                className="border-b hover:bg-gray-50 text-gray-800"
-              >
-                <td className="p-3">
-                  <input
-                    type="checkbox"
-                    checked={selected.includes(u.id)}
-                    onChange={() => toggleSelect(u.id)}
-                  />
-                </td>
-                <td className="p-3">{index + 1}</td>
-                <td className="p-3 flex items-center gap-2">
-                  <img
-                    src="https://via.placeholder.com/28"
-                    alt="avatar"
-                    className="w-7 h-7 rounded-full"
-                  />
-                  {u.email}
-                </td>
-                <td className="p-3">{u.location}</td>
-                <td className="p-3">{u.userType}</td>
-                <td className="p-3">{u.useCase}</td>
-                <td className="p-3">{u.platform}</td>
-                <td className="p-3 relative">
-                  <button
-                    onClick={() => setOpenMenu(openMenu === u.id ? null : u.id)}
-                    className="p-2 rounded-full hover:bg-gray-200"
-                  >
-                    <BsThreeDotsVertical />
-                  </button>
-
-                  {openMenu === u.id && (
-                    <div className="absolute right-0 mt-2 w-36 bg-white border rounded-md shadow-lg z-10">
-                      <button
-                        onClick={() => {
-                          onView(u.id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
-                      >
-                        <FiEye /> View
-                      </button>
-                      <button
-                        onClick={() => {
-                          onSend(u.id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
-                      >
-                        <FiMail /> Send Mail
-                      </button>
-                      <button
-                        onClick={() => {
-                          onDelete(u.id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-red-600 w-full"
-                      >
-                        <FiTrash2 /> Delete
-                      </button>
-                    </div>
-                  )}
+            {users.length === 0 ? (
+              <tr>
+                <td colSpan={9} className="p-8 text-center text-gray-500">
+                  No waitlist submissions found
                 </td>
               </tr>
-            ))}
+            ) : (
+              users.map((u, index) => (
+                <tr
+                  key={u._id}
+                  className="border-b hover:bg-gray-50 text-gray-800"
+                >
+                  <td className="p-3">
+                    <input
+                      type="checkbox"
+                      checked={selected.includes(u._id)}
+                      onChange={() => toggleSelect(u._id)}
+                    />
+                  </td>
+                  <td className="p-3">{index + 1}</td>
+                  <td className="p-3">
+                    {new Date(u.createdAt).toLocaleDateString()}
+                  </td>
+                  <td className="p-3 flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-sm font-semibold">
+                      {u.firstName.charAt(0).toUpperCase()}
+                    </div>
+                    {u.email}
+                  </td>
+                  <td className="p-3">{u.firstName}</td>
+                  <td className="p-3">{u.lastName}</td>
+                  <td className="p-3 max-w-xs truncate" title={u.requestContent}>
+                    {u.requestContent}
+                  </td>
+                  <td className="p-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      u.status === "unread" ? "bg-red-100 text-red-800" :
+                      u.status === "read" ? "bg-yellow-100 text-yellow-800" :
+                      "bg-green-100 text-green-800"
+                    }`}>
+                      {u.status === "unread" ? "🔴" : u.status === "read" ? "🟡" : "🟢"} {u.status}
+                    </span>
+                  </td>
+                  <td className="p-3 relative">
+                    <button
+                      onClick={() => setOpenMenu(openMenu === u._id ? null : u._id)}
+                      className="p-2 rounded-full hover:bg-gray-200"
+                    >
+                      <BsThreeDotsVertical />
+                    </button>
+
+                    {openMenu === u._id && (
+                      <div className="absolute right-0 mt-2 w-36 bg-white border rounded-md shadow-lg z-10">
+                        <button
+                          onClick={() => {
+                            onView(u._id);
+                            setOpenMenu(null);
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
+                        >
+                          <FiEye /> View
+                        </button>
+                        <button
+                          onClick={() => {
+                            onSend(u._id);
+                            setOpenMenu(null);
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
+                        >
+                          <FiMail /> Send Mail
+                        </button>
+                        <button
+                          onClick={() => {
+                            onDelete(u._id);
+                            setOpenMenu(null);
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-red-600 w-full"
+                        >
+                          <FiTrash2 /> Delete
+                        </button>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

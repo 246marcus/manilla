@@ -6,20 +6,21 @@ import { FiMail, FiTrash2, FiEye } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 
 interface NewsletterUser {
-  id: number;
+  _id: string;
   email: string;
-  location: string;
-  business: string;
-  useCase: string;
-  platform: string;
+  isActive: boolean;
+  subscribedAt: string;
 }
 
 interface NewsletterTableProps {
   users: NewsletterUser[];
-  onDelete: (id: number) => void;
-  onDeleteSelected: (ids: number[]) => void;
-  onSend: (id: number) => void;
-  onView: (id: number) => void;
+  onDelete: (id: string) => void;
+  onDeleteSelected: (ids: string[]) => void;
+  onSend: (id: string) => void;
+  onView: (id: string) => void;
+  onSendNewsletter?: () => void;
+  onSendMail: (id: string | null) => void;
+  isDeleting?: boolean;
 }
 
 const NewsletterTable: React.FC<NewsletterTableProps> = ({
@@ -28,12 +29,15 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
   onDeleteSelected,
   onSend,
   onView,
+  onSendNewsletter,
+  onSendMail,
+  isDeleting = false,
 }) => {
-  const [openMenu, setOpenMenu] = useState<number | null>(null);
-  const [selected, setSelected] = useState<number[]>([]);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string[]>([]);
   const [sort, setSort] = useState("Newest");
 
-  const toggleSelect = (id: number) => {
+  const toggleSelect = (id: string) => {
     setSelected((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
     );
@@ -43,7 +47,7 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
     if (selected.length === users.length) {
       setSelected([]);
     } else {
-      setSelected(users.map((u) => u.id));
+      setSelected(users.map((u) => u._id));
     }
   };
 
@@ -72,16 +76,25 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
             </select>
           </div>
           <button
-            disabled={selected.length === 0}
+            disabled={selected.length === 0 || isDeleting}
             onClick={() => onDeleteSelected(selected)}
            className="flex items-center gap-1 hover:text-white font-semibold border-black/40  border disabled:opacity-50 px-4 py-2 rounded-md hover:bg-black/80" 
           >
              <MdDeleteOutline size={22} />
-            Delete Selected
+            {isDeleting ? "Deleting..." : "Delete Selected"}
           </button>
-          <button className=" flex items-center gap-2 bg-black/80  text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40">
-           
+          <button 
+            onClick={() => onSendMail(selected.length > 0 ? selected[0] : null)}
+            disabled={selected.length === 0}
+            className="flex items-center gap-2 bg-black/80 text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40 disabled:opacity-50"
+          >
             <FiMail size={20} /> Send Mail
+          </button>
+          <button 
+            onClick={onSendNewsletter}
+            className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 border border-blue-600"
+          >
+            <FiMail size={20} /> Send Newsletter
           </button>
          
                   
@@ -102,24 +115,22 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
               </th>
               <th className="p-3">#</th>
               <th className="p-3">Email</th>
-              <th className="p-3">Location</th>
-              <th className="p-3">Business Name</th>
-              <th className="p-3">Use Case</th>
-              <th className="p-3">Preferred Platform</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Subscribed Date</th>
               <th className="p-3">Action</th>
             </tr>
           </thead>
           <tbody>
             {users.map((u, index) => (
               <tr
-                key={u.id}
+                key={u._id}
                 className="border-b hover:bg-gray-50 text-gray-800"
               >
                 <td className="p-3">
                   <input
                     type="checkbox"
-                    checked={selected.includes(u.id)}
-                    onChange={() => toggleSelect(u.id)}
+                    checked={selected.includes(u._id)}
+                    onChange={() => toggleSelect(u._id)}
                   />
                 </td>
                 <td className="p-3">{index + 1}</td>
@@ -131,23 +142,29 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
                   />
                   {u.email}
                 </td>
-                <td className="p-3">{u.location}</td>
-                <td className="p-3">{u.business}</td>
-                <td className="p-3">{u.useCase}</td>
-                <td className="p-3">{u.platform}</td>
+                <td className="p-3">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    u.isActive 
+                      ? "bg-green-100 text-green-800" 
+                      : "bg-red-100 text-red-800"
+                  }`}>
+                    {u.isActive ? "Active" : "Inactive"}
+                  </span>
+                </td>
+                <td className="p-3">{new Date(u.subscribedAt).toLocaleDateString()}</td>
                 <td className="p-3 relative">
                   <button
-                    onClick={() => setOpenMenu(openMenu === u.id ? null : u.id)}
+                    onClick={() => setOpenMenu(openMenu === u._id ? null : u._id)}
                     className="p-2 rounded-full hover:bg-gray-200"
                   >
                     <BsThreeDotsVertical />
                   </button>
 
-                  {openMenu === u.id && (
+                  {openMenu === u._id && (
                     <div className="absolute right-0 mt-2 w-36 bg-white border rounded-md shadow-lg z-10">
                       <button
                         onClick={() => {
-                          onView(u.id);
+                          onView(u._id);
                           setOpenMenu(null);
                         }}
                         className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
@@ -156,7 +173,7 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
                       </button>
                       <button
                         onClick={() => {
-                          onSend(u.id);
+                          onSendMail(u._id);
                           setOpenMenu(null);
                         }}
                         className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
@@ -165,7 +182,7 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
                       </button>
                       <button
                         onClick={() => {
-                          onDelete(u.id);
+                          onDelete(u._id);
                           setOpenMenu(null);
                         }}
                         className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-red-600 w-full"

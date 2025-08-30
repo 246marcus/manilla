@@ -38,6 +38,9 @@ export async function POST(req: Request) {
       { expiresIn: "1d" }
     );
 
+    console.log("Login API: Token generated successfully");
+    console.log("Login API: JWT_SECRET exists:", !!process.env.JWT_SECRET);
+
     const response = NextResponse.json({ message: "Login successful" });
     response.cookies.set("token", token, {
       httpOnly: true,
@@ -47,6 +50,7 @@ export async function POST(req: Request) {
       maxAge: 60 * 60 * 24, // 1 day
     });
 
+    console.log("Login API: Cookie set successfully");
     return response;
   } catch (error: any) {
     return NextResponse.json(

@@ -3,33 +3,56 @@
 import BlogCard from "./BlogCard";
 
 interface Blog {
-  id: number;
-  code:string;
+  _id: string;
+  id?: number;
+  code?: string;
   title: string;
-  status: "Posted" | "Draft";
+  status: "draft" | "published";
   authorName: string;
-  authorImage: any;
-  date: string;
-  BlogImage: any;
+  authorImage: string;
+  date?: string;
+  BlogImage?: string;
+  image: string;
   category: string;
-  description: string;
+  description?: string;
+  excerpt: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface BlogGridProps {
   blogs: Blog[];
   activeTab: "Posted" | "Draft";
   onDelete: () => void;
+  onDeleteBlog: (blogId: string) => void;
+  onPublishBlog: (blogId: string) => void;
+  onEditBlog: (blog: Blog) => void;
 }
 
-const BlogGrid: React.FC<BlogGridProps> = ({ blogs, activeTab, onDelete }) => {
+const BlogGrid: React.FC<BlogGridProps> = ({ 
+  blogs, 
+  activeTab, 
+  onDelete, 
+  onDeleteBlog, 
+  onPublishBlog, 
+  onEditBlog 
+}) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       {blogs
         .filter((b) =>
-          activeTab === "Posted" ? b.status === "Posted" : b.status === "Draft"
+          activeTab === "Posted" ? b.status === "published" : b.status === "draft"
         )
         .map((blog) => (
-          <BlogCard key={blog.id} {...blog} onDelete={onDelete} />
+          <BlogCard 
+            key={blog._id} 
+            {...blog} 
+            onDelete={onDelete}
+            onDeleteBlog={onDeleteBlog}
+            onPublishBlog={onPublishBlog}
+            onEditBlog={onEditBlog}
+          />
         ))}
     </div>
   );

@@ -6,7 +6,7 @@ import Authorimg from "../../../../../public/images/blogauthor.png";
 
 interface CreateBlogModalProps {
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit: (blog: any) => void;
 }
 
 const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
@@ -17,8 +17,10 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
     title: "",
     category: "E-commerce",
     content: "",
-    author: "",
+    excerpt: "",
+    authorName: "",
     image: null as File | null,
+    status: "draft" as "draft" | "published",
   });
 
   const avatars = [
@@ -30,9 +32,41 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
 
   const [selectedAvatar, setSelectedAvatar] = useState<string>(avatars[0]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit();
+    
+    if (!formData.image) {
+      alert("Please select an image for the blog");
+      return;
+    }
+    
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('category', formData.category);
+      formDataToSend.append('content', formData.content);
+      formDataToSend.append('excerpt', formData.excerpt);
+      formDataToSend.append('authorName', formData.authorName);
+      formDataToSend.append('authorImage', selectedAvatar);
+      formDataToSend.append('status', formData.status);
+      formDataToSend.append('image', formData.image);
+
+      const res = await fetch("/api/blogs", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        onSubmit(data.blog);
+      } else {
+        alert(data.message || "Failed to create blog");
+      }
+    } catch (error) {
+      console.error("Create blog error:", error);
+      alert("Failed to create blog");
+    }
   };
 
   return (
@@ -91,7 +125,40 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                     <option value="E-commerce" className="hover:bg-black/80">E-commerce</option>
                     <option value="Crypto">Crypto</option>
                     <option value="Finance">Finance</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Art">Art</option>
+                    <option value="Lifestyle">Lifestyle</option>
                   </select>
+                </div>
+                <div>
+                  <label className="block text-sm mb-1 font-semibold ">
+                    Status
+                  </label>
+                  <select
+                    value={formData.status}
+                    onChange={(e) =>
+                      setFormData({ ...formData, status: e.target.value as "draft" | "published" })
+                    }
+                    className="w-full border rounded-md p-2 "
+                  >
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm mb-1 font-semibold ">
+                    Blog Excerpt
+                  </label>
+                  <textarea
+                    value={formData.excerpt}
+                    onChange={(e) =>
+                      setFormData({ ...formData, excerpt: e.target.value })
+                    }
+                    className="w-full border rounded-md p-2 h-20"
+                    placeholder="Enter blog excerpt (short preview)"
+                    maxLength={200}
+                    required
+                  />
                 </div>
                 <div>
                   <label className="block text-sm mb-1 font-semibold ">
@@ -122,12 +189,13 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                   </label>
                   <input
                     type="text"
-                    value={formData.author}
+                    value={formData.authorName}
                     onChange={(e) =>
-                      setFormData({ ...formData, author: e.target.value })
+                      setFormData({ ...formData, authorName: e.target.value })
                     }
                     className="w-full border rounded-md p-2"
                     placeholder="Enter author's name"
+                    required
                   />
                 </div>
                 <div>
@@ -160,30 +228,50 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
               </h2>
               <h3 className="  mb-1 text-sm font-semibold ">Blog Image</h3>
               <div className="border-dashed border-2 border-gray-300 rounded-lg p-6 text-center">
-                <p className="text-gray-500 mb-3">
-                  Drag & drop or click to upload
-                </p>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      image: e.target.files ? e.target.files[0] : null,
-                    })
-                  }
-                  className="hidden"
-                  id="fileUpload"
-                />
-                <label
-                  htmlFor="fileUpload"
-                  className="bg-gray-100 px-4 py-2 rounded-md cursor-pointer hover:bg-gray-200"
-                >
-                  Upload from file
-                </label>
-                <p className="text-xs text-gray-400 mt-3">
-                  File size: 1080 × 2048 • File format: (JPG/PNG)
-                </p>
+                {formData.image ? (
+                  <div className="space-y-3">
+                    <img
+                      src={URL.createObjectURL(formData.image)}
+                      alt="Preview"
+                      className="max-w-full h-48 object-cover rounded-lg mx-auto"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, image: null })}
+                      className="text-red-500 text-sm hover:text-red-700"
+                    >
+                      Remove Image
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-gray-500 mb-3">
+                      Drag & drop or click to upload
+                    </p>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          image: e.target.files ? e.target.files[0] : null,
+                        })
+                      }
+                      className="hidden"
+                      id="fileUpload"
+                      required
+                    />
+                    <label
+                      htmlFor="fileUpload"
+                      className="bg-gray-100 px-4 py-2 rounded-md cursor-pointer hover:bg-gray-200"
+                    >
+                      Upload from file
+                    </label>
+                    <p className="text-xs text-gray-400 mt-3">
+                      File size: 1080 × 2048 • File format: (JPG/PNG)
+                    </p>
+                  </>
+                )}
               </div>
             </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MailTable from "./MailTable";
 import CreateMailForm from "./CreateMailForm";
 import EditMailForm from "./EditMailForm";
@@ -9,78 +9,100 @@ import Topbar from "../Topbar";
 import SuccessModal from "../blogcomp/SuccessModal";
 
 export interface Mail {
-  id: number;
-  date: string;
-  receiver: string;
+  _id: string;
+  from: string;
+  to: string;
   subject: string;
-  category: string;
-  status: "Draft" | "Sent";
+  content: string;
+  type: string;
+  status: string;
+  sentAt: string;
+  createdAt: string;
 }
 
 const MailManagementPage = () => {
-  const [mails, setMails] = useState<Mail[]>([
-    {
-      id: 1,
-      date: "2025-08-25",
-      receiver: "john@example.com",
-      subject: "Welcome!",
-      category: "Promotional",
-      status: "Draft",
-    },
-    {
-      id: 2,
-      date: "2025-08-24",
-      receiver: "sarah@example.com",
-      subject: "Your Invoice",
-      category: "Transactional",
-      status: "Sent",
-    },
-  ]);
+  const [mails, setMails] = useState<Mail[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [showForm, setShowForm] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [deleteTarget, setDeleteTarget] = useState<number | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
   const [editMail, setEditMail] = useState<Mail | null>(null);
 
   const [showCreateSuccess, setShowCreateSuccess] = useState(false);
   const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
 
+  // Fetch mails from API
+  useEffect(() => {
+    fetchMails();
+  }, []);
+
+  const fetchMails = async () => {
+    try {
+      const res = await fetch("/api/mail");
+      const data = await res.json();
+      
+      if (res.ok) {
+        setMails(data.mails);
+      }
+    } catch (error) {
+      console.error("Failed to fetch mails:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // === CREATE ===
-  const handleCreate = (mail: {
+  const handleCreate = async (mail: {
     receiver: string;
     subject: string;
     category: string;
+    body: string;
   }) => {
-    setMails((prev) => [
-      ...prev,
-      {
-        id: prev.length + 1,
-        date: new Date().toISOString().split("T")[0],
-        receiver: mail.receiver,
-        subject: mail.subject,
-        category: mail.category,
-        status: "Draft",
-      },
-    ]);
-    setShowForm(false);
-     setShowCreateSuccess(true);
+    try {
+      const res = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: mail.receiver,
+          subject: mail.subject,
+          content: mail.body,
+          type: mail.category.toLowerCase(),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        await fetchMails(); // Refresh the list
+        setShowForm(false);
+        setShowCreateSuccess(true);
+      } else {
+        alert(data.message || "Failed to send email");
+      }
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      alert("Failed to send email");
+    }
   };
 
   // === EDIT ===
-  const handleEdit = (id: number) => {
-    const mail = mails.find((m) => m.id === id);
+  const handleEdit = (id: string) => {
+    const mail = mails.find((m) => m._id === id);
     if (mail) setEditMail(mail);
   };
 
   const confirmEdit = (updated: Mail) => {
     setMails((prev) =>
-      prev.map((m) => (m.id === updated.id ? { ...m, ...updated } : m))
+      prev.map((m) => (m._id === updated._id ? { ...m, ...updated } : m))
     );
     setEditMail(null);
   };
 
   // === DELETE ===
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     setDeleteTarget(id);
     setShowDeleteModal(true);
   };
@@ -90,21 +112,34 @@ const MailManagementPage = () => {
     setShowDeleteModal(true);
   };
 
-  const confirmDelete = () => {
-    if (deleteTarget === null) {
-      setMails([]);
-    } else {
-      setMails((prev) => prev.filter((m) => m.id !== deleteTarget));
+  const confirmDelete = async () => {
+    try {
+      if (deleteTarget === null) {
+        // Delete all mails
+        const deletePromises = mails.map(mail => 
+          fetch(`/api/mail/${mail._id}`, { method: "DELETE" })
+        );
+        await Promise.all(deletePromises);
+        setMails([]);
+      } else {
+        // Delete single mail
+        const res = await fetch(`/api/mail/${deleteTarget}`, { method: "DELETE" });
+        if (res.ok) {
+          setMails((prev) => prev.filter((m) => m._id !== deleteTarget));
+        }
+      }
+      setShowDeleteModal(false);
+      setShowDeleteSuccess(true);
+    } catch (error) {
+      console.error("Failed to delete mail(s):", error);
+      alert("Failed to delete mail(s)");
     }
-    setShowDeleteModal(false);
-     setShowDeleteSuccess(true);
   };
 
   // === SEND ===
-  const handleSend = (id: number) => {
-    setMails((prev) =>
-      prev.map((m) => (m.id === id ? { ...m, status: "Sent" } : m))
-    );
+  const handleSend = (id: string) => {
+    // Mails are sent immediately when created, so this is just for UI
+    console.log("Mail already sent:", id);
   };
 
   return (
