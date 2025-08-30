@@ -135,11 +135,11 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
                 </td>
                 <td className="p-3">{index + 1}</td>
                 <td className="p-3 flex items-center gap-2">
-                  <img
+{/*                   <img
                     src="https://via.placeholder.com/28"
                     alt="avatar"
                     className="w-7 h-7 rounded-full"
-                  />
+                  /> */}
                   {u.email}
                 </td>
                 <td className="p-3">
