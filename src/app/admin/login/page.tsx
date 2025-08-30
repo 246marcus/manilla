@@ -34,7 +34,7 @@ const LoginPage: React.FC = () => {
       }
 
       // Login successful, redirect to admin dashboard
-      router.push("/admin/dashboard");
+      router.push("/admin/Dashboard");
     } catch (err) {
       setError("Server error. Please try again.");
     }
