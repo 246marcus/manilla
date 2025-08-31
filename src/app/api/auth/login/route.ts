@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { SignJWT } from "jose";
 import connectDB from "../../../lib/db";
 import User from "../../../lib/models/User";
 
@@ -32,17 +32,22 @@ export async function POST(req: Request) {
       );
     }
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email, role: user.role },
-      process.env.JWT_SECRET!,
-      { expiresIn: "1d" }
-    );
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+    const token = await new SignJWT({ 
+      id: user._id, 
+      email: user.email, 
+      role: user.role, 
+      name: "Admin" 
+    })
+      .setProtectedHeader({ alg: "HS256" })
+      .setExpirationTime("1d")
+      .sign(secret);
 
     console.log("Login API: Token generated successfully");
     console.log("Login API: JWT_SECRET exists:", !!process.env.JWT_SECRET);
 
     const response = NextResponse.json({ message: "Login successful" });
-    response.cookies.set("token", token, {
+    response.cookies.set("admin-token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",

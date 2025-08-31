@@ -6,12 +6,15 @@ import loginimg from "../../../../public/images/login1.png";
 import loginbg from "../../../../public/images/loginbg.png";
 import icon from "../../../../public/icons/dropdownIcon.png";
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +37,7 @@ const LoginPage: React.FC = () => {
       }
 
       // Login successful, redirect to admin dashboard
-      router.push("/admin/dashboard");
+      router.push("/admin/Dashboard");
     } catch (err) {
       setError("Server error. Please try again.");
     }
@@ -108,15 +111,18 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <input
-                  type="password"
+                 type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black/30"
                   required
                 />
-                <span className="absolute inset-y-0 right-3 flex items-center text-gray-400 cursor-pointer">
-                  👁
+                <span
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500 cursor-pointer"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
               <div className="text-right mt-1">
