@@ -101,13 +101,13 @@ const CardVirtual: React.FC = () => {
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
+                className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white"
                 disabled={isLoading}
               />
               <button 
                 type="submit"
                 disabled={isLoading}
-                className="px-6 py-3 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-gray-400 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? "Joining..." : "Join Waitlist"}
               </button>
