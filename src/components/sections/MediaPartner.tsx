@@ -75,73 +75,7 @@ const MediaPartners: React.FC = () => {
 
         {/* Trusted Platform Rolling Effect */}
         <div className="relative z-10 mt-20 w-full overflow-hidden">
-          {/* <div className="flex flex-nowrap animate-marquee will-change-transform">
-            
-          <img
-            src="/images/ddd1.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100   "
-          />
-          <img
-            src="/images/ddd2.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/ddd3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/ddd5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd1.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd2.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/ddd3.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd4.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-         
-          <img
-            src="/images/ddd5.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          <img
-            src="/images/ddd6.png"
-            alt="Trusted by top platforms"
-            className="w-auto max-w-none scale-90 md:scale-100  "
-          />
-          </div> */}
+        
 
           {/* top */}
           <div className="flex animate-roll md:gap-x-4  h-28 md:h-34 ">
@@ -178,23 +112,14 @@ const MediaPartners: React.FC = () => {
           <h3 className=" text-center text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ahead.
           </h3>
-          {/* desktop */}
-          {/*  <h3 className="hidden md:block text-start text-xl sm:text-2xl font-bold text-gray-900 mb-4">
-            Be First. Be Ready.
-          </h3> */}
+         
           <div className="flex flex-col md:flex-row">
             <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
               Subscribe to our newsletter for exclusive updates, insider perks,
               and a front-row seat to the future of local & cross-border
               payments.
             </p>
-            {/* desktop */}
-            {/*  <p className="hidden  md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
-              Manilla is launching soon — Join our Newsletter. Join our
-              newsletter to get early access, exclusive updates and a front-row
-              seat to the future of cross-border payments
-            </p> */}
-            {/* Contact form simulation */}
+           
             <form onSubmit={handleSubscribe} className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
               <input
                 type="email"

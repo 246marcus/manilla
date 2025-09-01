@@ -1,5 +1,6 @@
 "use client";
 
+import { log } from "console";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiMail, FiTrash2, FiEye, FiCheck, FiMessageSquare } from "react-icons/fi";
@@ -83,6 +84,21 @@ const ContactTable: React.FC<ContactTableProps> = ({
     }
   };
 
+   //Sort lists before passing to table
+   const sortedList = [...contacts].sort((a, b) => {
+    const aDate = new Date(a.createdAt).getTime();
+    const bDate = new Date(b.createdAt).getTime();
+  
+    if (sort === "Newest") {
+      return bDate - aDate;
+    } else if (sort === "Oldest") {
+      return aDate - bDate;
+    }
+    return 0;
+  });
+
+  
+
   return (
     <div className="bg-white shadow rounded-lg overflow-hidden">
       {/* Header Controls */}
@@ -149,14 +165,14 @@ const ContactTable: React.FC<ContactTableProps> = ({
             </tr>
           </thead>
           <tbody>
-            {contacts.length === 0 ? (
+            {sortedList.length === 0 ? (
               <tr>
                 <td colSpan={10} className="p-8 text-center text-gray-500">
                   No contact submissions found
                 </td>
               </tr>
             ) : (
-              contacts.map((contact, index) => (
+              sortedList.map((contact, index) => (
                 <tr
                   key={contact._id}
                   className="border-b hover:bg-gray-50 text-gray-800"

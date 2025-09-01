@@ -36,7 +36,7 @@ const NewslettersAdminPage = () => {
 
   const handleDelete = async (id: string) => {
     if (isDeleting) return;
-    
+
     setIsDeleting(true);
     try {
       const res = await fetch("/api/newsletter/delete", {
@@ -49,7 +49,7 @@ const NewslettersAdminPage = () => {
 
       if (res.ok) {
         // Remove from local state
-        setSubscribers(prev => prev.filter(sub => sub._id !== id));
+        setSubscribers(prev => prev.filter(sub => sub._id !== id))
       } else {
         alert("Failed to delete subscriber");
       }
@@ -98,6 +98,9 @@ const NewslettersAdminPage = () => {
   }
 
   return (
+
+    <>
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
     <div className="flex h-screen">
       <Sidebar />
       <div className="flex-1">
@@ -105,7 +108,7 @@ const NewslettersAdminPage = () => {
           isDeleting={isDeleting}
         />
       </div>
-    </div>
+    </>
   );
 };
 

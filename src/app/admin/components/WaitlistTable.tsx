@@ -43,7 +43,7 @@ export default function WaitlistTable() {
     }
   };
   return (
-    <div className="bg-black/5 rounded-xl shadow p-4 overflow-x-auto ">
+    <div className="bg-black/5 rounded-xl shadow p-4 overflow-x-auto min-h-[300px] ">
       <h2 className="font-semibold  text-black/80">Waitlist Overview</h2>
       <p className="text-xs text-black/60 mb-3">
         Monitor sign-ups, segment by interest, and prepare targeted
@@ -54,7 +54,7 @@ export default function WaitlistTable() {
           <p className="text-gray-500">Loading waitlist data...</p>
         </div>
       ) : (
-        <table className="w-full border-collapse text-sm ">
+        <table className="w-full border-collapse text-sm  ">
           <thead className="text-black/80 ">
             <tr className="text-left bg-black/10 text-nowrap">
               <th className="p-2">#</th>

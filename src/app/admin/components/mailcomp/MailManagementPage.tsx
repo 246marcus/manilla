@@ -111,7 +111,6 @@ const MailManagementPage = () => {
     setDeleteTarget(null);
     setShowDeleteModal(true);
   };
-
   const confirmDelete = async () => {
     try {
       if (deleteTarget === null) {
@@ -134,13 +133,57 @@ const MailManagementPage = () => {
       console.error("Failed to delete mail(s):", error);
       alert("Failed to delete mail(s)");
     }
-  };
+  }; 
+
+
+
+/* const confirmDelete = async () => {
+  try {
+    if (deleteTarget === null) {
+      // Only delete mails in the active tab
+      const mailsToDelete = mails.filter((mail) => mail.status === activeTab.toLowerCase());
+
+      const deleteResults = await Promise.all(
+        mailsToDelete.map(async (mail) => {
+          const res = await fetch(`/api/mail/${mail._id}`, { method: "DELETE" });
+          return res.ok ? mail._id : null;
+        })
+      );
+
+      const successfullyDeletedIds = deleteResults.filter(
+        (id): id is string => id !== null
+      );
+
+      // Remove only the successfully deleted ones from state
+      setMails((prev) => prev.filter((m) => !successfullyDeletedIds.includes(m._id)));
+    } else {
+      // Delete single mail
+      const res = await fetch(`/api/mail/${deleteTarget}`, { method: "DELETE" });
+      if (res.ok) {
+        setMails((prev) => prev.filter((m) => m._id !== deleteTarget));
+      }
+    }
+
+    setShowDeleteModal(false);
+    setShowDeleteSuccess(true);
+  } catch (error) {
+    console.error("Failed to delete mail(s):", error);
+    alert("Failed to delete mail(s)");
+  }
+}; */
+
+
+
 
   // === SEND ===
   const handleSend = (id: string) => {
     // Mails are sent immediately when created, so this is just for UI
     console.log("Mail already sent:", id);
   };
+
+
+ 
+
 
   return (
     <div className="pe-4 flex-1 flex flex-col  bg-white/40 h-screen  overflow-y-auto">
@@ -149,7 +192,7 @@ const MailManagementPage = () => {
       {/* Header */}
       <Topbar
         title={"Mail Management"}
-        subtitle={"All Blogs"}
+        subtitle={"All Mails"}
         description={"View and manage all your mails."}
       />
 

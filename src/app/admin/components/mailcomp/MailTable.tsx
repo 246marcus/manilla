@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { MdAddBox, MdDeleteOutline } from "react-icons/md";
 
-import { FiMail, FiEdit2, FiTrash2 } from "react-icons/fi";
+import { FiMail, FiEdit2, FiTrash2, FiInbox } from "react-icons/fi";
 import { BsThreeDotsVertical } from "react-icons/bs";
-
 
 interface Mail {
   _id: string;
@@ -40,6 +39,22 @@ const MailTable: React.FC<MailTableProps> = ({
   const [sort, setSort] = useState("Date");
   const filteredMails = mails.filter((m) => m.status === activeTab);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+   //Sort Mails before passing to Table
+  
+    
+   const sortedMails = [...filteredMails].sort((a, b) => {
+    const aDate = new Date(a.createdAt).getTime();
+    const bDate = new Date(b.createdAt).getTime();
+  
+    if (sort === "Newest") {
+      return bDate - aDate;
+    } else if (sort === "Oldest") {
+      return aDate - bDate;
+    }
+    return 0;
+  });
+  
 
   return (
     <div className="bg-black/5">
@@ -105,7 +120,6 @@ const MailTable: React.FC<MailTableProps> = ({
           </button>
         </div>
       </div>
-
       {/* === Table === */}
       <div className="  shadow  overflow-auto min-h-[320px] h-[350px]">
         <table className="w-full border-collapse text-sm py-2 px-3 rounded-xl ">
@@ -120,86 +134,84 @@ const MailTable: React.FC<MailTableProps> = ({
             </tr>
           </thead>
           <tbody>
-            {filteredMails.map((mail, index) => (
-              <tr
-                key={mail._id}
-                className="border-b border-black/8 hover:bg-gray-50 text-nowrap"
-              >
-                <td className="p-2 py-3">{index + 1}</td>
-                <td className="px-3 py-3">{new Date(mail.createdAt).toLocaleDateString()}</td>
-                <td className="px-3 py-3">{mail.to}</td>
-                <td className="px-3 py-3">{mail.type}</td>
-                <td className="px-3 py-3 max-w-xs truncate" title={mail.content}>{mail.subject}</td>
-                {/* <td className="px-3 py-3 flex gap-2">
-                  <button
-                    className="text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={() => onEdit(mail.id)}
+            {sortedMails.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="py-12 text-center text-gray-500">
+                  <div className="flex flex-col items-center justify-center">
+                    <FiInbox className="text-5xl text-gray-400 mb-3" />
+                    <p className="text-lg font-medium">No mails found</p>
+                    <p className="text-sm text-gray-400">Your inbox is empty</p>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              sortedMails.map((mail, index) => (
+                <tr
+                  key={mail._id}
+                  className="border-b border-black/8 hover:bg-gray-50 text-nowrap"
+                >
+                  <td className="p-2 py-3">{index + 1}</td>
+                  <td className="px-3 py-3">
+                    {new Date(mail.createdAt).toLocaleDateString()}
+                  </td>
+                  <td className="px-3 py-3">{mail.to}</td>
+                  <td className="px-3 py-3">{mail.type}</td>
+                  <td
+                    className="px-3 py-3 max-w-xs truncate"
+                    title={mail.content}
                   >
-                    Edit
-                  </button>
-                  <button
-                    className="text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                    onClick={() => onDelete(mail.id)}
-                  >
-                    Delete
-                  </button>
-                  {mail.status === "Draft" && (
-                    <button
-                      className="text-xs px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600"
-                      onClick={() => onSend(mail.id)}
-                    >
-                      Send
-                    </button>
-                  )}
-                </td> */}
-                <td className="px-3 py-3 relative">
-                  {/* Three dots button */}
-                  <button
-                    className="p-2 hover:bg-gray-100 rounded-full"
-                    onClick={() =>
-                      setOpenMenu(openMenu === mail._id ? null : mail._id)
-                    }
-                  >
-                    <BsThreeDotsVertical className="text-lg" />
-                  </button>
+                    {mail.subject}
+                  </td>
 
-                  {/* Dropdown menu */}
-                  {openMenu === mail._id && (
-                    <div className="absolute right-6 mt-2 w-36 bg-white border rounded-lg shadow-lg z-10">
-                      {mail.status === "draft" && (
+                  <td className="px-3 py-3 relative">
+                    {/* Three dots button */}
+                    <button
+                      className="p-2 hover:bg-gray-100 rounded-full"
+                      onClick={() =>
+                        setOpenMenu(openMenu === mail._id ? null : mail._id)
+                      }
+                    >
+                      <BsThreeDotsVertical className="text-lg" />
+                    </button>
+
+                    {/* Dropdown menu */}
+                    {openMenu === mail._id && (
+                      <div className="absolute right-6 mt-2 w-36 bg-white border rounded-lg shadow-lg z-10">
+                        {mail.status === "draft" && (
+                          <button
+                            onClick={() => {
+                              onSend(mail._id);
+                              setOpenMenu(null);
+                            }}
+                            className="flex items-center gap-2 px-4 py-2 w-full text-left hover:bg-gray-100"
+                          >
+                            <FiMail /> Send Mail
+                          </button>
+                        )}
                         <button
                           onClick={() => {
-                            onSend(mail._id);
+                            onEdit(mail._id);
                             setOpenMenu(null);
                           }}
                           className="flex items-center gap-2 px-4 py-2 w-full text-left hover:bg-gray-100"
                         >
-                          <FiMail /> Send Mail
+                          <FiEdit2 /> Edit
                         </button>
-                      )}
-                      <button
-                        onClick={() => {
-                          onEdit(mail._id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 w-full text-left hover:bg-gray-100"
-                      >
-                        <FiEdit2 /> Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          onDelete(mail._id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 w-full text-left text-red-600 hover:bg-gray-100"
-                      >
-                        <FiTrash2 /> Delete
-                      </button>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))}
+                        <button
+                          onClick={() => {
+                            onDelete(mail._id);
+                            setOpenMenu(null);
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 w-full text-left text-red-600 hover:bg-gray-100"
+                        >
+                          <FiTrash2 /> Delete
+                        </button>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

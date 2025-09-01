@@ -77,7 +77,7 @@ const LoginPage: React.FC = () => {
               </a>
             </div>
           </div>
-          s{/* Login button */}
+          {/* Login button */}
           <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition">
             Login
           </button>

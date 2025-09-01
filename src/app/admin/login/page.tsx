@@ -13,6 +13,7 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   
 
@@ -44,8 +45,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100">
-      <div className="h-screen flex max-w-6xl mx-auto pt-6">
+    <div className="bg-gray-100 ">
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
+      <div className="h-screen hidden lg:flex max-w-6xl mx-auto pt-6">
         {/* Left side with dummy image */}
         <div className="hidden md:flex flex-1 items-center justify-center p-6">
           <img
@@ -111,7 +113,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <input
-                 type={showPassword ? "text" : "password"}
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
