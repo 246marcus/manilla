@@ -41,9 +41,7 @@ const NewslettersAdminPage = () => {
     try {
       const res = await fetch("/api/newsletter/delete", {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
       });
 
@@ -68,9 +66,7 @@ const NewslettersAdminPage = () => {
       const deletePromises = ids.map((id) =>
         fetch("/api/newsletter/delete", {
           method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id }),
         })
       );
@@ -109,7 +105,7 @@ const NewslettersAdminPage = () => {
             isDeleting={isDeleting}
           />
         </div>
-      </div>
+      </div> {/* ✅ fixed */}
     </>
   );
 };
