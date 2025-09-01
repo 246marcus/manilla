@@ -25,6 +25,7 @@ interface WaitlistTableProps {
   onDeleteSelected: (ids: string[]) => void;
   onSend: (id: string) => void;
   onView: (id: string) => void;
+  onSendMail: (id: string | null) => void;
 }
 
 const WaitlistTable: React.FC<WaitlistTableProps> = ({
@@ -33,6 +34,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
   onDeleteSelected,
   onSend,
   onView,
+  onSendMail,
 }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
@@ -52,11 +54,11 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
     }
   };
 
-    //Sort lists before passing to table
-   const sortedList = [...users].sort((a, b) => {
+  //Sort lists before passing to table
+  const sortedList = [...users].sort((a, b) => {
     const aDate = new Date(a.createdAt).getTime();
     const bDate = new Date(b.createdAt).getTime();
-  
+
     if (sort === "Newest") {
       return bDate - aDate;
     } else if (sort === "Oldest") {
@@ -64,19 +66,17 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
     }
     return 0;
   });
-  
-
 
   return (
     <div className="bg-white shadow rounded-lg overflow-hidden">
       {/* Header Controls */}
       <div className="flex items-center justify-between px-4 py-3">
-        <div> 
+        <div>
           <h1 className=" font-semibold text-black/80 text-sm">
-           View and manage all waitlist participants
+            View and manage all waitlist participants
           </h1>
           <p className=" text-black/50 text-xs">
-           Simply view and manage all users who opt-in to join waitlist
+            Simply view and manage all users who opt-in to join waitlist
           </p>
         </div>
 
@@ -94,17 +94,18 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
           <button
             disabled={selected.length === 0}
             onClick={() => onDeleteSelected(selected)}
-           className="flex items-center gap-1 hover:text-white font-semibold border-black/40  border disabled:opacity-50 px-4 py-2 rounded-md hover:bg-black/80" 
+            className="flex items-center gap-1 hover:text-white font-semibold border-black/40  border disabled:opacity-50 px-4 py-2 rounded-md hover:bg-black/80"
           >
-             <MdDeleteOutline size={22} />
+            <MdDeleteOutline size={22} />
             Delete Selected
           </button>
-          <button className=" flex items-center gap-2 bg-black/80  text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40">
-           
+          <button
+            className=" flex items-center gap-2 bg-black/80  text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40"
+            onClick={() => onSendMail(selected.length > 0 ? selected[0] : null)}
+            disabled={selected.length === 0}
+          >
             <FiMail size={20} /> Send Mail
           </button>
-         
-                  
         </div>
       </div>
 
@@ -162,21 +163,35 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                   </td>
                   <td className="p-3">{u.firstName}</td>
                   <td className="p-3">{u.lastName}</td>
-                  <td className="p-3 max-w-xs truncate" title={u.requestContent}>
+                  <td
+                    className="p-3 max-w-xs truncate"
+                    title={u.requestContent}
+                  >
                     {u.requestContent}
                   </td>
                   <td className="p-3">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      u.status === "unread" ? "bg-red-100 text-red-800" :
-                      u.status === "read" ? "bg-yellow-100 text-yellow-800" :
-                      "bg-green-100 text-green-800"
-                    }`}>
-                      {u.status === "unread" ? "🔴" : u.status === "read" ? "🟡" : "🟢"} {u.status}
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        u.status === "unread"
+                          ? "bg-red-100 text-red-800"
+                          : u.status === "read"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-green-100 text-green-800"
+                      }`}
+                    >
+                      {u.status === "unread"
+                        ? "🔴"
+                        : u.status === "read"
+                        ? "🟡"
+                        : "🟢"}{" "}
+                      {u.status}
                     </span>
                   </td>
                   <td className="p-3 relative">
                     <button
-                      onClick={() => setOpenMenu(openMenu === u._id ? null : u._id)}
+                      onClick={() =>
+                        setOpenMenu(openMenu === u._id ? null : u._id)
+                      }
                       className="p-2 rounded-full hover:bg-gray-200"
                     >
                       <BsThreeDotsVertical />
@@ -195,7 +210,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                         </button>
                         <button
                           onClick={() => {
-                            onSend(u._id);
+                            onSendMail(contact._id);
                             setOpenMenu(null);
                           }}
                           className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"

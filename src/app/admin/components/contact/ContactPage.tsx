@@ -50,9 +50,9 @@ const ContactPage = () => {
   const handleDelete = async (id: string) => {
     try {
       const res = await fetch(`/api/contact/${id}`, { method: "DELETE" });
-      
+
       if (res.ok) {
-        setContacts(prev => prev.filter(contact => contact._id !== id));
+        setContacts((prev) => prev.filter((contact) => contact._id !== id));
       } else {
         alert("Failed to delete contact");
       }
@@ -64,12 +64,14 @@ const ContactPage = () => {
 
   const handleDeleteSelected = async (ids: string[]) => {
     try {
-      const deletePromises = ids.map(id => 
+      const deletePromises = ids.map((id) =>
         fetch(`/api/contact/${id}`, { method: "DELETE" })
       );
-      
+
       await Promise.all(deletePromises);
-      setContacts(prev => prev.filter(contact => !ids.includes(contact._id)));
+      setContacts((prev) =>
+        prev.filter((contact) => !ids.includes(contact._id))
+      );
     } catch (error) {
       console.error("Failed to delete contacts:", error);
       alert("Failed to delete contacts");
@@ -85,11 +87,11 @@ const ContactPage = () => {
         },
         body: JSON.stringify({ status: "read" }),
       });
-      
+
       if (res.ok) {
-        setContacts(prev => 
-          prev.map(contact => 
-            contact._id === id 
+        setContacts((prev) =>
+          prev.map((contact) =>
+            contact._id === id
               ? { ...contact, status: "read" as const }
               : contact
           )
@@ -104,7 +106,7 @@ const ContactPage = () => {
   };
 
   const handleMarkAsReplied = async (id: string) => {
-    const contact = contacts.find(c => c._id === id);
+    const contact = contacts.find((c) => c._id === id);
     if (contact) {
       setSelectedContact(contact);
       setShowReplyModal(true);
@@ -113,7 +115,7 @@ const ContactPage = () => {
 
   const handleReplySubmit = async (replyContent: string) => {
     if (!selectedContact) return;
-    
+
     setReplyLoading(true);
     try {
       const res = await fetch("/api/mail/reply", {
@@ -132,9 +134,9 @@ const ContactPage = () => {
       if (res.ok) {
         alert("Reply sent successfully!");
         // Update the contact's status in the local state
-        setContacts(prev => 
-          prev.map(contact => 
-            contact._id === selectedContact._id 
+        setContacts((prev) =>
+          prev.map((contact) =>
+            contact._id === selectedContact._id
               ? { ...contact, status: "replied" as const }
               : contact
           )
@@ -154,7 +156,7 @@ const ContactPage = () => {
 
   const handleSendMail = (id: string | null) => {
     if (id) {
-      const contact = contacts.find(c => c._id === id);
+      const contact = contacts.find((c) => c._id === id);
       if (contact) {
         setSelectedContact(contact);
         setShowReplyModal(true);
@@ -165,9 +167,19 @@ const ContactPage = () => {
   };
 
   const handleView = (id: string) => {
-    const contact = contacts.find(c => c._id === id);
+    const contact = contacts.find((c) => c._id === id);
     if (contact) {
-      alert(`Contact Details:\nName: ${contact.firstName} ${contact.lastName}\nEmail: ${contact.email}\nTelephone: ${contact.telephone || 'N/A'}\nCompany: ${contact.companyName || 'N/A'}\nAddress: ${contact.companyAddress || 'N/A'}\nRequest Type: ${contact.requestType}\nRequest Content: ${contact.requestContent}`);
+      alert(
+        `Contact Details:\nName: ${contact.firstName} ${
+          contact.lastName
+        }\nEmail: ${contact.email}\nTelephone: ${
+          contact.telephone || "N/A"
+        }\nCompany: ${contact.companyName || "N/A"}\nAddress: ${
+          contact.companyAddress || "N/A"
+        }\nRequest Type: ${contact.requestType}\nRequest Content: ${
+          contact.requestContent
+        }`
+      );
     }
   };
 

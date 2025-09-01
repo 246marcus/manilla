@@ -13,7 +13,7 @@ import blogimg from "../../../../../public/images/blogimage1.png";
 import Authorimg from "../../../../../public/images/blogauthor.png";
 import { log } from "console";
 
- export interface BlogPost {
+export interface BlogPost {
   _id: string;
   id?: number;
   code?: string;
@@ -113,42 +113,40 @@ const BlogManagement = () => {
     }
   }; */
 
-
   const confirmDelete = async () => {
-  try {
-    // pick blogs based on activeTab
-    const blogsToDelete = blogPosts.filter((b) =>
-      activeTab === "Posted" ? b.status === "published" : b.status === "draft"
-    );
+    try {
+      // pick blogs based on activeTab
+      const blogsToDelete = blogPosts.filter((b) =>
+        activeTab === "Posted" ? b.status === "published" : b.status === "draft"
+      );
 
-    if (blogsToDelete.length === 0) {
-      setShowDeleteModal(false);
-      return;
-    }
-
-    // delete each blog sequentially
-    for (const blog of blogsToDelete) {
-      const res = await fetch(`/api/blogs/${blog._id}`, {
-        method: "DELETE",
-      });
-      if (!res.ok) {
-        throw new Error(`Failed to delete blog ${blog._id}`);
+      if (blogsToDelete.length === 0) {
+        setShowDeleteModal(false);
+        return;
       }
+
+      // delete each blog sequentially
+      for (const blog of blogsToDelete) {
+        const res = await fetch(`/api/blogs/${blog._id}`, {
+          method: "DELETE",
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to delete blog ${blog._id}`);
+        }
+      }
+
+      // update state to remove deleted blogs
+      setBlogPosts((prev) =>
+        prev.filter((b) => !blogsToDelete.some((d) => d._id === b._id))
+      );
+
+      setShowDeleteModal(false);
+      setShowDeleteSuccess(true);
+    } catch (error) {
+      console.error("Failed to delete blogs:", error);
+      alert("Failed to delete blogs");
     }
-
-    // update state to remove deleted blogs
-    setBlogPosts((prev) =>
-      prev.filter((b) => !blogsToDelete.some((d) => d._id === b._id))
-    );
-
-    setShowDeleteModal(false);
-    setShowDeleteSuccess(true);
-  } catch (error) {
-    console.error("Failed to delete blogs:", error);
-    alert("Failed to delete blogs");
-  }
-};
-
+  };
 
   // Handle individual blog operations
   const handleDeleteBlog = async (blogId: string) => {
@@ -218,19 +216,18 @@ const BlogManagement = () => {
     activeTab === "Posted" ? b.status === "published" : b.status === "draft"
   );
 
- const sortedBlogs = [...filteredBlogs].sort((a, b) => {
-  const aDate = new Date(a.createdAt).getTime();
-  const bDate = new Date(b.createdAt).getTime();
+  const sortedBlogs = [...filteredBlogs].sort((a, b) => {
+    const aDate = new Date(a.createdAt).getTime();
+    const bDate = new Date(b.createdAt).getTime();
 
-  if (sort === "Newest") {
-    return bDate - aDate;
-  } else if (sort === "Oldest") {
-    return aDate - bDate;
-  }
-  return 0;
-});
+    if (sort === "Newest") {
+      return bDate - aDate;
+    } else if (sort === "Oldest") {
+      return aDate - bDate;
+    }
+    return 0;
+  });
 
-  
   return (
     <div className="flex-1 flex flex-col bg-white/40 h-screen overflow-y-auto">
       {/* Header */}
