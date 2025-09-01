@@ -21,9 +21,19 @@ interface Blog {
   updatedAt: string;
 }
 
+const categories = [
+  "E-commerce",
+  "Crypto",
+  "Finance",
+  "Technology",
+  "Art",
+  "Lifestyle",
+];
+
 export default function BlogPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState("E-commerce"); // default
 
   useEffect(() => {
     fetchBlogs();
@@ -44,6 +54,12 @@ export default function BlogPage() {
     }
   };
 
+  const filteredBlogs = blogs.filter(
+    (blog) => blog.category.toLowerCase() === activeCategory.toLowerCase()
+  );
+
+  console.log(blogs);
+
   return (
     <main>
       {/* Top Banner Section */}
@@ -56,7 +72,24 @@ export default function BlogPage() {
           backgroundRepeat: "repeat",
         }}
       >
-        <div className="max-w-6xl mx-auto mt-8 px-6 text-center">
+        <div className="max-w-6xl mx-auto mt-8 px-6 text-center relative">
+          {/*  activeTab desktop */}
+          <div className="hidden lg:flex flex-wrap justify-center gap-3 lg:gap-2 absolute bottom-0 z-10 max-w-xl left-8 ">
+            {categories.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveCategory(tab)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                  activeCategory === tab
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
           {/* Top Blog Banner Image */}
           <Image
             src="/icons/blogicon.png"
@@ -127,6 +160,22 @@ export default function BlogPage() {
 
       {/* Blog Cards Section */}
       <section className="max-w-6xl mx-auto px-6 py-16">
+        {/*  activeTab Mobile */}
+        <div className="lg:hidden flex flex-wrap justify-center gap-3 lg:gap-2 max-w-xl left-8 -mt-8 mb-6 sm:mb-10 mx-auto scale-90 sm:scale-100">
+          {categories.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveCategory(tab)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                activeCategory === tab
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
         {isLoading ? (
           <div className="text-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
@@ -136,9 +185,19 @@ export default function BlogPage() {
           <div className="text-center py-8">
             <p className="text-gray-600">No published blogs found.</p>
           </div>
+        ) : filteredBlogs.length === 0 ? (
+          <div className="text-center py-8 border rounded-2xl border-black/30">
+            <p className="text-gray-600 italic">
+              No blogs found in {activeCategory}.
+            </p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
+            {/*  {blogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))} */}
+
+            {filteredBlogs.map((blog) => (
               <BlogCard key={blog._id} blog={blog} />
             ))}
           </div>

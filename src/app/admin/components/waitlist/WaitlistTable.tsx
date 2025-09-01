@@ -210,7 +210,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                         </button>
                         <button
                           onClick={() => {
-                            onSendMail(contact._id);
+                            onSendMail(u._id);
                             setOpenMenu(null);
                           }}
                           className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"

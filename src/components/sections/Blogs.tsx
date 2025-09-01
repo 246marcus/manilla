@@ -95,20 +95,20 @@ const Blogs = () => {
               {/* Carousel */}
               <div
                 ref={containerRef}
-                className="overflow-hidden w-full lg:w-[700px] mx-auto"
+                className="overflow-hidden w-full lg:w-[700px] mx-auto "
               >
                 <div
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{
+                  className="flex items-start  justify-start transition-transform duration-500 ease-in-out "
+                   style={{
                     transform: `translateX(-${
                       currentIndex * (100 / cardsPerView)
                     }%)`,
-                  }}
+                  }} 
                 >
                   {blogs.map((blog: Blog) => (
                     <div
                       key={blog._id}
-                      className="w-full sm:w-[300px] flex-shrink-0 mx-auto sm:mr-5"
+                      className="w-full sm:w-[300px] flex-shrink-0 mx-autodd sm:mr-5"
                     >
                       <Link
                         href={`/blog/${blog.slug}`}
