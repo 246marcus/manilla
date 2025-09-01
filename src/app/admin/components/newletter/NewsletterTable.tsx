@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { FiMail, FiTrash2, FiEye } from "react-icons/fi";
+import { FiTrash2 } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 
 interface NewsletterUser {
@@ -16,10 +16,8 @@ interface NewsletterTableProps {
   users: NewsletterUser[];
   onDelete: (id: string) => void;
   onDeleteSelected: (ids: string[]) => void;
-  onSend: (id: string) => void;
-  onView: (id: string) => void;
   onSendNewsletter?: () => void;
-  onSendMail: (id: string | null) => void;
+  onUserSelection?: (selectedIds: string[]) => void;
   isDeleting?: boolean;
 }
 
@@ -27,10 +25,8 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
   users,
   onDelete,
   onDeleteSelected,
-  onSend,
-  onView,
   onSendNewsletter,
-  onSendMail,
+  onUserSelection,
   isDeleting = false,
 }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -38,17 +34,19 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
   const [sort, setSort] = useState("Newest");
 
   const toggleSelect = (id: string) => {
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
-    );
+    const newSelected = selected.includes(id) 
+      ? selected.filter((s) => s !== id) 
+      : [...selected, id];
+    setSelected(newSelected);
+    onUserSelection?.(newSelected);
   };
 
   const toggleAll = () => {
-    if (selected.length === users.length) {
-      setSelected([]);
-    } else {
-      setSelected(users.map((u) => u._id));
-    }
+    const newSelected = selected.length === users.length 
+      ? [] 
+      : users.map((u) => u._id);
+    setSelected(newSelected);
+    onUserSelection?.(newSelected);
   };
 
   return (
@@ -84,17 +82,11 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
             {isDeleting ? "Deleting..." : "Delete Selected"}
           </button>
           <button 
-            onClick={() => onSendMail(selected.length > 0 ? selected[0] : null)}
-            disabled={selected.length === 0}
-            className="flex items-center gap-2 bg-black/80 text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40 disabled:opacity-50"
-          >
-            <FiMail size={20} /> Send Mail
-          </button>
-          <button 
             onClick={onSendNewsletter}
-            className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 border border-blue-600"
+            disabled={selected.length === 0}
+            className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 border border-blue-600 disabled:opacity-50"
           >
-            <FiMail size={20} /> Send Newsletter
+            Send Newsletter ({selected.length} selected)
           </button>
          
                   
@@ -115,7 +107,6 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
               </th>
               <th className="p-3">#</th>
               <th className="p-3">Email</th>
-              <th className="p-3">Status</th>
               <th className="p-3">Subscribed Date</th>
               <th className="p-3">Action</th>
             </tr>
@@ -134,23 +125,7 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
                   />
                 </td>
                 <td className="p-3">{index + 1}</td>
-                <td className="p-3 flex items-center gap-2">
-{/*                   <img
-                    src="https://via.placeholder.com/28"
-                    alt="avatar"
-                    className="w-7 h-7 rounded-full"
-                  /> */}
-                  {u.email}
-                </td>
-                <td className="p-3">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    u.isActive 
-                      ? "bg-green-100 text-green-800" 
-                      : "bg-red-100 text-red-800"
-                  }`}>
-                    {u.isActive ? "Active" : "Inactive"}
-                  </span>
-                </td>
+                <td className="p-3">{u.email}</td>
                 <td className="p-3">{new Date(u.subscribedAt).toLocaleDateString()}</td>
                 <td className="p-3 relative">
                   <button
@@ -162,24 +137,6 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
 
                   {openMenu === u._id && (
                     <div className="absolute right-0 mt-2 w-36 bg-white border rounded-md shadow-lg z-10">
-                      <button
-                        onClick={() => {
-                          onView(u._id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
-                      >
-                        <FiEye /> View
-                      </button>
-                      <button
-                        onClick={() => {
-                          onSendMail(u._id);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"
-                      >
-                        <FiMail /> Send Mail
-                      </button>
                       <button
                         onClick={() => {
                           onDelete(u._id);
