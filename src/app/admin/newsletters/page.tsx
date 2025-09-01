@@ -48,8 +48,7 @@ const NewslettersAdminPage = () => {
       });
 
       if (res.ok) {
-        // Remove from local state
-        setSubscribers(prev => prev.filter(sub => sub._id !== id))
+        setSubscribers((prev) => prev.filter((sub) => sub._id !== id));
       } else {
         alert("Failed to delete subscriber");
       }
@@ -63,10 +62,10 @@ const NewslettersAdminPage = () => {
 
   const handleDeleteSelected = async (ids: string[]) => {
     if (isDeleting) return;
-    
+
     setIsDeleting(true);
     try {
-      const deletePromises = ids.map(id => 
+      const deletePromises = ids.map((id) =>
         fetch("/api/newsletter/delete", {
           method: "DELETE",
           headers: {
@@ -75,9 +74,9 @@ const NewslettersAdminPage = () => {
           body: JSON.stringify({ id }),
         })
       );
-      
+
       await Promise.all(deletePromises);
-      setSubscribers(prev => prev.filter(sub => !ids.includes(sub._id)));
+      setSubscribers((prev) => prev.filter((sub) => !ids.includes(sub._id)));
     } catch (error) {
       console.error("Delete selected error:", error);
       alert("Failed to delete selected subscribers");
@@ -98,15 +97,18 @@ const NewslettersAdminPage = () => {
   }
 
   return (
-
     <>
       <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
-    <div className="flex h-screen">
-      <Sidebar />
-      <div className="flex-1">
-        <NewsletterPage 
-          isDeleting={isDeleting}
-        />
+      <div className="flex h-screen">
+        <Sidebar />
+        <div className="flex-1">
+          <NewsletterPage
+            subscribers={subscribers}
+            handleDelete={handleDelete}
+            handleDeleteSelected={handleDeleteSelected}
+            isDeleting={isDeleting}
+          />
+        </div>
       </div>
     </>
   );
