@@ -16,8 +16,6 @@ interface NewsletterPageProps {
   users?: User[];
   onDelete?: (id: string) => void;
   onDeleteSelected?: (ids: string[]) => void;
-  onSend?: (id: string) => void;
-  onView?: (id: string) => void;
   isDeleting?: boolean;
 }
 
@@ -25,14 +23,13 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
   users: propUsers,
   onDelete: propOnDelete,
   onDeleteSelected: propOnDeleteSelected,
-  onSend: propOnSend,
-  onView: propOnView,
   isDeleting = false,
 }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showNewsletterModal, setShowNewsletterModal] = useState(false);
   const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
 
   // Fetch newsletter subscribers from API
   useEffect(() => {
@@ -66,6 +63,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
       
       if (res.ok) {
         setUsers(prev => prev.filter(user => user._id !== id));
+        setSelectedUsers(prev => prev.filter(user => user._id !== id));
       } else {
         alert("Failed to delete subscriber");
       }
@@ -89,16 +87,10 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
       
       await Promise.all(deletePromises);
       setUsers(prev => prev.filter(user => !ids.includes(user._id)));
+      setSelectedUsers(prev => prev.filter(user => !ids.includes(user._id)));
     } catch (error) {
       console.error("Failed to delete subscribers:", error);
       alert("Failed to delete subscribers");
-    }
-  };
-
-  const handleSend = (id: string) => {
-    const user = users.find(u => u._id === id);
-    if (user) {
-      alert(`Send mail to ${user.email}`);
     }
   };
 
@@ -106,7 +98,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
     setShowNewsletterModal(true);
   };
 
-  const handleNewsletterSubmit = async (subject: string, content: string) => {
+  const handleNewsletterSubmit = async (subject: string, content: string, selectedUserIds: string[]) => {
     setNewsletterLoading(true);
     try {
       const res = await fetch("/api/mail/newsletter", {
@@ -117,14 +109,16 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
         body: JSON.stringify({
           subject: subject,
           content: content,
+          selectedUserIds: selectedUserIds, // Send to specific selected users
         }),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        alert(`Newsletter sent successfully!\nTotal subscribers: ${data.totalSubscribers}\nSuccess: ${data.successCount}\nFailed: ${data.failureCount}`);
+        alert(`Newsletter sent successfully!\nTotal selected: ${selectedUserIds.length}\nSuccess: ${data.successCount}\nFailed: ${data.failureCount}`);
         setShowNewsletterModal(false);
+        setSelectedUsers([]); // Clear selection after sending
       } else {
         alert(data.message || "Failed to send newsletter");
       }
@@ -136,57 +130,9 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
     }
   };
 
-  const handleSendMail = (id: string | null) => {
-    if (id) {
-      const user = users.find(u => u._id === id);
-      if (user) {
-        // For newsletter subscribers, we'll send a direct email
-        const subject = prompt("Enter email subject:");
-        if (subject && subject.trim()) {
-          const content = prompt("Enter email content:");
-          if (content && content.trim()) {
-            handleSendDirectEmail(user.email, subject.trim(), content.trim());
-          }
-        }
-      }
-    } else {
-      alert("Please select a subscriber to send mail to");
-    }
-  };
-
-  const handleSendDirectEmail = async (email: string, subject: string, content: string) => {
-    try {
-      const res = await fetch("/api/mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          to: email,
-          subject: subject,
-          content: content,
-          type: "direct",
-        }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        alert("Email sent successfully!");
-      } else {
-        alert(data.message || "Failed to send email");
-      }
-    } catch (error) {
-      console.error("Failed to send email:", error);
-      alert("Failed to send email");
-    }
-  };
-
-  const handleView = (id: string) => {
-    const user = users.find(u => u._id === id);
-    if (user) {
-      alert(`View user ${user.email}`);
-    }
+  const handleUserSelection = (selectedIds: string[]) => {
+    const selectedUserObjects = users.filter(user => selectedIds.includes(user._id));
+    setSelectedUsers(selectedUserObjects);
   };
 
   return (
@@ -201,10 +147,8 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
         users={users}
         onDelete={handleDelete}
         onDeleteSelected={handleDeleteSelected}
-        onSend={handleSend}
-        onView={handleView}
         onSendNewsletter={handleSendNewsletter}
-        onSendMail={handleSendMail}
+        onUserSelection={handleUserSelection}
         isDeleting={isDeleting}
       />
 
@@ -213,6 +157,8 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
         onClose={() => setShowNewsletterModal(false)}
         onSubmit={handleNewsletterSubmit}
         loading={newsletterLoading}
+        totalUsers={users.length}
+        selectedUsers={selectedUsers}
       />
     </div>
   );

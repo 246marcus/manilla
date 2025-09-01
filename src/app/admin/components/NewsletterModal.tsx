@@ -5,8 +5,10 @@ import { useState } from "react";
 interface NewsletterModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (subject: string, content: string) => void;
+  onSubmit: (subject: string, content: string, selectedUserIds: string[]) => void;
   loading?: boolean;
+  totalUsers?: number;
+  selectedUsers?: Array<{ _id: string; email: string }>;
 }
 
 const NewsletterModal: React.FC<NewsletterModalProps> = ({
@@ -14,6 +16,8 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
   onClose,
   onSubmit,
   loading = false,
+  totalUsers = 0,
+  selectedUsers = [],
 }) => {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
@@ -21,7 +25,8 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (subject.trim() && content.trim()) {
-      onSubmit(subject.trim(), content.trim());
+      const selectedIds = selectedUsers.map(user => user._id);
+      onSubmit(subject.trim(), content.trim(), selectedIds);
       setSubject("");
       setContent("");
     }
@@ -59,6 +64,10 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
             />
           </div>
 
+          <div className="text-sm text-gray-600">
+            Sending to {selectedUsers.length} of {totalUsers} subscribers
+          </div>
+
           <div className="flex justify-end gap-3 mt-4">
             <button
               type="button"
@@ -71,9 +80,9 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
             <button
               type="submit"
               className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm disabled:opacity-50"
-              disabled={loading || !subject.trim() || !content.trim()}
+              disabled={loading || !subject.trim() || !content.trim() || selectedUsers.length === 0}
             >
-              {loading ? "Sending..." : "Send Newsletter"}
+              {loading ? "Sending..." : `Send to ${selectedUsers.length} Subscribers`}
             </button>
           </div>
         </form>
