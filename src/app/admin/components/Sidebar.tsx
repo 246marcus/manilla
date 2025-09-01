@@ -61,13 +61,13 @@ export default function AppSidebar() {
             Blog Management
           </MenuItem>
 
-          <MenuItem
+          {/* <MenuItem
             icon={<FaEnvelope />}
             className="text-white bg-black/60 rounded-md mx-auto border-white/30 border hover:bg-white/90 hover:text-black/80 my-1"
             onClick={() => router.push("/admin/mailManagement")}
           >
             Mail Management
-          </MenuItem>
+          </MenuItem> */}
 
           <MenuItem
             icon={<FaList />}

@@ -1,18 +1,24 @@
-// Create transporter for Gmail
+// Create transporter for Gmail (uses STARTTLS on port 587)
 const createTransporter = async () => {
-  const nodemailer = await import('nodemailer');
+  const nodemailer = await import("nodemailer");
   return nodemailer.default.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587, // ✅ use STARTTLS
+    secure: false, // ✅ must be false for 587
     auth: {
       user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASSWORD, // Use app password for Gmail
+      pass: process.env.GMAIL_PASSWORD, // Gmail App Password
     },
   });
 };
 
 // Email templates
 export const emailTemplates = {
-  waitlistReply: (firstName: string, lastName: string, replyContent: string) => ({
+  waitlistReply: (
+    firstName: string,
+    lastName: string,
+    replyContent: string
+  ) => ({
     subject: `Response to your waitlist request - Manilla Technologies`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -57,10 +63,14 @@ export const emailTemplates = {
       
       Best regards,
       The Manilla Technologies Team
-    `
+    `,
   }),
-  
-  contactReply: (firstName: string, lastName: string, replyContent: string) => ({
+
+  contactReply: (
+    firstName: string,
+    lastName: string,
+    replyContent: string
+  ) => ({
     subject: `Response to your contact request - Manilla Technologies`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -105,9 +115,9 @@ export const emailTemplates = {
       
       Best regards,
       The Manilla Technologies Team
-    `
+    `,
   }),
-  
+
   newsletter: (subject: string, content: string) => ({
     subject: subject,
     html: `
@@ -131,8 +141,8 @@ export const emailTemplates = {
         </div>
       </div>
     `,
-    text: content
-  })
+    text: content,
+  }),
 };
 
 // Send email function
@@ -144,20 +154,21 @@ export const sendEmail = async (
 ) => {
   try {
     const transporter = await createTransporter();
-    
+
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: to,
       subject: subject,
       html: htmlContent,
-      text: textContent || htmlContent.replace(/<[^>]*>/g, ''),
+      text: textContent || htmlContent.replace(/<[^>]*>/g, ""),
     };
 
     const result = await transporter.sendMail(mailOptions);
     return { success: true, messageId: result.messageId };
   } catch (error: unknown) {
-    console.error('Email sending error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    console.error("Email sending error:", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
     return { success: false, error: errorMessage };
   }
 };
@@ -168,11 +179,12 @@ export const sendReply = async (
   firstName: string,
   lastName: string,
   replyContent: string,
-  type: 'waitlist' | 'contact'
+  type: "waitlist" | "contact"
 ) => {
-  const template = type === 'waitlist' 
-    ? emailTemplates.waitlistReply(firstName, lastName, replyContent)
-    : emailTemplates.contactReply(firstName, lastName, replyContent);
+  const template =
+    type === "waitlist"
+      ? emailTemplates.waitlistReply(firstName, lastName, replyContent)
+      : emailTemplates.contactReply(firstName, lastName, replyContent);
 
   return await sendEmail(to, template.subject, template.html, template.text);
 };

@@ -41,7 +41,7 @@ const MailManagementPage = () => {
     try {
       const res = await fetch("/api/mail");
       const data = await res.json();
-      
+
       if (res.ok) {
         setMails(data.mails);
       }
@@ -60,6 +60,24 @@ const MailManagementPage = () => {
     body: string;
   }) => {
     try {
+      // Map category to valid type enum values
+      const validTypes = [
+        "newsletter",
+        "promotional",
+        "transactional",
+        "general",
+      ];
+      const mappedType = validTypes.includes(mail.category.toLowerCase())
+        ? mail.category.toLowerCase()
+        : "general";
+
+      console.log("Sending mail with data:", {
+        to: mail.receiver,
+        subject: mail.subject,
+        content: mail.body,
+        type: mappedType,
+      });
+
       const res = await fetch("/api/mail", {
         method: "POST",
         headers: {
@@ -69,17 +87,19 @@ const MailManagementPage = () => {
           to: mail.receiver,
           subject: mail.subject,
           content: mail.body,
-          type: mail.category.toLowerCase(),
+          type: mappedType,
         }),
       });
 
       const data = await res.json();
+      console.log("API response:", data);
 
       if (res.ok) {
         await fetchMails(); // Refresh the list
         setShowForm(false);
         setShowCreateSuccess(true);
       } else {
+        console.error("API error:", data);
         alert(data.message || "Failed to send email");
       }
     } catch (error) {
@@ -115,14 +135,16 @@ const MailManagementPage = () => {
     try {
       if (deleteTarget === null) {
         // Delete all mails
-        const deletePromises = mails.map(mail => 
+        const deletePromises = mails.map((mail) =>
           fetch(`/api/mail/${mail._id}`, { method: "DELETE" })
         );
         await Promise.all(deletePromises);
         setMails([]);
       } else {
         // Delete single mail
-        const res = await fetch(`/api/mail/${deleteTarget}`, { method: "DELETE" });
+        const res = await fetch(`/api/mail/${deleteTarget}`, {
+          method: "DELETE",
+        });
         if (res.ok) {
           setMails((prev) => prev.filter((m) => m._id !== deleteTarget));
         }
@@ -133,47 +155,7 @@ const MailManagementPage = () => {
       console.error("Failed to delete mail(s):", error);
       alert("Failed to delete mail(s)");
     }
-  }; 
-
-
-
-/* const confirmDelete = async () => {
-  try {
-    if (deleteTarget === null) {
-      // Only delete mails in the active tab
-      const mailsToDelete = mails.filter((mail) => mail.status === activeTab.toLowerCase());
-
-      const deleteResults = await Promise.all(
-        mailsToDelete.map(async (mail) => {
-          const res = await fetch(`/api/mail/${mail._id}`, { method: "DELETE" });
-          return res.ok ? mail._id : null;
-        })
-      );
-
-      const successfullyDeletedIds = deleteResults.filter(
-        (id): id is string => id !== null
-      );
-
-      // Remove only the successfully deleted ones from state
-      setMails((prev) => prev.filter((m) => !successfullyDeletedIds.includes(m._id)));
-    } else {
-      // Delete single mail
-      const res = await fetch(`/api/mail/${deleteTarget}`, { method: "DELETE" });
-      if (res.ok) {
-        setMails((prev) => prev.filter((m) => m._id !== deleteTarget));
-      }
-    }
-
-    setShowDeleteModal(false);
-    setShowDeleteSuccess(true);
-  } catch (error) {
-    console.error("Failed to delete mail(s):", error);
-    alert("Failed to delete mail(s)");
-  }
-}; */
-
-
-
+  };
 
   // === SEND ===
   const handleSend = (id: string) => {
@@ -181,14 +163,10 @@ const MailManagementPage = () => {
     console.log("Mail already sent:", id);
   };
 
-
- 
-
-
   return (
     <div className="pe-4 flex-1 flex flex-col  bg-white/40 h-screen  overflow-y-auto">
       {/* Page Title */}
-      
+
       {/* Header */}
       <Topbar
         title={"Mail Management"}
@@ -232,46 +210,42 @@ const MailManagementPage = () => {
         />
       )}
 
+      {showCreateSuccess && (
+        <SuccessModal
+          title="Create Mail"
+          subtitle="Interface for creating and editing mails."
+          messageA="Mail created successfully"
+          messageB="Your mail has been created successfully and it is been saved"
+          buttons={[
+            {
+              label: "View Draft",
+              onClick: () => setShowCreateSuccess(false),
+            },
+            {
+              label: "Sent Directly",
+              onClick: () => setShowCreateSuccess(false),
+              primary: true,
+            },
+          ]}
+        />
+      )}
 
-       {showCreateSuccess && (
-          <SuccessModal
-            title="Create Mail"
-            subtitle="Interface for creating and editing mails."
-            messageA="Mail created successfully"
-            messageB="Your mail has been created successfully and it is been saved"
-            buttons={[
-              {
-                label: "View Draft",
-                onClick: () => setShowCreateSuccess(false),
-              },
-              {
-                label: "Sent Directly",
-                onClick: () => setShowCreateSuccess(false),
-                primary: true,
-              },
-            ]}
-          />
-        )}
-
-
-         {showDeleteSuccess && (
-          <SuccessModal
-            title="Delete Mail"
-            subtitle="Please confirm whether you want to proceed with this action."
-            messageA="Deleted Successfully"
-            messageB="Mails have been successfully Deleted"
-            buttons={[
-              { label: "Back", onClick: () => setShowDeleteSuccess(false) },
-              {
-                label: "Done",
-                onClick: () => setShowDeleteSuccess(false),
-                primary: true,
-              },
-            ]}
-          />
-        )}
-
-
+      {showDeleteSuccess && (
+        <SuccessModal
+          title="Delete Mail"
+          subtitle="Please confirm whether you want to proceed with this action."
+          messageA="Deleted Successfully"
+          messageB="Mails have been successfully Deleted"
+          buttons={[
+            { label: "Back", onClick: () => setShowDeleteSuccess(false) },
+            {
+              label: "Done",
+              onClick: () => setShowDeleteSuccess(false),
+              primary: true,
+            },
+          ]}
+        />
+      )}
     </div>
   );
 };
