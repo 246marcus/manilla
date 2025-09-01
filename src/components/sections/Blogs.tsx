@@ -4,21 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import BlogCard from "../../app/blog/components/BlogCard";
-
-interface Blog {
-  _id: string;
-  title: string;
-  slug: string;
-  category: string;
-  image: string;
-  content: string;
-  excerpt: string;
-  authorName: string;
-  authorImage: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import BlogCard from "../../app/blog/components/BlogCard"; // ✅ reuse BlogCard
+import { Blog } from "@/types"; // ✅ your shared type
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -27,32 +14,32 @@ const Blogs = () => {
   const [cardsPerView, setCardsPerView] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Fetch blogs from API
+  // ✅ fetch blogs from API instead of dummy data
   useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch("/api/blogs");
+        const data = await res.json();
+
+        if (res.ok) {
+          setBlogs(data.blogs);
+        }
+      } catch (err) {
+        console.error("Failed to fetch blogs:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchBlogs();
   }, []);
 
-  const fetchBlogs = async () => {
-    try {
-      const res = await fetch("/api/blogs?status=published");
-      const data = await res.json();
-
-      if (res.ok) {
-        setBlogs(data.blogs);
-      }
-    } catch (error) {
-      console.error("Failed to fetch blogs:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // ✅ Figure out how many cards fit in the container
+  // ✅ figure out how many cards per view
   useEffect(() => {
     const updateCardsPerView = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const cardWidth = 300; // matches sm:w-[300px]
+        const cardWidth = 300;
         const visibleCards = Math.max(
           1,
           Math.floor(containerWidth / cardWidth)
@@ -68,16 +55,12 @@ const Blogs = () => {
 
   const maxIndex = blogs.length - cardsPerView;
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
-
-  const handleNext = () => {
+  const handlePrev = () => setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  const handleNext = () =>
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
-  };
 
   return (
-    <section className="p-4  max-w-7xl mx-auto">
+    <section className="p-4 max-w-7xl mx-auto">
       <div
         className=" bg-cyan-400/90  px-4 text-center py-10 rounded-2xl mt-0"
         style={{
@@ -103,86 +86,82 @@ const Blogs = () => {
 
         {/* Blog Carousel */}
         <div className="mt-12">
-          <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-center gap-6">
-            {/* Carousel */}
-            <div
-              ref={containerRef}
-              className="overflow-hidden w-full lg:w-[700px] mx-auto"
-            >
-              {isLoading ? (
-                <div className="text-center py-8">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
-                  <p className="mt-2 text-gray-600">Loading blogs...</p>
-                </div>
-              ) : blogs.length === 0 ? (
-                <div className="text-center py-8">
-                  <p className="text-gray-600">No published blogs found.</p>
-                </div>
-              ) : (
-                <>
-                  <div
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{
-                      transform: `translateX(-${
-                        currentIndex * (100 / cardsPerView)
-                      }%)`,
-                    }}
-                  >
-                    {blogs.map((blog: Blog) => (
-                      <div
-                        key={blog._id}
-                        className="w-full sm:w-[300px] flex-shrink-0 mx-auto sm:mr-5"
+          {isLoading ? (
+            <p className="text-center text-gray-600">Loading blogs...</p>
+          ) : blogs.length === 0 ? (
+            <p className="text-center text-gray-600">No blogs found.</p>
+          ) : (
+            <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-center gap-6">
+              {/* Carousel */}
+              <div
+                ref={containerRef}
+                className="overflow-hidden w-full lg:w-[700px] mx-auto"
+              >
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{
+                    transform: `translateX(-${
+                      currentIndex * (100 / cardsPerView)
+                    }%)`,
+                  }}
+                >
+                  {blogs.map((blog: Blog) => (
+                    <div
+                      key={blog._id}
+                      className="w-full sm:w-[300px] flex-shrink-0 mx-auto sm:mr-5"
+                    >
+                      <Link
+                        href={`/blog/${blog.slug}`}
+                        className="block h-full"
                       >
-                        <Link href={`/blog/${blog.slug}`} className="block h-full">
-                          <div className="h-full min-h-[400px] flex">
-                            <BlogCard blog={blog} className="flex-1" />
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
+                        <div className="h-full min-h-[400px] flex">
+                          <BlogCard blog={blog} className="flex-1" />
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
 
-                  {/* Arrows */}
-                  <div className="flex justify-center items-center mt-6 gap-4">
-                    <button
-                      onClick={handlePrev}
-                      className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
-                      disabled={currentIndex === 0}
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button
-                      onClick={handleNext}
-                      className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
-                      disabled={currentIndex >= maxIndex}
-                    >
-                      <ChevronRight size={20} />
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
+                {/* Arrows */}
+                <div className="flex justify-center items-center mt-6 gap-4">
+                  <button
+                    onClick={handlePrev}
+                    className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
+                    disabled={currentIndex === 0}
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition"
+                    disabled={currentIndex >= maxIndex}
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              </div>
 
-            {/* Static Side Image */}
-            <div className="flex-shrink-0 relative max-w-sm mx-auto">
-              <Image
-                src="/images/manillablog.png"
-                alt="Blog Side Image"
-                width={300}
-                height={400}
-                className="rounded-lg object-cover mx-auto"
-              />
-              <Link href="/blog" passHref>
-                <img
-                  src="/images/bloglittleimage.png"
-                  alt="Overlay Decoration"
-                  width={130}
-                  height={100}
-                  className="absolute bottom-0 left-0 rounded-lg cursor-pointer"
+              {/* Static Side Image */}
+              <div className="flex-shrink-0 relative max-w-sm mx-auto">
+                <Image
+                  src="/images/manillablog.png"
+                  alt="Blog Side Image"
+                  width={300}
+                  height={400}
+                  className="rounded-lg object-cover mx-auto"
                 />
-              </Link>
+                <Link href="/blog" passHref>
+                  <img
+                    src="/images/bloglittleimage.png"
+                    alt="Overlay Decoration"
+                    width={130}
+                    height={100}
+                    className="absolute bottom-0 left-0 rounded-lg cursor-pointer"
+                  />
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
