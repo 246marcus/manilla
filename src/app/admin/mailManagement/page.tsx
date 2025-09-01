@@ -4,10 +4,13 @@ import MailManagementPage from "../components/mailcomp/MailManagementPage";
 
 const MailHome = () => {
   return (
-    <div className="flex">
-      <AppSidebar />
-      <MailManagementPage />
-    </div>
+    <>
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
+      <div className="hidden lg:flex">
+        <AppSidebar />
+        <MailManagementPage />
+      </div>
+    </>
   );
 };
 

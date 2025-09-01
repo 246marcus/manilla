@@ -47,7 +47,7 @@ const NewslettersAdminPage = () => {
 
   const handleDelete = async (id: number) => {
     if (isDeleting) return;
-    
+
     setIsDeleting(true);
     try {
       // Find the subscriber by the display ID
@@ -64,7 +64,7 @@ const NewslettersAdminPage = () => {
 
       if (res.ok) {
         // Remove from local state
-        setSubscribers(prev => prev.filter((_, index) => index + 1 !== id));
+        setSubscribers((prev) => prev.filter((_, index) => index + 1 !== id));
       } else {
         alert("Failed to delete subscriber");
       }
@@ -78,12 +78,12 @@ const NewslettersAdminPage = () => {
 
   const handleDeleteSelected = async (ids: number[]) => {
     if (isDeleting) return;
-    
+
     setIsDeleting(true);
     try {
       // Get the real MongoDB IDs for the selected display IDs
-      const realIds = ids.map(id => subscribers[id - 1]?._id).filter(Boolean);
-      
+      const realIds = ids.map((id) => subscribers[id - 1]?._id).filter(Boolean);
+
       if (realIds.length === 0) return;
 
       const res = await fetch("/api/newsletter/delete", {
@@ -96,7 +96,9 @@ const NewslettersAdminPage = () => {
 
       if (res.ok) {
         // Remove selected from local state
-        setSubscribers(prev => prev.filter((_, index) => !ids.includes(index + 1)));
+        setSubscribers((prev) =>
+          prev.filter((_, index) => !ids.includes(index + 1))
+        );
       } else {
         alert("Failed to delete selected subscribers");
       }
@@ -128,19 +130,22 @@ const NewslettersAdminPage = () => {
   }
 
   return (
-    <div className="flex h-screen">
-      <Sidebar />
-      <div className="flex-1">
-        <NewsletterPage 
-          users={users}
-          onDelete={handleDelete}
-          onDeleteSelected={handleDeleteSelected}
-          onSend={handleSend}
-          onView={handleView}
-          isDeleting={isDeleting}
-        />
+    <>
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
+      <div className="hidden lg:flex h-screen ">
+        <Sidebar />
+        <div className="flex-1">
+          <NewsletterPage
+            users={users}
+            onDelete={handleDelete}
+            onDeleteSelected={handleDeleteSelected}
+            onSend={handleSend}
+            onView={handleView}
+            isDeleting={isDeleting}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

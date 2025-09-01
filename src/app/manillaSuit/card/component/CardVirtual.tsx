@@ -1,7 +1,47 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import darkbg from "../../../../../public/images/darkstylebg.png";
 
 const CardVirtual: React.FC = () => {
+
+  const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState<"success" | "error">("success");
+
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+      e.preventDefault();
+      setIsLoading(true);
+      setMessage("");
+  
+      try {
+        const res = await fetch("/api/waitlist/subscribe", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+  
+        const data = await res.json();
+  
+        if (res.ok) {
+          setMessage(data.message);
+          setMessageType("success");
+          setEmail("");
+        } else {
+          setMessage(data.message);
+          setMessageType("error");
+        }
+      } catch (error) {
+        setMessage("Something went wrong. Please try again.");
+        setMessageType("error");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
   return (
     <section className="bg-white max-w-7xl mx-auto px-4">
       {/* Top dark section */}
@@ -38,16 +78,27 @@ const CardVirtual: React.FC = () => {
               a front-row seat to the future of cross-border payments.
             </p>
             {/* Contact form simulation */}
-            <div className=" md:flex-3/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubscribe} className=" md:flex-3/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+           
               <input
-                type="text"
+                 type="email"
                 placeholder="Join the waiting list for Manilla Card"
-                className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required
+                className="flex-1  rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
-              <button className="px-6 py-3 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-gray-800 transition">
+              <button className="px-6 py-3 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-yellow-300/80 transition">
                 Join Waitlist
               </button>
-            </div>
+            </form>
+             
+            {/* Message display */}
+            {message && (
+              <div className={`mt-4 text-center text-sm ${
+                messageType === "success" ? "text-green-600" : "text-red-600"
+              }`}>
+                {message}
+              </div>
+            )}
           </div>
         </div>
       </div>

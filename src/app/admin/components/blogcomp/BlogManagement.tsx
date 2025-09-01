@@ -11,8 +11,9 @@ import { FaDeleteLeft } from "react-icons/fa6";
 import { MdAddBox, MdDeleteOutline } from "react-icons/md";
 import blogimg from "../../../../../public/images/blogimage1.png";
 import Authorimg from "../../../../../public/images/blogauthor.png";
+import { log } from "console";
 
-interface BlogPost {
+ export interface BlogPost {
   _id: string;
   id?: number;
   code?: string;
@@ -56,29 +57,34 @@ const BlogManagement = () => {
 
       if (res.ok) {
         // Transform API data to match component interface
-        const transformedBlogs = data.blogs.map((blog: {
-          _id: string;
-          title: string;
-          category: string;
-          content: string;
-          excerpt: string;
-          authorName: string;
-          authorImage: string;
-          image: string;
-          status: string;
-          createdAt: string;
-        }, index: number) => ({
-          ...blog,
-          id: index + 1,
-          code: `Blog #${String(index + 1).padStart(3, '0')}`,
-          date: new Date(blog.createdAt).toLocaleDateString("en-US", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          }),
-          BlogImage: blog.image,
-          description: blog.excerpt,
-        }));
+        const transformedBlogs = data.blogs.map(
+          (
+            blog: {
+              _id: string;
+              title: string;
+              category: string;
+              content: string;
+              excerpt: string;
+              authorName: string;
+              authorImage: string;
+              image: string;
+              status: string;
+              createdAt: string;
+            },
+            index: number
+          ) => ({
+            ...blog,
+            id: index + 1,
+            code: `Blog #${String(index + 1).padStart(3, "0")}`,
+            date: new Date(blog.createdAt).toLocaleDateString("en-US", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            }),
+            BlogImage: blog.image,
+            description: blog.excerpt,
+          })
+        );
         setBlogPosts(transformedBlogs);
       }
     } catch (error) {
@@ -89,14 +95,14 @@ const BlogManagement = () => {
   };
 
   const handleDeleteAll = () => setShowDeleteModal(true);
-  
-  const confirmDelete = async () => {
+
+  /* const confirmDelete = async () => {
     try {
       // Delete all blogs
-      const deletePromises = blogPosts.map(blog => 
+      const deletePromises = blogPosts.map((blog) =>
         fetch(`/api/blogs/${blog._id}`, { method: "DELETE" })
       );
-      
+
       await Promise.all(deletePromises);
       setBlogPosts([]);
       setShowDeleteModal(false);
@@ -105,15 +111,52 @@ const BlogManagement = () => {
       console.error("Failed to delete blogs:", error);
       alert("Failed to delete blogs");
     }
-  };
+  }; */
+
+
+  const confirmDelete = async () => {
+  try {
+    // pick blogs based on activeTab
+    const blogsToDelete = blogPosts.filter((b) =>
+      activeTab === "Posted" ? b.status === "published" : b.status === "draft"
+    );
+
+    if (blogsToDelete.length === 0) {
+      setShowDeleteModal(false);
+      return;
+    }
+
+    // delete each blog sequentially
+    for (const blog of blogsToDelete) {
+      const res = await fetch(`/api/blogs/${blog._id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) {
+        throw new Error(`Failed to delete blog ${blog._id}`);
+      }
+    }
+
+    // update state to remove deleted blogs
+    setBlogPosts((prev) =>
+      prev.filter((b) => !blogsToDelete.some((d) => d._id === b._id))
+    );
+
+    setShowDeleteModal(false);
+    setShowDeleteSuccess(true);
+  } catch (error) {
+    console.error("Failed to delete blogs:", error);
+    alert("Failed to delete blogs");
+  }
+};
+
 
   // Handle individual blog operations
   const handleDeleteBlog = async (blogId: string) => {
     try {
       const res = await fetch(`/api/blogs/${blogId}`, { method: "DELETE" });
-      
+
       if (res.ok) {
-        setBlogPosts(prev => prev.filter(blog => blog._id !== blogId));
+        setBlogPosts((prev) => prev.filter((blog) => blog._id !== blogId));
       } else {
         alert("Failed to delete blog");
       }
@@ -132,12 +175,12 @@ const BlogManagement = () => {
         },
         body: JSON.stringify({ status: "published" }),
       });
-      
+
       if (res.ok) {
         const updatedBlog = await res.json();
-        setBlogPosts(prev => 
-          prev.map(blog => 
-            blog._id === blogId 
+        setBlogPosts((prev) =>
+          prev.map((blog) =>
+            blog._id === blogId
               ? { ...blog, status: "published" as const }
               : blog
           )
@@ -157,21 +200,37 @@ const BlogManagement = () => {
   };
 
   const handleEditSubmit = (updatedBlog: BlogPost) => {
-    setBlogPosts(prev => 
-      prev.map(blog => 
-        blog._id === updatedBlog._id ? updatedBlog : blog
-      )
+    setBlogPosts((prev) =>
+      prev.map((blog) => (blog._id === updatedBlog._id ? updatedBlog : blog))
     );
     setShowEditForm(false);
     setSelectedBlog(null);
   };
 
   const handleCreateSubmit = (newBlog: BlogPost) => {
-    setBlogPosts(prev => [newBlog, ...prev]);
+    setBlogPosts((prev) => [newBlog, ...prev]);
     setShowCreateForm(false);
     setShowCreateSuccess(true);
   };
 
+  // Filter + Sort blogs before passing to BlogGrid
+  const filteredBlogs = blogPosts.filter((b) =>
+    activeTab === "Posted" ? b.status === "published" : b.status === "draft"
+  );
+
+ const sortedBlogs = [...filteredBlogs].sort((a, b) => {
+  const aDate = new Date(a.createdAt).getTime();
+  const bDate = new Date(b.createdAt).getTime();
+
+  if (sort === "Newest") {
+    return bDate - aDate;
+  } else if (sort === "Oldest") {
+    return aDate - bDate;
+  }
+  return 0;
+});
+
+  
   return (
     <div className="flex-1 flex flex-col bg-white/40 h-screen overflow-y-auto">
       {/* Header */}
@@ -243,7 +302,7 @@ const BlogManagement = () => {
 
         {/* Blog Grid */}
         <BlogGrid
-          blogs={blogPosts}
+          blogs={sortedBlogs}
           activeTab={activeTab}
           onDelete={handleDeleteAll}
           onDeleteBlog={handleDeleteBlog}

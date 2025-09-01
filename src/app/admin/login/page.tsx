@@ -6,11 +6,13 @@ import loginimg from "../../../../public/images/login1.png";
 import loginbg from "../../../../public/images/loginbg.png";
 import icon from "../../../../public/icons/dropdownIcon.png";
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -41,8 +43,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100">
-      <div className="h-screen flex max-w-6xl mx-auto pt-6">
+    <div className="bg-gray-100 ">
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
+      <div className="h-screen hidden lg:flex max-w-6xl mx-auto pt-6">
         {/* Left side with dummy image */}
         <div className="hidden md:flex flex-1 items-center justify-center p-6">
           <img
@@ -108,15 +111,18 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black/30"
                   required
                 />
-                <span className="absolute inset-y-0 right-3 flex items-center text-gray-400 cursor-pointer">
-                  👁
+                <span
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500 cursor-pointer"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
               <div className="text-right mt-1">

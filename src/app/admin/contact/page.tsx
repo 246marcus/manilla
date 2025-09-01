@@ -1,14 +1,17 @@
-import React from 'react'
-import AppSidebar from '../components/Sidebar'
-import ContactPage from '../components/contact/ContactPage'
+import React from "react";
+import AppSidebar from "../components/Sidebar";
+import ContactPage from "../components/contact/ContactPage";
 
 const ContactHome = () => {
   return (
-    <div className='flex'>
-        <AppSidebar/>
+    <>
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
+      <div className="hidden lg:flex">
+        <AppSidebar />
         <ContactPage />
-    </div>
-  )
-}
+      </div>
+    </>
+  );
+};
 
-export default ContactHome
+export default ContactHome;

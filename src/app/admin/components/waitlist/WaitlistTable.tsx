@@ -52,6 +52,21 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
     }
   };
 
+    //Sort lists before passing to table
+   const sortedList = [...users].sort((a, b) => {
+    const aDate = new Date(a.createdAt).getTime();
+    const bDate = new Date(b.createdAt).getTime();
+  
+    if (sort === "Newest") {
+      return bDate - aDate;
+    } else if (sort === "Oldest") {
+      return aDate - bDate;
+    }
+    return 0;
+  });
+  
+
+
   return (
     <div className="bg-white shadow rounded-lg overflow-hidden">
       {/* Header Controls */}
@@ -123,7 +138,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                 </td>
               </tr>
             ) : (
-              users.map((u, index) => (
+              sortedList.map((u, index) => (
                 <tr
                   key={u._id}
                   className="border-b hover:bg-gray-50 text-gray-800"

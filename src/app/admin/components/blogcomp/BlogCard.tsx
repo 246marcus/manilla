@@ -53,9 +53,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const [showFullContent, setShowFullContent] = useState(false);
 
   return (
-    <div className="px-2 bg-white py-6 rounded-3xl hover:scale-95 ">
+    <div className="px-2 bg-white py-6 rounded-3xl hover:scale-95 h-90 ">
       <div className="flex items-center w-full px-2 mb-2 justify-between pe-4">
-        <h1 className="font-semibold text-md ">{code || `#${_id.slice(-6)}`}</h1>
+        <h1 className="font-semibold text-md ">
+          {code || `#${_id.slice(-6)}`}
+        </h1>
         {/* Action Menu */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -64,7 +66,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <FaEllipsisV />
         </button>
       </div>
-      <div className="bg-white/60 border border-cyan-300 rounded-lg shadow p-2 relative">
+      <div className="bg-white/60 border border-cyan-300 rounded-lg shadow p-2 relative h-84">
         <Image
           src={BlogImage || image}
           alt={title}
@@ -76,12 +78,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <p className="text-xs text-black/40 ">{category}</p>
           <h3 className="font-semibold text-sm">{title}</h3>
           <p className="text-xs text-black/50">
-            {showFullContent 
-              ? (description || excerpt || "")
+            {showFullContent
+              ? description || excerpt || ""
               : (description || excerpt || "").length > 30
-                ? (description || excerpt || "").slice(0, 30) + "... "
-                : (description || excerpt || "")
-            }
+              ? (description || excerpt || "").slice(0, 30) + "... "
+              : description || excerpt || ""}
             {(description || excerpt || "").length > 30 && (
               <button
                 onClick={() => setShowFullContent(!showFullContent)}
@@ -103,14 +104,16 @@ const BlogCard: React.FC<BlogCardProps> = ({
           />
           <div className="ml-2">
             <p className="text-gray-900 font-medium text-sm">{authorName}</p>
-            <p className="text-gray-500 text-xs">{date || new Date(createdAt).toLocaleDateString()}</p>
+            <p className="text-gray-500 text-xs">
+              {date || new Date(createdAt).toLocaleDateString()}
+            </p>
           </div>
         </div>
 
         {menuOpen && (
           <div className="absolute top-5 right-3 bg-white border border-black/50 shadow-lg rounded-md text-sm py-3 divide-y z-10">
             {status === "draft" && (
-              <button 
+              <button
                 onClick={() => {
                   onPublishBlog(_id);
                   setMenuOpen(false);
@@ -120,9 +123,30 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 <FaUpload /> Post Now
               </button>
             )}
-            <button 
+            <button
               onClick={() => {
-                onEditBlog({ _id, id, code, title, status, authorName, authorImage, date, BlogImage, image, category, description, excerpt, content, createdAt, updatedAt, onDelete, onDeleteBlog, onPublishBlog, onEditBlog });
+                onEditBlog({
+                  _id,
+                  id,
+                  code,
+                  title,
+                  status,
+                  authorName,
+                  authorImage,
+                  date,
+                  BlogImage,
+                  image,
+                  category,
+                  description,
+                  excerpt,
+                  content,
+                  createdAt,
+                  updatedAt,
+                  onDelete,
+                  onDeleteBlog,
+                  onPublishBlog,
+                  onEditBlog,
+                });
                 setMenuOpen(false);
               }}
               className="flex items-center gap-2 px-4 py-2 hover:bg-black/50 w-full text-left"
