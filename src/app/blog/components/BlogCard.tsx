@@ -4,7 +4,20 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Blog } from "@/types"; // Make sure you have a Blog type in types/index.ts
+
+interface Blog {
+  _id: string;
+  title: string;
+  slug: string;
+  category: string;
+  image: string;
+  content: string;
+  excerpt: string;
+  authorName: string;
+  authorImage: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 interface BlogCardProps {
   blog: Blog;
@@ -12,6 +25,16 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+  // Format the date
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md hover:scale-95 transition-transform shadow-black/40 overflow-hidden max-w-md mx-auto min-h-48 flex flex-col">
       {/* Blog Image */}
@@ -59,7 +82,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             <p className="text-gray-900 font-medium text-sm">
               {blog.authorName}
             </p>
-            <p className="text-gray-500 text-xs">{blog.date}</p>
+            <p className="text-gray-500 text-xs">{formatDate(blog.createdAt)}</p>
           </div>
         </div>
       </div>

@@ -1,46 +1,63 @@
 "use client";
+
 import React, { useState } from "react";
 import darkbg from "../../../../../public/images/darkstylebg.png";
 
 const CardVirtual: React.FC = () => {
-
   const [email, setEmail] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [message, setMessage] = useState("");
-    const [messageType, setMessageType] = useState<"success" | "error">("success");
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      setMessage("Please enter your email address");
+      return;
+    }
 
-  const handleSubscribe = async (e: React.FormEvent) => {
-      e.preventDefault();
-      setIsLoading(true);
-      setMessage("");
-  
-      try {
-        const res = await fetch("/api/waitlist/subscribe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
-  
-        const data = await res.json();
-  
-        if (res.ok) {
-          setMessage(data.message);
-          setMessageType("success");
-          setEmail("");
-        } else {
-          setMessage(data.message);
-          setMessageType("error");
-        }
-      } catch (error) {
-        setMessage("Something went wrong. Please try again.");
-        setMessageType("error");
-      } finally {
-        setIsLoading(false);
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage("Please enter a valid email address");
+      return;
+    }
+
+    setIsLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: "Waitlist",
+          lastName: "User",
+          email: email,
+          telephone: "",
+          companyName: "",
+          companyAddress: "",
+          requestContent: "Joined Manilla Card waitlist",
+          requestType: "waitlist"
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+        setEmail("");
+      } else {
+        setMessage(data.message || "Something went wrong. Please try again.");
       }
-    };
+    } catch (error) {
+      setMessage("Network error. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section className="bg-white max-w-7xl mx-auto px-4">
@@ -77,29 +94,32 @@ const CardVirtual: React.FC = () => {
               Join our waiting list to get early access, exclusive updates, and
               a front-row seat to the future of cross-border payments.
             </p>
-            {/* Contact form simulation */}
-            <form onSubmit={handleSubscribe} className=" md:flex-3/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-           
+            {/* Contact form */}
+            <form onSubmit={handleSubmit} className=" md:flex-3/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
               <input
-                 type="email"
-                placeholder="Join the waiting list for Manilla Card"
-                required
-                className="flex-1  rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 rounded-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-white"
+                disabled={isLoading}
               />
-              <button className="px-6 py-3 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-yellow-300/80 transition">
-                Join Waitlist
+              <button 
+                type="submit"
+                disabled={isLoading}
+                className="px-6 py-3 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-gray-400 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isLoading ? "Joining..." : "Join Waitlist"}
               </button>
             </form>
-             
-            {/* Message display */}
-            {message && (
-              <div className={`mt-4 text-center text-sm ${
-                messageType === "success" ? "text-green-600" : "text-red-600"
-              }`}>
-                {message}
-              </div>
-            )}
           </div>
+          
+          {/* Message display */}
+          {message && (
+            <div className={`mt-4 text-sm ${message.includes("Successfully") ? "text-green-400" : "text-red-400"}`}>
+              {message}
+            </div>
+          )}
         </div>
       </div>
     </section>

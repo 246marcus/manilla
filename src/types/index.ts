@@ -111,6 +111,8 @@ Add your legal terms, policies or other info here.`,
 ];
 
 export interface Blog {
+  publishedAt: string;
+  _id: Key | null | undefined;
   id: number;
   title: string;
   slug: string; // Used for the blog URL e.g., /blog/my-first-post
