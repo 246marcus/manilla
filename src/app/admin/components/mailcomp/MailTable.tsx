@@ -43,7 +43,7 @@ const MailTable: React.FC<MailTableProps> = ({
 
   return (
     <div className="bg-black/5">
-      {/* === Header === */}{" "}
+      {/* === Header === */}
       <div className="flex justify-between items-center mb-3 bg-white/50 pb-2 px-4">
         <div className="pt-3 pb-1">
           <h1 className=" font-semibold text-black/80">
@@ -114,7 +114,7 @@ const MailTable: React.FC<MailTableProps> = ({
               <th className="p-2">#</th>
               <th className="p-2 px-3">Date</th>
               <th className="p-2 px-3">Receiver</th>
-              <th className="p-2 px-3">Receiver Category</th>{" "}
+              <th className="p-2 px-3">Receiver Category</th>
               <th className="p-2 px-3">Mail body</th>
               <th className="p-2 px-3">Actions</th>
             </tr>

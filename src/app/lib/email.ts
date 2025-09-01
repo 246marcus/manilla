@@ -1,3 +1,48 @@
+import { renderNewsletterEmail } from './email-renderer';
+
+// Convert markdown content to HTML for newsletter emails
+const convertMarkdownToHtml = (markdown: string): string => {
+  if (!markdown) return '';
+  
+  return markdown
+    // Headings
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    
+    // Bold and italic
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    
+    // Underline
+    .replace(/<u>(.*?)<\/u>/g, '<u>$1</u>')
+    
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color: #667eea; text-decoration: none;">$1</a>')
+    
+    // Images
+    .replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; height: auto; border-radius: 4px; margin: 8px 0;" />')
+    
+    // Lists
+    .replace(/^\- (.*$)/gim, '<li>$1</li>')
+    .replace(/^(\d+)\. (.*$)/gim, '<li>$2</li>')
+    
+    // Wrap lists in ul/ol tags
+    .replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>')
+    
+    // Paragraphs
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[h|u|o]|<li>)(.*$)/gim, '<p>$1</p>')
+    
+    // Clean up empty paragraphs
+    .replace(/<p><\/p>/g, '')
+    .replace(/<p>(<[h|u|o]|<li>)/g, '$1')
+    .replace(/(<\/[h|u|o]|<\/li>)<\/p>/g, '$1')
+    
+    // Clean up extra whitespace
+    .trim();
+};
+
 // Create transporter for Gmail
 const createTransporter = async () => {
   const nodemailer = await import('nodemailer');
@@ -108,31 +153,15 @@ export const emailTemplates = {
     `
   }),
   
-  newsletter: (subject: string, content: string) => ({
-    subject: subject,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: linear-gradient(135deg, #099ca4 0%, #0d6efd 100%); padding: 20px; text-align: center;">
-          <h1 style="color: white; margin: 0;">Manilla Technologies</h1>
-        </div>
-        
-        <div style="padding: 30px; background: #f8f9fa;">
-          <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #333; margin-top: 0;">${subject}</h2>
-            <div style="color: #666; line-height: 1.6; white-space: pre-wrap;">${content}</div>
-          </div>
-          
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
-            <p style="color: #999; font-size: 14px; margin: 0;">
-              Best regards,<br>
-              The Manilla Technologies Team
-            </p>
-          </div>
-        </div>
-      </div>
-    `,
-    text: content
-  })
+  newsletter: async (subject: string, content: string, bannerUrl?: string) => {
+    const htmlContent = convertMarkdownToHtml(content);
+    const html = await renderNewsletterEmail(subject, htmlContent, bannerUrl);
+    return {
+      subject: subject,
+      html: html,
+      text: content
+    };
+  }
 };
 
 // Send email function
@@ -181,8 +210,9 @@ export const sendReply = async (
 export const sendNewsletter = async (
   to: string,
   subject: string,
-  content: string
+  content: string,
+  bannerUrl?: string
 ) => {
-  const template = emailTemplates.newsletter(subject, content);
+  const template = await emailTemplates.newsletter(subject, content, bannerUrl);
   return await sendEmail(to, template.subject, template.html, template.text);
 };
