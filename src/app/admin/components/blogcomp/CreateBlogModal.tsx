@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Authorimg from "../../../../../public/images/blogauthor.png";
+import dynamic from "next/dynamic";
+
+const TextEditor = dynamic(() => import("./TextEditor"), {
+  ssr: false,
+});
 
 interface CreateBlogModalProps {
   onClose: () => void;
@@ -164,7 +169,7 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                   <label className="block text-sm mb-1 font-semibold ">
                     Blog Excerpt
                   </label>
-                  <textarea
+                  {/* <textarea
                     value={formData.excerpt}
                     onChange={(e) =>
                       setFormData({ ...formData, excerpt: e.target.value })
@@ -173,13 +178,23 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                     placeholder="Enter blog excerpt (short preview)"
                     maxLength={200}
                     required
+                  /> */}
+
+                  <TextEditor
+                    initialValue={formData.excerpt}
+                    onChange={({ html }) =>
+                      setFormData({
+                        ...formData,
+                        excerpt: html, // store excerpt as HTML
+                      })
+                    }
                   />
                 </div>
                 <div>
                   <label className="block text-sm mb-1 font-semibold ">
                     Blog Content
                   </label>
-                  <textarea
+                  {/*  <textarea
                     value={formData.content}
                     onChange={(e) =>
                       setFormData({ ...formData, content: e.target.value })
@@ -187,6 +202,16 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                     className="w-full border rounded-md p-2 h-32"
                     placeholder="Enter blog content"
                     required
+                  /> */}
+
+                  <TextEditor
+                    initialValue={formData.content}
+                    onChange={({ html }) =>
+                      setFormData({
+                        ...formData,
+                        content: html, // store content as HTML
+                      })
+                    }
                   />
                 </div>
               </div>
@@ -306,4 +331,3 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
 
 export default CreateBlogModal;
 
-///Remember to uninstall the quill package///

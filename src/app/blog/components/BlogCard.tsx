@@ -28,10 +28,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   // Format the date
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     });
   };
 
@@ -58,7 +58,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <h2 className="  md:text-xl font-semibold text-gray-900 mb-2">
           {blog.title}
         </h2>
-
+        {/* 
         <p className="text-gray-600 text-sm flex-1 mb-4">
           {blog.excerpt}{" "}
           <Link
@@ -67,7 +67,20 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           >
             See more
           </Link>
-        </p>
+        </p> */}
+
+        <div className="text-gray-600 text-sm flex-1 mb-4">
+          <div
+            className="prose max-w-none"
+            dangerouslySetInnerHTML={{ __html: blog.excerpt }}
+          />
+          <Link
+            href={`/blog/${blog.slug}`}
+            className="text-blue-600 font-semibold"
+          >
+            See more
+          </Link>
+        </div>
 
         {/* Author info */}
         <div className="flex items-center justify-center md:justify-start mt-auto">
@@ -82,7 +95,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             <p className="text-gray-900 font-medium text-sm">
               {blog.authorName}
             </p>
-            <p className="text-gray-500 text-xs">{formatDate(blog.createdAt)}</p>
+            <p className="text-gray-500 text-xs">
+              {formatDate(blog.createdAt)}
+            </p>
           </div>
         </div>
       </div>
