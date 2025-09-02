@@ -44,22 +44,22 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.image) {
       alert("Please select an image for the blog");
       return;
     }
-    
+
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('title', formData.title);
-      formDataToSend.append('category', formData.category);
-      formDataToSend.append('content', formData.content);
-      formDataToSend.append('excerpt', formData.excerpt);
-      formDataToSend.append('authorName', formData.authorName);
-      formDataToSend.append('authorImage', selectedAvatar);
-      formDataToSend.append('status', formData.status);
-      formDataToSend.append('image', formData.image);
+      formDataToSend.append("title", formData.title);
+      formDataToSend.append("category", formData.category);
+      formDataToSend.append("content", formData.content);
+      formDataToSend.append("excerpt", formData.excerpt);
+      formDataToSend.append("authorName", formData.authorName);
+      formDataToSend.append("authorImage", selectedAvatar);
+      formDataToSend.append("status", formData.status);
+      formDataToSend.append("image", formData.image);
 
       const res = await fetch("/api/blogs", {
         method: "POST",
@@ -149,7 +149,10 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                   <select
                     value={formData.status}
                     onChange={(e) =>
-                      setFormData({ ...formData, status: e.target.value as "draft" | "published" })
+                      setFormData({
+                        ...formData,
+                        status: e.target.value as "draft" | "published",
+                      })
                     }
                     className="w-full border rounded-md p-2 "
                   >
@@ -302,3 +305,5 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
 };
 
 export default CreateBlogModal;
+
+///Remember to uninstall the quill package///
