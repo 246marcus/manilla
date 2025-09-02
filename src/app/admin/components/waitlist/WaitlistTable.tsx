@@ -21,50 +21,43 @@ interface WaitlistUser {
 
 interface WaitlistTableProps {
   users: WaitlistUser[];
+  selectedIds: string[];
+  setSelectedIds: React.Dispatch<React.SetStateAction<string[]>>; // ← change here
   onDelete: (id: string) => void;
   onDeleteSelected: (ids: string[]) => void;
-  onSend: (id: string) => void;
+  onSendMail: (ids: string[] | null) => void;
   onView: (id: string) => void;
-  onSendMail: (id: string | null) => void;
 }
+
 
 const WaitlistTable: React.FC<WaitlistTableProps> = ({
   users,
+  selectedIds,
+  setSelectedIds,
   onDelete,
   onDeleteSelected,
-  onSend,
-  onView,
   onSendMail,
+  onView,
 }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [selected, setSelected] = useState<string[]>([]);
   const [sort, setSort] = useState("Newest");
 
   const toggleSelect = (id: string) => {
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
     );
   };
 
   const toggleAll = () => {
-    if (selected.length === users.length) {
-      setSelected([]);
-    } else {
-      setSelected(users.map((u) => u._id));
-    }
+    if (selectedIds.length === users.length) setSelectedIds([]);
+    else setSelectedIds(users.map(u => u._id));
   };
 
-  //Sort lists before passing to table
+  // Sort the list
   const sortedList = [...users].sort((a, b) => {
     const aDate = new Date(a.createdAt).getTime();
     const bDate = new Date(b.createdAt).getTime();
-
-    if (sort === "Newest") {
-      return bDate - aDate;
-    } else if (sort === "Oldest") {
-      return aDate - bDate;
-    }
-    return 0;
+    return sort === "Newest" ? bDate - aDate : aDate - bDate;
   });
 
   return (
@@ -72,52 +65,53 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
       {/* Header Controls */}
       <div className="flex items-center justify-between px-4 py-3">
         <div>
-          <h1 className=" font-semibold text-black/80 text-sm">
+          <h1 className="font-semibold text-black/80 text-sm">
             View and manage all waitlist participants
           </h1>
-          <p className=" text-black/50 text-xs">
-            Simply view and manage all users who opt-in to join waitlist
+          <p className="text-black/50 text-xs">
+            Simply view and manage all users who opted into the waitlist
           </p>
         </div>
 
         <div className="flex gap-3 text-sm">
-          <div className="flex items-center gap-3">
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              className="border border-gray-300 rounded-md p-2 text-sm font-semibold"
-            >
-              <option value="Newest">Newest</option>
-              <option value="Oldest">Oldest</option>
-            </select>
-          </div>
-          <button
-            disabled={selected.length === 0}
-            onClick={() => onDeleteSelected(selected)}
-            className="flex items-center gap-1 hover:text-white font-semibold border-black/40  border disabled:opacity-50 px-4 py-2 rounded-md hover:bg-black/80"
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+            className="border border-gray-300 rounded-md p-2 text-sm font-semibold"
           >
-            <MdDeleteOutline size={22} />
-            Delete Selected
+            <option value="Newest">Newest</option>
+            <option value="Oldest">Oldest</option>
+          </select>
+
+          <button
+            disabled={selectedIds.length === 0}
+            onClick={() => onDeleteSelected(selectedIds)}
+            className="flex items-center gap-1 hover:text-white font-semibold border-black/40 border disabled:opacity-50 px-4 py-2 rounded-md hover:bg-black/80"
+          >
+            <MdDeleteOutline size={22} /> Delete Selected
           </button>
+
           <button
-            className=" flex items-center gap-2 bg-black/80  text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40"
-            onClick={() => onSendMail(selected.length > 0 ? selected[0] : null)}
-            disabled={selected.length === 0}
+            className="flex items-center gap-2 bg-black/80 text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40"
+            onClick={() =>
+              onSendMail(selectedIds.length > 0 ? selectedIds : null)
+            }
+            disabled={selectedIds.length === 0}
           >
-            <FiMail size={20} /> Send Mail
+            <FiMail size={20} /> Send Mail ({selectedIds.length} selected)
           </button>
         </div>
       </div>
 
       {/* Table */}
-      <div className="overflow-auto  min-h-[320px] h-[350px]">
+      <div className="overflow-auto min-h-[320px] h-[350px]">
         <table className="w-full text-sm border-collapse">
           <thead className="bg-gray-100 text-gray-700">
             <tr className="text-left">
               <th className="p-3">
                 <input
                   type="checkbox"
-                  checked={selected.length === users.length && users.length > 0}
+                  checked={selectedIds.length === users.length && users.length > 0}
                   onChange={toggleAll}
                 />
               </th>
@@ -140,21 +134,16 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
               </tr>
             ) : (
               sortedList.map((u, index) => (
-                <tr
-                  key={u._id}
-                  className="border-b hover:bg-gray-50 text-gray-800"
-                >
+                <tr key={u._id} className="border-b hover:bg-gray-50 text-gray-800">
                   <td className="p-3">
                     <input
                       type="checkbox"
-                      checked={selected.includes(u._id)}
+                      checked={selectedIds.includes(u._id)}
                       onChange={() => toggleSelect(u._id)}
                     />
                   </td>
                   <td className="p-3">{index + 1}</td>
-                  <td className="p-3">
-                    {new Date(u.createdAt).toLocaleDateString()}
-                  </td>
+                  <td className="p-3">{new Date(u.createdAt).toLocaleDateString()}</td>
                   <td className="p-3 flex items-center gap-2">
                     <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-sm font-semibold">
                       {u.firstName.charAt(0).toUpperCase()}
@@ -163,10 +152,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                   </td>
                   <td className="p-3">{u.firstName}</td>
                   <td className="p-3">{u.lastName}</td>
-                  <td
-                    className="p-3 max-w-xs truncate"
-                    title={u.requestContent}
-                  >
+                  <td className="p-3 max-w-xs truncate" title={u.requestContent}>
                     {u.requestContent}
                   </td>
                   <td className="p-3">
@@ -175,23 +161,20 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                         u.status === "unread"
                           ? "bg-red-100 text-red-800"
                           : u.status === "read"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : "bg-green-100 text-green-800"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-green-100 text-green-800"
                       }`}
                     >
                       {u.status === "unread"
                         ? "🔴"
                         : u.status === "read"
-                        ? "🟡"
-                        : "🟢"}{" "}
-                      {u.status}
+                          ? "🟡"
+                          : "🟢"} {u.status}
                     </span>
                   </td>
                   <td className="p-3 relative">
                     <button
-                      onClick={() =>
-                        setOpenMenu(openMenu === u._id ? null : u._id)
-                      }
+                      onClick={() => setOpenMenu(openMenu === u._id ? null : u._id)}
                       className="p-2 rounded-full hover:bg-gray-200"
                     >
                       <BsThreeDotsVertical />
@@ -210,7 +193,7 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                         </button>
                         <button
                           onClick={() => {
-                            onSendMail(u._id);
+                            onSendMail([u._id]);
                             setOpenMenu(null);
                           }}
                           className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full"

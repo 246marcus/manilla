@@ -5,7 +5,7 @@ import Topbar from "../Topbar";
 import NewsletterTable from "./NewsletterTable";
 import NewsletterModal from "../NewsletterModal";
 
-interface User {
+export interface User {
   _id: string;
   email: string;
   isActive: boolean;
@@ -169,6 +169,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
         loading={newsletterLoading}
         totalUsers={users.length}
         selectedUsers={selectedUsers}
+
       />
     </div>
   );

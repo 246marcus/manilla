@@ -13,7 +13,7 @@ const Dashboard = () => {
       <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
       <div className="hidden lg:flex h-screen">
         <Sidebar />
-        <div className="h-screen overflow-y-auto">
+        <div className="h-screen flex-1 overflow-y-auto">
           <Topbar
             title={"Dashboard"}
             subtitle={"Total Overview"}
