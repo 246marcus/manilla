@@ -98,7 +98,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
     setShowNewsletterModal(true);
   };
 
-  const handleNewsletterSubmit = async (subject: string, content: string, selectedUserIds: string[]) => {
+  const handleNewsletterSubmit = async (subject: string, content: string, selectedUserIds: string[], bannerUrl?: string) => {
     setNewsletterLoading(true);
     try {
       const res = await fetch("/api/mail/newsletter", {
@@ -110,6 +110,7 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
           subject: subject,
           content: content,
           selectedUserIds: selectedUserIds, // Send to specific selected users
+          bannerUrl: bannerUrl, // Pass banner URL to API
         }),
       });
 
@@ -131,8 +132,17 @@ const NewsletterPage: React.FC<NewsletterPageProps> = ({
   };
 
   const handleUserSelection = (selectedIds: string[]) => {
+    console.log('=== NewsletterPage: handleUserSelection called ===');
+    console.log('Selected IDs received:', selectedIds);
+    console.log('Available users:', users);
+    console.log('Users length:', users.length);
+    
     const selectedUserObjects = users.filter(user => selectedIds.includes(user._id));
+    console.log('Selected user objects:', selectedUserObjects);
+    console.log('Selected users length:', selectedUserObjects.length);
+    
     setSelectedUsers(selectedUserObjects);
+    console.log('State updated with selected users');
   };
 
   return (

@@ -34,19 +34,42 @@ const NewsletterTable: React.FC<NewsletterTableProps> = ({
   const [sort, setSort] = useState("Newest");
 
   const toggleSelect = (id: string) => {
+    console.log('toggleSelect called with id:', id);
+    console.log('Current selected:', selected);
+    
     const newSelected = selected.includes(id) 
       ? selected.filter((s) => s !== id) 
       : [...selected, id];
+    
+    console.log('New selected:', newSelected);
     setSelected(newSelected);
-    onUserSelection?.(newSelected);
+    
+    if (onUserSelection) {
+      console.log('Calling onUserSelection with:', newSelected);
+      onUserSelection(newSelected);
+    } else {
+      console.warn('onUserSelection is not defined');
+    }
   };
 
   const toggleAll = () => {
+    console.log('toggleAll called');
+    console.log('Current selected length:', selected.length);
+    console.log('Total users:', users.length);
+    
     const newSelected = selected.length === users.length 
       ? [] 
       : users.map((u) => u._id);
+    
+    console.log('New selected after toggleAll:', newSelected);
     setSelected(newSelected);
-    onUserSelection?.(newSelected);
+    
+    if (onUserSelection) {
+      console.log('Calling onUserSelection with:', newSelected);
+      onUserSelection(newSelected);
+    } else {
+      console.warn('onUserSelection is not defined');
+    }
   };
 
   return (
