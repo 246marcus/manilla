@@ -28,7 +28,9 @@ interface ContactTableProps {
   onMarkAsRead: (id: string) => void;
   onMarkAsReplied: (id: string) => void;
   onView: (id: string) => void;
-  onSendMail: (id: string | null) => void;
+  onSendMail: (ids: string[] | null) => void;
+  selectedIds: string[];
+  setSelectedIds: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const ContactTable: React.FC<ContactTableProps> = ({
@@ -39,22 +41,23 @@ const ContactTable: React.FC<ContactTableProps> = ({
   onMarkAsReplied,
   onView,
   onSendMail,
+  selectedIds,
+  setSelectedIds,
 }) => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [selected, setSelected] = useState<string[]>([]);
   const [sort, setSort] = useState("Newest");
 
   const toggleSelect = (id: string) => {
-    setSelected((prev) =>
+    setSelectedIds((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
     );
   };
 
   const toggleAll = () => {
-    if (selected.length === contacts.length) {
-      setSelected([]);
+    if (selectedIds.length === contacts.length) {
+      setSelectedIds([]);
     } else {
-      setSelected(contacts.map((c) => c._id));
+      setSelectedIds(contacts.map((c) => c._id));
     }
   };
 
@@ -124,19 +127,19 @@ const ContactTable: React.FC<ContactTableProps> = ({
             </select>
           </div>
           <button
-            disabled={selected.length === 0}
-            onClick={() => onDeleteSelected(selected)}
+            disabled={selectedIds.length === 0}
+            onClick={() => onDeleteSelected(selectedIds)}
            className="flex items-center gap-1 hover:text-white font-semibold border-black/40  border disabled:opacity-50 px-4 py-2 rounded-md hover:bg-black/80" 
           >
              <MdDeleteOutline size={22} />
             Delete Selected
           </button>
           <button 
-            onClick={() => onSendMail(selected.length > 0 ? selected[0] : null)}
-            disabled={selected.length === 0}
+            onClick={() => onSendMail(selectedIds.length > 0 ? selectedIds : null)}
+            disabled={selectedIds.length === 0}
             className="flex items-center gap-2 bg-black/80 text-white font-semibold px-4 py-2 rounded-md hover:bg-transparent hover:text-black/80 border border-black/40 disabled:opacity-50"
           >
-            <FiMail size={20} /> Send Mail
+            <FiMail size={20} /> Send Mail ({selectedIds.length} selected)
           </button>
         </div>
       </div>
@@ -149,7 +152,7 @@ const ContactTable: React.FC<ContactTableProps> = ({
               <th className="p-3">
                 <input
                   type="checkbox"
-                  checked={selected.length === contacts.length && contacts.length > 0}
+                  checked={selectedIds.length === contacts.length && contacts.length > 0}
                   onChange={toggleAll}
                 />
               </th>
@@ -180,7 +183,7 @@ const ContactTable: React.FC<ContactTableProps> = ({
                   <td className="p-3">
                     <input
                       type="checkbox"
-                      checked={selected.includes(contact._id)}
+                      checked={selectedIds.includes(contact._id)}
                       onChange={() => toggleSelect(contact._id)}
                     />
                   </td>
@@ -251,7 +254,7 @@ const ContactTable: React.FC<ContactTableProps> = ({
                         )}
                         <button
                           onClick={() => {
-                            onSendMail(contact._id);
+                            onSendMail([contact._id]);
                             setOpenMenu(null);
                           }}
                           className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left"

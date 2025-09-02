@@ -118,17 +118,14 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
               <th className="p-3">#</th>
               <th className="p-3">Date</th>
               <th className="p-3">Email</th>
-              <th className="p-3">First Name</th>
-              <th className="p-3">Last Name</th>
               <th className="p-3">Request Content</th>
-              <th className="p-3">Status</th>
               <th className="p-3">Action</th>
             </tr>
           </thead>
           <tbody>
             {users.length === 0 ? (
               <tr>
-                <td colSpan={9} className="p-8 text-center text-gray-500">
+                <td colSpan={6} className="p-8 text-center text-gray-500">
                   No waitlist submissions found
                 </td>
               </tr>
@@ -150,27 +147,8 @@ const WaitlistTable: React.FC<WaitlistTableProps> = ({
                     </div>
                     {u.email}
                   </td>
-                  <td className="p-3">{u.firstName}</td>
-                  <td className="p-3">{u.lastName}</td>
                   <td className="p-3 max-w-xs truncate" title={u.requestContent}>
                     {u.requestContent}
-                  </td>
-                  <td className="p-3">
-                    <span
-                      className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        u.status === "unread"
-                          ? "bg-red-100 text-red-800"
-                          : u.status === "read"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : "bg-green-100 text-green-800"
-                      }`}
-                    >
-                      {u.status === "unread"
-                        ? "🔴"
-                        : u.status === "read"
-                          ? "🟡"
-                          : "🟢"} {u.status}
-                    </span>
                   </td>
                   <td className="p-3 relative">
                     <button
