@@ -8,7 +8,9 @@ import { sendNewsletter } from "../../../lib/email";
 export async function POST(req: Request) {
   try {
     await connectDB();
-    const { subject, content } = await req.json();
+    const { subject, content, selectedUserIds, bannerUrl } = await req.json();
+
+    console.log('Newsletter API received:', { subject, content: content.substring(0, 100), selectedUserIds, bannerUrl });
 
     if (!subject || !content) {
       return NextResponse.json(
@@ -17,8 +19,16 @@ export async function POST(req: Request) {
       );
     }
 
-    // Get all active subscribers
-    const subscribers = await Newsletter.find({ isActive: true });
+    // Get subscribers - either selected users or all active subscribers
+    let subscribers;
+    if (selectedUserIds && selectedUserIds.length > 0) {
+      subscribers = await Newsletter.find({ 
+        _id: { $in: selectedUserIds },
+        isActive: true 
+      });
+    } else {
+      subscribers = await Newsletter.find({ isActive: true });
+    }
     
     if (subscribers.length === 0) {
       return NextResponse.json(
@@ -34,10 +44,12 @@ export async function POST(req: Request) {
     // Send email to each subscriber
     for (const subscriber of subscribers) {
       try {
+        console.log(`Sending newsletter to ${subscriber.email} with banner:`, bannerUrl);
         const emailResult = await sendNewsletter(
           subscriber.email,
           subject,
-          content
+          content,
+          bannerUrl
         );
 
         if (emailResult.success) {
@@ -65,10 +77,11 @@ export async function POST(req: Request) {
         });
       } catch (error: unknown) {
         failureCount++;
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         results.push({
           email: subscriber.email,
           success: false,
-          error: error.message
+          error: errorMessage
         });
       }
     }
@@ -85,8 +98,9 @@ export async function POST(req: Request) {
     );
   } catch (error: unknown) {
     console.error("Send newsletter error:", error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { message: "Server error. Please try again." },
+      { message: "Server error. Please try again.", error: errorMessage },
       { status: 500 }
     );
   }
