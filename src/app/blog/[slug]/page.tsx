@@ -36,8 +36,8 @@ export default function BlogDetailPage() {
     fetchBlog();
   }, [slug]);
 
-  if (loading) return <p className="text-center py-16">Loading blog...</p>;
-  if (!blog) return <p className="text-center py-16">Blog not found.</p>;
+  if (loading) return <p className="text-center py-16 mt-20 my-8">Loading blog...</p>;
+  if (!blog) return <p className="text-center py-16 my-8 mt-20">Blog not found.</p>;
 
   return (
     <main>
@@ -94,7 +94,12 @@ export default function BlogDetailPage() {
             {blog.category}
           </p>
           <h2 className="text-3xl font-semibold">{blog.title}</h2>
-          <p className="text-gray-700 whitespace-pre-line">{blog.content}</p>
+          {/* <p className="text-gray-700 whitespace-pre-line">{blog.content}</p> */}
+
+          <div
+            className="prose max-w-none text-gray-700"
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+          />
         </div>
 
         {/* Related Blogs */}

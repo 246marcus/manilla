@@ -77,12 +77,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
         <div className="flex flex-col gap-1 mb-1">
           <p className="text-xs text-black/40 ">{category}</p>
           <h3 className="font-semibold text-sm">{title}</h3>
-          <p className="text-xs text-black/50">
+          {/*    <p className="text-xs text-black/50">
             {showFullContent
               ? description || excerpt || ""
               : (description || excerpt || "").length > 30
-              ? (description || excerpt || "").slice(0, 30) + "... "
-              : description || excerpt || ""}
+                ? (description || excerpt || "").slice(0, 30) + "... "
+                : description || excerpt || ""}
             {(description || excerpt || "").length > 30 && (
               <button
                 onClick={() => setShowFullContent(!showFullContent)}
@@ -91,7 +91,31 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 {showFullContent ? "see less" : "see more"}
               </button>
             )}
-          </p>
+          </p> */}
+
+          <div className="text-xs text-black/50">
+            {showFullContent ? (
+              <div
+                className="prose max-w-none"
+                dangerouslySetInnerHTML={{ __html: content || "" }}
+              />
+            ) : (
+              
+              <div
+                className="prose max-w-none"
+                dangerouslySetInnerHTML={{ __html: excerpt || "" }}
+              />
+            )}
+
+            {excerpt.length > 30 && (
+              <button
+                onClick={() => setShowFullContent(!showFullContent)}
+                className="text-blue-600 hover:text-blue-800 font-medium"
+              >
+                {showFullContent ? "see less" : "see more"}
+              </button>
+            )}
+          </div>
         </div>
         {/* Author info */}
         <div className="flex items-center justify-center md:justify-start mt-auto ">
