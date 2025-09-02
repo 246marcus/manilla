@@ -15,7 +15,7 @@ interface CreateMailFormProps {
 const CreateMailForm = ({ onClose, onSubmit }: CreateMailFormProps) => {
   const [receiver, setReceiver] = useState("");
   const [subject, setSubject] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("general");
   const [body, setBody] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,13 +56,17 @@ const CreateMailForm = ({ onClose, onSubmit }: CreateMailFormProps) => {
 
           <div>
             <label className="block text-sm text-black/70 mb-1">Category</label>
-            <input
-              type="text"
+            <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              required
               className="w-full border rounded-lg px-3 py-2 text-sm"
-              placeholder="Onboarding / Reminder / Promo"
-            />
+            >
+              <option value="general">General</option>
+              <option value="newsletter">Newsletter</option>
+              <option value="promotional">Promotional</option>
+              <option value="transactional">Transactional</option>
+            </select>
           </div>
 
           <div>

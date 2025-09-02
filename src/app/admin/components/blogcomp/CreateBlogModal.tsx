@@ -132,7 +132,9 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                     }
                     className="w-full border rounded-md p-2 "
                   >
-                    <option value="E-commerce" className="hover:bg-black/80">E-commerce</option>
+                    <option value="E-commerce" className="hover:bg-black/80">
+                      E-commerce
+                    </option>
                     <option value="Crypto">Crypto</option>
                     <option value="Finance">Finance</option>
                     <option value="Technology">Technology</option>
@@ -195,7 +197,7 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm mb-1 font-semibold ">
-                    Author's Name
+                    {`Author's Name`}
                   </label>
                   <input
                     type="text"
@@ -210,7 +212,7 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                 </div>
                 <div>
                   <label className="block text-sm mb-2 font-semibold ">
-                    Author's Avatar
+                    {` Author's Avatar`}
                   </label>
                   <div className="flex gap-2">
                     {avatars.map((src, idx) => (

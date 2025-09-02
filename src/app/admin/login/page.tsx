@@ -6,22 +6,21 @@ import loginimg from "../../../../public/images/login1.png";
 import loginbg from "../../../../public/images/loginbg.png";
 import icon from "../../../../public/icons/dropdownIcon.png";
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true);
 
     try {
-      console.log("Attempting login with:", { email });
-      
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
@@ -31,7 +30,6 @@ const LoginPage: React.FC = () => {
       });
 
       const data = await res.json();
-      console.log("Login response:", { status: res.status, data });
 
       if (!res.ok) {
         setError(data.message || "Login failed");
@@ -39,23 +37,16 @@ const LoginPage: React.FC = () => {
       }
 
       // Login successful, redirect to admin dashboard
-      console.log("Login successful, redirecting to dashboard");
-      
-      // Add a small delay to ensure the cookie is set before redirect
-      setTimeout(() => {
-        window.location.href = "/admin/dashboard";
-      }, 100);
+      router.push("/admin/Dashboard");
     } catch (err) {
-      console.error("Login error:", err);
       setError("Server error. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <div className="h-screen flex max-w-6xl mx-auto">
+    <div className="bg-gray-100 ">
+      <p className="text-center mt-20 lg:hidden">Desktop Mode Only</p>
+      <div className="h-screen hidden lg:flex max-w-6xl mx-auto pt-6">
         {/* Left side with dummy image */}
         <div className="hidden md:flex flex-1 items-center justify-center p-6">
           <img
@@ -68,8 +59,8 @@ const LoginPage: React.FC = () => {
         {/* Right side */}
         <div className="flex flex-col flex-1 items-center justify-center p-6 relative">
           {/* Top-right dummy image */}
-          <div className="absolute top-6 left-1/2 transform -translate-x-1/2">
-            <div className="inline-flex items-center gap-3">
+          <div className="mx-auto flex  justify-center -translate-y-9">
+            <div className="inline-flex items-center gap-3 ">
               <h2
                 className="py-8 px-20 flex gap-2 items-center justify-center scale-75 md:scale-90"
                 style={{
@@ -121,15 +112,18 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black/30"
                   required
                 />
-                <span className="absolute inset-y-0 right-3 flex items-center text-gray-400 cursor-pointer">
-                  👁
+                <span
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500 cursor-pointer"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
               <div className="text-right mt-1">
@@ -142,10 +136,9 @@ const LoginPage: React.FC = () => {
             {/* Login button */}
             <button
               type="submit"
-              disabled={isLoading}
-              className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
             >
-              {isLoading ? "Logging in..." : "Login"}
+              Login
             </button>
           </form>
         </div>
