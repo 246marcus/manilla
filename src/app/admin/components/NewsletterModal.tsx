@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import NewsletterEditor from "./NewsletterEditor";
 
+
 interface NewsletterModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -15,6 +16,7 @@ interface NewsletterModalProps {
   loading?: boolean;
   totalUsers?: number;
   selectedUsers?: Array<{ _id: string; email: string }>;
+ 
 }
 
 const NewsletterModal: React.FC<NewsletterModalProps> = ({
@@ -35,7 +37,7 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (subject.trim() && content.trim()) {
-      const selectedIds = selectedUsers.map((user) => user._id);
+       const selectedIds = selectedUsers.map((user) => user._id);
 
       let bannerUrl = "";
 

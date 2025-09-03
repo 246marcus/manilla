@@ -6,7 +6,6 @@ import {
   Italic, 
   Underline, 
   Link, 
-  Image, 
   AlignLeft, 
   AlignCenter, 
   AlignRight,
@@ -109,14 +108,6 @@ const NewsletterEditor: React.FC<NewsletterEditorProps> = ({
     }
   }, [wrapSelection]);
 
-  const insertImage = useCallback(() => {
-    const url = prompt('Enter image URL:');
-    if (url) {
-      const alt = prompt('Enter alt text (optional):') || 'Image';
-      insertText(`![${alt}](${url})`);
-    }
-  }, [insertText]);
-
   const insertHeading = useCallback((level: number) => {
     const prefix = '#'.repeat(level) + ' ';
     insertText(prefix);
@@ -158,7 +149,6 @@ const NewsletterEditor: React.FC<NewsletterEditorProps> = ({
         .replace(/\*(.*?)\*/g, '$1') // Italic
         .replace(/<u>(.*?)<\/u>/g, '$1') // Underline
         .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Links
-        .replace(/!\[(.*?)\]\(.*?\)/g, '$1') // Images
         .replace(/^#{1,6}\s/gm, '') // Headings
         .replace(/^[-\d+]\s/gm, '') // Lists
         .replace(/<div[^>]*>(.*?)<\/div>/g, '$1'); // Alignment divs
@@ -241,14 +231,6 @@ const NewsletterEditor: React.FC<NewsletterEditorProps> = ({
             title="Insert Link"
           >
             <Link size={16} />
-          </button>
-          <button
-            type="button"
-            onClick={insertImage}
-            className="ql-image"
-            title="Insert Image"
-          >
-            <Image size={16} />
           </button>
         </span>
         

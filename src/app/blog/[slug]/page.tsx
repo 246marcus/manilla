@@ -97,9 +97,21 @@ export default function BlogDetailPage() {
           {/* <p className="text-gray-700 whitespace-pre-line">{blog.content}</p> */}
 
           <div
-            className="prose max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-          />
+            className="prose max-w-none text-gray-700 space-y-6"
+            style={{
+              lineHeight: '1.8',
+              fontSize: '16px'
+            }}
+          >
+            <div
+              dangerouslySetInnerHTML={{ __html: blog.content }}
+              style={{
+                lineHeight: '1.8',
+                fontSize: '16px'
+              }}
+              className="[&>p]:mb-6 [&>p]:leading-relaxed [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mb-6 [&>h1]:mt-8 [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:mb-4 [&>h2]:mt-6 [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mb-3 [&>h3]:mt-5 [&>ul]:mb-6 [&>ul]:pl-6 [&>ol]:mb-6 [&>ol]:pl-6 [&>li]:mb-2 [&>blockquote]:border-l-4 [&>blockquote]:border-gray-300 [&>blockquote]:pl-4 [&>blockquote]:py-2 [&>blockquote]:mb-6 [&>blockquote]:italic [&>strong]:font-bold [&>em]:italic [&>a]:text-blue-600 [&>a]:underline [&>a]:hover:text-blue-800 [&>*+*]:mt-4"
+            />
+          </div>
         </div>
 
         {/* Related Blogs */}

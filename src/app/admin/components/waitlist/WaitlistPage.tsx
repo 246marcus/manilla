@@ -6,8 +6,7 @@ import WaitlistTable from "./WaitlistTable";
 import ViewModal from "./ViewModal";
 import ReplyModal from "../ReplyModal";
 
-// ✅ This matches ReplyModal.tsx
-interface WaitlistUser {
+export interface WaitlistUser {
   _id: string;
   firstName: string;
   lastName: string;
@@ -25,13 +24,9 @@ const WaitlistPage = () => {
   const [users, setUsers] = useState<WaitlistUser[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState<WaitlistUser | null>(null);
-  const [selectedReply, setSelectedReply] = useState<WaitlistUser | null>(null);
-
-  /////////////////////////////////////////////////////////
   const [showReplyModal, setShowReplyModal] = useState(false);
   const [replyLoading, setReplyLoading] = useState(false);
-
-  ///////////////////////////////////
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   useEffect(() => {
     fetchWaitlistData();
@@ -41,7 +36,6 @@ const WaitlistPage = () => {
     try {
       const res = await fetch("/api/contact");
       const data = await res.json();
-
       if (res.ok) {
         const waitlistUsers = data.contacts.filter(
           (contact: { requestType: string }) =>
@@ -60,12 +54,9 @@ const WaitlistPage = () => {
     try {
       const res = await fetch(`/api/contact/${id}`, { method: "DELETE" });
       if (res.ok) {
-        setUsers((prev) => prev.filter((user) => user._id !== id));
-      } else {
-        alert("Failed to delete user");
-      }
-    } catch (error) {
-      console.error("Failed to delete user:", error);
+        setUsers((prev) => prev.filter((u) => u._id !== id));
+      } else alert("Failed to delete user");
+    } catch {
       alert("Failed to delete user");
     }
   };
@@ -75,52 +66,42 @@ const WaitlistPage = () => {
       await Promise.all(
         ids.map((id) => fetch(`/api/contact/${id}`, { method: "DELETE" }))
       );
-      setUsers((prev) => prev.filter((user) => !ids.includes(user._id)));
-    } catch (error) {
-      console.error("Failed to delete users:", error);
-      alert("Failed to delete users");
+      setUsers((prev) => prev.filter((u) => !ids.includes(u._id)));
+      setSelectedIds([]);
+    } catch {
+      alert("Failed to delete selected users");
     }
   };
 
-  // const handleSend = async (id: string, replyContent: string) => {
-  //   try {
-  //     const res = await fetch("/api/mail/reply", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ contactId: id, replyContent }),
-  //     });
+  // Add this state at the top
+  const [selectedUsersForReply, setSelectedUsersForReply] = useState<
+    WaitlistUser[]
+  >([]);
 
-  //     const data = await res.json();
-
-  //     if (res.ok) {
-  //       alert("Reply sent successfully!");
-  //       setUsers((prev) =>
-  //         prev.map((u) => (u._id === id ? { ...u, status: "replied" } : u))
-  //       );
-  //     } else {
-  //       alert(data.message || "Failed to send reply");
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to send reply:", error);
-  //     alert("Failed to send reply");
-  //   }
-  // };
-
-  const handleSendMail = (id: string | null) => {
-    if (id) {
-      const User = users.find((c) => c._id === id);
-      if (User) {
-        setSelectedUser(User);
-        setShowReplyModal(true);
-      }
-    } else {
-      alert("Please select a contact to send mail to");
+  // Update handleSendMail
+  const handleSendMail = (ids: string[] | null) => {
+    if (!ids || ids.length === 0) {
+      alert("Please select at least one user");
+      return;
     }
+
+    const selectedUsers = users.filter((u) => ids.includes(u._id));
+
+    if (selectedUsers.length === 0) {
+      alert("No matching users found");
+      return;
+    }
+
+    setSelectedUsersForReply(selectedUsers);
+    setShowReplyModal(true);
   };
 
-  const handleReplySubmit = async (replyContent: string) => {
-    if (!selectedUser) return;
-
+  const handleReplySubmit = async (
+    subject: string,
+    content: string,
+    selectedUserIds: string[],
+    bannerUrl?: string
+  ) => {
     setReplyLoading(true);
     try {
       const res = await fetch("/api/mail/reply", {
@@ -129,27 +110,29 @@ const WaitlistPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          contactId: selectedUser._id,
-          replyContent: replyContent,
+          contactIds: selectedUserIds, // matches backend requirement
+          replyContent: content, // the reply message
+          subject: subject,
+          bannerUrl: bannerUrl,
         }),
       });
-
-      ////////////////////////////////////////////
 
       const data = await res.json();
 
       if (res.ok) {
-        alert("Reply sent successfully!");
-        // Update the contact's status in the local state
-        setUsers((prev) =>
-          prev.map((contact) =>
-            contact._id === selectedUser._id
-              ? { ...contact, status: "replied" as const }
-              : contact
-          )
+        alert(
+          `Reply sent successfully!\nTotal selected: ${selectedUserIds.length}`
         );
         setShowReplyModal(false);
         setSelectedUser(null);
+        setSelectedIds([]);
+        setUsers((prev) =>
+          prev.map((u) =>
+            selectedUserIds.includes(u._id)
+              ? { ...u, status: "replied" as const }
+              : u
+          )
+        );
       } else {
         alert(data.message || "Failed to send reply");
       }
@@ -161,19 +144,12 @@ const WaitlistPage = () => {
     }
   };
 
-  //////////////////////////////////////////////////////////
-
   const handleView = (id: string) => {
     const user = users.find((u) => u._id === id);
     if (user) setSelectedUser(user);
   };
 
-  const handleReply = (id: string) => {
-    const user = users.find((u) => u._id === id);
-    if (user) setSelectedReply(user);
-  };
-
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className="pe-4 flex-1 flex flex-col bg-white/40 h-screen overflow-y-auto">
         <Topbar
@@ -186,7 +162,6 @@ const WaitlistPage = () => {
         </div>
       </div>
     );
-  }
 
   return (
     <div className="pe-4 flex-1 flex flex-col bg-white/40 h-screen overflow-y-auto">
@@ -200,33 +175,31 @@ const WaitlistPage = () => {
         users={users}
         onDelete={handleDelete}
         onDeleteSelected={handleDeleteSelected}
-        onSend={handleReply}
-        onView={handleView}
         onSendMail={handleSendMail}
+        onView={handleView}
+        selectedIds={selectedIds}
+        setSelectedIds={setSelectedIds}
       />
 
       {selectedUser && (
         <ViewModal user={selectedUser} onClose={() => setSelectedUser(null)} />
       )}
 
-      {/* {selectedReply && (
-        <ReplyModal
-          user={selectedReply}
-          onClose={() => setSelectedReply(null)}
-          onSend={handleSend}
-        />
-      )} */}
-
       <ReplyModal
         isOpen={showReplyModal}
         onClose={() => {
           setShowReplyModal(false);
-          setSelectedUser(null);
+          setSelectedUsersForReply([]);
+          setSelectedIds([]);
         }}
         onSubmit={handleReplySubmit}
-        title={`Reply to ${selectedUser?.firstName} ${selectedUser?.lastName}`}
-        placeholder="Enter your reply message..."
+        title={`Reply`}
         loading={replyLoading}
+        totalUsers={selectedUsersForReply.length}
+        selectedUsers={selectedUsersForReply.map((u) => ({
+          _id: u._id,
+          email: u.email,
+        }))}
       />
     </div>
   );

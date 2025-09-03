@@ -24,8 +24,9 @@ const ContactPage = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showReplyModal, setShowReplyModal] = useState(false);
-  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [selectedContacts, setSelectedContacts] = useState<Contact[]>([]);
   const [replyLoading, setReplyLoading] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   // Fetch contacts from API
   useEffect(() => {
@@ -53,6 +54,7 @@ const ContactPage = () => {
 
       if (res.ok) {
         setContacts((prev) => prev.filter((contact) => contact._id !== id));
+        setSelectedIds(prev => prev.filter(selectedId => selectedId !== id));
       } else {
         alert("Failed to delete contact");
       }
@@ -72,6 +74,7 @@ const ContactPage = () => {
       setContacts((prev) =>
         prev.filter((contact) => !ids.includes(contact._id))
       );
+      setSelectedIds(prev => prev.filter(selectedId => !ids.includes(selectedId)));
     } catch (error) {
       console.error("Failed to delete contacts:", error);
       alert("Failed to delete contacts");
@@ -108,43 +111,60 @@ const ContactPage = () => {
   const handleMarkAsReplied = async (id: string) => {
     const contact = contacts.find((c) => c._id === id);
     if (contact) {
-      setSelectedContact(contact);
+      setSelectedContacts([contact]);
+      setSelectedIds([id]);
       setShowReplyModal(true);
     }
   };
 
-  const handleReplySubmit = async (replyContent: string) => {
-    if (!selectedContact) return;
+  const handleReplySubmit = async (
+    subject: string,
+    content: string,
+    selectedContactIds: string[],
+    bannerUrl?: string
+  ) => {
+    if (!selectedContactIds || selectedContactIds.length === 0) return;
 
     setReplyLoading(true);
     try {
-      const res = await fetch("/api/mail/reply", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contactId: selectedContact._id,
-          replyContent: replyContent,
-        }),
+      // Send reply to each selected contact
+      const replyPromises = selectedContactIds.map(async (contactId) => {
+        const res = await fetch("/api/mail/reply", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            contactId: contactId,
+            replyContent: content,
+            subject: subject,
+            bannerUrl: bannerUrl,
+          }),
+        });
+        return res.json();
       });
 
-      const data = await res.json();
+      const results = await Promise.all(replyPromises);
+      const successCount = results.filter(result => result.message).length;
+      const failureCount = results.length - successCount;
 
-      if (res.ok) {
-        alert("Reply sent successfully!");
-        // Update the contact's status in the local state
+      if (successCount > 0) {
+        alert(`Reply sent successfully!\nTotal selected: ${selectedContactIds.length}\nSuccess: ${successCount}\nFailed: ${failureCount}`);
+        
+        // Update the contacts' status in the local state
         setContacts((prev) =>
           prev.map((contact) =>
-            contact._id === selectedContact._id
+            selectedContactIds.includes(contact._id)
               ? { ...contact, status: "replied" as const }
               : contact
           )
         );
+        
         setShowReplyModal(false);
-        setSelectedContact(null);
+        setSelectedContacts([]);
+        setSelectedIds([]);
       } else {
-        alert(data.message || "Failed to send reply");
+        alert("Failed to send reply to any contacts");
       }
     } catch (error) {
       console.error("Failed to send reply:", error);
@@ -154,16 +174,21 @@ const ContactPage = () => {
     }
   };
 
-  const handleSendMail = (id: string | null) => {
-    if (id) {
-      const contact = contacts.find((c) => c._id === id);
-      if (contact) {
-        setSelectedContact(contact);
-        setShowReplyModal(true);
-      }
-    } else {
-      alert("Please select a contact to send mail to");
+  const handleSendMail = (ids: string[] | null) => {
+    if (!ids || ids.length === 0) {
+      alert("Please select at least one contact");
+      return;
     }
+
+    const selectedContactsList = contacts.filter((c) => ids.includes(c._id));
+    if (selectedContactsList.length === 0) {
+      alert("No matching contacts found");
+      return;
+    }
+
+    setSelectedContacts(selectedContactsList);
+    setSelectedIds(ids);
+    setShowReplyModal(true);
   };
 
   const handleView = (id: string) => {
@@ -214,18 +239,25 @@ const ContactPage = () => {
         onMarkAsReplied={handleMarkAsReplied}
         onView={handleView}
         onSendMail={handleSendMail}
+        selectedIds={selectedIds}
+        setSelectedIds={setSelectedIds}
       />
 
       <ReplyModal
         isOpen={showReplyModal}
         onClose={() => {
           setShowReplyModal(false);
-          setSelectedContact(null);
+          setSelectedContacts([]);
+          setSelectedIds([]);
         }}
         onSubmit={handleReplySubmit}
-        title={`Reply to ${selectedContact?.firstName} ${selectedContact?.lastName}`}
-        placeholder="Enter your reply message..."
+        title={`Reply to ${selectedContacts.length > 0 ? selectedContacts[0].firstName : ''} ${selectedContacts.length > 0 ? selectedContacts[0].lastName : ''}`}
         loading={replyLoading}
+        totalUsers={selectedContacts.length}
+        selectedUsers={selectedContacts.map((c) => ({
+          _id: c._id,
+          email: c.email,
+        }))}
       />
     </div>
   );

@@ -60,15 +60,13 @@ export default function WaitlistTable() {
               <th className="p-2">#</th>
               <th className="p-2 px-6 ">Date</th>
               <th className="p-2 px-6">Email</th>
-              <th className="p-2 px-6">Name</th>
               <th className="p-2 px-6">Request Content</th>
-              <th className="p-2 px-6">Status</th>
             </tr>
           </thead>
           <tbody>
             {waitlistData.length === 0 ? (
               <tr>
-                <td colSpan={6} className="p-4 text-center text-gray-500">
+                <td colSpan={4} className="p-4 text-center text-gray-500">
                   No waitlist submissions yet
                 </td>
               </tr>
@@ -78,18 +76,8 @@ export default function WaitlistTable() {
                   <td className="p-2 py-4">{index + 1}</td>
                   <td className="px-6 py-4">{new Date(row.createdAt).toLocaleDateString()}</td>
                   <td className="px-6 py-4">{row.email}</td>
-                  <td className="px-6 py-4">{row.firstName} {row.lastName}</td>
                   <td className="px-6 py-4 max-w-xs truncate" title={row.requestContent}>
                     {row.requestContent}
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      row.status === "unread" ? "bg-red-100 text-red-800" :
-                      row.status === "read" ? "bg-yellow-100 text-yellow-800" :
-                      "bg-green-100 text-green-800"
-                    }`}>
-                      {row.status}
-                    </span>
                   </td>
                 </tr>
               ))
