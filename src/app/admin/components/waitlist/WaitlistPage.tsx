@@ -96,45 +96,79 @@ const WaitlistPage = () => {
     setShowReplyModal(true);
   };
 
-  const handleReplySubmit = async (
-    subject: string,
-    content: string,
-    selectedUserIds: string[],
-    bannerUrl?: string
-  ) => {
+  const handleReplySend = async (id: string, replyContent: string, bannerUrl?: string) => {
+    if (!id) return;
+
+    console.log("🔍 handleReplySend called with:", { id, replyContent, bannerUrl });
+
     setReplyLoading(true);
     try {
-      const res = await fetch("/api/mail/reply", {
+      // Find the user
+      const user = users.find(u => u._id === id);
+      if (!user) {
+        alert("User not found");
+        setReplyLoading(false);
+        return;
+      }
+
+      console.log("👤 Found user:", user);
+
+      // First, create a temporary newsletter entry for the user
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName
+        }),
+      });
+      
+      if (!res.ok) {
+        alert("Failed to create newsletter entry for user");
+        setReplyLoading(false);
+        return;
+      }
+
+      const data = await res.json();
+      const newsletterId = data.subscriber._id;
+      console.log("📧 Newsletter subscriber created:", newsletterId);
+
+      // Now use the newsletter API with the newsletter subscriber ID
+      const newsletterRes = await fetch("/api/mail/newsletter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          contactIds: selectedUserIds, // matches backend requirement
-          replyContent: content, // the reply message
-          subject: subject,
-          bannerUrl: bannerUrl,
+          subject: `Response to your waitlist request - Manilla Technologies`,
+          content: replyContent,
+          selectedUserIds: [newsletterId],
+          bannerUrl: bannerUrl || "", // Use the bannerUrl if provided
         }),
       });
 
-      const data = await res.json();
+      console.log("📤 Newsletter API request sent with bannerUrl:", bannerUrl);
 
-      if (res.ok) {
-        alert(
-          `Reply sent successfully!\nTotal selected: ${selectedUserIds.length}`
-        );
-        setShowReplyModal(false);
-        setSelectedUser(null);
-        setSelectedIds([]);
+      const newsletterData = await newsletterRes.json();
+
+      if (newsletterRes.ok) {
+        alert(`Reply sent successfully to ${user.firstName} ${user.lastName}`);
+        
+        // Update the user's status in the local state
         setUsers((prev) =>
           prev.map((u) =>
-            selectedUserIds.includes(u._id)
-              ? { ...u, status: "replied" as const }
-              : u
+            u._id === id ? { ...u, status: "replied" as const } : u
           )
         );
+        
+        setShowReplyModal(false);
+        setSelectedUsersForReply([]);
+        setSelectedIds([]);
       } else {
-        alert(data.message || "Failed to send reply");
+        alert(newsletterData.message || "Failed to send reply");
       }
     } catch (error) {
       console.error("Failed to send reply:", error);
@@ -185,22 +219,17 @@ const WaitlistPage = () => {
         <ViewModal user={selectedUser} onClose={() => setSelectedUser(null)} />
       )}
 
-      <ReplyModal
-        isOpen={showReplyModal}
-        onClose={() => {
-          setShowReplyModal(false);
-          setSelectedUsersForReply([]);
-          setSelectedIds([]);
-        }}
-        onSubmit={handleReplySubmit}
-        title={`Reply`}
-        loading={replyLoading}
-        totalUsers={selectedUsersForReply.length}
-        selectedUsers={selectedUsersForReply.map((u) => ({
-          _id: u._id,
-          email: u.email,
-        }))}
-      />
+      {showReplyModal && selectedUsersForReply.length > 0 && (
+        <ReplyModal
+          user={selectedUsersForReply[0]}
+          onClose={() => {
+            setShowReplyModal(false);
+            setSelectedUsersForReply([]);
+            setSelectedIds([]);
+          }}
+          onSend={handleReplySend}
+        />
+      )}
     </div>
   );
 };

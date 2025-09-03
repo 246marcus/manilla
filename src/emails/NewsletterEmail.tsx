@@ -13,21 +13,25 @@ import {
   Preview,
 } from "@react-email/components";
 
-interface NewsletterEmailProps {
-  subject: string;
+interface UnifiedEmailProps {
+  subject?: string;
   content: string;
   bannerUrl?: string;
+  showSubject?: boolean;
+  type?: "newsletter" | "waitlist" | "contact";
 }
 
-export const NewsletterEmail: React.FC<NewsletterEmailProps> = ({
-  subject,
+export const UnifiedEmail: React.FC<UnifiedEmailProps> = ({
+  subject = "",
   content,
   bannerUrl,
+  showSubject = true,
+  type = "newsletter",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>{subject}</Preview>
+      <Preview>{subject || "Message from Manilla Technologies"}</Preview>
       <Body style={main}>
         <Container style={container}>
           {/* Banner Image */}
@@ -35,7 +39,7 @@ export const NewsletterEmail: React.FC<NewsletterEmailProps> = ({
             <Section style={bannerSection}>
               <Img
                 src={bannerUrl}
-                alt="Newsletter Banner"
+                alt="Email Banner"
                 style={bannerImage}
               />
             </Section>
@@ -43,7 +47,9 @@ export const NewsletterEmail: React.FC<NewsletterEmailProps> = ({
 
           {/* Content Section */}
           <Section style={contentSection}>
-            <Heading style={heading}>{subject}</Heading>
+            {showSubject && subject && (
+              <Heading style={heading}>{subject}</Heading>
+            )}
 
             <div
               style={contentStyle}
@@ -89,6 +95,11 @@ export const NewsletterEmail: React.FC<NewsletterEmailProps> = ({
       </Body>
     </Html>
   );
+};
+
+// Keep the original NewsletterEmail for backward compatibility
+export const NewsletterEmail: React.FC<UnifiedEmailProps> = (props) => {
+  return <UnifiedEmail {...props} type="newsletter" />;
 };
 
 // Styles

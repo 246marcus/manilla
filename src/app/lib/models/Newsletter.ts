@@ -9,6 +9,16 @@ const NewsletterSchema = new Schema(
       lowercase: true,
       trim: true,
     },
+    firstName: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    lastName: {
+      type: String,
+      trim: true,
+      default: "",
+    },
     isActive: {
       type: Boolean,
       default: true,
@@ -23,6 +33,8 @@ const NewsletterSchema = new Schema(
 
 export type NewsletterDocument = mongoose.Document & {
   email: string;
+  firstName: string;
+  lastName: string;
   isActive: boolean;
   subscribedAt: Date;
 };
