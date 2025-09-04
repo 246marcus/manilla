@@ -8,7 +8,9 @@ const MediaPartners: React.FC = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState<"success" | "error">("success");
+  const [messageType, setMessageType] = useState<"success" | "error">(
+    "success"
+  );
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,16 +69,14 @@ const MediaPartners: React.FC = () => {
             Media Partners
           </h2>
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
-            Whether you`re a business or individual, Manilla Finance offers a
-            secure and flexible way to manage payments, bills, and travel — all
-            in one trusted platform.
+            Featured in leading publications across Africa and beyond, Manilla
+            Finance works with trusted media to share stories of innovation,
+            impact, and growth — explore coverage below.
           </p>
         </div>
 
         {/* Trusted Platform Rolling Effect */}
         <div className="relative z-10 mt-20 w-full overflow-hidden">
-        
-
           {/* top */}
           <div className="flex animate-roll md:gap-x-4  h-28 md:h-34 ">
             <img
@@ -112,15 +112,18 @@ const MediaPartners: React.FC = () => {
           <h3 className=" text-center text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ahead.
           </h3>
-         
+
           <div className="flex flex-col md:flex-row">
             <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
               Subscribe to our newsletter for exclusive updates, insider perks,
               and a front-row seat to the future of local & cross-border
               payments.
             </p>
-           
-            <form onSubmit={handleSubscribe} className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+
+            <form
+              onSubmit={handleSubscribe}
+              className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto"
+            >
               <input
                 type="email"
                 value={email}
@@ -129,7 +132,7 @@ const MediaPartners: React.FC = () => {
                 className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                 required
               />
-              <button 
+              <button
                 type="submit"
                 disabled={isLoading}
                 className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition disabled:opacity-50"
@@ -137,12 +140,14 @@ const MediaPartners: React.FC = () => {
                 {isLoading ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
-            
+
             {/* Message display */}
             {message && (
-              <div className={`mt-4 text-center text-sm ${
-                messageType === "success" ? "text-green-600" : "text-red-600"
-              }`}>
+              <div
+                className={`mt-4 text-center text-sm ${
+                  messageType === "success" ? "text-green-600" : "text-red-600"
+                }`}
+              >
                 {message}
               </div>
             )}
