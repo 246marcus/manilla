@@ -67,9 +67,9 @@ const MediaPartners: React.FC = () => {
             Media Partners
           </h2>
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
-            Whether you`re a business or individual, Manilla Finance offers a
-            secure and flexible way to manage payments, bills, and travel — all
-            in one trusted platform.
+             Featured in leading publications across Africa and beyond, Manilla
+            Finance works with trusted media to share stories of innovation,
+            impact, and growth — explore coverage below.
           </p>
         </div>
 
