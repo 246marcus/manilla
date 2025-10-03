@@ -50,3 +50,4 @@ export const renderContactEmail = async (
 
   return await render(emailComponent);
 };
+
