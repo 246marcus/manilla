@@ -91,7 +91,7 @@ const AboutManillaPay = () => {
               </div>
 
               {/* Buttons
-              <div className="flex gap-4 flex-wrap justify-center lg:justify-start items-center">
+              <div className="flex gap-4 flex-wrap justfy-center lg:justify-start items-center">
                 <Link
                   href="/company"
                   className="px-6 py-3 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition"

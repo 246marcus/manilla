@@ -38,7 +38,12 @@ const Product = () => {
       <div className=" flex justify-center items-center lg:hidden">
         <div
           className="relative w-[348px] h-[300px]"
-          style={{ width: window.innerWidth <= 320 ? "320px" : "300px" }}
+          style={{
+            width:
+              typeof window !== "undefined" && window.innerWidth <= 320
+                ? "320px"
+                : "300px",
+          }}
         >
           <Image
             src="/images/backgroundpic.png"
