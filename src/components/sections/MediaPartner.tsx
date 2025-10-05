@@ -4,6 +4,19 @@ import React, { useState } from "react";
 import darkbg from "../../../public/images/darkstylebg.png";
 import gradient from "../../../public/images/gradientStripe.png";
 
+import { Raleway, Inter } from "next/font/google";
+import Image from "next/image";
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 const MediaPartners: React.FC = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -69,9 +82,8 @@ const MediaPartners: React.FC = () => {
             Media Partners
           </h2>
           <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
-            Featured in leading publications across Africa and beyond, Manilla
-            Finance works with trusted media to share stories of innovation,
-            impact, and growth — explore coverage below.
+            We’re proud to collaborate with leading media platforms that help
+            amplify our mission and share our story with the world.
           </p>
         </div>
 
@@ -112,34 +124,62 @@ const MediaPartners: React.FC = () => {
           <h3 className=" text-center text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             Be First. Be Ahead.
           </h3>
+          <p
+            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center`}
+          >
+            Manilla is launching soon — Join our Newsletter.
+          </p>
 
           <div className="flex flex-col md:flex-row">
             <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
-              Subscribe to our newsletter for exclusive updates, insider perks,
-              and a front-row seat to the future of local & cross-border
-              payments.
+              Join our newsletter to get early access, exclusive updates and a
+              front-row seat to the future of cross-border payments
             </p>
 
-            <form
-              onSubmit={handleSubscribe}
-              className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Type Email here"
-                className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
-                required
-              />
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition disabled:opacity-50"
+            {/* <div className="flex flex-col">
+              <form
+                onSubmit={handleSubscribe}
+                className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto"
               >
-                {isLoading ? "Subscribing..." : "Subscribe"}
-              </button>
-            </form>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Join the waiting list for our App"
+                  className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition disabled:opacity-50"
+                >
+                  {isLoading ? "Joining..." : "Join Newsletter"}
+                </button>
+              </form>
+            </div> */}
+            <div className="flex flex-col mt-3">
+              <form
+                onSubmit={handleSubscribe}
+                className="md:flex-4/6 flex flex-row items-center justify-center gap-4 max-w-2xl mx-auto"
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Join the waiting list for our App"
+                  className={` ${inter.className} flex-1 rounded-full border border-gray-300 px- py-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635]`}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="px-4 py-3 rounded-full bg-gray-900 text-white text-[10px] font-medium hover:bg-gray-800 transition disabled:opacity-50 whitespace-nowrap"
+                >
+                  {isLoading ? "Joining..." : "Join Newsletter"}
+                </button>
+              </form>
+            </div>
 
             {/* Message display */}
             {message && (

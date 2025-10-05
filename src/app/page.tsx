@@ -6,6 +6,7 @@ import DevelopmentPartners from "@/components/sections/DevelopmentPartners";
 import Hero from "@/components/sections/Hero";
 import MediaPartner from "@/components/sections/MediaPartner";
 import Product from "@/components/sections/Product";
+import ManillaSlides from "@/components/sections/ManillaSlides";
 
 import Nav from "@/components/ui/Nav";
 
@@ -22,6 +23,10 @@ export default function Home() {
       </section>
       <section>
         <Product />
+      </section>
+
+      <section>
+        <ManillaSlides />
       </section>
 
       <section>

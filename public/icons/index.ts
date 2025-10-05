@@ -18,6 +18,11 @@ import downloadApp from "./downloadManilla.png";
 import ManillaFinance from "./ManillaFinance.png";
 import ManillaButton from "./ManillaButton.png";
 import tiktok from "./tiktok.png";
+import Download from "./downloadApp.png";
+import USDTICON from "./USDTICON.png";
+import USDCICON from "./USDCICON.png";
+import USD1ICON from "./USD1ICON.png";
+import BTCICON from "./BTCICON.png";
 
 export {
   aboutusIcon,
@@ -40,4 +45,9 @@ export {
   downloadApp,
   ManillaFinance,
   ManillaButton,
+  Download,
+  USDTICON,
+  BTCICON,
+  USDCICON,
+  USD1ICON,
 };

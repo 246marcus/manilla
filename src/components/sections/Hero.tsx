@@ -38,11 +38,11 @@ const Hero = () => {
           </Button>
 
           {/* External Group Icon pointing to button */}
-          <div className="absolute -top-0 right-[190px] hidden lg:block">
+          <div className="absolute -top-0 right-[190px] hidden lg:block max-[320px]:right-[10px] ">
             <img
               src="/icons/Group.png"
               alt="Group icon pointing to button"
-              className="w-25 h-auto"
+              className="w-25 h-auto max-[320px]:w-10"
             />
           </div>
         </div>
@@ -56,7 +56,7 @@ const Hero = () => {
         <img
           src={heropicture.src}
           alt="Professional woman using Manilla Finance app"
-          className="w-90 scale-85 md:scale-100 sm:w-100 md:h-90 object-cover rounded-3xl mx-auto "
+          className="w-90 max-[300px]:w-70 scale-85 md:scale-100 sm:w-90 md:h-90 object-cover rounded-3xl mx-auto"
         />
 
         {/* Left icon */}
@@ -79,15 +79,28 @@ const Hero = () => {
         <img
           src="/icons/topPlatforms.png"
           alt="Below decoration"
-          className="absolute scale-85 md:scale-100 md:bottom-[-50px] bottom-[-40px] left-1/2 -translate-x-1/2 w-auto h-25"
+          className="absolute scale-85 md:scale-100 md:bottom-[-50px] bottom-[-20px] left-1/2 -translate-x-1/2 w-auto h-23"
           style={{ maxWidth: "none" }}
         />
 
         {/* Icon at the left bottom of image */}
-        <img
+        {/* <img
           src="/icons/ActiveUsers.png"
           alt="Below decoration"
           className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14 "
+          style={{ maxWidth: "none" }}
+        /> */}
+
+        <img
+          src="/icons/ActiveUsers.png"
+          alt="Below decoration"
+          className="block md:hidden absolute bottom-[60px] left-[-69] top-65 w-auto h-9 rotate-90"
+          style={{ maxWidth: "none" }}
+        />
+        <img
+          src="/icons/ActiveUsers.png"
+          alt="Below decoration"
+          className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14"
           style={{ maxWidth: "none" }}
         />
 
@@ -95,13 +108,13 @@ const Hero = () => {
         <img
           src="/icons/downloadManilla.png"
           alt="Below decoration"
-          className="hidden md:block absolute bottom-[-18px] md:left-85  lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
+          className="hidden md:block absolute bottom-[-18px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
           style={{ maxWidth: "none" }}
         />
 
         <div className="absolute bottom-0 -right-10 md:hidden ">
           {/* Google Play */}
-          <a
+          {/* <a
             href="https://play.google.com/store/apps/details?id=com.manillapay"
             target="_blank"
             rel="noopener noreferrer"
@@ -112,10 +125,10 @@ const Hero = () => {
               alt="Get it on Google Play"
               className="object-contain scale-70 translate-y-6"
             />
-          </a>
+          </a> */}
 
           {/* App Store */}
-          <a
+          {/* <a
             href="https://apps.apple.com/app/manillapay"
             target="_blank"
             rel="noopener noreferrer"
@@ -126,8 +139,15 @@ const Hero = () => {
               alt="Download on the App Store"
               className="object-contain scale-70 "
             />
-          </a>
+          </a> */}
         </div>
+
+        <img
+          src="/icons/downloadApp.png"
+          alt="Below decoration"
+          className="block md:hidden absolute bottom-[60px] right-[-32] top-43 w-auto h-43 rotate-0"
+          style={{ maxWidth: "none" }}
+        />
       </div>
 
       {/* Trusted Platform Rolling Effect */}
