@@ -167,8 +167,8 @@ const MediaPartners: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Join the waiting list for our App"
-                  className={` ${inter.className} flex-1 rounded-full border border-gray-300 px- py-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635]`}
+                  placeholder="Join the waiting list"
+                  className={` ${inter.className} flex-1 rounded-full border border-gray-300 px- py-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635] placeholder:text-center`}
                   required
                 />
                 <button

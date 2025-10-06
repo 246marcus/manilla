@@ -72,26 +72,39 @@ const AboutManillaPay = () => {
                   merge the reliability of traditional infrastructure with the
                   flexibility and freedom of crypto.
                   {/* Buttons */}
+                  <div className="flex gap-20 justify-center lg:justify-between md:hidden items-center">
+                    <Link
+                      href="/company"
+                      className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:text-[22px]"
+                    >
+                      Click to learn more about us
+                    </Link>
+
+                    <Link href="/company">
+                      <button className=" text-xs lg:text-[20px] px-3 py- sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
+                        About Us
+                      </button>
+                    </Link>
+                  </div>
                 </p>
+              </div>
+              <div className=" hidden   sm:block gap-20 justify-center lg:justify-around items-center ">
+                <Link
+                  href="/company"
+                  className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:text-[22px]"
+                >
+                  Click to learn more about us
+                </Link>
 
-                <div className="flex gap-4  justify-center lg:justify-start items-center ">
-                  <Link
-                    href="/company"
-                    className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:"
-                  >
-                    Click to learn more about us
-                  </Link>
-
-                  <Link href="/company">
-                    <button className=" text-xs px-3 py-2 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
-                      About Us
-                    </button>
-                  </Link>
-                </div>
+                <Link href="/company">
+                  <button className=" text-xs lg:text-[20px] px-3 py-1 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
+                    About Us
+                  </button>
+                </Link>
               </div>
 
               {/* Buttons
-              <div className="flex gap-4 flex-wrap justfy-center lg:justify-start items-center">
+              <div className="flex gap-4 flex-wrap justify-center lg:justify-start items-center">
                 <Link
                   href="/company"
                   className="px-6 py-3 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition"
@@ -117,14 +130,14 @@ const AboutManillaPay = () => {
             </div>
           </div>
         </div>
-        {/* Bottom Section */}
 
-        <section className="relative bg-cover rounded-2xl bg-center mb-3 mt-3">
-          <div className="max-w-7xl mx-auto px-6">
-            {/* Header Section - Centered */}
-            <div className="flex flex-col gap-0 justify-center items-center mb-8">
+        {/* Bottom Section */}
+        <section className="relative bg-cover  rounded-2xl bg-center mb-3 mt-10">
+          <div className="max-w-7xl mx-auto px-6  gap-1 items-stretch bg-no-repeat">
+            {/* LEFT COLUMN */}
+            <div className="flex flex-col gap-0 md:justify-center items-center top-1 mb-5">
               <p
-                className={`${raleway.className} font-semibold text-[14px] leading-[16px] tracking-[0px] text-center text-[#181635] lg:${inter.className} lg:text-[40px] lg:mt-8 `}
+                className={`${raleway.className} font-semibold text-[14px] leading-[16px] tracking-[0px] text-center text-[#181635] lg:${inter.className} lg:font-semibold lg:text-[40px]`}
               >
                 Why Choose Manilla App
               </p>
@@ -139,167 +152,116 @@ const AboutManillaPay = () => {
               </p>
 
               <br />
+
               <button
-                className={`${inter.className} bg-black text-white w-[109px] h-[32px] rounded-full opacity-100 flex items-center justify-center rotate-0 lg:w-[239px] lg:h-[60px]`}
+                className={`${inter.className} bg-black  text-[#FACA31] w-[109px] h-[32px] rounded-full opacity-100 flex items-center justify-center rotate-0 lg:w-[239px] lg:h-[60px] md:mt- `}
               >
-                <span className="text-[rgba(250,202,49,1)] text-[10px] lg:text-[16px] leading-[20px] font-medium">
+                <span
+                  className={` ${inter.className}lg:text-[16px] md:text-[16px] text-[10px] leading-[20px] font-medium lg:text-[16px`}
+                >
                   Why Choose
                 </span>
-                <span className="ml-1 text-[10px] leading-[20px] font-medium lg:text-[16px]">
+                <span className="ml-1 text-[10px] leading-[20px] font-medium text-[white] lg:text-[16px]">
                   Us
                 </span>
               </button>
             </div>
 
-            {/* Content Grid - 3 Columns on Large Screens */}
-            {/* Content Grid - 3 Columns on Large Screens */}
-            <div className="flex justify-center items-center w-full">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch ">
-                {/* Left Image with Overlay */}
-                <div className="flex justify-center lg:col-span-3">
-                  <div className="relative w-[320px] lg:w-full h-[300px] lg:h-full">
-                    <Image
-                      src="/images/backgroundpic.png"
-                      alt="background"
-                      width={350}
-                      height={300}
-                      className="object-cover object-right rounded-xl w-full h-full"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/40 bg-opacity-47 rounded-b-xl py-4 px-6">
-                      <div
-                        className={`${inter.className} font-semibold leading-[100%] text-[#FACA31] text-center`}
-                      >
-                        <p
-                          className={`${inter.className} font-semibold text-[10px] leading-[100%]`}
-                        >
-                          Our platform supports payments using
-                        </p>
-                        <div className="flex gap-2 justify-center items-center mt-2 flex-wrap">
-                          <li
-                            className="w-[70px] h-[28px] opacity-100 border rounded-full flex items-center justify-center gap-1 p-4"
-                            style={{ boxShadow: "0px 0px 0px 0.7px #A7FB21" }}
-                          >
-                            <img src="/icons/USDTICON.png" alt="usdt" />
-                            <p className="text-white text-[8px]">USDT</p>
-                          </li>
-                          <li
-                            className="w-[70px] h-[28px] opacity-100 border rounded-full flex items-center justify-center gap-1 p-4"
-                            style={{ boxShadow: "0px 0px 0px 0.7px #A7FB21" }}
-                          >
-                            <img src="/icons/USDCICON.png" alt="" />
-                            <p className="text-white text-[8px]">USDC</p>
-                          </li>
-                          <li
-                            className="w-[70px] h-[28px] opacity-100 border rounded-full flex items-center justify-center gap-1 p-4"
-                            style={{ boxShadow: "0px 0px 0px 0.7px #A7FB21" }}
-                          >
-                            <img src="/icons/USD1ICON.png" alt="" />
-                            <p className="text-white text-[8px]">USD1</p>
-                          </li>
-                          <li
-                            className="w-[70px] h-[28px] opacity-100 border rounded-full flex items-center justify-center gap-1 p-4"
-                            style={{ boxShadow: "0px 0px 0px 0.7px #A7FB21" }}
-                          >
-                            <img src="/icons/BTCICON.png" alt="" />
-                            <p className="text-white text-[8px]">BTC</p>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            {/* DOWN COLUMN */}
+            <div className="relative flex flex-col lg:flex-row items-center lg:justify-center my-8 md:my-2 top-[-20px] lg:top-0 md:mt-8">
+              <div className="md:flex lg:flex items-stretch justify-center gap-5 ">
+                <div className="relative w-[320px] md:w-[400px] lg:w-[450px] h-auto md:h-[420px] lg:h-[450px] ">
+                  <Image
+                    src="/images/background1.png"
+                    alt="background"
+                    width={350}
+                    height={300}
+                    className="object-cover object-right rounded-xl w-full h-full"
+                  />
                 </div>
 
-                {/* Center - Black Card with Features */}
-                <div className="flex justify-center lg:col-span-6">
-                  <div className="bg-[#000] rounded-2xl w-[320px] lg:w-full h-full p-5 flex flex-col">
-                    <div className="flex gap-2 mb-4">
-                      <img
-                        src="/icons/dotmanilla.png"
-                        alt="icon"
-                        className="w-[28px] h-[28px]"
-                      />
-                      <p
-                        className={`${inter.className} text-[#E5E5E5] font-medium text-[16px] leading-[100%] tracking-[-0.6px]`}
+                <div className="bg-[#000] rounded-2xl w-[326px] md:w-[450px] lg:w-[600px] h-auto md:h-[420px] lg:h-[450px] mt-5 md:mt-0 p-5 flex flex-col items-center lg:ml-3">
+                  <div className="flex gap-2">
+                    <img
+                      src="/icons/dotmanilla.png"
+                      alt="icon"
+                      className="w-[28px] h-[28px]"
+                    />
+                    <p
+                      className={`${inter.className} text-[#E5E5E5] font-medium text-[16px] leading-[100%] tracking-[-0.6px]`}
+                    >
+                      <span
+                        className={`${inter.className} text-[#FACA31] font-medium text-[16px] leading-[100%] tracking-[-0.6px]`}
                       >
-                        <span
-                          className={`${inter.className} text-[#FACA31] font-medium text-[16px] leading-[100%] tracking-[-0.6px]`}
-                        >
-                          Manilla App
-                        </span>{" "}
-                        makes everyday payments faster, easier, and more
-                        flexible
+                        Manilla App
+                      </span>{" "}
+                      makes everyday payments faster, easier, and more flexible
+                    </p>
+                  </div>
+
+                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-4 mx-auto self-start">
+                    <img
+                      src="/icons/dollaricon.png"
+                      alt=""
+                      className="w-[40px] h-[40px] flex-shrink-0"
+                    />
+                    <div className="flex flex-col gap-1 ">
+                      <p
+                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1`}
+                      >
+                        Pay Utility Bills
+                      </p>
+                      <p
+                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
+                      >
+                        Settle electricity, water, cable tv & internet bills in
+                        seconds. Manilla lets you pay securely with stablecoins,
+                        ensuring convenience and reliability for everyday
+                        Nigerian households.
                       </p>
                     </div>
+                  </div>
 
-                    <div className="space-y-3 flex-1">
-                      <div className="flex gap-3 w-full bg-[#1D1D1D] rounded-lg p-2">
-                        <img
-                          src="/icons/dollaricon.png"
-                          alt=""
-                          className="w-[40px] h-[40px] flex-shrink-0"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <p
-                            className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%]`}
-                          >
-                            Pay Utility Bills
-                          </p>
-                          <p
-                            className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
-                          >
-                            Settle electricity, water, cable tv & internet bills
-                            in seconds. Manilla lets you pay securely with
-                            stablecoins, ensuring convenience and reliability
-                            for everyday Nigerian households.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-3 w-full bg-[#1D1D1D] rounded-lg p-2">
-                        <img
-                          src="/icons/bookicon.png"
-                          alt=""
-                          className="w-[40px] h-[40px] flex-shrink-0"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <p
-                            className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%]`}
-                          >
-                            Top Up Airtime & Data
-                          </p>
-                          <p
-                            className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
-                          >
-                            Recharge instantly on all major networks in Nigeria.
-                            Use stablecoins or cards to top-up airtime and data
-                            anytime, anywhere—fast, seamless, and stress-free
-                            with Manilla.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-3 w-full bg-[#1D1D1D] rounded-lg p-2">
-                        <img
-                          src="/icons/planeicon.png"
-                          alt=""
-                          className="w-[40px] h-[40px] flex-shrink-0"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <p
-                            className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%]`}
-                          >
-                            Book Flights & Pay for Travel
-                          </p>
-                          <p
-                            className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
-                          >
-                            Plan trips with ease. Book flights, stays, and rides
-                            while paying in crypto or card. Manilla makes travel
-                            seamless, secure, and globally connected for
-                            Nigerians.
-                          </p>
-                        </div>
-                      </div>
+                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-4 mx-auto self-start">
+                    <img
+                      src="/icons/bookicon.png"
+                      alt=""
+                      className="w-[40px] h-[40px] flex-shrink-0"
+                    />
+                    <div className="flex flex-col gap-1 ">
+                      <p
+                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1`}
+                      >
+                        Top Up Airtime & Data
+                      </p>
+                      <p
+                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
+                      >
+                        Recharge instantly on all major networks in Nigeria. Use
+                        stablecoins or cards to top-up airtime and data anytime,
+                        anywhere—fast, seamless, and stress-free with Manilla.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-4 mx-auto self-start">
+                    <img
+                      src="/icons/planeicon.png"
+                      alt=""
+                      className="w-[40px] h-[40px] flex-shrink-0"
+                    />
+                    <div className="flex flex-col gap-1 ">
+                      <p
+                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1`}
+                      >
+                        Book Flights & Pay for Travel
+                      </p>
+                      <p
+                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
+                      >
+                        Plan trips with ease. Book flights, stays, and rides
+                        while paying in crypto or card. Manilla makes travel
+                        seamless, secure, and globally connected for Nigerians.
+                      </p>
                     </div>
                   </div>
                 </div>

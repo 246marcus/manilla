@@ -219,7 +219,7 @@ const ManillaSlides = () => {
   }, [slides.length]);
 
   return (
-    <section className="bg-[#D7E3FF59]">
+    <section className="bg-[#D7E3FF59] lg:hidden">
       <div className=" mt-6 mb-7 p-4 flex flex-col items-center">
         {/* Card Display */}
         <div

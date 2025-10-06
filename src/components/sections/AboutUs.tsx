@@ -271,7 +271,11 @@ const AboutUs = () => {
 
   return (
     <section className="bg-white text-gray-900 md:py-16">
-      <img src="/icons/Vector4.png" alt="" className="w-screen object-cover" />
+      <img
+        src="/icons/Vector4.png"
+        alt=""
+        className="w-screen object-cover md:h-[3px ] lg:h-[3px]"
+      />
 
       <div className="max-w-7xl mx-auto px-6 border-l border-r border-gray-200 text-center">
         {/* About Title */}
