@@ -81,7 +81,7 @@ const AboutManillaPay = () => {
                     </Link>
 
                     <Link href="/company">
-                      <button className=" text-xs lg:text-[20px] px-3 py- sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
+                      <button className=" text-xs lg:text-[20px] px-3 py-3 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
                         About Us
                       </button>
                     </Link>
