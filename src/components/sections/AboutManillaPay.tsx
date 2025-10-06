@@ -53,7 +53,7 @@ const AboutManillaPay = () => {
             {/* Left Column - Text */}
             <div className="max-w-lg text-center lg:text-left px-3 lg:px-0 text-black/80 lg:flex-1 ">
               <h2 className="sm:text-xl text-2xl  font-semibold mb-4 lg:text-[40px] ">
-                Redefining How Canada Pays
+                Redefining How Nigerias Pays
               </h2>
               <p
                 className={` ${inter.className}  text-[#868686] mb-6 text-[12px] lg:text-[22px]`}
