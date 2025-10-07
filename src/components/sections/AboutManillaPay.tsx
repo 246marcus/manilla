@@ -23,9 +23,9 @@ const AboutManillaPay = () => {
           {/* Top Row */}
           <div className="relative flex items-center mb-4 w-full">
             {/* Left Button */}
-            <div className="hidden md:block lg:mt-10 lg:translate-y-8">
+            <div className="hidden md:block md:mt-5 lg:mt-10 lg:translate-y-8">
               <Link href="/company">
-                <button className="bg-gray-100 text-black px-6 py-2 rounded-full transition-colors border border-black/20 mb-1 md:translate-y-4 block mx-auto md:mt-10 lg:mx-0 mt-2 text-sm">
+                <button className="bg-gray-100 text-black px-6 py-2 rounded-full transition-colors border border-black/20 mb-1 md:translate-y-4 block mx-auto  lg:mx-0 mt-2 text-sm">
                   About Manilla Pay
                 </button>
               </Link>
@@ -33,7 +33,7 @@ const AboutManillaPay = () => {
 
             {/* Center Icon */}
             <div className="absolute left-1/2 transform -translate-x-1/2 -mt-2 md:-mt-5 lg:-mt-12">
-              <button className="p-4 bg-transparent lg:scale-90 transition-transform">
+              <button className="p-4 bg-transparent lg:scale-90 transition-transform md:mb-10">
                 <img
                   src="/icons/aboutusIcon.png"
                   alt="About Us Icon"
@@ -49,11 +49,11 @@ const AboutManillaPay = () => {
           </div>
 
           {/* Main Content */}
-          <div className="mt-12 lg:my-0 flex flex-col lg:flex-row items-center lg:justify-between gap-12">
+          <div className="mt-12 lg:my-0 flex flex-col lg:flex-row items-center lg:justify-between gap-12 p-7">
             {/* Left Column - Text */}
             <div className="max-w-lg text-center lg:text-left px-3 lg:px-0 text-black/80 lg:flex-1 ">
               <h2 className="sm:text-xl text-2xl  font-semibold mb-4 lg:text-[40px] ">
-                Redefining How Nigerias Pays
+                Redefining How Nigerians Pays
               </h2>
               <p
                 className={` ${inter.className}  text-[#868686] mb-6 text-[12px] lg:text-[22px]`}
@@ -62,45 +62,51 @@ const AboutManillaPay = () => {
                 past.
               </p>
 
-              <div className=" bg-black/7">
-                <p
-                  className={` ${inter.className}text-xs lg:text-[20px] p-2 py-3 rounded-md text-[#181635] mb-3`}
-                >
-                  From bank queues and failed transfers to delayed utility
-                  credits and cross-border headaches, the system isn’t built for
-                  speed or convenience. That’s why we created Manilla Pay: to
-                  merge the reliability of traditional infrastructure with the
-                  flexibility and freedom of crypto.
-                  {/* Buttons */}
-                  <div className="flex gap-20 justify-center lg:justify-between md:hidden items-center">
-                    <Link
-                      href="/company"
-                      className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:text-[22px]"
-                    >
-                      Click to learn more about us
-                    </Link>
+              <div>
+                <div className=" bg-black/7">
+                  <p
+                    className={` ${inter.className}text-xs lg:text-[20px] p-2 py-3 rounded-md text-[#181635] mb-3`}
+                  >
+                    From bank queues and failed transfers to delayed utility
+                    credits and cross-border headaches, the system isn’t built
+                    for speed or convenience. That’s why we created Manilla Pay:
+                    to merge the reliability of traditional infrastructure with
+                    the flexibility and freedom of crypto.
+                    {/* Buttons */}
+                    <div className="flex gap-10 justify-center lg:justify-between md:hidden items-center">
+                      <Link
+                        href="/company"
+                        className=" px-3 sm:px-5 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-sm lg:text-[22px] whitespace-nowrap "
+                      >
+                        Click to learn more about us
+                      </Link>
 
-                    <Link href="/company">
-                      <button className=" text-xs lg:text-[20px] px-3 py-3 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
-                        About Us
-                      </button>
-                    </Link>
-                  </div>
-                </p>
-              </div>
-              <div className=" hidden   sm:block gap-20 justify-center lg:justify-around items-center ">
-                <Link
-                  href="/company"
-                  className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:text-[22px]"
-                >
-                  Click to learn more about us
-                </Link>
+                      <Link href="/company">
+                        <button className=" text-xs lg:text-[20px] px-3 py-3 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
+                          About Us
+                        </button>
+                      </Link>
+                    </div>
+                  </p>
+                </div>
 
-                <Link href="/company">
-                  <button className=" text-xs lg:text-[20px] px-3 py-1 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
-                    About Us
-                  </button>
-                </Link>
+                <div
+                  className=" hidden   
+              sm:block"
+                >
+                  <Link
+                    href="/company"
+                    className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:text-[22px] "
+                  >
+                    Click to learn more about us
+                  </Link>
+
+                  <Link href="/company">
+                    <button className=" text-xs lg:text-[20px] px-3 py-1 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap md:mr-10">
+                      About Us
+                    </button>
+                  </Link>
+                </div>
               </div>
 
               {/* Buttons
@@ -142,7 +148,7 @@ const AboutManillaPay = () => {
                 Why Choose Manilla App
               </p>
               <p
-                className={`${inter.className} text-[12px] leading-[14px] tracking-[0px] text-center text-[#868686] lg:text-[24px] lg:font-semibold lg:mt-5 lg:leading-[34px]`}
+                className={`${inter.className} text-[12px] leading-[14px] tracking-[0px] text-center text-[#868686] lg:text-[24px]  lg:font-semibold lg:mt-5 lg:leading-[34px]`}
               >
                 -smarter, faster, and more reliable{" "}
                 <span className="hidden lg:inline">
@@ -154,10 +160,10 @@ const AboutManillaPay = () => {
               <br />
 
               <button
-                className={`${inter.className} bg-black  text-[#FACA31] w-[109px] h-[32px] rounded-full opacity-100 flex items-center justify-center rotate-0 lg:w-[239px] lg:h-[60px] md:mt- `}
+                className={`${inter.className} bg-black  text-[#FACA31] w-[109px] h-[32px] rounded-full opacity-100 flex items-center justify-center rotate-0 lg:w-[239px] lg:h-[60px] md:w-[160px] md:h-[40px]`}
               >
                 <span
-                  className={` ${inter.className}lg:text-[16px] md:text-[16px] text-[10px] leading-[20px] font-medium lg:text-[16px`}
+                  className={` ${inter.className}lg:text-[16px] md:text-[13px] text-[10px] leading-[20px] font-medium`}
                 >
                   Why Choose
                 </span>
