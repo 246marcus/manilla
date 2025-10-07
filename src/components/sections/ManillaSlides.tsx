@@ -207,6 +207,16 @@ const ManillaSlides = () => {
       showStores: false,
       buttonText: "MNLA Token",
     },
+    {
+      image: "/images/manillapay4.png",
+      title: "Manilla Vault",
+      description:
+        "Put your crypto to work by staking on Manilla. Earn attractive yields, secure the ecosystem, and enjoy exclusive platform benefits—making your digital assets grow while supporting financial innovation in Nigeria’s DeFi landscape.",
+      cta: "Stake your Tokens for More Yields",
+      borderColor: "border-[#2FC302]",
+      showStores: false,
+      buttonText: "Stake Token",
+    },
   ];
 
   // Auto-slide effect

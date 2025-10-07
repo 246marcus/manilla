@@ -174,11 +174,11 @@ const AboutManillaPay = () => {
             </div>
 
             {/* DOWN COLUMN */}
-            <div className="relative flex flex-col lg:flex-row items-center lg:justify-center my-8 md:my-2 top-[-20px] lg:top-0 md:mt-8">
+            <div className="relative flex flex-col md:flex-row lg:flex-row items-center lg:justify-center my-8 md:my-2 top-[-20px] lg:top-0 md:mt-8">
               <div className="md:flex lg:flex items-stretch justify-center gap-5 ">
                 <div className="relative w-[320px] md:w-[400px] lg:w-[450px] h-auto md:h-[420px] lg:h-[450px] ">
                   <Image
-                    src="/images/background1.png"
+                    src="/images/manandfemale.png"
                     alt="background"
                     width={350}
                     height={300}
