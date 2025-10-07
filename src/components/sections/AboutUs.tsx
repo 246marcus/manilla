@@ -161,7 +161,7 @@ const AboutUs = () => {
                 Our Services
               </p>
               <img
-                src="/icons/dropdownicon.png"
+                src="/icons/serviceicon.png"
                 alt="dropdown icon"
                 className="w-[30px] h-[30px]"
               />
@@ -245,7 +245,7 @@ const AboutUs = () => {
               </div>
 
               {/* NAVIGATION BUTTONS */}
-              <div className="flex items-center justify-center gap-4 mt-4">
+              <div className="flex items-center justify-center gap-4">
                 <button
                   onClick={handlePrevious}
                   aria-label="Previous"

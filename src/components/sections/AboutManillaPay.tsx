@@ -52,7 +52,7 @@ const AboutManillaPay = () => {
           <div className="mt-12 lg:my-0 flex flex-col lg:flex-row items-center lg:justify-between gap-12 p-7">
             {/* Left Column - Text */}
             <div className="max-w-lg text-center lg:text-left px-3 lg:px-0 text-black/80 lg:flex-1 ">
-              <h2 className="sm:text-xl text-2xl  font-semibold mb-4 lg:text-[40px] lg:whitespace-nowrap whitespace-nowrap ">
+              <h2 className="sm:text-xl text-2xl  font-semibold mb-4 lg:text-[40px] lg:whitespace-nowrap white ">
                 Redefining How Nigerians Pays
               </h2>
               <p
