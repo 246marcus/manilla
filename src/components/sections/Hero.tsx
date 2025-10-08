@@ -94,12 +94,6 @@ const Hero = () => {
         <img
           src="/icons/ActiveUsers.png"
           alt="Below decoration"
-          className="block md:hidden absolute bottom-[60px] left-[-69] top-65 w-auto h-9 rotate-90"
-          style={{ maxWidth: "none" }}
-        />
-        <img
-          src="/icons/ActiveUsers.png"
-          alt="Below decoration"
           className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14"
           style={{ maxWidth: "none" }}
         />

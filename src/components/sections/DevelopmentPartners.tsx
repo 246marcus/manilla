@@ -8,7 +8,7 @@ const DevelopmentPartners: React.FC = () => {
       {/* Top dark section */}
       {/* Top dark section */}
       <div
-        className="bg-gray-900 text-white rounded-t-[2rem] px-4 py-12 sm:py-16"
+        className="bg-gray-900 text-white rounded-t-[1rem] px-4 py-12 sm:py-16"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",
@@ -40,7 +40,7 @@ const DevelopmentPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden " // curved edges only at bottom
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden rounded-b-[2rem]" // curved edges only at bottom
         style={{
           backgroundImage: `url(${Rectangle.src})`,
           backgroundPosition: "center",
@@ -67,7 +67,6 @@ const DevelopmentPartners: React.FC = () => {
               src="/images/aaa1.png"
               className="w-auto max-w-none scale-60 md:scale-80"
             />
-
           </div>
         </div>
         {/* optional mobile */}
@@ -77,7 +76,6 @@ const DevelopmentPartners: React.FC = () => {
               src="/images/aaa1.png"
               className=" w-auto max-w-none scale-60 md:scale-80 -translate-x-5/12  "
             />
-
           </div>
         </div>
       </div>

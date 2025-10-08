@@ -62,12 +62,12 @@ const Blogs = () => {
   return (
     <section className="p-4 max-w-7xl mx-auto">
       <div
-        className=" bg-cyan-400/90  px-4 text-center py-10 rounded-2xl mt-0"
+        className=" bg-[#1ABFC8]  px-4 text-center py-10 rounded-2xl mt-0"
         style={{
-          backgroundImage: "url('/images/blogbackground.png')",
-          backgroundSize: "contain",
+          backgroundImage: "url('/images/blogbackground1.png')",
+          backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "repeat",
+          backgroundRepeat: "",
         }}
       >
         {/* Top Blog Banner Image */}
@@ -99,11 +99,11 @@ const Blogs = () => {
               >
                 <div
                   className="flex items-start  justify-start transition-transform duration-500 ease-in-out "
-                   style={{
+                  style={{
                     transform: `translateX(-${
                       currentIndex * (100 / cardsPerView)
                     }%)`,
-                  }} 
+                  }}
                 >
                   {blogs.map((blog: Blog) => (
                     <div

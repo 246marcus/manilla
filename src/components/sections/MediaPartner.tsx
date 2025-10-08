@@ -112,7 +112,7 @@ const MediaPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14 rounded-b-[1rem]"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",

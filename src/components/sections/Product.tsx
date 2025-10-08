@@ -29,11 +29,7 @@ const Product = () => {
             Manilla offers a suite of innovative solutions designed to make
             everyday financial transactions seamless and secure.
           </p>
-          <img
-            src="/icons/Vector4.png"
-            alt=""
-            className="p-4 lg:hidden md:hidden"
-          />
+          <img src="/icons/Vector4.png" alt="" className="" />
           <p>
             Each product is built for speed, reliability, and convenience,
             empowering users across Africa and beyond to stay connected and in

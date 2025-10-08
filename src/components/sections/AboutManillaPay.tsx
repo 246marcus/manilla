@@ -77,7 +77,7 @@ const AboutManillaPay = () => {
                 <div className="flex gap-6 justify-center md:hidden items-center mt-4">
                   <Link
                     href="/company"
-                    className="px-4 py-2 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-sm"
+                    className="px-4 py-2 bg-[#F5F5F5] text-[#000] rounded-full hover:bg-gray-200 transition text-sm"
                   >
                     Click to learn more about us
                   </Link>
@@ -165,18 +165,18 @@ const AboutManillaPay = () => {
                   />
                 </div>
 
-                <div className="bg-[#000] rounded-2xl w-[326px] md:w-[450px] lg:w-[600px] h-auto md:h-[420px] lg:h-[450px] mt-5 md:mt-0 p-5 flex flex-col items-center lg:ml-3">
+                <div className="bg-[#000] rounded-2xl w-[326px] md:w-[450px] lg:w-[800px] h-auto md:h-[420px] lg:h-[450px] mt-5 md:mt-0 p-5 flex flex-col items-center lg:ml-3">
                   <div className="flex gap-2">
                     <img
                       src="/icons/dotmanilla.png"
                       alt="icon"
-                      className="w-[28px] h-[28px]"
+                      className="w-[30px] h-[30px]"
                     />
                     <p
-                      className={`${inter.className} text-[#E5E5E5] font-medium text-[16px] leading-[100%] tracking-[-0.6px]`}
+                      className={`${inter.className} text-[#E5E5E5] font-medium lg:text-[26px] text-[16px] leading-[100%] tracking-[-0.6px]`}
                     >
                       <span
-                        className={`${inter.className} text-[#FACA31] font-medium text-[16px] leading-[100%] tracking-[-0.6px]`}
+                        className={`${inter.className} text-[#FACA31] font-medium lg:text-[26px] text-[16px] leading-[100%] tracking-[-0.6px]`}
                       >
                         Manilla App
                       </span>{" "}
@@ -192,12 +192,12 @@ const AboutManillaPay = () => {
                     />
                     <div className="flex flex-col gap-1 ">
                       <p
-                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1`}
+                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] lg:text-[16px] leading-[140%] mb-1`}
                       >
                         Pay Utility Bills
                       </p>
                       <p
-                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
+                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] lg:text-[14px] leading-[140%]`}
                       >
                         Settle electricity, water, cable tv & internet bills in
                         seconds. Manilla lets you pay securely with stablecoins,
@@ -207,7 +207,7 @@ const AboutManillaPay = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-4 mx-auto self-start">
+                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-1 mx-auto self-start">
                     <img
                       src="/icons/bookicon.png"
                       alt=""
@@ -215,12 +215,12 @@ const AboutManillaPay = () => {
                     />
                     <div className="flex flex-col gap-1 ">
                       <p
-                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1`}
+                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1 lg:text-[16px]`}
                       >
                         Top Up Airtime & Data
                       </p>
                       <p
-                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
+                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] lg:text-[14px] leading-[140%]`}
                       >
                         Recharge instantly on all major networks in Nigeria. Use
                         stablecoins or cards to top-up airtime and data anytime,
@@ -228,7 +228,8 @@ const AboutManillaPay = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-4 mx-auto self-start">
+
+                  <div className="flex gap-3 w-full  bg-[#1D1D1D] rounded-lg p-3 mt-1 mx-auto self-start">
                     <img
                       src="/icons/planeicon.png"
                       alt=""
@@ -236,12 +237,13 @@ const AboutManillaPay = () => {
                     />
                     <div className="flex flex-col gap-1 ">
                       <p
-                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] leading-[140%] mb-1`}
+                        className={`${inter.className} text-[#E5E5E5] font-bold text-[12px] lg:text-[16px] leading-[140%] mb-1`}
                       >
                         Book Flights & Pay for Travel
                       </p>
                       <p
-                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] leading-[140%]`}
+                        className={`${inter.className} text-[#E5E5E5] font-normal text-[10px] lg:text-[14px]
+                         leading-[140%]`}
                       >
                         Plan trips with ease. Book flights, stays, and rides
                         while paying in crypto or card. Manilla makes travel

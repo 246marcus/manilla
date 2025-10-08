@@ -46,6 +46,14 @@ const services = [
     ],
   },
   {
+    title: "For Businesses & Freelancers",
+    description: `With Manilla's business tools, you can invoice international clients and get paid in crypto—without conversion headaches, delays, or high banking fees.`,
+    features: [
+      { icon: ShoppingIcon, label: "Invoice Settlement" },
+      { icon: ShoppingIcon, label: "Crypto Payment API" },
+    ],
+  },
+  {
     title: "Convert Crypto to Naira Without Stress",
     description: `Naira Bridge offers you a reliable, transparent way to convert major cryptocurrencies into naira—and vice versa.`,
     features: [
@@ -69,17 +77,31 @@ const AboutUs = () => {
 
   return (
     <section className="bg-white text-gray-900 md:py-16">
-      <img src="/icons/Vector4.png" alt="" className="w-screen object-cover" />
+      <img
+        src="/icons/Vector4.png"
+        alt=""
+        className=" object-cover w-full h-[1px] mb-3 sm:h-[2px]"
+      />
 
       <div className="max-w-7xl mx-auto px-6 border-l border-r border-gray-200 text-center">
         {/* About Title */}
-        <div className="relative -mt-8 md:-mt-10 lg:-mt-12">
+        <div className="relative -mt-5 md:-mt-10 lg:-mt-9">
+          {/* Image for md & lg screens */}
           <Image
-            src="/icons/ourservices.png"
+            src="/icons/aboutusIcon1.png"
             alt="About Us Icon"
             width={250}
             height={150}
-            className="object-contain w-[188px] h-[94px] sm:w-48 md:w-60 lg:w-[250px] mx-auto"
+            className="object-contain w-[188px] h-[94px] sm:w-48 md:w-60 lg:w-[280px] mx-auto hidden md:block"
+          />
+
+          {/* Image for small screens */}
+          <Image
+            src="/icons/ourservices.png"
+            alt="About Us Icon (Mobile)"
+            width={250}
+            height={150}
+            className="object-contain w-[188px] h-[94px] sm:w-48 md:w-60 lg:w-[250px] mx-auto md:hidden"
           />
         </div>
 
@@ -121,8 +143,8 @@ const AboutUs = () => {
               className="object-cover object-right rounded-t-3xl"
             />
             <div className="absolute inset-0 bg-black/30" />
-            <div className="relative z-10 flex flex-col items-center justify-between h-full px-6 py-6">
-              <div className="text-center mt-5 md:mt-8">
+            <div className="relative z-10 flex flex-col items-center justify-between h-full px-6 ">
+              <div className="text-center mt-5 md:mt-8 mb-3">
                 <p
                   className={`${inter.className} text-white text-[8px] md:text-[15px] lg:text-[20px] font-medium leading-[140%] mb-4`}
                 >
@@ -139,9 +161,9 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="w-full max-w-5xl mx-auto">
+              <div className="w-full max-w-5xl mx-auto ">
                 <Image
-                  src="/images/laptop.png"
+                  src="/images/laptop1.png"
                   alt="laptop"
                   width={1200}
                   height={600}
@@ -152,7 +174,7 @@ const AboutUs = () => {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="w-full md:flex-1 relative flex flex-col bg-[#F2F2F259] rounded-t-3xl overflow-hidden h-[400px] md:h-[700px] lg:h-[800px]">
+          <div className="w-full md:flex-1 relative flex flex-col bg-[#F2F2F259] rounded-t-3xl  h-[400px] md:h-[700px] lg:h-[800px]">
             {/* Header */}
             <div className="flex items-center justify-center gap-3 py-4">
               <p
@@ -207,83 +229,44 @@ const AboutUs = () => {
               ))}
             </div>
 
-            {/* MOBILE CAROUSEL */}
-            <div className="md:hidden flex flex-col items-center px-4  space-y-3">
-              <div className="bg-gray-50 rounded-lg p-4 shadow-sm border border-[#28282852] w-full max-w-md text-left">
-                <p
-                  className={`${inter.className} font-semibold text-[16px] text-[#000] mb-3`}
+            {/* SCROLL SECTION (Mobile) */}
+            <div className="md:hidden flex-1 overflow-y-scroll scrollbar-hide px-4 pb-6 space-y-4">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-lg p-4 shadow-sm text-left border border-[#28282852]"
                 >
-                  {services[currentIndex].title}
-                </p>
-                <p
-                  className={`${inter.className} font-medium text-[10px] text-[#000] mb-3`}
-                >
-                  {services[currentIndex].description}
-                </p>
+                  <p
+                    className={`${inter.className} font-semibold text-[16px] text-[#000] mb-3`}
+                  >
+                    {service.title}
+                  </p>
+                  <p
+                    className={`${inter.className} font-medium text-[12px] text-[#000] mb-3`}
+                  >
+                    {service.description}
+                  </p>
 
-                <div className="grid grid-cols-2 gap-2">
-                  {services[currentIndex].features.map((feature, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 justify-start"
-                    >
-                      <Image
-                        src={feature.icon}
-                        alt={feature.label}
-                        width={40}
-                        height={20}
-                        className="w-[21px] h-[21px]"
-                      />
-                      <span
-                        className={`${inter.className} text-[12px] font-medium text-[#181635]`}
-                      >
-                        {feature.label}
-                      </span>
-                    </div>
-                  ))}
+                  <div className="grid grid-cols-2 gap-2">
+                    {service.features.map((feature, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <Image
+                          src={feature.icon}
+                          alt={feature.label}
+                          width={40}
+                          height={20}
+                          className="w-[21px] h-[21px]"
+                        />
+                        <span
+                          className={`${inter.className} text-[12px] font-medium text-[#181635]`}
+                        >
+                          {feature.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              {/* NAVIGATION BUTTONS */}
-              <div className="flex items-center justify-center gap-3 mt-2">
-                <button
-                  onClick={handlePrevious}
-                  aria-label="Previous"
-                  className="hover:opacity-70"
-                >
-                  <img
-                    src="/icons/left-arrow.png"
-                    alt="Previous"
-                    className="w-[32px] h-[32px]"
-                  />
-                </button>
-
-                <div className="flex gap-1.5">
-                  {services.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`transition-all duration-300 ${
-                        currentIndex === index
-                          ? "w-6 h-2 bg-black rounded-full"
-                          : "w-2 h-2 bg-[#FACA31] rounded-full"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  onClick={handleNext}
-                  aria-label="Next"
-                  className="hover:opacity-70"
-                >
-                  <img
-                    src="/icons/right-arrow.png"
-                    alt="Next"
-                    className="w-[32px] h-[32px]"
-                  />
-                </button>
-              </div>
+              ))}
             </div>
           </div>
         </div>
