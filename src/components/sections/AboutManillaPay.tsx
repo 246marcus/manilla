@@ -165,7 +165,7 @@ const AboutManillaPay = () => {
                   />
                 </div>
 
-                <div className="bg-[#000] rounded-2xl w-[326px] md:w-[450px] lg:w-[800px] h-auto md:h-[420px] lg:h-[450px] mt-5 md:mt-0 p-5 flex flex-col items-center lg:ml-3">
+                <div className="bg-[#000] rounded-2xl w-[326px] md:w-[500px] lg:w-[800px] h-auto md:h-[420px] lg:h-[450px] mt-5 md:mt-0 p-5 flex flex-col items-center lg:ml-3">
                   <div className="flex gap-2">
                     <img
                       src="/icons/dotmanilla.png"
