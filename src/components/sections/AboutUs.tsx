@@ -152,7 +152,7 @@ const AboutUs = () => {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="w-full md:flex-1 relative flex flex-col bg-[#F2F2F259] rounded-t-3xl overflow-hidden h-[500px] md:h-[700px] lg:h-[800px]">
+          <div className="w-full md:flex-1 relative flex flex-col bg-[#F2F2F259] rounded-t-3xl overflow-hidden h-[400px] md:h-[700px] lg:h-[800px]">
             {/* Header */}
             <div className="flex items-center justify-center gap-3 py-4">
               <p
@@ -208,7 +208,7 @@ const AboutUs = () => {
             </div>
 
             {/* MOBILE CAROUSEL */}
-            <div className="md:hidden flex flex-col flex-1 justify-between items-center px-4 pb-4">
+            <div className="md:hidden flex flex-col items-center px-4  space-y-3">
               <div className="bg-gray-50 rounded-lg p-4 shadow-sm border border-[#28282852] w-full max-w-md text-left">
                 <p
                   className={`${inter.className} font-semibold text-[16px] text-[#000] mb-3`}
@@ -245,7 +245,7 @@ const AboutUs = () => {
               </div>
 
               {/* NAVIGATION BUTTONS */}
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-3 mt-2">
                 <button
                   onClick={handlePrevious}
                   aria-label="Previous"
@@ -254,18 +254,18 @@ const AboutUs = () => {
                   <img
                     src="/icons/left-arrow.png"
                     alt="Previous"
-                    className="w-[40px] h-[40px]"
+                    className="w-[32px] h-[32px]"
                   />
                 </button>
 
-                <div className="flex gap-2">
+                <div className="flex gap-1.5">
                   {services.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentIndex(index)}
                       className={`transition-all duration-300 ${
                         currentIndex === index
-                          ? "w-8 h-2 bg-black rounded-full"
+                          ? "w-6 h-2 bg-black rounded-full"
                           : "w-2 h-2 bg-[#FACA31] rounded-full"
                       }`}
                     />
@@ -280,7 +280,7 @@ const AboutUs = () => {
                   <img
                     src="/icons/right-arrow.png"
                     alt="Next"
-                    className="w-[40px] h-[40px]"
+                    className="w-[32px] h-[32px]"
                   />
                 </button>
               </div>
