@@ -49,89 +49,68 @@ const AboutManillaPay = () => {
           </div>
 
           {/* Main Content */}
-          <div className="mt-12 lg:my-0 flex flex-col lg:flex-row items-center lg:justify-between gap-12 p-7">
+          <div className="mt-12 lg:my-0 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 lg:gap-24 xl:gap-32 px-6 md:px-10 lg:px-16">
             {/* Left Column - Text */}
-            <div className="max-w-lg text-center lg:text-left px-3 lg:px-0 text-black/80 lg:flex-1 ">
-              <h2 className="sm:text-xl text-2xl  font-semibold mb-4 lg:text-[40px] lg:whitespace-nowrap white ">
+            <div className="flex-1 max-w-lg text-center md:text-left text-black/80">
+              <h2 className="text-2xl md:text-[28px] lg:text-[40px] font-semibold mb-4 whitespace-nowrap">
                 Redefining How Nigerians Pays
               </h2>
               <p
-                className={` ${inter.className}  text-[#868686] mb-6 text-[12px] lg:text-[22px]`}
+                className={`${inter.className} text-[#868686] mb-6 text-[12px] md:text-[14px] lg:text-[22px]`}
               >
                 Nigeria is moving forward - but payments are still stuck in the
                 past.
               </p>
 
-              <div>
-                <div className=" bg-black/7">
-                  <p
-                    className={` ${inter.className}text-xs lg:text-[20px] p-2 py-3 rounded-md text-[#181635] mb-3`}
-                  >
-                    From bank queues and failed transfers to delayed utility
-                    credits and cross-border headaches, the system isn’t built
-                    for speed or convenience. That’s why we created Manilla Pay:
-                    to merge the reliability of traditional infrastructure with
-                    the flexibility and freedom of crypto.
-                    {/* Buttons */}
-                    <div className="flex gap-10 justify-center lg:justify-between md:hidden items-center">
-                      <Link
-                        href="/company"
-                        className=" px-3 sm:px-5 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-sm lg:text-[22px] whitespace-nowrap "
-                      >
-                        Click to learn more about us
-                      </Link>
-
-                      <Link href="/company">
-                        <button className=" text-xs lg:text-[20px] px-3 py-3 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap ">
-                          About Us
-                        </button>
-                      </Link>
-                    </div>
-                  </p>
-                </div>
-
-                <div
-                  className=" hidden   
-              sm:block"
+              <div className="bg-black/5 p-3 rounded-md">
+                <p
+                  className={`${inter.className} text-xs md:text-[14px] lg:text-[20px] text-[#181635]`}
                 >
+                  From bank queues and failed transfers to delayed utility
+                  credits and cross-border headaches, the system isn’t built for
+                  speed or convenience. That’s why we created Manilla Pay: to
+                  merge the reliability of traditional infrastructure with the
+                  flexibility and freedom of crypto.
+                </p>
+
+                {/* Buttons - Mobile */}
+                <div className="flex gap-6 justify-center md:hidden items-center mt-4">
                   <Link
                     href="/company"
-                    className=" px-3 py-2 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-xs lg:text-[22px] "
+                    className="px-4 py-2 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-sm"
                   >
                     Click to learn more about us
                   </Link>
-
                   <Link href="/company">
-                    <button className=" text-xs lg:text-[20px] px-3 py-1 sm:py-3 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition whitespace-nowrap md:mr-10">
+                    <button className="text-xs px-4 py-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full transition">
                       About Us
                     </button>
                   </Link>
                 </div>
               </div>
 
-              {/* Buttons
-              <div className="flex gap-4 flex-wrap justify-center lg:justify-start items-center">
+              {/* Buttons - Tablet & Desktop */}
+              <div className="hidden md:flex gap-6 mt-6">
                 <Link
                   href="/company"
-                  className="px-6 py-3 cursor-pointer mb-2 mt-4 bg-gray-100 text-[#001EA9] rounded-full hover:bg-gray-200 transition"
+                  className="px-4 py-2 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-sm md:text-base"
                 >
                   Click to learn more about us
                 </Link>
-
                 <Link href="/company">
-                  <button className="px-6 py-2 md:mt-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full cursor-pointer transition">
+                  <button className="px-4 py-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full transition text-sm md:text-base">
                     About Us
                   </button>
                 </Link>
-              </div> */}
+              </div>
             </div>
 
             {/* Right Column - Image */}
-            <div className="lg:flex lg:flex-1 justify-center lg:justify-end ">
+            <div className="flex-1 flex justify-center md:justify-end">
               <img
                 src="/images/aboutmanillapay1.png"
                 alt="Right Side Image"
-                className="relative z-10 h-70 sm:h-90 lg:h-auto lg:max-h-140 md:w-120 lg:w-auto object-contain"
+                className="w-[250px] sm:w-[320px] md:w-[500px] lg:w-[620px] xl:w-[700px] h-auto object-contain"
               />
             </div>
           </div>
