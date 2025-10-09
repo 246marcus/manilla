@@ -4,10 +4,10 @@ import gradient from "../../../public/images/gradientStripe.png";
 
 const DevelopmentPartners: React.FC = () => {
   return (
-    <section className="bg-white w-full px-0 mt-6 mb-5 sm:px-4 sm:rounded-[1rem] lg:max-w-7xl lg:mx-auto">
+    <section className="bg-white w-full px-0 mt-6 mb-5 md:w-screen md:max-w-none sm:rounded-[1rem] lg:max-w-7xl lg:mx-auto">
       {/* Top dark section */}
       <div
-        className="bg-gray-900 text-white  px-4 py-12 sm:py-16"
+        className="bg-gray-900 text-white px-4 py-12 sm:py-16"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",
@@ -17,7 +17,7 @@ const DevelopmentPartners: React.FC = () => {
       >
         <div className="max-w-5xl mx-auto text-center">
           {/* Top pill */}
-          <div className="inline-flex items-center gap-2 bg-black text-white px-5 py-4 rounded-full text-xs font-medium mb-6 ">
+          <div className="inline-flex items-center gap-2 bg-black text-white px-5 py-4 rounded-full text-xs font-medium mb-6">
             <span style={{ color: "var(--Secondary, #FACA31)" }}>
               Why Choose
             </span>
@@ -39,7 +39,7 @@ const DevelopmentPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden lg:rounded-b-[2rem]" // curved edges only at bottom
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 relative overflow-hidden lg:rounded-b-[2rem]"
         style={{
           backgroundImage: `url(${Rectangle.src})`,
           backgroundPosition: "center",
@@ -49,14 +49,14 @@ const DevelopmentPartners: React.FC = () => {
         }}
       >
         <div className="hidden md:block relative z-10 mt-0 w-full overflow-hidden">
-          <div className="flex flex-nowrap animate-roll  ">
+          <div className="flex flex-nowrap animate-roll">
             <img
               src="/images/aaa1.png"
-              className=" w-auto  max-w-none scale-60 md:scale-80"
+              className="w-auto max-w-none scale-60 md:scale-80"
             />
             <img
               src="/images/aaa1.png"
-              className=" w-auto  max-w-none scale-60 md:scale-80"
+              className="w-auto max-w-none scale-60 md:scale-80"
             />
             <img
               src="/images/aaa1.png"
@@ -68,12 +68,13 @@ const DevelopmentPartners: React.FC = () => {
             />
           </div>
         </div>
+
         {/* optional mobile */}
         <div className="relative z-10 mt-0 w-full overflow-hidden md:hidden">
-          <div className="flex flex-nowrap animate-roll  ">
+          <div className="flex flex-nowrap animate-roll">
             <img
               src="/images/aaa1.png"
-              className=" w-auto max-w-none scale-60 md:scale-80 -translate-x-5/12  "
+              className="w-auto max-w-none scale-60 md:scale-80 -translate-x-5/12"
             />
           </div>
         </div>

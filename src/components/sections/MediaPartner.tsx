@@ -62,7 +62,7 @@ const MediaPartners: React.FC = () => {
       {/* Top dark section */}
 
       <div
-        className="bg-gray-900 w-full lg:max-w-7xl lg:mx-auto text-white lg:rounded-t-[2rem] px-4 pt-12 pb-4 sm:pt-16"
+        className="bg-gray-900 w-full lg:max-w-7xl lg:mx-auto text-white  md:rounded-t-[2rem]   lg:rounded-t-[2rem] px-4 pt-12 pb-4 sm:pt-16"
         style={{
           backgroundImage: `url(${darkbg.src})`,
           backgroundPosition: "center",
@@ -110,7 +110,7 @@ const MediaPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:rounded-b-[1rem]"
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:rounded-b-[1rem] md:rounded-b-[2rem]"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",
@@ -134,7 +134,7 @@ const MediaPartners: React.FC = () => {
             Manilla is launching soon — Join our Newsletter.
           </p> */}
 
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center md:items-center">
+          <div className="  flex flex-col lg:flex-row lg:justify-between lg:items-center md:items-center">
             {/* Left text */}
             <div>
               <p className="text-xs md:text-sm text-gray-600 max-w-sm my-auto">
