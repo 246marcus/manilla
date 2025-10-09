@@ -22,8 +22,8 @@ interface Blog {
 }
 
 const categories = [
-  "E-commerce",
   "Crypto",
+  "E-commerce",
   "Finance",
   "Technology",
   "Art",

@@ -106,14 +106,14 @@ const CompanyMission: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
+                {/* <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">
                     <h3 className="text-sm w-full  text-gray-600">
                       Accessible & Empowering
                     </h3>
                     <p className="text-xs"></p>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex  flex-1 items-center justify-center gap-4  bg-gray-50 rounded-xl p-3 shadow-sm border border-gray-100">
                   <div className="flex flex-col items-center justify-center text-center md:text-start gap-2 ">

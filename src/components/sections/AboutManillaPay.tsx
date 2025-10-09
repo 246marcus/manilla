@@ -90,15 +90,18 @@ const AboutManillaPay = () => {
               </div>
 
               {/* Buttons - Tablet & Desktop */}
-              <div className="hidden md:flex gap-6 mt-6">
+              <div className="hidden md:flex items-center justify-between mt-6 w-full">
+                {/* Left button */}
                 <Link
                   href="/company"
-                  className="px-4 py-2 bg-gray-100 text-[#000] rounded-full hover:bg-gray-200 transition text-sm md:text-base"
+                  className={`${inter.className}px-4 py-2 bg-gray-100  rounded-full hover:bg-gray-200 transition text-sm md:text-base lg:w-[300px] lg:h-[50px] text-center lg:text-[22px] text-[#181635]`}
                 >
                   Click to learn more about us
                 </Link>
+
+                {/* Right button */}
                 <Link href="/company">
-                  <button className="px-4 py-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full transition text-sm md:text-base">
+                  <button className="px-4 py-2 bg-[#281AC9] hover:bg-[#3a2cd9] text-white rounded-full transition text-sm md:text-base lg:w-[150px] lg:h-[50px]">
                     About Us
                   </button>
                 </Link>
@@ -117,7 +120,7 @@ const AboutManillaPay = () => {
         </div>
 
         {/* Bottom Section */}
-        <section className="relative bg-cover  rounded-2xl bg-center mb-3 mt-10">
+        <section className="relative bg-cover  rounded-2xl bg-center mb-3 mt-20">
           <div className="max-w-7xl mx-auto px-6  gap-1 items-stretch bg-no-repeat">
             {/* LEFT COLUMN */}
             <div className="flex flex-col gap-0 md:justify-center items-center top-1 mb-5">
@@ -153,7 +156,7 @@ const AboutManillaPay = () => {
             </div>
 
             {/* DOWN COLUMN */}
-            <div className="relative flex flex-col md:flex-row lg:flex-row items-center lg:justify-center my-8 md:my-2 top-[-20px] lg:top-0 md:mt-8">
+            <div className="relative flex flex-col md:flex-row lg:flex-row items-center lg:justify-center my-8 md:my-2 top-[-20px] lg:top-0 md:mt-8 lg:mt-15 ">
               <div className="md:flex lg:flex items-stretch justify-center gap-5 ">
                 <div className="relative w-[320px] md:w-[400px] lg:w-[450px] h-auto md:h-[420px] lg:h-[450px] ">
                   <Image

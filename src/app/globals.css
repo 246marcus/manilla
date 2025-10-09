@@ -72,3 +72,13 @@ body {
 [contenteditable="true"][data-placeholder]:focus:empty:before {
   content: "";
 }
+
+/* Hide scrollbar but allow scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

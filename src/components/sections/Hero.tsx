@@ -102,7 +102,7 @@ const Hero = () => {
         <img
           src="/icons/downloadManilla.png"
           alt="Below decoration"
-          className="hidden md:block absolute bottom-[-18px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
+          className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
           style={{ maxWidth: "none" }}
         />
 

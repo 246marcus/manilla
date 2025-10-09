@@ -25,7 +25,7 @@ const Product = () => {
           <p
             className={`${inter.className} text-[#181635] lg:text-[40px] lg:font-semibold whitespace-nowrap`}
           >
-            Manilla Product
+            Manilla Products
           </p>
           <p
             className={`${inter.className} text-[#868686] lg:font-semibold lg:text-[20px] mt-4 mb-6 leading-[1.8]`}
@@ -72,7 +72,7 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex lg:flex-1  justify-start mt-2 bg-[#D7E3FF59] overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent lg:p-7 lg:rounded-2xl ">
+        <div className="hidden lg:flex lg:flex-1 justify-start mt-2 bg-[#D7E3FF59] overflow-x-auto no-scrollbar lg:p-7 lg:rounded-2xl ">
           <div className="flex gap-2 px-6 py-1 min-w-max">
             {/* First Card */}
             <div className="flex-shrink-0 w-[345px] h-[560px] bg-white rounded-2xl p-2 shadow-[0px_4px_12px_0px_#00000029]">
