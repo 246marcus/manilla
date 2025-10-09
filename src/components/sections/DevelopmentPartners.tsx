@@ -4,7 +4,7 @@ import gradient from "../../../public/images/gradientStripe.png";
 
 const DevelopmentPartners: React.FC = () => {
   return (
-    <section className="bg-white w-full sm:max-w-7xl sm:mx-auto sm:px-4 px-0 mt-6 mb-5 lg:rounded-t-[1rem] md:rounded-t-[1rem] ">
+    <section className="bg-white w-full px-0 mt-6 mb-5 sm:px-4 sm:rounded-[1rem] lg:max-w-7xl lg:mx-auto">
       {/* Top dark section */}
       <div
         className="bg-gray-900 text-white  px-4 py-12 sm:py-16"

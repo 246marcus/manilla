@@ -16,22 +16,35 @@ const inter = Inter({
 const Product = () => {
   return (
     <section className="px-3 border-l border-r border-gray-200 text-center mt-13 ">
-      <div className="lg:flex lg:justify-between">
-        <div className="">
+      <div className="lg:flex lg:justify-between lg:gap-15">
+        <div className="lg:mt-15 lg:flex lg:flex-col lg: flex-shrink-0 lg:items-start lg:text-left lg:pl-15 ">
           {" "}
-          <button className="mb-6 px-6 py-2 text-sm bg-[#000] text-white rounded-full transition">
+          <button className="mb-6 px-6 py-2 text-sm bg-[#000] text-white rounded-full lg:p-5 lg:text-[16px]">
             <span className="text-[#FACA31]  ">Learn About</span> Our Products
           </button>
-          <p className="text-[#181635]">Manilla Product</p>
-          <p className="text-[#868686]">
-            Manilla offers a suite of innovative solutions designed to make
-            everyday financial transactions seamless and secure.
+          <p
+            className={`${inter.className} text-[#181635] lg:text-[40px] lg:font-semibold whitespace-nowrap`}
+          >
+            Manilla Product
           </p>
-          <img src="/icons/Vector4.png" alt="" className="p-2 " />
-          <p className={`${inter.className} text-[#868686] `}>
-            Each product is built for speed, reliability, and convenience,
-            empowering users across Africa and beyond to stay connected and in
-            control of their finances.
+          <p
+            className={`${inter.className} text-[#868686] lg:font-semibold lg:text-[20px] mt-4 mb-6 leading-[1.8]`}
+          >
+            Manilla offers a suite of innovative
+            <br className="hidden lg:block" /> solutions designed to make
+            everyday
+            <br className="hidden lg:block lg:whitespace-nowrap" /> financial
+            transactions seamless and secure.
+          </p>
+          <img src="/icons/Vector4.png" alt="" className="p-2 lg:mb-7" />
+          <p
+            className={`${inter.className} text-[#868686] lg:font-semibold lg:text-[20px] leading-[1.8]`}
+          >
+            Each product is built for speed, reliability,
+            <br className="hidden lg:block" /> and convenience, empowering users
+            <br className="hidden lg:block" /> across Africa and beyond to stay
+            <br className="hidden lg:block" /> connected and in control of their
+            finances.
           </p>
         </div>
 
@@ -55,7 +68,7 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex justify-start mt-2 bg-[#D7E3FF59] overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+        <div className="hidden lg:flex lg:flex-1  justify-start mt-2 bg-[#D7E3FF59] overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent lg:p-7 lg:rounded-2xl ">
           <div className="flex gap-2 px-6 py-1 min-w-max">
             {/* First Card */}
             <div className="flex-shrink-0 w-[345px] h-[560px] bg-white rounded-2xl p-2 shadow-[0px_4px_12px_0px_#00000029]">

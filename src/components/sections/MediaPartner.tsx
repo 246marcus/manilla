@@ -123,56 +123,48 @@ const MediaPartners: React.FC = () => {
             Be First. Be Ahead.
           </h3>
           <p
-            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-start hidden sm:block md:block`}
+            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-center hidden sm:block md:block`}
           >
             Manilla is launching soon — Join our Newsletter.
           </p>
 
-          <p
+          {/* <p
             className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-start`}
           >
             Manilla is launching soon — Join our Newsletter.
-          </p>
+          </p> */}
 
-          <div className="flex flex-col md:flex-row">
-            <p className=" md:flex-2/6 text-xs md:text-sm text-gray-600 max-w-sm my-auto ">
-              Join our newsletter to get early access, exclusive updates and a
-              front-row seat to the future of cross-border payments
-            </p>
-
-            <div className="flex flex-row">
-              <form
-                onSubmit={handleSubscribe}
-                className="md:flex-4/6 flex flex-row items-center justify-center gap-4 max-w-2xl mx-auto"
-              >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Join the waiting list for our App"
-                  className={` ${inter.className} flex-1 rounded-full border border-gray-300 px- py-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635] placeholder:text-center`}
-                  required
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="px-4 py-3 rounded-full bg-gray-900 text-white text-[10px] font-medium hover:bg-gray-800 transition disabled:opacity-50 whitespace-nowrap"
-                >
-                  {isLoading ? "Joining..." : "Join Newsletter"}
-                </button>
-              </form>
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center md:items-center">
+            {/* Left text */}
+            <div>
+              <p className="text-xs md:text-sm text-gray-600 max-w-sm my-auto">
+                Join our newsletter to get early access, exclusive updates{" "}
+                <br className="hidden lg:block" />
+                and a front-row seat to the future of cross-border payments
+              </p>
             </div>
 
-            {/* Message display */}
-            {message && (
-              <div
-                className={`mt-4 text-center text-sm ${
-                  messageType === "success" ? "text-green-600" : "text-red-600"
-                }`}
+            {/* Right form */}
+            <form
+              onSubmit={handleSubscribe}
+              className="mt-4 lg:mt-0 flex lg:flex-row  flex-col items-center justify-center gap-4 max-w-2xl mx-auto lg:mx-0"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Join the waiting list for our App"
+                className={`${inter.className}  w-[200px] sm:w-[150px] lg:w-[350px] rounded-full border border-gray-300 py-3 px-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635] placeholder:text-center`}
+                required
+              />
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="px-4 py-3 rounded-full bg-gray-900 text-white text-[10px] font-medium hover:bg-gray-800 transition disabled:opacity-50 whitespace-nowrap  w-[100px] sm:-[100px] lg:w-[150px]"
               >
-                {message}
-              </div>
-            )}
+                {isLoading ? "Joining..." : "Join Newsletter"}
+              </button>
+            </form>
           </div>
         </div>
       </div>
