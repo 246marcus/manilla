@@ -58,11 +58,11 @@ const MediaPartners: React.FC = () => {
   };
 
   return (
-    <section className="bg-white max-w-7xl mx-auto px-4 mt-6">
+    <section className=" w-full sm:max-w-7xl sm:mx-auto sm:px-4 px-0 mt-6 mb-5">
       {/* Top dark section */}
-      {/* Top dark section */}
+
       <div
-        className="bg-gray-900 text-white rounded-t-[2rem] px-4 pt-12 pb-4 sm:pt-16"
+        className="bg-gray-900 w-full lg:max-w-7xl lg:mx-auto text-white lg:rounded-t-[2rem] px-4 pt-12 pb-4 sm:pt-16"
         style={{
           backgroundImage: `url(${darkbg.src})`,
           backgroundPosition: "center",
@@ -71,8 +71,6 @@ const MediaPartners: React.FC = () => {
         }}
       >
         <div className="max-w-5xl mx-auto text-center">
-          {/* Top pill */}
-
           {/*  desktop */}
           <div className=" inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-5 py-2 rounded-full text-xs font-medium mb-6">
             Manilla in the News
@@ -112,7 +110,7 @@ const MediaPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14 rounded-b-[1rem]"
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50 px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:rounded-b-[1rem]"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",
@@ -125,7 +123,13 @@ const MediaPartners: React.FC = () => {
             Be First. Be Ahead.
           </h3>
           <p
-            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center`}
+            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-start hidden sm:block md:block`}
+          >
+            Manilla is launching soon — Join our Newsletter.
+          </p>
+
+          <p
+            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-start`}
           >
             Manilla is launching soon — Join our Newsletter.
           </p>
@@ -136,29 +140,7 @@ const MediaPartners: React.FC = () => {
               front-row seat to the future of cross-border payments
             </p>
 
-            {/* <div className="flex flex-col">
-              <form
-                onSubmit={handleSubscribe}
-                className=" md:flex-4/6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto"
-              >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Join the waiting list for our App"
-                  className="flex-1 rounded-full border mt-3 border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
-                  required
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="px-6 py-3 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition disabled:opacity-50"
-                >
-                  {isLoading ? "Joining..." : "Join Newsletter"}
-                </button>
-              </form>
-            </div> */}
-            <div className="flex flex-col mt-3">
+            <div className="flex flex-row">
               <form
                 onSubmit={handleSubscribe}
                 className="md:flex-4/6 flex flex-row items-center justify-center gap-4 max-w-2xl mx-auto"
@@ -167,7 +149,7 @@ const MediaPartners: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Join the waiting list"
+                  placeholder="Join the waiting list for our App"
                   className={` ${inter.className} flex-1 rounded-full border border-gray-300 px- py-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635] placeholder:text-center`}
                   required
                 />

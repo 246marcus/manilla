@@ -229,8 +229,8 @@ const ManillaSlides = () => {
   }, [slides.length]);
 
   return (
-    <section className="bg-[#D7E3FF59] lg:hidden">
-      <div className=" mt-6 mb-7 p-4 flex flex-col items-center">
+    <section className="bg-[#D7E3FF59] lg:hidden mt-0 p-3">
+      <div className=" mt-1 mb-7 p- flex flex-col items-center">
         {/* Card Display */}
         <div
           className="bg-white rounded-2xl p-2 max-w-[345px] transition-all duration-500"

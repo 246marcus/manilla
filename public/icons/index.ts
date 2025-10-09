@@ -14,11 +14,11 @@ import Allpayment from "./Allpayment.png";
 import Blockchain from "./Blockchain.png";
 import topPlatforms from "./topPlatforms.png";
 import activeUser from "./ActiveUsers.png";
-import downloadApp from "./downloadManilla.png";
 import ManillaFinance from "./ManillaFinance.png";
 import ManillaButton from "./ManillaButton.png";
 import tiktok from "./tiktok.png";
-import Download from "./downloadApp.png";
+import downloadApp1 from "./downloadApp1.png";
+5;
 import USDTICON from "./USDTICON.png";
 import USDCICON from "./USDCICON.png";
 import USD1ICON from "./USD1ICON.png";
@@ -42,10 +42,9 @@ export {
   Blockchain,
   activeUser,
   topPlatforms,
-  downloadApp,
+  downloadApp1,
   ManillaFinance,
   ManillaButton,
-  Download,
   USDTICON,
   BTCICON,
   USDCICON,

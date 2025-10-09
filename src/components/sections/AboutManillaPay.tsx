@@ -157,7 +157,7 @@ const AboutManillaPay = () => {
               <div className="md:flex lg:flex items-stretch justify-center gap-5 ">
                 <div className="relative w-[320px] md:w-[400px] lg:w-[450px] h-auto md:h-[420px] lg:h-[450px] ">
                   <Image
-                    src="/images/manandfemale.png"
+                    src="/images/manandfemale1.png"
                     alt="background"
                     width={350}
                     height={300}

@@ -4,11 +4,10 @@ import gradient from "../../../public/images/gradientStripe.png";
 
 const DevelopmentPartners: React.FC = () => {
   return (
-    <section className="bg-white max-w-7xl mx-auto px-4 mt-6 mb-5">
-      {/* Top dark section */}
+    <section className="bg-white w-full sm:max-w-7xl sm:mx-auto sm:px-4 px-0 mt-6 mb-5 lg:rounded-t-[1rem] md:rounded-t-[1rem] ">
       {/* Top dark section */}
       <div
-        className="bg-gray-900 text-white rounded-t-[1rem] px-4 py-12 sm:py-16"
+        className="bg-gray-900 text-white  px-4 py-12 sm:py-16"
         style={{
           backgroundImage: `url(${gradient.src})`,
           backgroundPosition: "center",
@@ -40,7 +39,7 @@ const DevelopmentPartners: React.FC = () => {
 
       {/* Bottom gradient section */}
       <div
-        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden rounded-b-[2rem]" // curved edges only at bottom
+        className="bg-gradient-to-r from-green-50 via-purple-50 to-pink-50  relative overflow-hidden lg:rounded-b-[2rem]" // curved edges only at bottom
         style={{
           backgroundImage: `url(${Rectangle.src})`,
           backgroundPosition: "center",
