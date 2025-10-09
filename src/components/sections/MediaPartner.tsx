@@ -123,7 +123,7 @@ const MediaPartners: React.FC = () => {
             Be First. Be Ahead.
           </h3>
           <p
-            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-center hidden sm:block md:block`}
+            className={`${inter.className} text-[12px] font-semibold text-[#181635] text-center lg:text-start md:text-center `}
           >
             Manilla is launching soon — Join our Newsletter.
           </p>
@@ -147,14 +147,14 @@ const MediaPartners: React.FC = () => {
             {/* Right form */}
             <form
               onSubmit={handleSubscribe}
-              className="mt-4 lg:mt-0 flex lg:flex-row  flex-col items-center justify-center gap-4 max-w-2xl mx-auto lg:mx-0"
+              className="mt-4 lg:mt-0 flex lg:flex-row  flex-row items-center justify-center gap-4 max-w-2xl mx-auto lg:mx-0"
             >
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Join the waiting list for our App"
-                className={`${inter.className}  w-[200px] sm:w-[150px] lg:w-[350px] rounded-full border border-gray-300 py-3 px-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635] placeholder:text-center`}
+                className={`${inter.className}  w-[175px] sm:w-[150px] lg:w-[350px] rounded-full border border-gray-300 py-3 px-3 text-[10px] focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-[#181635] placeholder:text-center`}
                 required
               />
               <button
