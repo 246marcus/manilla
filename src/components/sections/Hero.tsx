@@ -137,9 +137,9 @@ const Hero = () => {
         </div>
 
         <img
-          src="/icons/downloadApp1.png"
+          src="/images/lastheroicon.png"
           alt="Below decoration"
-          className="block md:hidden absolute bottom-[60px] right-[-10] top-50 w-[auto] h-[100] rotate-0"
+          className="block md:hidden absolute bottom-[60px] left-[5px] top-40 w-[auto] h-[160] rotate-0"
           style={{ maxWidth: "none" }}
         />
       </div>
