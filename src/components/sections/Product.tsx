@@ -36,7 +36,11 @@ const Product = () => {
             <br className="hidden lg:block lg:whitespace-nowrap" /> financial
             transactions seamless and secure.
           </p>
-          <img src="/icons/Vector4.png" alt="" className="p-2 lg:mb-7" />
+          <img
+            src="/icons/Vector4.png"
+            alt=""
+            className="p-2 lg:mb-7 md:w-full"
+          />
           <p
             className={`${inter.className} text-[#868686] lg:font-semibold lg:text-[20px] leading-[1.8]`}
           >
