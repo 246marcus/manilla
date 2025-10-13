@@ -51,7 +51,7 @@ const Hero = () => {
       <div className="relative"></div>
 
       {/* Image under text */}
-      <div className="relative z-10 mt-2 md:mt-12">
+      <div className="relative z-10 mt-2  md:mt-12 lg:mb-0 md:mb-0">
         {/* Main image */}
         <img
           src={heropicture.src}
@@ -79,7 +79,7 @@ const Hero = () => {
         <img
           src="/icons/topPlatforms.png"
           alt="Below decoration"
-          className="absolute scale-85 md:scale-100 md:bottom-[-50px] bottom-[-20px] left-1/2 -translate-x-1/2 w-auto h-23"
+          className="absolute scale-85 md:scale-100 md:bottom-[-50px] bottom-[-20px] left-1/2 -translate-x-1/2 w-auto h-23 lg:bottom-[-50px] "
           style={{ maxWidth: "none" }}
         />
 
@@ -94,7 +94,7 @@ const Hero = () => {
         <img
           src="/icons/ActiveUsers.png"
           alt="Below decoration"
-          className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14"
+          className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14  lg:mb-7 md:mb-5"
           style={{ maxWidth: "none" }}
         />
 
@@ -102,7 +102,7 @@ const Hero = () => {
         <img
           src="/icons/downloadManilla.png"
           alt="Below decoration"
-          className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
+          className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95 lg:mb-4"
           style={{ maxWidth: "none" }}
         />
 
@@ -139,13 +139,13 @@ const Hero = () => {
         <img
           src="/images/lastheroicon.png"
           alt="Below decoration"
-          className="block md:hidden absolute bottom-[60px] left-[5px] top-40 w-[auto] h-[160] rotate-0"
+          className="block md:hidden absolute bottom-[60px] left-[5px] top-35 w-[auto] h-[160] rotate-0"
           style={{ maxWidth: "none" }}
         />
       </div>
 
       {/* Trusted Platform Rolling Effect */}
-      <div className="relative z-10 mt-4  md:mt-16 w-screen overflow-hidden ">
+      <div className="relative z-10 mt-[-15]  md:mt-4 w-screen overflow-hidden lg:mt-3 ">
         {/* top */}
         <div className="flex animate-roll h-28 md:h-40 mt-4 ">
           <img
