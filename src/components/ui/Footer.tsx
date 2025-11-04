@@ -97,8 +97,8 @@ const Footer = () => {
                   </a>
 
                   {/* App Store */}
-                  <a
-                    href="https://apps.apple.com/app/manillapay"
+                 <a
+                    href="https://apps.apple.com/ng/app/manilla-pay/id6754242757"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:scale-95"
