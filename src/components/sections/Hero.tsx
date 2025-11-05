@@ -99,12 +99,14 @@ const Hero = () => {
         />
 
         {/* Icon at the right bottom of image */}
-        <img
-          src="/icons/downloadManilla.png"
-          alt="Below decoration"
-          className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95 lg:mb-3"
-          style={{ maxWidth: "none" }}
-        />
+      <a href="https://apps.apple.com/ng/app/manilla-pay/id6754242757" target="_blank" rel="noopener noreferrer">
+  <img
+    src="/icons/downloadManilla.png"
+    alt="Below decoration"
+    className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95 lg:mb-3"
+    style={{ maxWidth: "none" }}
+  />
+</a>
 
         <div className="absolute bottom-0 -right-10 md:hidden ">
           {/* Google Play */}
