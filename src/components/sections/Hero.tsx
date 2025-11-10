@@ -138,12 +138,14 @@ const Hero = () => {
           </a> */}
         </div>
 
-        <img
-          src="/images/lastheroicon.png"
-          alt="Below decoration"
-          className="block md:hidden absolute bottom-[60px] left-[5px] top-35 w-[auto] h-[160] rotate-0"
-          style={{ maxWidth: "none" }}
-        />
+        <a href="https://apps.apple.com/ng/app/manilla-pay/id6754242757">
+          <img
+            src="/images/lastheroicon.png"
+            alt="Below decoration"
+            className="block md:hidden absolute bottom-[60px] left-[5px] top-35 w-[auto] h-[160] rotate-0"
+            style={{ maxWidth: "none" }}
+          />
+        </a>
       </div>
 
       {/* Trusted Platform Rolling Effect */}

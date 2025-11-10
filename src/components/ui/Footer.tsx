@@ -97,7 +97,7 @@ const Footer = () => {
                   </a>
 
                   {/* App Store */}
-                 <a
+                  <a
                     href="https://apps.apple.com/ng/app/manilla-pay/id6754242757"
                     target="_blank"
                     rel="noopener noreferrer"

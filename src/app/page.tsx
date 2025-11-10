@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation"; // ✅ usePathname instead of useRouter
 import Script from "next/script";
 
 import AboutManillaPay from "@/components/sections/AboutManillaPay";
@@ -13,22 +14,41 @@ import Product from "@/components/sections/Product";
 import ManillaSlides from "@/components/sections/ManillaSlides";
 import Nav from "@/components/ui/Nav";
 
+declare global {
+  interface Window {
+    $zoho: any;
+  }
+}
+
 export default function Home() {
+  const pathname = usePathname(); // ✅ usePathname replaces useRouter()
+
   useEffect(() => {
-    // Initialize Zoho SalesIQ global variable safely
-    window.$zoho = window.$zoho || {};
-    window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };
-  }, []);
+    // Only load Zoho widget on homepage
+    if (pathname === "/") {
+      window.$zoho = window.$zoho || {};
+      window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };
+
+      const script = document.createElement("script");
+      script.id = "zsiqscript";
+      script.src =
+        "https://salesiq.zoho.com/widget?wc=siqc06e0a68e054529311c51022aa78b5c9c346a9e4c5db2eebabea824834236e99";
+      script.defer = true;
+      document.body.appendChild(script);
+
+      return () => {
+        // Cleanup widget on route change
+        const existing = document.getElementById("zsiqscript");
+        if (existing) existing.remove();
+
+        const zohoWidget = document.getElementById("zsiqwidget");
+        if (zohoWidget) zohoWidget.remove();
+      };
+    }
+  }, [pathname]);
 
   return (
     <main>
-      {/* ✅ Zoho SalesIQ chat widget (homepage only) */}
-      <Script
-        id="zsiqscript"
-        src="https://salesiq.zoho.com/widget?wc=siqc06e0a68e054529311c51022aa78b5c9c346a9e4c5db2eebabea824834236e99"
-        strategy="afterInteractive"
-      />
-
       <section className="bg-amber-300">
         <Nav />
         <Hero />
