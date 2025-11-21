@@ -265,11 +265,20 @@ const ManillaSlides = () => {
 
             {slides[currentSlide].showStores ? (
               <div className="flex mt-2 gap-0 justify-center items-center -space-x-3">
-                <img
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.manilla.manilla"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                   <img
                   src="/images/googlestore.png"
                   alt="Google Play"
                   className="w-[150px] h-[60px]"
                 />
+                
+                </a>
+                
+               
                 <a
                   href="https://apps.apple.com/ng/app/manilla-pay/id6754242757"
                   target="_blank"
