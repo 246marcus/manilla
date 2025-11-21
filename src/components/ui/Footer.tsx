@@ -82,7 +82,7 @@ const Footer = () => {
                 <div className="flex -space-x-3 justify-center sm:justify-start">
                   {/* Google Play */}
                   <a
-                    href="https://play.google.com/store/apps/details?id=com.manillapay"
+                    href="https://play.google.com/store/apps/details?id=com.manilla.manilla"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:scale-95"
