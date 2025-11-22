@@ -99,14 +99,18 @@ const Hero = () => {
         />
 
         {/* Icon at the right bottom of image */}
-      <a href="https://apps.apple.com/ng/app/manilla-pay/id6754242757" target="_blank" rel="noopener noreferrer">
-  <img
-    src="/icons/downloadManilla.png"
-    alt="Below decoration"
-    className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95 lg:mb-3"
-    style={{ maxWidth: "none" }}
-  />
-</a>
+        <a
+          href="https://apps.apple.com/ng/app/manilla-pay/id6754242757"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/icons/downloadManilla.png"
+            alt="Below decoration"
+            className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95 lg:mb-3"
+            style={{ maxWidth: "none" }}
+          />
+        </a>
 
         <div className="absolute bottom-0 -right-10 md:hidden ">
           {/* Google Play */}
@@ -138,14 +142,47 @@ const Hero = () => {
           </a> */}
         </div>
 
-        <a href="https://apps.apple.com/ng/app/manilla-pay/id6754242757">
-          <img
-            src="/images/lastheroicon.png"
-            alt="Below decoration"
-            className="block md:hidden absolute bottom-[60px] left-[5px] top-35 w-[auto] h-[160] rotate-0"
-            style={{ maxWidth: "none" }}
-          />
-        </a>
+        <div className="md:hidden absolute bottom-[100px] left-[60px] flex flex-row  items-center">
+          {/* First image with text overlay */}
+          <div className="relative">
+            <img
+              src="/icons/subtract.png"
+              alt="First image"
+              className="w-[auto] h-[40px] mr-0"
+              style={{ maxWidth: "none" }}
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center right-[10px]">
+              <p className="text-white text-[9px] font-bold text-center">
+                Manilla Pay App
+              </p>
+              <p className="text-[#FACA31] text-[6px] font-bold text-center">
+                Download
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-row ml-[-10px]">
+            {/* Second image with link */}
+            <a href="https://play.google.com/store/apps/details?id=com.manilla.manilla">
+              <img
+                src="/icons/androiddownload.png"
+                alt="Second image"
+                className="w-[auto] h-[32px]"
+                style={{ maxWidth: "none" }}
+              />
+            </a>
+
+            {/* Third image with link */}
+            <a href="https://apps.apple.com/ng/app/manilla-pay/id6754242757">
+              <img
+                src="/icons/appledownload.png"
+                alt="Third image"
+                className="w-[auto] h-[32px]"
+                style={{ maxWidth: "none" }}
+              />
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Trusted Platform Rolling Effect */}
