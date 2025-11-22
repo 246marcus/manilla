@@ -6,6 +6,25 @@ import { ArrowRight, Globe, Shield, Smartphone } from "lucide-react";
 import heropicture from "../../../public/images/heropicture.png";
 
 const Hero = () => {
+  const handleDownload = () => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+    const isAndroid = /Android/.test(userAgent);
+
+    if (isIOS) {
+      window.location.href =
+        "https://apps.apple.com/ng/app/manilla-pay/id6754242757";
+    } else if (isAndroid) {
+      window.location.href =
+        "https://play.google.com/store/apps/details?id=com.manilla.manilla";
+    } else {
+      alert(
+        "Please open this page on an iPhone or Android device to download the app."
+      );
+    }
+  };
+
   return (
     <section className="relative lg:pt-30 md:pt-30 pt-25  hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6 ">
       {/* Background Pattern */}
@@ -31,7 +50,8 @@ const Hero = () => {
         <div className="relative w-full">
           <Button
             variant="ghost"
-            className="rounded-full scale-85 md:scale-100  px-6 md:px-8 py-1 md:py-3 text-sm group relative"
+            className="rounded-full scale-85 md:scale-100 px-6 md:px-8 py-1 md:py-3 text-sm group relative"
+            onClick={handleDownload}
           >
             Get Started Now
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -155,7 +175,7 @@ const Hero = () => {
               <p className="text-white text-[9px] font-bold text-center">
                 Manilla Pay App
               </p>
-              <p className="text-[#FACA31] text-[6px] font-bold text-center">
+              <p className="text-[#FACA31] text-[7px] font-bold text-center">
                 Download
               </p>
             </div>
