@@ -187,7 +187,7 @@ const Hero = () => {
               <img
                 src="/icons/androiddownload.png"
                 alt="Second image"
-                className="w-[auto] h-[32px]"
+                className="w-[auto] h-[32px] rotate-90"
                 style={{ maxWidth: "none" }}
               />
             </a>
