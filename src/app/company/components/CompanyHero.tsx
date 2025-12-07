@@ -58,7 +58,7 @@ const CompanyHero: React.FC = () => {
 
                 <p className="mt-0 text-center text-[15px] md:text-base  md:px-4 text-[#474650]  leading-relaxed lg:text-[18px]">
                   <p className="text-center text-[10px] lg:text-[14px] md:text-[10px] pb-3 ">
-                    <p className="pb-3 md:text-[14px]">
+                    <p className="pb-3 md:text-[1px]">
                       <span className="text-[#281AC9] text-[10px]  md:text-[15px] lg:text-[18px]  font-bold ">
                         Manilla Finance
                       </span>{" "}
