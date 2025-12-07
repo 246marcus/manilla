@@ -40,6 +40,7 @@ const CompanyValue: React.FC = () => {
               </h2>
             </div>
           </div>
+
           <div className="flex-1 flex justify-end">
             <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border border-gray-200 bg-white hover:shadow-md transition">
               Our Values
@@ -48,21 +49,26 @@ const CompanyValue: React.FC = () => {
         </div>
 
         {/* Subtitle */}
-        <div className="flex justify-center items-center -translate-y-25 ">
-          <div className="text-center max-w-70 md:max-w-xl rounded-lg border border-gray-200 shadow-sm px-6 py-1 md:py-3">
-            <div className="inline-flex items-center ">
-              <span className="text-xs sm:text-sm font-medium text-gray-700">
+        <div className="flex justify-center items-center -translate-y-35 mt-6">
+          <div className="text-center max-w-70 md:max-w-xl rounded-lg  shadow-sm px-6 py-1 md:py-3 bg-[#E2E2E242]">
+            <div className="inline-flex items-center  ">
+              <img
+                src="/icons/valueicon.png"
+                alt=""
+                className="w-[34px] h-[34px] flex justify-center items-center mt-1"
+              />
+              <span className="text-xs sm:text-sm font-medium text-[#181635]">
                 Our Value Statements
               </span>
             </div>
-            <p className="mt-3 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
+            <p className="mt- text-sm sm:text-base text-[#181635] max-w-2xl mx-auto">
               All centered around delivering real value to the people we serve.
             </p>
           </div>
         </div>
 
         {/*   top row */}
-        <div className="flex flex-col gap-6 -translate-y-10">
+        <div className="flex flex-col gap-6 -translate-y-25">
           <div className="flex flex-col justify-center items-center md:flex-row max-w-4xl gap-4 mx-auto ">
             {/* Card: Innovation */}
             <ValueCard
@@ -72,17 +78,6 @@ const CompanyValue: React.FC = () => {
              ways to enhance user experiences and create solutions to digital
              financial services."
             />
-            {/* Card: Blue highlight (center) */}
-            {/* <div className=" md:flex-7/12 w-full max-w-md md:max-w-4xl bg-blue-700 text-white rounded-2xl p-12 shadow-md flex flex-col text-center items-center justify-center">
-              <div className="inline-flex items-center gap-2 bg-black bg-opacity-30 px-3 py-1 rounded-full  mb-4">
-                <span className="text-xs font-medium">Our Values</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-3">What Drives Us</h3>
-              <p className="text-sm opacity-90 max-w-70">
-                At Manilla Finance, our values shape every decision, product,
-                and experience.
-              </p>
-            </div> */}
             <img
               src={cardPng.src}
               alt=""
