@@ -58,18 +58,17 @@ const CompanyHero: React.FC = () => {
 
                 <p className="mt-0 text-center text-[15px] md:text-base  md:px-4 text-[#474650]  leading-relaxed lg:text-[18px]">
                   <p className="text-center text-[10px] lg:text-[14px] md:text-[10px] pb-3 ">
-                    <p className="pb-3 md:text-[1px]">
+                    <p className="pb-3 md:text-[14px]">
                       <span className="text-[#281AC9] text-[10px]  md:text-[15px] lg:text-[18px]  font-bold ">
                         Manilla Finance
                       </span>{" "}
-                      Manilla Finance is a pioneering fintech company
-                      transforming the way utility bills and travel payments are
-                      made across Africa and North America. Founded with the
-                      vision of bridging traditional financial systems and
-                      emerging blockchain technology, Manilla Finance empowers
-                      individuals and businesses to pay bills and transact
-                      seamlessly using both utility digital assets and
-                      stablecoins like USDC and USDT.
+                      is a pioneering fintech company transforming the way
+                      utility bills and travel payments are made across Africa
+                      and North America. Founded with the vision of bridging
+                      traditional financial systems and emerging blockchain
+                      technology, Manilla Finance empowers individuals and
+                      businesses to pay bills and transact seamlessly using both
+                      utility digital assets and stablecoins like USDC and USDT.
                     </p>
                     <p className="pb-3 md:text-[14px]">
                       Headquartered in Nigeria and Canada, Manilla Finance
