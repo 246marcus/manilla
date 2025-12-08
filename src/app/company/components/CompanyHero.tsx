@@ -95,7 +95,15 @@ const CompanyHero: React.FC = () => {
               </div>
             </div>
 
-            <div className="hidden md:flex flex-1 md:flex-5/12 relative text-2xl font-bold">
+            <div className="hidden md:block lg:hidden w-full lg:w-[800px]">
+              <img
+                src="/images/aboutimage.png"
+                alt=""
+                className="w-[100%] h-auto"
+              />
+            </div>
+
+            <div className="hidden lg:flex flex-1 md:flex-5/12 relative text-2xl font-bold">
               <img
                 src="/images/manillafinance.png"
                 className="w-full h-full object-cover rounded-lg"
