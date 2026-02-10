@@ -38,7 +38,8 @@ export const FooterLinks = [
       { name: "Home", link: "/" },
 
       { name: "Company", link: "/company" },
-      { name: "Manilla Suite", link: "/manillaSuit/card" },
+      { name: "Manilla Card", link: "/manillaSuit/card" },
+      { name: "Manilla Token", link: "/manillaSuit/manillaToken" },
       { name: "Legal", link: "/legal" },
     ],
   },

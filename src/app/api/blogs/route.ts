@@ -12,18 +12,16 @@ export async function GET(req: Request) {
     const category = searchParams.get("category");
 
     const query: Record<string, unknown> = {};
-    
+
     if (status) {
       query.status = status;
     }
-    
+
     if (category) {
       query.category = category;
     }
 
-    const blogs = await Blog.find(query)
-      .sort({ createdAt: -1 })
-      .select("-__v");
+    const blogs = await Blog.find(query).sort({ createdAt: -1 }).select("-__v");
 
     return NextResponse.json({ blogs });
   } catch (error: unknown) {
@@ -40,18 +38,26 @@ export async function POST(req: Request) {
   try {
     await connectDB();
     const formData = await req.formData();
-    
-    const title = formData.get('title') as string;
-    const category = formData.get('category') as string;
-    const content = formData.get('content') as string;
-    const excerpt = formData.get('excerpt') as string;
-    const authorName = formData.get('authorName') as string;
-    const authorImage = formData.get('authorImage') as string;
-    const status = (formData.get('status') as string) || "draft";
-    const imageFile = formData.get('image') as File;
+
+    const title = formData.get("title") as string;
+    const category = formData.get("category") as string;
+    const content = formData.get("content") as string;
+    const excerpt = formData.get("excerpt") as string;
+    const authorName = formData.get("authorName") as string;
+    const authorImage = formData.get("authorImage") as string;
+    const status = (formData.get("status") as string) || "draft";
+    const imageFile = formData.get("image") as File;
 
     // Validate required fields
-    if (!title || !category || !content || !excerpt || !authorName || !authorImage || !imageFile) {
+    if (
+      !title ||
+      !category ||
+      !content ||
+      !excerpt ||
+      !authorName ||
+      !authorImage ||
+      !imageFile
+    ) {
       return NextResponse.json(
         { message: "All fields are required" },
         { status: 400 }
@@ -76,14 +82,14 @@ export async function POST(req: Request) {
     // Upload image to Cloudinary
     let imageUrl = "";
     let imagePublicId = "";
-    
+
     if (imageFile) {
       try {
         const bytes = await imageFile.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        const base64String = `data:${imageFile.type};base64,${buffer.toString('base64')}`;
-        
-        const cloudinary = (await import('cloudinary')).v2;
+        const base64String = `data:${imageFile.type};base64,${buffer.toString("base64")}`;
+
+        const cloudinary = (await import("cloudinary")).v2;
         cloudinary.config({
           cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
           api_key: process.env.CLOUDINARY_API_KEY,
@@ -91,12 +97,12 @@ export async function POST(req: Request) {
         });
 
         const result = await cloudinary.uploader.upload(base64String, {
-          folder: 'manilla-blogs',
-          resource_type: 'auto',
+          folder: "manilla-blogs",
+          resource_type: "auto",
           transformation: [
-            { width: 800, height: 600, crop: 'fill' },
-            { quality: 'auto' }
-          ]
+            { width: 800, height: 600, crop: "fill" },
+            { quality: "auto" },
+          ],
         });
 
         imageUrl = result.secure_url;

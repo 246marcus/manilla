@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback } from "react";
 import NewsletterEditor from "./NewsletterEditor";
 
-
 interface NewsletterModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -16,7 +15,7 @@ interface NewsletterModalProps {
   loading?: boolean;
   totalUsers?: number;
   selectedUsers?: Array<{ _id: string; email: string }>;
- 
+  modalTitle?: string;
 }
 
 const NewsletterModal: React.FC<NewsletterModalProps> = ({
@@ -26,6 +25,7 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
   loading = false,
   totalUsers = 0,
   selectedUsers = [],
+  modalTitle = "Create Beautiful Newsletter",
 }) => {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
@@ -186,7 +186,7 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999]">
       <div className="bg-white rounded-xl shadow-lg w-full max-w-5xl h-[90vh] p-6 pb-40 flex flex-col relative overflow-y-scroll">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Create Beautiful Newsletter</h2>
+          <h2 className="text-xl font-semibold">{modalTitle}</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
@@ -207,7 +207,7 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
                 onChange={(e) => setSubject(e.target.value)}
                 required
                 className="w-full border rounded-lg px-3 py-2 text-sm"
-                placeholder="Enter newsletter subject..."
+                placeholder="Enter subject..."
               />
             </div>
             <div className="text-sm text-gray-600 flex items-center">
@@ -273,12 +273,12 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({
             <NewsletterEditor
               value={content}
               onChange={handleEditorChange}
-              placeholder="Write your newsletter content here..."
+              placeholder="Write your content here..."
             />
 
             <p className="text-xs text-gray-500 mt-2">
               Use the toolbar above to format your text. All formatting will be
-              preserved in your newsletter.
+              preserved in your message.
             </p>
           </div>
 

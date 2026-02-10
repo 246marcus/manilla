@@ -7,7 +7,7 @@ import { FooterLinks, socialMedia, QRcode } from "../../types/index";
 
 const Footer = () => {
   return (
-    <footer className=" bg-white  text-black py-12">
+    <footer className=" bg-white text-black py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className=" flex flex-col lg:flex-row lg:justify-between  gap-4 ">
           <div className="flex flex-col sm:flex-row justify-between">
@@ -82,7 +82,7 @@ const Footer = () => {
                 <div className="flex -space-x-3 justify-center sm:justify-start">
                   {/* Google Play */}
                   <a
-                    href="https://play.google.com/store/apps/details?id=com.manillapay"
+                    href="https://play.google.com/store/apps/details?id=com.manilla.manilla"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:scale-95"
@@ -98,7 +98,7 @@ const Footer = () => {
 
                   {/* App Store */}
                   <a
-                    href="https://apps.apple.com/app/manillapay"
+                    href="https://apps.apple.com/ng/app/manilla-pay/id6754242757"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:scale-95"

@@ -167,7 +167,7 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
                 </div>
                 <div>
                   <label className="block text-sm mb-1 font-semibold ">
-                    Blog Excerpt
+                    Blog Subtitle
                   </label>
                   {/* <textarea
                     value={formData.excerpt}
@@ -330,4 +330,3 @@ const CreateBlogModal: React.FC<CreateBlogModalProps> = ({
 };
 
 export default CreateBlogModal;
-

@@ -117,46 +117,71 @@ const ContactPage = () => {
     }
   };
 
-  const handleReplySubmit = async (
-    subject: string,
-    content: string,
-    selectedContactIds: string[],
-    bannerUrl?: string
-  ) => {
-    if (!selectedContactIds || selectedContactIds.length === 0) return;
+  const handleReplySend = async (id: string, replyContent: string, bannerUrl?: string) => {
+    if (!id) return;
+
+    console.log("🔍 Contact handleReplySend called with:", { id, replyContent, bannerUrl });
 
     setReplyLoading(true);
     try {
-      // Send reply to each selected contact
-      const replyPromises = selectedContactIds.map(async (contactId) => {
-        const res = await fetch("/api/mail/reply", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contactId: contactId,
-            replyContent: content,
-            subject: subject,
-            bannerUrl: bannerUrl,
-          }),
-        });
-        return res.json();
+      // Find the contact
+      const contact = contacts.find(c => c._id === id);
+      if (!contact) {
+        alert("Contact not found");
+        setReplyLoading(false);
+        return;
+      }
+
+      console.log("👤 Found contact:", contact);
+
+      // First, create a temporary newsletter entry for the contact
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          email: contact.email,
+          firstName: contact.firstName,
+          lastName: contact.lastName
+        }),
+      });
+      
+      if (!res.ok) {
+        alert("Failed to create newsletter entry for contact");
+        setReplyLoading(false);
+        return;
+      }
+
+      const data = await res.json();
+      const newsletterId = data.subscriber._id;
+      console.log("📧 Newsletter subscriber created:", newsletterId);
+
+      // Now use the newsletter API with the newsletter subscriber ID
+      const newsletterRes = await fetch("/api/mail/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject: `Response to your contact request - Manilla Technologies`,
+          content: replyContent,
+          selectedUserIds: [newsletterId],
+          bannerUrl: bannerUrl || "", // Use the bannerUrl if provided
+        }),
       });
 
-      const results = await Promise.all(replyPromises);
-      const successCount = results.filter(result => result.message).length;
-      const failureCount = results.length - successCount;
+      console.log("📤 Newsletter API request sent with bannerUrl:", bannerUrl);
 
-      if (successCount > 0) {
-        alert(`Reply sent successfully!\nTotal selected: ${selectedContactIds.length}\nSuccess: ${successCount}\nFailed: ${failureCount}`);
+      const newsletterData = await newsletterRes.json();
+
+      if (newsletterRes.ok) {
+        alert(`Reply sent successfully to ${contact.firstName} ${contact.lastName}`);
         
-        // Update the contacts' status in the local state
+        // Update the contact's status in the local state
         setContacts((prev) =>
-          prev.map((contact) =>
-            selectedContactIds.includes(contact._id)
-              ? { ...contact, status: "replied" as const }
-              : contact
+          prev.map((c) =>
+            c._id === id ? { ...c, status: "replied" as const } : c
           )
         );
         
@@ -164,7 +189,7 @@ const ContactPage = () => {
         setSelectedContacts([]);
         setSelectedIds([]);
       } else {
-        alert("Failed to send reply to any contacts");
+        alert(newsletterData.message || "Failed to send reply");
       }
     } catch (error) {
       console.error("Failed to send reply:", error);
@@ -243,22 +268,17 @@ const ContactPage = () => {
         setSelectedIds={setSelectedIds}
       />
 
-      <ReplyModal
-        isOpen={showReplyModal}
-        onClose={() => {
-          setShowReplyModal(false);
-          setSelectedContacts([]);
-          setSelectedIds([]);
-        }}
-        onSubmit={handleReplySubmit}
-        title={`Reply to ${selectedContacts.length > 0 ? selectedContacts[0].firstName : ''} ${selectedContacts.length > 0 ? selectedContacts[0].lastName : ''}`}
-        loading={replyLoading}
-        totalUsers={selectedContacts.length}
-        selectedUsers={selectedContacts.map((c) => ({
-          _id: c._id,
-          email: c.email,
-        }))}
-      />
+      {showReplyModal && selectedContacts.length > 0 && (
+        <ReplyModal
+          user={selectedContacts[0]}
+          onClose={() => {
+            setShowReplyModal(false);
+            setSelectedContacts([]);
+            setSelectedIds([]);
+          }}
+          onSend={handleReplySend}
+        />
+      )}
     </div>
   );
 };

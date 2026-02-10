@@ -10,7 +10,14 @@ export async function POST(req: Request) {
     await connectDB();
     const { subject, content, selectedUserIds, bannerUrl } = await req.json();
 
-    console.log('Newsletter API received:', { subject, content: content.substring(0, 100), selectedUserIds, bannerUrl });
+    console.log('🔍 Newsletter API received:', { 
+      subject, 
+      content: content.substring(0, 100), 
+      selectedUserIds, 
+      bannerUrl,
+      bannerUrlType: typeof bannerUrl,
+      bannerUrlLength: bannerUrl ? bannerUrl.length : 0
+    });
 
     if (!subject || !content) {
       return NextResponse.json(
@@ -37,6 +44,9 @@ export async function POST(req: Request) {
       );
     }
 
+    console.log('📧 Found subscribers:', subscribers.length);
+    console.log('🖼️ Banner URL being used:', bannerUrl);
+
     let successCount = 0;
     let failureCount = 0;
     const results = [];
@@ -44,7 +54,7 @@ export async function POST(req: Request) {
     // Send email to each subscriber
     for (const subscriber of subscribers) {
       try {
-        console.log(`Sending newsletter to ${subscriber.email} with banner:`, bannerUrl);
+        console.log(`📤 Sending newsletter to ${subscriber.email} with banner:`, bannerUrl);
         const emailResult = await sendNewsletter(
           subscriber.email,
           subject,

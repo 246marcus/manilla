@@ -6,6 +6,25 @@ import { ArrowRight, Globe, Shield, Smartphone } from "lucide-react";
 import heropicture from "../../../public/images/heropicture.png";
 
 const Hero = () => {
+  const handleDownload = () => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+    const isAndroid = /Android/.test(userAgent);
+
+    if (isIOS) {
+      window.location.href =
+        "https://apps.apple.com/ng/app/manilla-pay/id6754242757";
+    } else if (isAndroid) {
+      window.location.href =
+        "https://play.google.com/store/apps/details?id=com.manilla.manilla";
+    } else {
+      alert(
+        "Please open this page on an iPhone or Android device to download the app."
+      );
+    }
+  };
+
   return (
     <section className="relative lg:pt-30 md:pt-30 pt-25  hero-gradient overflow-hidden bg-[radial-gradient(circle,_#001EA9_0%,_#000C43_100%),url('https://www.transparenttextures.com/patterns/noise.png')] bg-center bg-cover flex flex-col justify-center items-center text-center px-6 ">
       {/* Background Pattern */}
@@ -31,18 +50,19 @@ const Hero = () => {
         <div className="relative w-full">
           <Button
             variant="ghost"
-            className="rounded-full scale-85 md:scale-100  px-6 md:px-8 py-1 md:py-3 text-sm group relative"
+            className="rounded-full scale-85 md:scale-100 px-6 md:px-8 py-1 md:py-3 text-sm group relative"
+            onClick={handleDownload}
           >
             Get Started Now
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
 
           {/* External Group Icon pointing to button */}
-          <div className="absolute -top-0 right-[190px] hidden lg:block">
+          <div className="absolute -top-0 right-[190px] hidden lg:block max-[320px]:right-[10px] ">
             <img
               src="/icons/Group.png"
               alt="Group icon pointing to button"
-              className="w-25 h-auto"
+              className="w-25 h-auto max-[320px]:w-10"
             />
           </div>
         </div>
@@ -51,12 +71,12 @@ const Hero = () => {
       <div className="relative"></div>
 
       {/* Image under text */}
-      <div className="relative z-10 mt-2 md:mt-12">
+      <div className="relative z-10 mt-2  md:mt-12 lg:mb-0 md:mb-0">
         {/* Main image */}
         <img
           src={heropicture.src}
           alt="Professional woman using Manilla Finance app"
-          className="w-90 scale-85 md:scale-100 sm:w-100 md:h-90 object-cover rounded-3xl mx-auto "
+          className="w-90 max-[300px]:w-70 scale-85 md:scale-100 sm:w-90 md:h-90 object-cover rounded-3xl mx-auto"
         />
 
         {/* Left icon */}
@@ -79,29 +99,42 @@ const Hero = () => {
         <img
           src="/icons/topPlatforms.png"
           alt="Below decoration"
-          className="absolute scale-85 md:scale-100 md:bottom-[-50px] bottom-[-40px] left-1/2 -translate-x-1/2 w-auto h-25"
+          className="absolute scale-85 md:scale-100 md:bottom-[-50px] bottom-[-20px] left-1/2 -translate-x-1/2 w-auto h-23 lg:bottom-[-50px] "
           style={{ maxWidth: "none" }}
         />
 
         {/* Icon at the left bottom of image */}
-        <img
+        {/* <img
           src="/icons/ActiveUsers.png"
           alt="Below decoration"
           className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14 "
           style={{ maxWidth: "none" }}
-        />
+        /> */}
 
-        {/* Icon at the right bottom of image */}
         <img
-          src="/icons/downloadManilla.png"
+          src="/icons/ActiveUsers.png"
           alt="Below decoration"
-          className="hidden md:block absolute bottom-[-18px] md:left-85  lg:left-100 w-auto h-40 md:scale-85 lg:scale-95"
+          className="hidden md:block absolute bottom-[-40px] top-[-1/3] right-85 w-auto h-10 md:h-14  lg:mb-7 md:mb-5"
           style={{ maxWidth: "none" }}
         />
 
+        {/* Icon at the right bottom of image */}
+        <a
+          href="https://apps.apple.com/ng/app/manilla-pay/id6754242757"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/icons/downloadManilla.png"
+            alt="Below decoration"
+            className="hidden md:block absolute bottom-[-39px] md:left-85 lg:left-100 w-auto h-40 md:scale-85 lg:scale-95 lg:mb-3"
+            style={{ maxWidth: "none" }}
+          />
+        </a>
+
         <div className="absolute bottom-0 -right-10 md:hidden ">
           {/* Google Play */}
-          <a
+          {/* <a
             href="https://play.google.com/store/apps/details?id=com.manillapay"
             target="_blank"
             rel="noopener noreferrer"
@@ -112,10 +145,10 @@ const Hero = () => {
               alt="Get it on Google Play"
               className="object-contain scale-70 translate-y-6"
             />
-          </a>
+          </a> */}
 
           {/* App Store */}
-          <a
+          {/* <a
             href="https://apps.apple.com/app/manillapay"
             target="_blank"
             rel="noopener noreferrer"
@@ -126,12 +159,54 @@ const Hero = () => {
               alt="Download on the App Store"
               className="object-contain scale-70 "
             />
-          </a>
+          </a> */}
+        </div>
+
+        <div className="md:hidden absolute bottom-[100px] left-[60px] flex flex-row  items-center">
+          {/* First image with text overlay */}
+          <div className="relative">
+            <img
+              src="/icons/subtract.png"
+              alt="First image"
+              className="w-[auto] h-[40px] mr-0"
+              style={{ maxWidth: "none" }}
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center right-[10px]">
+              <p className="text-white text-[9px] font-bold text-center">
+                Manilla Pay App
+              </p>
+              <p className="text-[#FACA31] text-[7px] font-bold text-center">
+                Download
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-row ml-[-10px]">
+            {/* Second image with link */}
+            <a href="https://play.google.com/store/apps/details?id=com.manilla.manilla">
+              <img
+                src="/icons/androiddownload.png"
+                alt="Second image"
+                className="w-[auto] h-[32px] rotate-90"
+                style={{ maxWidth: "none" }}
+              />
+            </a>
+
+            {/* Third image with link */}
+            <a href="https://apps.apple.com/ng/app/manilla-pay/id6754242757">
+              <img
+                src="/icons/appledownload.png"
+                alt="Third image"
+                className="w-[auto] h-[32px]"
+                style={{ maxWidth: "none" }}
+              />
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Trusted Platform Rolling Effect */}
-      <div className="relative z-10 mt-4  md:mt-16 w-screen overflow-hidden ">
+      <div className="relative z-10 mt-[-15]  md:mt-4 w-screen overflow-hidden lg:mt-3 ">
         {/* top */}
         <div className="flex animate-roll h-28 md:h-40 mt-4 ">
           <img
